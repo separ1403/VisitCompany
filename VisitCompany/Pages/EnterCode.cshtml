@@ -1,0 +1,27 @@
+﻿@page
+@model VisitCompany.Pages.EnterCodeModel
+@{
+    ViewData["Title"] = "ورود و ثبت نام";
+}
+<form method="post" asp-page-handler="ValidateCode">
+    
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    <div class="validation-form">
+        <h4 class="validation-title">کد فعالسازی</h4>
+        <div class="row">
+            <div class="col-md-12 col-12">
+                <label>کد فعالسازی*</label>
+                <input type="text" name="Code" placeholder="کد فعالسازی" required>
+            </div>
+            <div class="col-md-12">
+                <button class="validate-button">تایید</button>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,137 @@
+﻿@page
+@using Microsoft.EntityFrameworkCore
+@model CreateModel
+@{
+    Layout = "Shared/_AdminLayout";
+}
+
+
+
+<div class="modal-header">
+    
+    <h4 class="modal-title">ثبت شرکت جدید</h4>
+</div>
+
+@if (Model.SuccessMessageame != null)
+{
+    <div class="alert alert-success">
+        @Model.SuccessMessageame
+
+    </div>
+}
+    @if (Model.ErrorMessageame != null)
+    {
+        <div class="alert alert-danger">
+            @Model.ErrorMessageame
+
+        </div>
+    }
+
+<form method="post" asp-page-handler="Create" enctype="multipart/form-data" >
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="@Model.Command.Title" class="control-label">عنوان چک لیست</label>
+                    <input type="text" class="form-control" asp-for="@Model.Command.Title">
+                    <span asp-validation-for="Command.Title" class="error"></span>
+                    
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Command.NamePeopleCo " class="control-label">نام عضو حاضر در کسب و کار  </label>
+                    <input type="text" class="form-control" asp-for="Command.NamePeopleCo ">
+                    <span asp-validation-for="Command.NamePeopleCo" class="error"></span>
+                   
+                </div>
+            </div> 
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Command.RspponsePeopleCo " class="control-label">مسئولیت فرد  </label>
+                    <input type="text" class="form-control" asp-for="Command.RspponsePeopleCo ">
+                    <span asp-validation-for="Command.RspponsePeopleCo" class="error"></span>
+                   
+                </div>
+            </div> 
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Command.PhonePeopleCo " class="control-label">شماره تماس   </label>
+                    <input type="number" class="form-control" asp-for="Command.PhonePeopleCo ">
+                    <span asp-validation-for="Command.PhonePeopleCo" class="error"></span>
+                   
+                </div>
+            </div> 
+        </div>
+    <div class="row">
+        <div class="col-md-6">
+        <div class="form-group">
+                    <label asp-for="Command.CountEmployees " class="control-label">تعداد کارمندان    </label>
+                    <input type="number" class="form-control" asp-for="Command.CountEmployees ">
+                    <span asp-validation-for="Command.CountEmployees" class="error"></span>
+                   
+                </div>
+        </div>     
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Command.CountFolowers " class="control-label">تعداد مشتریان    </label>
+                <input type="number" class="form-control" asp-for="Command.CountFolowers ">
+                <span asp-validation-for="Command.CountFolowers" class="error"></span>
+                   
+            </div>
+        </div>
+    </div>
+    
+        
+        <div class="row">
+         
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Command.CompanyId " class="control-label">نام شرکت </label>
+                    <select class="form-control" asp-for="Command.CompanyId" asp-items="Model.Companies" id="CategoryIdSelect">
+                        <option value="0">  انتخاب شرکت </option>
+                        @*ProductCategories name selectlist va CategoryId meghdary hast ke mikhahim etelaate
+                        an namayesh dadashavad ya etelaat daron an rikhte shavad*@
+                    </select>
+                    <span asp-validation-for="Command.CompanyId" class="error"></span>
+                   
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <label class="control-label col-md-3">انتخاب ارزیاب ها</label>
+                <div class="col-md-12">
+                    <select asp-for="Command.AccountIds" asp-items="Model.AccountList" class="multi-select" multiple="multiple" id="my_multi_select3">
+                    </select> @*asp-items="Model.Permissions" name of selectlistitem*@
+                    @*asp-for="Command.Permissions"  ham name prop dar Editrole hast / command ham ke name EditRole Hast*@
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+   
+     
+    <div class="modal-footer">
+        
+        <button type="submit" class="btn btn-info waves-effect waves-light" >برو مرحله ی بعدی</button>
+        
+    </div>
+</form>
+
+
+    @section Scripts {
+        <script>
+        $(document).ready(function() {
+            $('#CategoryIdSelect').select2({
+                placeholder: "انتخاب دسته بندی",
+                allowClear: true,
+                language: "fa"
+            });
+            });
+
+
+    </script>
+    }

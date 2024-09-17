@@ -1,0 +1,107 @@
+﻿@page
+@model IndexModel
+@{
+    Layout = "Shared/_AdminLayout";
+    ViewData["title"] = "مدیریت نقش‌ها";
+}
+
+<form class="form-inline" role="form" method="get">
+    <label class="sr-only" asp-for="name"></label>
+    <input class="form-control" asp-for="name" placeholder="نام">
+    <div class="form-group">
+    </div>
+    <button type="submit" class="btn btn-success waves-effect waves-light m-l-10">جستجو</button>
+</form>
+
+@if (Model.Error.Any())
+{
+    <div class="alert alert-info">
+        @foreach (string err in Model.Error)
+        {
+            <p>@err</p>
+        }
+    </div>
+}
+else
+{
+    <div class="row" >
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">لیست نتایج</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <table id="datatable" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>آیتم مورد جستجو</th>
+                                        <th>تاریخ</th>
+                                        <th>entityType</th>
+                                        <th>لینک عکس</th>
+                                        <th>لینک رسمیو</th>
+                                        <th>placeOfIssue</th>
+                                        <th>subtitle</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.data.hits.hits)
+                                    {
+                                        <tr>
+                                            <td>@item._source.titleFa</td>
+                                            <td>@item._source.date</td>
+                                            <td>@item._source.entityType</td>
+                                            <td><a href="@item._source.pictureUrl">لینک تصویر</a></td>
+                                            <td><a href="@item._source.link">لینک رسمیو</a></td>
+                                            <td>@item._source.placeOfIssue</td>
+                                            <td>@item._source.subtitle</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <iframe id="contentFrame" style="width: 100%; height: 600px; display: none; border: none;"></iframe>   @* // برای اینکه لینک در همین صفحه باز شود این قسمت  *@
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/adminTheme/assets/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/adminTheme/assets/datatables/dataTables.bootstrap.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#datatable').dataTable();
+
+            // برای جلوگیری از رفتن به لینک داخلی
+            $('#datatable').on('click', 'a', function (event) {
+                event.preventDefault(); // جلوگیری از رفتن به لینک داخلی
+                var url = $(this).attr('href'); // گرفتن آدرس لینک
+
+                // تنظیم آدرس iframe
+                $('#contentFrame').attr('src', url).show();
+            });
+        });
+    </script>
+}
+@* 
+    این کد قبلی بود تبدیل بشد به اسکریپت بالا تا لینک در همین صفحه بارگذاری شود
+@section Scripts {
+    <script src="~/adminTheme/assets/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/adminTheme/assets/datatables/dataTables.bootstrap.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#datatable').dataTable();
+        });
+    </script>
+} *@

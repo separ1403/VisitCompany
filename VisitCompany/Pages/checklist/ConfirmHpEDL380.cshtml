@@ -1,0 +1,140 @@
+﻿@page
+@model VisitCompany.Pages.checklist.ConfirmHpEDL380Model
+@{
+    Layout = "Shared/_AdminLayout";
+    ViewData["Title"] = "تایید اطلاعات";
+}
+
+
+<h2>تایید اطلاعات</h2>
+
+<form method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <label>جنانچه ماژول  TPMفعال شده
+                است آیا بر روی  ROتنظیم شده
+                است ؟:</label>
+            <span>@Model.Command.IsTPMEnabledAndRO</span>
+        </div>
+        <div class="col-md-6">
+            <label>آیا نام کاربری های متناسب
+                ایحاد شده اند ؟:</label>
+            <span>@Model.Command.AreAppropriateUsernamesCreated</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا گروه های متناسب برای
+                کاربری های مختلف ایجاد شده
+                اند؟:</label>
+            <span>@Model.Command.AreAppropriateGroupsCreated</span>
+        </div>
+        <div class="col-md-6">
+            <label>آیا تنظیمات مربوط به Access
+                ILO  در بخش شبکهsetting
+                اعمال شده اند؟:</label>
+            <span>@Model.Command.AreNetworkSettingsForILOConfigured</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا تنظیمات مربوط به Access
+                settingدر بخش تنظیمات اولیه
+                ILOاعمال شده اند؟:</label>
+            <span>@Model.Command.AreInitialSettingsForILOConfigured</span>
+        </div>
+        <div class="col-md-6">
+            <label>آیا تنظیمات مربوط به نام سرور و
+                مشخصات  FQDNسرور تعیین
+                شده است؟:</label>
+            <span>@Model.Command.IsServerNameAndFQDNSet</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا تنظیمات مربوط به Account
+                serviceاعمال شده است؟:</label>
+            <span>@Model.Command.IsAccountServiceConfigured</span>
+        </div>
+        <div class="col-md-6">
+            <label>آیا تنطیمات مربوط به پورت  ILOو
+                پورت  USBاعمال شده است؟:</label>
+            <span>@Model.Command.AreILOPortAndUSBPortConfigured</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا  SSH Keysفعال شده است؟:</label>
+            <span>@Model.Command.AreSSHKeysEnabled</span>
+        </div>
+        <div class="col-md-6">
+            <label>آیا تنظیمات مربوط به
+                Certificateبه ازای هر کاربر
+                اعمال شده است؟:</label>
+            <span>@Model.Command.AreUserCertificatesConfigured</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا تنطیمات مربوط به Certificate
+                بر روی سیستم اعمال شده
+                است؟:</label>
+            <span>@Model.Command.AreSystemCertificatesConfigured</span>
+        </div>
+        <div class="col-md-6">
+            <label>آیا تنطیمات مربوط به
+                Encryptionاعمال شده اند؟:</label>
+            <span>@Model.Command.IsEncryptionConfigured</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا تنطیمات بخش امنیتی UEFI
+                اعمال شده است؟:</label>
+            <span>@Model.Command.IsUEFISecurityConfigured</span>
+        </div>
+        <div class="col-md-6">
+            <label>آیا تنطیمات مربوط به بوت امن
+                انجام شده است؟:</label>
+            <span>@Model.Command.IsSecureBootConfigured</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا تنظیمات مربوط به  TPMها
+                اعمال شده است؟:</label>
+            <span>@Model.Command.IsTPMConfigured</span>
+        </div>
+        <div class="col-md-6">
+            <label>آیا تنطیمات اولیه  ILOاز قسمت
+                اعمال شدهSystem Utility
+                است؟:</label>
+            <span>@Model.Command.AreInitialILOSettingsConfigured</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا تنظیمات مربوط به حذف
+                اطلاعات هارد دیسک و Raid
+                بندی غیرفعال شده است ؟:</label>
+            <span>@Model.Command.IsDiskAndRaidConfigDeletionDisabled</span>
+        </div>
+        <div class="col-md-6">
+            <label>آیا تنظیمات لازم جهت حذف
+                تنظیمات Provisioningانجام
+                شده است؟:</label>
+            <span>@Model.Command.AreProvisioningSettingsDeleted</span>
+        </div>
+    </div>
+    
+    <H3>در صورت تایید امکان ویرایش وجود ندارد :</H3>
+    <button type="submit">  ذخیره و ادامه ارزیابی</button>
+</form>
+
+<br />
+
+<!-- دکمه بازگشت -->
+<a href="/checklist/Confirm" class="btn btn-secondary">بازگشت به صقحه ی انتخاب چک لیست ها</a>
+
+
+

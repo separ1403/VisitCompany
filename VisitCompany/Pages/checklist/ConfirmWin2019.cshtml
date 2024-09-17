@@ -1,0 +1,445 @@
+﻿@page
+@model VisitCompany.Pages.checklist.ConfirmWin2019Model
+@{
+    Layout = "Shared/_AdminLayout";
+    ViewData["Title"] = "تایید اطلاعات";
+}
+
+
+<h2>تایید اطلاعات</h2>
+
+<form method="post">
+    
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا تاریخچه کلمه عبور فعال است؟</label>
+            <span>@Model.Command.IsPasswordHistoryEnabled</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات تاریخچه کلمه عبور:</label>
+            <span>@Model.Command.IsPasswordHistoryEnabledDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا حداکثر عمر کلمه عبور تنظیم شده است؟</label>
+            <span>@Model.Command.IsMaxPasswordAgeConfigured</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات حداکثر عمر کلمه عبور:</label>
+            <span>@Model.Command.IsMaxPasswordAgeConfiguredDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا حداقل عمر کلمه عبور تنظیم شده است؟</label>
+            <span>@Model.Command.IsMinPasswordAgeConfigured</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات حداقل عمر کلمه عبور:</label>
+            <span>@Model.Command.IsMinPasswordAgeConfiguredDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا حداقل طول کلمه عبور تنظیم شده است؟</label>
+            <span>@Model.Command.IsMinPasswordLengthConfigured</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات حداقل طول کلمه عبور:</label>
+            <span>@Model.Command.IsMinPasswordLengthConfiguredDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا کلمه عبور پیچیده الزامی است؟</label>
+            <span>@Model.Command.IsComplexPasswordRequired</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات کلمه عبور پیچیده:</label>
+            <span>@Model.Command.IsComplexPasswordRequiredDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا ذخیره کلمه عبور به صورت متن ساده غیرفعال است؟</label>
+            <span>@Model.Command.IsPlainTextPasswordStorageDisabled</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات ذخیره کلمه عبور:</label>
+            <span>@Model.Command.IsPlainTextPasswordStorageDisabledDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا مدت قفل حساب کاربری تنظیم شده است؟</label>
+            <span>@Model.Command.IsAccountLockoutDurationConfigured</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات قفل حساب کاربری:</label>
+            <span>@Model.Command.IsAccountLockoutDurationConfiguredDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا محدودیت برای تعداد تلاش‌های ناموفق ورود وجود دارد؟</label>
+            <span>@Model.Command.IsFailedLogonAttemptsLimited</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا محدودیت برای تعداد تلاش‌های ناموفق ورود وجود دارد؟</label>
+            <span>@Model.Command.IsFailedLogonAttemptsLimited</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات تلاش‌های ناموفق ورود:</label>
+            <span>@Model.Command.IsFailedLogonAttemptsLimitedDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا قفل حساب مدیر تنظیم شده است؟</label>
+            <span>@Model.Command.IsAdminLockoutConfigured</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات قفل حساب مدیر:</label>
+            <span>@Model.Command.IsAdminLockoutConfiguredDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا تعداد خطاهای بازنشانی رمز عبور تنظیم شده است؟</label>
+            <span>@Model.Command.IsPasswordResetErrorCountConfigured</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات تعداد خطاهای بازنشانی رمز عبور:</label>
+            <span>@Model.Command.IsPasswordResetErrorCountConfiguredDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا مدیریت حساب کاربری محدود شده است؟</label>
+            <span>@Model.Command.IsUserAccountManagementRestricted</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات مدیریت حساب کاربری:</label>
+            <span>@Model.Command.IsUserAccountManagementRestrictedDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا دسترسی از راه دور مدیریت شده است؟</label>
+            <span>@Model.Command.IsRemoteAccessManaged</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات دسترسی از راه دور:</label>
+            <span>@Model.Command.IsRemoteAccessManagedDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا دسترسی به حساب سیستم‌عامل محدود شده است؟</label>
+            <span>@Model.Command.IsOSAccountAccessLimited</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات دسترسی به حساب سیستم‌عامل:</label>
+            <span>@Model.Command.IsOSAccountAccessLimitedDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا پیوستن به دامنه محدود شده است؟</label>
+            <span>@Model.Command.IsDomainJoinRestricted</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات پیوستن به دامنه:</label>
+            <span>@Model.Command.IsDomainJoinRestrictedDescription</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا اجازه مدیریت حافظه داده شده است؟</label>
+            <span>@Model.Command.IsMemoryManagementPermissionGranted</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات مدیریت حافظه:</label>
+            <span>@Model.Command.IsMemoryManagementPermissionGrantedDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا ورود به کنسول محلی محدود شده است؟</label>
+            <span>@Model.Command.IsLocalConsoleLogonRestricted</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات ورود به کنسول محلی:</label>
+            <span>@Model.Command.IsLocalConsoleLogonRestrictedDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا گروه ورود از راه دور مدیریت می‌شود؟</label>
+            <span>@Model.Command.IsRemoteLogonGroupManaged</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات گروه ورود از راه دور:</label>
+            <span>@Model.Command.IsRemoteLogonGroupManagedDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا دسترسی به پشتیبان مدیریت شده است؟</label>
+            <span>@Model.Command.IsBackupAccessManaged</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات دسترسی به پشتیبان:</label>
+            <span>@Model.Command.IsBackupAccessManagedDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا تغییر زمان سیستم مدیریت شده است؟</label>
+            <span>@Model.Command.IsSystemTimeChangeManaged</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات تغییر زمان سیستم:</label>
+            <span>@Model.Command.IsSystemTimeChangeManagedDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا ایجاد توکن دسترسی محدود شده است؟</label>
+            <span>@Model.Command.IsAccessTokenCreationLimited</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات ایجاد توکن دسترسی:</label>
+            <span>@Model.Command.IsAccessTokenCreationLimitedDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا ورود از راه دور برای کاربران مهمان محدود شده است؟</label>
+            <span>@Model.Command.IsRemoteLogonRestrictedForGuests</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات ورود از راه دور برای مهمانان:</label>
+            <span>@Model.Command.IsRemoteLogonRestrictedForGuestsDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا اجازه اجرای وظایف زمانبندی‌شده مدیریت می‌شود؟</label>
+            <span>@Model.Command.IsScheduledTasksPermissionManaged</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات اجرای وظایف زمانبندی‌شده:</label>
+            <span>@Model.Command.IsScheduledTasksPermissionManagedDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا اجازه ورود به عنوان سرویس مدیریت می‌شود؟</label>
+            <span>@Model.Command.IsLogonAsServicePermissionManaged</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات ورود به عنوان سرویس:</label>
+            <span>@Model.Command.IsLogonAsServicePermissionManagedDescription</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا ورود کاربران مهمان مدیریت شده است؟</label>
+            <span>@Model.Command.IsGuestLogonManaged</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات ورود کاربران مهمان:</label>
+            <span>@Model.Command.IsGuestLogonManagedDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا ورود حساب محلی مدیریت شده است؟</label>
+            <span>@Model.Command.IsLocalAccountLogonManaged</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات ورود حساب محلی:</label>
+            <span>@Model.Command.IsLocalAccountLogonManagedDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا تنظیمات ورود به عنوان سرویس اعمال شده است؟</label>
+            <span>@Model.Command.IsLogonAsServiceSettingsApplied</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات ورود به عنوان سرویس:</label>
+            <span>@Model.Command.IsLogonAsServiceSettingsAppliedDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا اجازه خاموش کردن از راه دور مدیریت شده است؟</label>
+            <span>@Model.Command.IsRemoteShutdownPermissionManaged</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات خاموش کردن از راه دور:</label>
+            <span>@Model.Command.IsRemoteShutdownPermissionManagedDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا نام کاربری مدیر تغییر کرده است؟</label>
+            <span>@Model.Command.IsAdministratorUsernameChanged</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات تغییر نام کاربری مدیر:</label>
+            <span>@Model.Command.IsAdministratorUsernameChangedDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا تعداد نام‌های کاربری ذخیره‌شده مدیریت شده است؟</label>
+            <span>@Model.Command.IsCachedUsernameCountManaged</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات تعداد نام‌های کاربری ذخیره‌شده:</label>
+            <span>@Model.Command.IsCachedUsernameCountManagedDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا هشدار انقضای کلمه عبور مدیریت شده است؟</label>
+            <span>@Model.Command.IsPasswordExpirationWarningManaged</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات هشدار انقضای کلمه عبور:</label>
+            <span>@Model.Command.IsPasswordExpirationWarningManagedDescription</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا درخواست SID ناشناس مدیریت شده است؟</label>
+            <span>@Model.Command.IsAnonymousSIDRequestManaged</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات درخواست SID ناشناس:</label>
+            <span>@Model.Command.IsAnonymousSIDRequestManagedDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا دسترسی به رسانه NTFS مدیریت شده است؟</label>
+            <span>@Model.Command.IsNTFSMediaAccessManaged</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات دسترسی به رسانه NTFS:</label>
+            <span>@Model.Command.IsNTFSMediaAccessManagedDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا نصب درایور چاپگر مشترک مدیریت شده است؟</label>
+            <span>@Model.Command.IsSharedPrinterDriverInstallationManaged</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات نصب درایور چاپگر مشترک:</label>
+            <span>@Model.Command.IsSharedPrinterDriverInstallationManagedDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا سرویس چاپگر Spooler مدیریت شده است؟</label>
+            <span>@Model.Command.IsPrinterSpoolerServiceManaged</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات سرویس چاپگر Spooler:</label>
+            <span>@Model.Command.IsPrinterSpoolerServiceManagedDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا نکات آنلاین مدیریت شده است؟</label>
+            <span>@Model.Command.IsOnlineTipManaged</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات نکات آنلاین:</label>
+            <span>@Model.Command.IsOnlineTipManagedDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا زمان Keep-Alive مدیریت شده است؟</label>
+            <span>@Model.Command.IsKeepAliveTimeManaged</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات زمان Keep-Alive:</label>
+            <span>@Model.Command.IsKeepAliveTimeManagedDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا گزینه IRDP غیرفعال شده است؟</label>
+            <span>@Model.Command.IsIRDPOptionDisabled</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات گزینه IRDP:</label>
+            <span>@Model.Command.IsIRDPOptionDisabledDescription</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>آیا ارسال مجدد داده‌ها مدیریت شده است؟</label>
+            <span>@Model.Command.IsDataRetransmissionManaged</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات ارسال مجدد داده‌ها:</label>
+            <span>@Model.Command.IsDataRetransmissionManagedDescription</span>
+        </div>
+    </div>
+
+    
+  
+    <H3>در صورت تایید امکان ویرایش وجود ندارد :</H3>
+    <button type="submit"> ذخیره و ادامه ارزیابی</button>
+</form>
+
+<br />
+
+<!-- دکمه بازگشت -->
+<a href="/checklist/Confirm" class="btn btn-secondary">بازگشت به صقحه ی انتخاب چک لیست ها</a>
+
+

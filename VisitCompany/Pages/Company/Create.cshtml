@@ -1,0 +1,164 @@
+﻿@page
+@using CompanyManagement.Infrastructure.Configuration.Permission
+@using Microsoft.EntityFrameworkCore
+@model CreateModel
+@{
+    Layout = "Shared/_AdminLayout";
+}
+
+
+
+<div class="modal-header">
+    
+    <h4 class="modal-title">ثبت شرکت جدید</h4>
+</div>
+
+@if (Model.SuccessMessageame != null)
+{
+    <div class="alert alert-success">
+        @Model.SuccessMessageame
+
+    </div>
+}
+    @if (Model.ErrorMessageame != null)
+    {
+        <div class="alert alert-danger">
+            @Model.ErrorMessageame
+
+        </div>
+    }
+
+<form method="post" asp-page-handler="Create" permission="@CompanyPermission.CreateCompanies"  enctype="multipart/form-data">
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="@Model.Command.CompanyName" class="control-label">نام</label>
+                    <input type="text" class="form-control" asp-for="@Model.Command.CompanyName" >
+                   
+                </div>
+            </div>
+                  <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Command.Brand " class="control-label">برند شرکت </label>
+                    <input type="text" class="form-control" asp-for="Command.Brand ">
+                    <span asp-validation-for="Command.Brand " class="error"></span>
+                </div>
+            </div>
+        @*      <div>
+                 <label for="rangeInput">مقدار را وارد کنید:</label>
+                <input type="range" id="rangeInput" name="rangeInput" min="0" max="100" value="50">
+            </div> *@
+            
+   
+        </div>
+        
+       
+            
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Command.CategoryId" class="control-label">گروه محصول</label>
+                    <select class="form-control" asp-for="Command.CategoryId" asp-items="Model.CompanyCategories" id="CategoryIdSelect">
+                        <option value="0">انتخاب دسته بندی</option>
+                    </select>
+                    <span asp-validation-for="Command.CategoryId" class="error"></span>
+                </div>
+            </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Command.LicenceId" class="control-label">گروه لایسنس ها</label>
+                <select class="form-control" asp-for="Command.LicenceId" asp-items="Model.LicenceCategories" id="LicenceIdSelect">
+                    <option value="0">انتخاب لایسنس ها </option>
+                </select>
+                <span asp-validation-for="Command.LicenceId" class="error"></span>
+            </div>
+        </div>
+       
+       
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Command.ManagerName" class="control-label"> مدیر شرکت</label>
+                    <input type="text" class="form-control" asp-for="Command.ManagerName">
+                    <span class="error"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="@Model.Command.PhoneNumber" class="control-label">   شماره تلفن</label>
+                    <input type="number" class="form-control" asp-for="@Model.Command.PhoneNumber">
+                    <span class="error"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="@Model.Command.SecurityManagerName" class="control-label">   مدیر امنیت</label>
+                    <input type="text" class="form-control" asp-for="@Model.Command.SecurityManagerName">
+                    <span class="error"></span>
+                </div>
+            </div>
+        </div>
+      
+        <div class="row">
+           
+
+            <div class="col-md-6">
+                
+                <div class="form-group">
+                    <label asp-for="@Model.Command.NationalCode" class="control-label">   شناسه ملی</label>
+                    <input type="text" class="form-control" asp-for="@Model.Command.NationalCode">
+                    <span class="error"></span>
+                </div>
+                <div class="form-group no-margin">
+                    <label asp-for="@Model.Command.Description" class="control-label">توضیحات</label>
+                    <textarea class="form-control autogrow" asp-for="@Model.Command.Description" 
+                              style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 90px;"></textarea>
+                    <span class="error"></span>
+                </div>
+                
+            </div>
+          
+            <div class="col-md-6">
+                <label class="control-label col-md-3">انتخاب ارزیاب ها</label>
+                <div class="col-md-12">
+                    <select asp-for="Command.AccountIds" asp-items="Model.AccountList" class="multi-select" multiple="multiple" id="my_multi_select3">
+                    </select> 
+
+                </div>
+
+            </div>
+           
+
+        </div>
+        
+         </div>
+   
+    
+    <div class="modal-footer">
+        
+        <button type="submit" class="btn btn-info waves-effect waves-light" >ایجاد</button>
+    </div>
+</form>
+
+
+    @section Scripts {
+        <script>
+        $(document).ready(function() {
+            $('#CategoryIdSelect').select2({
+                placeholder: "انتخاب دسته بندی",
+                allowClear: true,
+                language: "fa"
+            });
+            $('#LicenceIdSelect').select2({
+                placeholder: "انتخاب لایسنس ها",
+                allowClear: true,
+                language: "fa"
+            });
+        });
+
+
+    </script>
+    }
+

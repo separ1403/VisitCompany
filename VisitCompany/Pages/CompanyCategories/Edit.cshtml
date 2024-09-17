@@ -1,0 +1,46 @@
+﻿@page 
+@using Microsoft.EntityFrameworkCore
+@model EditModel
+@{
+}
+
+
+
+<div class="modal-header">
+  
+    <h4 class="modal-title">ویرایش گروه محصول </h4>
+</div>
+
+
+<form method="post" asp-page-handler="Edit" enctype="multipart/form-data">
+   
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="@Model.Command.Name" class="control-label">نام دسته بندی</label>
+                    <input type="text" class="form-control" asp-for="@Model.Command.Name" >
+                    <span asp-validation-for="@Model.Command.Name" class="error"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Command.Description" class="control-label">توضیحات</label>
+                    <input type="text" class="form-control" asp-for="Command.Description">
+                    <span  class="error"></span>
+                </div>
+            </div>
+        </div>
+     
+       
+        <input type="hidden" asp-for="Command.Id" value="@Model.Command.Id " />
+  
+    </div>
+    
+  
+        
+    <div class="modal-footer">
+        
+        <button type="submit" class="btn btn-info waves-effect waves-light">ویرایش</button>
+    </div>
+</form>

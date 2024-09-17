@@ -1,0 +1,282 @@
+﻿@page
+@using Newtonsoft.Json
+@model VisitCompany.Pages.ChartModel
+@{
+    ViewData["Title"] = "صفحه اصلی";
+    Layout = "Shared/_AdminLayout";
+}
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نمودار میله‌ای</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">جستجو در چک لیست ها</h3>
+                </div>
+                <div class="panel-body">
+                    <form class="form-inline" role="form" method="post">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="sr-only" asp-for="@Model.SearchModel.CompanyId">انتخاب شرکت</label>
+                                    <select class="form-control" asp-for="@Model.SearchModel.CompanyId" asp-items="@Model.Companies">
+                                        <option value="">دسته بندی شرکت مورد نظر را انتخاب نمایید</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="@Model.SearchModel.TopCompaniesCount" class="control-label">تعداد شرکت‌های برتر در زمینه‌ی کسب میانگین عمومی</label>
+                                    <input type="number" class="form-control" asp-for="@Model.SearchModel.TopCompaniesCount">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="sr-only" asp-for="SearchModel.StartDate">تاریخ شروع</label>
+                                    <input class="form-control persianDateInput" asp-for="SearchModel.StartDate" placeholder="تاریخ شروع" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="sr-only" asp-for="SearchModel.EndDate">تاریخ پایان</label>
+                                    <input class="form-control persianDateInput" asp-for="SearchModel.EndDate" placeholder="تاریخ پایان" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <h5 style="color: red;">در صورت تمایل به مقایسه یک شرکت با شرکت دیگر قسمت پایین را نیز می‌توانید به دلخواه تکمیل نمایید</h5>
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="sr-only" asp-for="@Model.SearchModel2.CompanyId">انتخاب شرکت</label>
+                                    <select class="form-control" asp-for="@Model.SearchModel2.CompanyId" asp-items="@Model.Companies">
+                                        <option value="">دسته بندی شرکت مورد نظر را انتخاب نمایید</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="@Model.SearchModel2.TopCompaniesCount" class="control-label">تعداد شرکت‌های برتر در زمینه‌ی کسب میانگین عمومی</label>
+                                    <input type="number" class="form-control" asp-for="@Model.SearchModel2.TopCompaniesCount">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="sr-only" asp-for="SearchModel2.StartDate">تاریخ شروع</label>
+                                    <input class="form-control persianDateInput" asp-for="SearchModel2.StartDate" placeholder="تاریخ شروع" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="sr-only" asp-for="SearchModel2.EndDate">تاریخ پایان</label>
+                                    <input class="form-control persianDateInput" asp-for="SearchModel2.EndDate" placeholder="تاریخ پایان" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-l-10">جستجو</button>
+                        <a class="btn btn-primary waves-effect waves-light m-l-10" asp-page="./chart">مشاهده همه</a>
+                        <br><br>
+                        <!-- Add checkboxes for chart selection -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="showChart1" checked>
+                                    <label class="form-check-label" for="showChart1"> نمایش نمودار میانگین نمرات عمومی و حرفه ای به همراه مقایسه ای  </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="showChart2" checked>
+                                    <label class="form-check-label" for="showChart2">نمایش نمودار میانگین نمرات عمومی به همراه مقایسه ای </label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="showChart3" checked>
+                                    <label class="form-check-label" for="showChart3">نمایش نمودار میانگین نمرات حرفه ای به همراه مقایسه ای </label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- اولین نمودار -->
+    <canvas id="chart1" width="400" height="200"></canvas>
+    <!-- دومین نمودار -->
+    <canvas id="chart2" width="400" height="200"></canvas>
+
+    <!-- سومین نمودار -->
+    <canvas id="chart3" width="400" height="200"></canvas>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const showChart1Checkbox = document.getElementById('showChart1');
+            const showChart2Checkbox = document.getElementById('showChart2');
+            const showChart3Checkbox = document.getElementById('showChart3');
+            const chart1Canvas = document.getElementById('chart1');
+            const chart2Canvas = document.getElementById('chart2');
+            const chart3Canvas = document.getElementById('chart3');
+            // Function to toggle chart visibility
+            function toggleChartVisibility() {
+                chart1Canvas.style.display = showChart1Checkbox.checked ? 'block' : 'none';
+                chart2Canvas.style.display = showChart2Checkbox.checked ? 'block' : 'none';
+                chart3Canvas.style.display = showChart3Checkbox.checked ? 'block' : 'none';
+            }
+
+            // Add event listeners to checkboxes
+            showChart1Checkbox.addEventListener('change', toggleChartVisibility);
+            showChart2Checkbox.addEventListener('change', toggleChartVisibility);
+            showChart3Checkbox.addEventListener('change', toggleChartVisibility);
+
+            // Initial call to set visibility based on initial checkbox state
+            toggleChartVisibility();
+        });
+
+        // داده‌های مربوط به نام شرکت‌ها، میانگین عمومی، میانگین حرفه‌ای و تاریخ ایجاد را از مدل C# به جاوااسکریپت منتقل کنید
+        const companyNames = @Html.Raw(JsonConvert.SerializeObject(Model.CompanyNames));
+        const averageGenerals = @Html.Raw(JsonConvert.SerializeObject(Model.AverageGenerals));
+        const averageProff = @Html.Raw(JsonConvert.SerializeObject(Model.AverageProff));
+        const creationDates = @Html.Raw(JsonConvert.SerializeObject(Model.CreationDates));
+
+        const companyNames2 = @Html.Raw(JsonConvert.SerializeObject(Model.CompanyNames2));
+        const averageGenerals2 = @Html.Raw(JsonConvert.SerializeObject(Model.AverageGenerals2));
+        const averageProff2 = @Html.Raw(JsonConvert.SerializeObject(Model.AverageProff2));
+        const creationDates2 = @Html.Raw(JsonConvert.SerializeObject(Model.CreationDates2));
+
+        // ترکیب نام شرکت‌ها و تاریخ ایجاد برای محور x
+        const labels = companyNames.map((name, index) => `${name} (${creationDates[index]})`).concat(
+            companyNames2.map((name, index) => `${name} (${creationDates2[index]})`)
+        );
+
+        // ساخت اولین نمودار میله‌ای
+        const ctx1 = document.getElementById('chart1').getContext('2d');
+        const chart1 = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: labels, // استفاده از برچسب‌های ترکیبی به‌عنوان محور x
+                datasets: [
+                    {
+                        label: 'میانگین نمرات عمومی شرکت یک',
+                        data: averageGenerals.concat(new Array(averageGenerals2.length).fill(null)), // برای هم‌تراز شدن داده‌ها
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'میانگین نمرات عمومی شرکت دوم',
+                        data: new Array(averageGenerals.length).fill(null).concat(averageGenerals2), // برای هم‌تراز شدن داده‌ها
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'میانگین نمرات حرفه‌ای شرکت یک',
+                        data: averageProff.concat(new Array(averageProff2.length).fill(null)), // برای هم‌تراز شدن داده‌ها
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'میانگین نمرات حرفه‌ای شرکت دوم',
+                        data: new Array(averageProff.length).fill(null).concat(averageProff2), // برای هم‌تراز شدن داده‌ها
+                        backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                        borderColor: 'rgba(153, 102, 255, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // ساخت دومین نمودار میله‌ای
+        const ctx2 = document.getElementById('chart2').getContext('2d');
+        const chart2 = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: labels, // استفاده از برچسب‌های ترکیبی به‌عنوان محور x
+                datasets: [{
+                    label: 'میانگین نمرات عمومی شرکت یک',
+                    data: averageGenerals.concat(new Array(averageGenerals2.length).fill(null)), // برای هم‌تراز شدن داده‌ها
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'میانگین نمرات عمومی شرکت دوم',
+                    data: new Array(averageGenerals.length).fill(null).concat(averageGenerals2), // برای هم‌تراز شدن داده‌ها
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+
+        // ساخت سومین نمودار میله‌ای
+        const ctx3 = document.getElementById('chart3').getContext('2d');
+        const chart3 = new Chart(ctx3, {
+            type: 'bar',
+            data: {
+                labels: labels, // استفاده از برچسب‌های ترکیبی به‌عنوان محور x
+                datasets: [{
+                    label: 'میانگین نمرات حرفه ای شرکت یک',
+                    data: averageProff.concat(new Array(averageProff2.length).fill(null)), // برای هم‌تراز شدن داده‌ها
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'میانگین نمرات حرفه ای شرکت دوم',
+                    data: new Array(averageProff.length).fill(null).concat(averageProff2), // برای هم‌تراز شدن داده‌ها
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+
+    </script>
+</body>
+</html>

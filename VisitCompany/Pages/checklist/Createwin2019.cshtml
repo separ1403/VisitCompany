@@ -1,0 +1,673 @@
+﻿@page
+@model VisitCompany.Pages.checklist.Createwin2019Model
+@{
+    Layout = "Shared/_AdminLayout";
+    ViewData["Title"] = " ایجاد چک لیست ";
+}
+
+<div class="modal-header">
+    <h4 class="modal-title">چک لیست ارزیابی شرکت ها-Win2019 Assets</h4>
+</div>
+<form method="post">
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsPasswordHistoryEnabled" id="IsPasswordHistoryEnabled" />
+            <label asp-for="Command.IsPasswordHistoryEnabled">فعال‌سازی سابقه رمز عبور</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showPasswordHistoryEnabledDescription" onclick="toggleTextInput('showPasswordHistoryEnabledDescription', 'PasswordHistoryEnabledDescriptionContainer')">
+            <label for="showPasswordHistoryEnabledDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="PasswordHistoryEnabledDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsPasswordHistoryEnabledDescription">
+            <span asp-validation-for="Command.IsPasswordHistoryEnabledDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsMaxPasswordAgeConfigured" id="IsMaxPasswordAgeConfigured" />
+            <label asp-for="Command.IsMaxPasswordAgeConfigured">تنظیم حداکثر طول عمر رمز عبور</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showMaxPasswordAgeConfiguredDescription" onclick="toggleTextInput('showMaxPasswordAgeConfiguredDescription', 'MaxPasswordAgeConfiguredDescriptionContainer')">
+            <label for="showMaxPasswordAgeConfiguredDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="MaxPasswordAgeConfiguredDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsMaxPasswordAgeConfiguredDescription">
+            <span asp-validation-for="Command.IsMaxPasswordAgeConfiguredDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsMinPasswordAgeConfigured" id="IsMinPasswordAgeConfigured" />
+            <label asp-for="Command.IsMinPasswordAgeConfigured">تنظیم حداقل طول عمر رمز عبور</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showMinPasswordAgeConfiguredDescription" onclick="toggleTextInput('showMinPasswordAgeConfiguredDescription', 'MinPasswordAgeConfiguredDescriptionContainer')">
+            <label for="showMinPasswordAgeConfiguredDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="MinPasswordAgeConfiguredDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsMinPasswordAgeConfiguredDescription">
+            <span asp-validation-for="Command.IsMinPasswordAgeConfiguredDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsMinPasswordLengthConfigured" id="IsMinPasswordLengthConfigured" />
+            <label asp-for="Command.IsMinPasswordLengthConfigured">تنظیم حداقل طول رمز عبور</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showMinPasswordLengthConfiguredDescription" onclick="toggleTextInput('showMinPasswordLengthConfiguredDescription', 'MinPasswordLengthConfiguredDescriptionContainer')">
+            <label for="showMinPasswordLengthConfiguredDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="MinPasswordLengthConfiguredDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsMinPasswordLengthConfiguredDescription">
+            <span asp-validation-for="Command.IsMinPasswordLengthConfiguredDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsComplexPasswordRequired" id="IsComplexPasswordRequired" />
+            <label asp-for="Command.IsComplexPasswordRequired">الزام به استفاده از رمز عبور پیچیده</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showComplexPasswordRequiredDescription" onclick="toggleTextInput('showComplexPasswordRequiredDescription', 'ComplexPasswordRequiredDescriptionContainer')">
+            <label for="showComplexPasswordRequiredDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="ComplexPasswordRequiredDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsComplexPasswordRequiredDescription">
+            <span asp-validation-for="Command.IsComplexPasswordRequiredDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsPlainTextPasswordStorageDisabled" id="IsPlainTextPasswordStorageDisabled" />
+            <label asp-for="Command.IsPlainTextPasswordStorageDisabled">غیرفعال کردن ذخیره‌سازی رمز عبور در قالب متن ساده</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showPlainTextPasswordStorageDisabledDescription" onclick="toggleTextInput('showPlainTextPasswordStorageDisabledDescription', 'PlainTextPasswordStorageDisabledDescriptionContainer')">
+            <label for="showPlainTextPasswordStorageDisabledDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="PlainTextPasswordStorageDisabledDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsPlainTextPasswordStorageDisabledDescription">
+            <span asp-validation-for="Command.IsPlainTextPasswordStorageDisabledDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsAccountLockoutDurationConfigured" id="IsAccountLockoutDurationConfigured" />
+            <label asp-for="Command.IsAccountLockoutDurationConfigured">پیکربندی مدت زمان قفل شدن حساب کاربری</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showAccountLockoutDurationConfiguredDescription" onclick="toggleTextInput('showAccountLockoutDurationConfiguredDescription', 'AccountLockoutDurationConfiguredDescriptionContainer')">
+            <label for="showAccountLockoutDurationConfiguredDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="AccountLockoutDurationConfiguredDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsAccountLockoutDurationConfiguredDescription">
+            <span asp-validation-for="Command.IsAccountLockoutDurationConfiguredDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsFailedLogonAttemptsLimited" id="IsFailedLogonAttemptsLimited" />
+            <label asp-for="Command.IsFailedLogonAttemptsLimited">محدود کردن تعداد تلاش‌های ناموفق برای ورود</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showFailedLogonAttemptsLimitedDescription" onclick="toggleTextInput('showFailedLogonAttemptsLimitedDescription', 'FailedLogonAttemptsLimitedDescriptionContainer')">
+            <label for="showFailedLogonAttemptsLimitedDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="FailedLogonAttemptsLimitedDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsFailedLogonAttemptsLimitedDescription">
+            <span asp-validation-for="Command.IsFailedLogonAttemptsLimitedDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsAdminLockoutConfigured" id="IsAdminLockoutConfigured" />
+            <label asp-for="Command.IsAdminLockoutConfigured">پیکربندی قفل شدن حساب مدیر</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showAdminLockoutConfiguredDescription" onclick="toggleTextInput('showAdminLockoutConfiguredDescription', 'AdminLockoutConfiguredDescriptionContainer')">
+            <label for="showAdminLockoutConfiguredDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="AdminLockoutConfiguredDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsAdminLockoutConfiguredDescription">
+            <span asp-validation-for="Command.IsAdminLockoutConfiguredDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsPasswordResetErrorCountConfigured" id="IsPasswordResetErrorCountConfigured" />
+            <label asp-for="Command.IsPasswordResetErrorCountConfigured">پیکربندی تعداد خطاهای تنظیم مجدد رمز عبور</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showPasswordResetErrorCountConfiguredDescription" onclick="toggleTextInput('showPasswordResetErrorCountConfiguredDescription', 'PasswordResetErrorCountConfiguredDescriptionContainer')">
+            <label for="showPasswordResetErrorCountConfiguredDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="PasswordResetErrorCountConfiguredDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsPasswordResetErrorCountConfiguredDescription">
+            <span asp-validation-for="Command.IsPasswordResetErrorCountConfiguredDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsUserAccountManagementRestricted" id="IsUserAccountManagementRestricted" />
+            <label asp-for="Command.IsUserAccountManagementRestricted">محدود کردن مدیریت حساب‌های کاربری</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showUserAccountManagementRestrictedDescription" onclick="toggleTextInput('showUserAccountManagementRestrictedDescription', 'UserAccountManagementRestrictedDescriptionContainer')">
+            <label for="showUserAccountManagementRestrictedDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="UserAccountManagementRestrictedDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsUserAccountManagementRestrictedDescription">
+            <span asp-validation-for="Command.IsUserAccountManagementRestrictedDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsRemoteAccessManaged" id="IsRemoteAccessManaged" />
+            <label asp-for="Command.IsRemoteAccessManaged">مدیریت دسترسی از راه دور</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showRemoteAccessManagedDescription" onclick="toggleTextInput('showRemoteAccessManagedDescription', 'RemoteAccessManagedDescriptionContainer')">
+            <label for="showRemoteAccessManagedDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="RemoteAccessManagedDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsRemoteAccessManagedDescription">
+            <span asp-validation-for="Command.IsRemoteAccessManagedDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsOSAccountAccessLimited" id="IsOSAccountAccessLimited" />
+            <label asp-for="Command.IsOSAccountAccessLimited">محدود کردن دسترسی حساب‌های سیستم‌عامل</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showOSAccountAccessLimitedDescription" onclick="toggleTextInput('showOSAccountAccessLimitedDescription', 'OSAccountAccessLimitedDescriptionContainer')">
+            <label for="showOSAccountAccessLimitedDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="OSAccountAccessLimitedDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsOSAccountAccessLimitedDescription">
+            <span asp-validation-for="Command.IsOSAccountAccessLimitedDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsDomainJoinRestricted" id="IsDomainJoinRestricted" />
+            <label asp-for="Command.IsDomainJoinRestricted">محدود کردن پیوستن به دامنه</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showDomainJoinRestrictedDescription" onclick="toggleTextInput('showDomainJoinRestrictedDescription', 'DomainJoinRestrictedDescriptionContainer')">
+            <label for="showDomainJoinRestrictedDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="DomainJoinRestrictedDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsDomainJoinRestrictedDescription">
+            <span asp-validation-for="Command.IsDomainJoinRestrictedDescription" class="error"></span>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsMemoryManagementPermissionGranted" id="IsMemoryManagementPermissionGranted" />
+            <label asp-for="Command.IsMemoryManagementPermissionGranted">اعطای دسترسی مدیریت حافظه</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showMemoryManagementPermissionGrantedDescription" onclick="toggleTextInput('showMemoryManagementPermissionGrantedDescription', 'MemoryManagementPermissionGrantedDescriptionContainer')">
+            <label for="showMemoryManagementPermissionGrantedDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="MemoryManagementPermissionGrantedDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsMemoryManagementPermissionGrantedDescription">
+            <span asp-validation-for="Command.IsMemoryManagementPermissionGrantedDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsLocalConsoleLogonRestricted" id="IsLocalConsoleLogonRestricted" />
+            <label asp-for="Command.IsLocalConsoleLogonRestricted">محدود کردن ورود به سیستم کنسول محلی</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showLocalConsoleLogonRestrictedDescription" onclick="toggleTextInput('showLocalConsoleLogonRestrictedDescription', 'LocalConsoleLogonRestrictedDescriptionContainer')">
+            <label for="showLocalConsoleLogonRestrictedDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="LocalConsoleLogonRestrictedDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsLocalConsoleLogonRestrictedDescription">
+            <span asp-validation-for="Command.IsLocalConsoleLogonRestrictedDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsRemoteLogonGroupManaged" id="IsRemoteLogonGroupManaged" />
+            <label asp-for="Command.IsRemoteLogonGroupManaged">مدیریت گروه ورود از راه دور</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showRemoteLogonGroupManagedDescription" onclick="toggleTextInput('showRemoteLogonGroupManagedDescription', 'RemoteLogonGroupManagedDescriptionContainer')">
+            <label for="showRemoteLogonGroupManagedDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="RemoteLogonGroupManagedDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsRemoteLogonGroupManagedDescription">
+            <span asp-validation-for="Command.IsRemoteLogonGroupManagedDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsBackupAccessManaged" id="IsBackupAccessManaged" />
+            <label asp-for="Command.IsBackupAccessManaged">مدیریت دسترسی به پشتیبان‌گیری</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showBackupAccessManagedDescription" onclick="toggleTextInput('showBackupAccessManagedDescription', 'BackupAccessManagedDescriptionContainer')">
+            <label for="showBackupAccessManagedDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="BackupAccessManagedDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsBackupAccessManagedDescription">
+            <span asp-validation-for="Command.IsBackupAccessManagedDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsSystemTimeChangeManaged" id="IsSystemTimeChangeManaged" />
+            <label asp-for="Command.IsSystemTimeChangeManaged">مدیریت تغییرات زمان سیستم</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showSystemTimeChangeManagedDescription" onclick="toggleTextInput('showSystemTimeChangeManagedDescription', 'SystemTimeChangeManagedDescriptionContainer')">
+            <label for="showSystemTimeChangeManagedDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="SystemTimeChangeManagedDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsSystemTimeChangeManagedDescription">
+            <span asp-validation-for="Command.IsSystemTimeChangeManagedDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsAccessTokenCreationLimited" id="IsAccessTokenCreationLimited" />
+            <label asp-for="Command.IsAccessTokenCreationLimited">محدود کردن ایجاد توکن دسترسی</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showAccessTokenCreationLimitedDescription" onclick="toggleTextInput('showAccessTokenCreationLimitedDescription', 'AccessTokenCreationLimitedDescriptionContainer')">
+            <label for="showAccessTokenCreationLimitedDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="AccessTokenCreationLimitedDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsAccessTokenCreationLimitedDescription">
+            <span asp-validation-for="Command.IsAccessTokenCreationLimitedDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsRemoteLogonRestrictedForGuests" id="IsRemoteLogonRestrictedForGuests" />
+            <label asp-for="Command.IsRemoteLogonRestrictedForGuests">محدود کردن ورود از راه دور برای مهمان‌ها</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showRemoteLogonRestrictedForGuestsDescription" onclick="toggleTextInput('showRemoteLogonRestrictedForGuestsDescription', 'RemoteLogonRestrictedForGuestsDescriptionContainer')">
+            <label for="showRemoteLogonRestrictedForGuestsDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="RemoteLogonRestrictedForGuestsDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsRemoteLogonRestrictedForGuestsDescription">
+            <span asp-validation-for="Command.IsRemoteLogonRestrictedForGuestsDescription" class="error"></span>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsScheduledTasksPermissionManaged" id="IsScheduledTasksPermissionManaged" />
+            <label asp-for="Command.IsScheduledTasksPermissionManaged">مدیریت دسترسی به وظایف برنامه‌ریزی‌شده</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showScheduledTasksPermissionManagedDescription" onclick="toggleTextInput('showScheduledTasksPermissionManagedDescription', 'ScheduledTasksPermissionManagedDescriptionContainer')">
+            <label for="showScheduledTasksPermissionManagedDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="ScheduledTasksPermissionManagedDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsScheduledTasksPermissionManagedDescription">
+            <span asp-validation-for="Command.IsScheduledTasksPermissionManagedDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsLogonAsServicePermissionManaged" id="IsLogonAsServicePermissionManaged" />
+            <label asp-for="Command.IsLogonAsServicePermissionManaged">مدیریت دسترسی به ورود به عنوان سرویس</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showLogonAsServicePermissionManagedDescription" onclick="toggleTextInput('showLogonAsServicePermissionManagedDescription', 'LogonAsServicePermissionManagedDescriptionContainer')">
+            <label for="showLogonAsServicePermissionManagedDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="LogonAsServicePermissionManagedDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsLogonAsServicePermissionManagedDescription">
+            <span asp-validation-for="Command.IsLogonAsServicePermissionManagedDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsGuestLogonManaged" id="IsGuestLogonManaged" />
+            <label asp-for="Command.IsGuestLogonManaged">مدیریت ورود مهمان</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showGuestLogonManagedDescription" onclick="toggleTextInput('showGuestLogonManagedDescription', 'GuestLogonManagedDescriptionContainer')">
+            <label for="showGuestLogonManagedDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="GuestLogonManagedDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsGuestLogonManagedDescription">
+            <span asp-validation-for="Command.IsGuestLogonManagedDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsLocalAccountLogonManaged" id="IsLocalAccountLogonManaged" />
+            <label asp-for="Command.IsLocalAccountLogonManaged">مدیریت ورود حساب محلی</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showLocalAccountLogonManagedDescription" onclick="toggleTextInput('showLocalAccountLogonManagedDescription', 'LocalAccountLogonManagedDescriptionContainer')">
+            <label for="showLocalAccountLogonManagedDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="LocalAccountLogonManagedDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsLocalAccountLogonManagedDescription">
+            <span asp-validation-for="Command.IsLocalAccountLogonManagedDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsLogonAsServiceSettingsApplied" id="IsLogonAsServiceSettingsApplied" />
+            <label asp-for="Command.IsLogonAsServiceSettingsApplied">اعمال تنظیمات ورود به عنوان سرویس</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showLogonAsServiceSettingsAppliedDescription" onclick="toggleTextInput('showLogonAsServiceSettingsAppliedDescription', 'LogonAsServiceSettingsAppliedDescriptionContainer')">
+            <label for="showLogonAsServiceSettingsAppliedDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="LogonAsServiceSettingsAppliedDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsLogonAsServiceSettingsAppliedDescription">
+            <span asp-validation-for="Command.IsLogonAsServiceSettingsAppliedDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsRemoteShutdownPermissionManaged" id="IsRemoteShutdownPermissionManaged" />
+            <label asp-for="Command.IsRemoteShutdownPermissionManaged">مدیریت دسترسی به خاموش کردن از راه دور</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showRemoteShutdownPermissionManagedDescription" onclick="toggleTextInput('showRemoteShutdownPermissionManagedDescription', 'RemoteShutdownPermissionManagedDescriptionContainer')">
+            <label for="showRemoteShutdownPermissionManagedDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="RemoteShutdownPermissionManagedDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsRemoteShutdownPermissionManagedDescription">
+            <span asp-validation-for="Command.IsRemoteShutdownPermissionManagedDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsAdministratorUsernameChanged" id="IsAdministratorUsernameChanged" />
+            <label asp-for="Command.IsAdministratorUsernameChanged">تغییر نام کاربری مدیر</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showAdministratorUsernameChangedDescription" onclick="toggleTextInput('showAdministratorUsernameChangedDescription', 'AdministratorUsernameChangedDescriptionContainer')">
+            <label for="showAdministratorUsernameChangedDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="AdministratorUsernameChangedDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsAdministratorUsernameChangedDescription">
+            <span asp-validation-for="Command.IsAdministratorUsernameChangedDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsCachedUsernameCountManaged" id="IsCachedUsernameCountManaged" />
+            <label asp-for="Command.IsCachedUsernameCountManaged">مدیریت تعداد نام‌های کاربری کش‌شده</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showCachedUsernameCountManagedDescription" onclick="toggleTextInput('showCachedUsernameCountManagedDescription', 'CachedUsernameCountManagedDescriptionContainer')">
+            <label for="showCachedUsernameCountManagedDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="CachedUsernameCountManagedDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsCachedUsernameCountManagedDescription">
+            <span asp-validation-for="Command.IsCachedUsernameCountManagedDescription" class="error"></span>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsPasswordExpirationWarningManaged" id="IsPasswordExpirationWarningManaged" />
+            <label asp-for="Command.IsPasswordExpirationWarningManaged">مدیریت هشدار انقضای رمز عبور</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showPasswordExpirationWarningManagedDescription" onclick="toggleTextInput('showPasswordExpirationWarningManagedDescription', 'PasswordExpirationWarningManagedDescriptionContainer')">
+            <label for="showPasswordExpirationWarningManagedDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="PasswordExpirationWarningManagedDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsPasswordExpirationWarningManagedDescription">
+            <span asp-validation-for="Command.IsPasswordExpirationWarningManagedDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsAnonymousSIDRequestManaged" id="IsAnonymousSIDRequestManaged" />
+            <label asp-for="Command.IsAnonymousSIDRequestManaged">مدیریت درخواست SID ناشناس</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showAnonymousSIDRequestManagedDescription" onclick="toggleTextInput('showAnonymousSIDRequestManagedDescription', 'AnonymousSIDRequestManagedDescriptionContainer')">
+            <label for="showAnonymousSIDRequestManagedDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="AnonymousSIDRequestManagedDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsAnonymousSIDRequestManagedDescription">
+            <span asp-validation-for="Command.IsAnonymousSIDRequestManagedDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsNTFSMediaAccessManaged" id="IsNTFSMediaAccessManaged" />
+            <label asp-for="Command.IsNTFSMediaAccessManaged">مدیریت دسترسی به رسانه‌های NTFS</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showNTFSMediaAccessManagedDescription" onclick="toggleTextInput('showNTFSMediaAccessManagedDescription', 'NTFSMediaAccessManagedDescriptionContainer')">
+            <label for="showNTFSMediaAccessManagedDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="NTFSMediaAccessManagedDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsNTFSMediaAccessManagedDescription">
+            <span asp-validation-for="Command.IsNTFSMediaAccessManagedDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsSharedPrinterDriverInstallationManaged" id="IsSharedPrinterDriverInstallationManaged" />
+            <label asp-for="Command.IsSharedPrinterDriverInstallationManaged">مدیریت نصب درایور چاپگر مشترک</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showSharedPrinterDriverInstallationManagedDescription" onclick="toggleTextInput('showSharedPrinterDriverInstallationManagedDescription', 'SharedPrinterDriverInstallationManagedDescriptionContainer')">
+            <label for="showSharedPrinterDriverInstallationManagedDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="SharedPrinterDriverInstallationManagedDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsSharedPrinterDriverInstallationManagedDescription">
+            <span asp-validation-for="Command.IsSharedPrinterDriverInstallationManagedDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsPrinterSpoolerServiceManaged" id="IsPrinterSpoolerServiceManaged" />
+            <label asp-for="Command.IsPrinterSpoolerServiceManaged">مدیریت سرویس صف چاپگر</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showPrinterSpoolerServiceManagedDescription" onclick="toggleTextInput('showPrinterSpoolerServiceManagedDescription', 'PrinterSpoolerServiceManagedDescriptionContainer')">
+            <label for="showPrinterSpoolerServiceManagedDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="PrinterSpoolerServiceManagedDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsPrinterSpoolerServiceManagedDescription">
+            <span asp-validation-for="Command.IsPrinterSpoolerServiceManagedDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsOnlineTipManaged" id="IsOnlineTipManaged" />
+            <label asp-for="Command.IsOnlineTipManaged">مدیریت نکات آنلاین</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showOnlineTipManagedDescription" onclick="toggleTextInput('showOnlineTipManagedDescription', 'OnlineTipManagedDescriptionContainer')">
+            <label for="showOnlineTipManagedDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="OnlineTipManagedDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsOnlineTipManagedDescription">
+            <span asp-validation-for="Command.IsOnlineTipManagedDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsKeepAliveTimeManaged" id="IsKeepAliveTimeManaged" />
+            <label asp-for="Command.IsKeepAliveTimeManaged">مدیریت زمان نگهداری</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showKeepAliveTimeManagedDescription" onclick="toggleTextInput('showKeepAliveTimeManagedDescription', 'KeepAliveTimeManagedDescriptionContainer')">
+            <label for="showKeepAliveTimeManagedDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="KeepAliveTimeManagedDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsKeepAliveTimeManagedDescription">
+            <span asp-validation-for="Command.IsKeepAliveTimeManagedDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsIRDPOptionDisabled" id="IsIRDPOptionDisabled" />
+            <label asp-for="Command.IsIRDPOptionDisabled">غیرفعال کردن گزینه IRDP</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showIRDPOptionDisabledDescription" onclick="toggleTextInput('showIRDPOptionDisabledDescription', 'IRDPOptionDisabledDescriptionContainer')">
+            <label for="showIRDPOptionDisabledDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="IRDPOptionDisabledDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsIRDPOptionDisabledDescription">
+            <span asp-validation-for="Command.IsIRDPOptionDisabledDescription" class="error"></span>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsDataRetransmissionManaged" id="IsDataRetransmissionManaged" />
+            <label asp-for="Command.IsDataRetransmissionManaged">مدیریت بازفرست داده‌ها</label>
+            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showDataRetransmissionManagedDescription" onclick="toggleTextInput('showDataRetransmissionManagedDescription', 'DataRetransmissionManagedDescriptionContainer')">
+            <label for="showDataRetransmissionManagedDescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="DataRetransmissionManagedDescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsDataRetransmissionManagedDescription">
+            <span asp-validation-for="Command.IsDataRetransmissionManagedDescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <input type="hidden" asp-for="Command.ChecklistId" />
+
+        <button type="submit" class="btn btn-info waves-effect waves-light">بعدی</button>
+    </div>
+
+</form>
+<script>
+    function toggleTextInput(checkboxId, containerId) {
+        var checkBox = document.getElementById(checkboxId);
+        var textInputContainer = document.getElementById(containerId);
+        if (checkBox.checked) {
+            textInputContainer.style.display = "block";
+        } else {
+            textInputContainer.style.display = "none";
+        }
+    }
+</script>
+

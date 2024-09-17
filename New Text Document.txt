@@ -1,0 +1,39 @@
+
+.... search in account 
+...login with phone number
+....change password not complexity
+
+....to chart to url hame eteleat dare send mishe 
+....checklist to dastebandi select list ghabeleiyate jostojo bashad
+
+namayesh adad dar nemodar checklist ha
+
+....avg nomarate checklist
+
+.....sign out to checklist create // vaghti 
+
+form sazi auotomatic baraye checklist ha
+..... ijad ye checklist jaded
+
+
+.... jj to api  
+..... agar internet ghat bashe to api
+
+
+faramoshi ramz telephone nadarim che konam
+
+...... to company index hame etelaat dare url show mishe
+
+
+to safehe haye checklist ha mesle junior , ...  confirm ha maeni ha va jomalat ro dorost konam
+cheragh checklist zadam vali tozih daghigh mikhad ( hp ok shod )
+company/create  chandta eirad dare
+average nomarat sayere checklist ha
+name safeheye junior to juniper
+.....username pereneli bashad
+...har user list sherkat haee ke behesh dade shode ro bebine
+https://localhost:7268/checklist/create   name ozve hazer ghabeliyate addd dashte bashad  
+joda kardane cheklist omomy  va entekhaby bodane select checklist prof ya general
+nomre dehi chelist haye takhasosi
+deactive kardane user
+OTP

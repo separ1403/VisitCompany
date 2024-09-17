@@ -1,0 +1,143 @@
+﻿
+@page
+@model VisitCompany.Pages.checklist.ConfirmJuniorModel
+@{
+    Layout = "Shared/_AdminLayout";
+    ViewData["Title"] = "تایید اطلاعات";
+}
+
+<h2>تایید اطلاعات</h2>
+
+<form method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <label>نمره احراز هویت:</label>
+            <span>@Model.Command.IsConsolePortSecured</span>
+        </div>
+        <div class="col-md-6">
+            <label>توضیحات احراز هویت:</label>
+            <span>@Model.Command.IsConsolePortSecureddescription</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>نمره امنیت سازمانی:</label>
+            <span>@Model.Command.IsRootLoginDisabled</span>
+        </div>
+        <div class="col-md-6">
+            <label>وضعیت امنیت سازمانی:</label>
+            <span>@Model.Command.IsRootLoginDisableddescription</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>نمره مدیریت امنیت:</label>
+            <span>@Model.Command.IsPasswordRecoveryDisabled</span>
+        </div>
+        <div class="col-md-6">
+            <label>وضعیت مدیریت امنیت:</label>
+            <span>@Model.Command.IsPasswordRecoveryDisableddescription</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>نمره سیاست امنیتی:</label>
+            <span>@Model.Command.IsAuxiliaryPortDisabled</span>
+        </div>
+        <div class="col-md-6">
+            <label>وضعیت سیاست امنیتی:</label>
+            <span>@Model.Command.IsAuxiliaryPortDisableddescription</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>نمره تأیید تغییرات امنیتی:</label>
+            <span>@Model.Command.IsRootLoginAuxDisabled</span>
+        </div>
+        <div class="col-md-6">
+            <label>وضعیت تأیید تغییرات امنیتی:</label>
+            <span>@Model.Command.IsRootLoginAuxDisableddescription</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>نمره خدمات شخص ثالث:</label>
+            <span>@Model.Command.IsDiagnosticPortDisabled</span>
+        </div>
+        <div class="col-md-6">
+            <label>وضعیت خدمات شخص ثالث:</label>
+            <span>@Model.Command.IsDiagnosticPortDisableddescription</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>نمره استخدام پرسنل:</label>
+            <span>@Model.Command.IsUSBPortDisabled</span>
+        </div>
+        <div class="col-md-6">
+            <label>وضعیت استخدام پرسنل:</label>
+            <span>@Model.Command.IsUSBPortDisableddescription</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>نمره مدیریت دسترسی:</label>
+            <span>@Model.Command.IsCraftInterfaceDisabled</span>
+        </div>
+        <div class="col-md-6">
+            <label>وضعیت مدیریت دسترسی:</label>
+            <span>@Model.Command.IsCraftInterfaceDisableddescription</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>نمره مدیریت تطابق:</label>
+            <span>@Model.Command.IsLCDMenuDisabled</span>
+        </div>
+        <div class="col-md-6">
+            <label>وضعیت مدیریت تطابق:</label>
+            <span>@Model.Command.IsLCDMenuDisableddescription</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>نمره واکنش به حوادث:</label>
+            <span>@Model.Command.IsResetButtonDisabled</span>
+        </div>
+        <div class="col-md-6">
+            <label>وضعیت واکنش به حوادث:</label>
+            <span>@Model.Command.IsResetButtonDisableddescription</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>نمره نقشه شبکه:</label>
+            <span>@Model.Command.AreUnusedInterfacesDisabled</span>
+        </div>
+        <div class="col-md-6">
+            <label>وضعیت نقشه شبکه:</label>
+            <span>@Model.Command.AreUnusedInterfacesDisableddescription</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>نمره ثبت اموال فیزیکی:</label>
+            <span>@Model.Command.IsConfigFileEncrypted</span>
+        </div>
+        <div class="col-md-6">
+            <label>وضعیت ثبت اموال فیزیکی:</label>
+            <span>@Model.Command.IsConfigFileEncrypteddescription</span>
+        </div>
+    </div>
+    <H3>در صورت تایید امکان ویرایش وجود ندارد :</H3>
+    <button type="submit">  ذخیره و ادامه ارزیابی</button>
+</form>
+
+<br/>
+
+<!-- دکمه بازگشت -->
+<a href="/checklist/Confirm" class="btn btn-secondary">بازگشت به صقحه ی انتخاب چک لیست ها</a>
+    
+        
+    
+    
