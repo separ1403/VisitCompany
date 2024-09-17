@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 using Framework.Domain;
 using AccountManagement;
 using AccountManagement.Domain;
-using AccountManagement.Domain.AccountAgg;
 using CompanyManagement.Application.Contract.Checklist;
+using CompanyManagement.Domain.AccountAgg;
 
 namespace CompanyManagement.Domain.ChecklistAgg
 {

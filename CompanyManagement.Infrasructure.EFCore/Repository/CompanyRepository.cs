@@ -11,9 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Framework.Application;
 using AccountManagement.Application.Contracts.Account;
+using CompanyManagement.Domain.AccountAgg;
 using Microsoft.Identity.Client;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
-using AccountManagement.Domain.AccountAgg;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
 

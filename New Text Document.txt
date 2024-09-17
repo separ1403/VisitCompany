@@ -20,8 +20,7 @@ form sazi auotomatic baraye checklist ha
 ..... agar internet ghat bashe to api
 
 
-faramoshi ramz telephone nadarim che konam
-
+.... faramoshi ramz telephone nadarim che konam ///dige nemikhad chon ramz nadarim
 ...... to company index hame etelaat dare url show mishe
 
 

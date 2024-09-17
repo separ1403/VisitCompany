@@ -19,6 +19,7 @@ namespace AccountManagement.Application.Contracts.Account
         public string LastLogin { get; set; }
         public string PreviousLogin { get; set; }
         public string CodeValidateMobile { get; set; }
+        public bool IsActive { get; set; }
         public List<int> Permissions { get; set; } // فرض کنید Permissions یک لیست از رشته‌ها است
 
     }

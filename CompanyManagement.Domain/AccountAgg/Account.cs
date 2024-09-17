@@ -1,12 +1,8 @@
 ﻿using AccountManagement.Domain.RoleAgg;
 using CompanyManagement.Domain.ChecklistAgg;
-using CompanyManagement.Domain.CompanyAgg;
-using CompanyManagement.Domain.CompanyCategoryAgg;
-using CompanyManagement.Domain.LicenceCategoryAgg;
-using Framework.Application;
 using Framework.Domain;
 
-namespace AccountManagement.Domain.AccountAgg
+namespace CompanyManagement.Domain.AccountAgg
 {
     public class Account : EntityBase
     {
@@ -81,6 +77,11 @@ namespace AccountManagement.Domain.AccountAgg
 
 
         public void ChangeActiveMode()
+        {
+            IsActive = false;
+        }
+
+        public void ChangeToActiveMode()
         {
             IsActive = true;
         }

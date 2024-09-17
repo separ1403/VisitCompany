@@ -1,4 +1,4 @@
-﻿using AccountManagement.Domain.AccountAgg;
+﻿using CompanyManagement.Domain.AccountAgg;
 using Framework.Domain;
 
 namespace AccountManagement.Domain.RoleAgg

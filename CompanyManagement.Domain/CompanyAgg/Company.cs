@@ -1,4 +1,4 @@
-﻿using AccountManagement.Domain.AccountAgg;
+﻿using CompanyManagement.Domain.AccountAgg;
 using CompanyManagement.Domain.ChecklistAgg;
 using CompanyManagement.Domain.CompanyCategoryAgg;
 using CompanyManagement.Domain.LicenceCategoryAgg;

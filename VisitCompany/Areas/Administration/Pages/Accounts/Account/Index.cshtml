@@ -104,6 +104,8 @@
                                     <th>تاریخ آخرین ورود</th>
                                     <th>عملیات</th>
                                     <th>عملیات2</th>
+                                    <th>غیر فعال کردن کاربر</th>
+
                                    
                                </tr>
                             </thead>
@@ -126,13 +128,29 @@
                                             <a class="fa fa-key" asp-page="./ChangePassword" asp-route-id="@item.Id">تغییر پسورد </a>
                                         </a>
                                     </td>
+                                    <td>
+                                        <a class="btn btn-warning btn-custome waves-effect waves-light pull-right m-rl-5">
+                                            <a class="fa fa-edit" asp-page="./Edit" asp-route-id="@item.Id">ویرایش </a>
+                                        </a>
+
+
+                                    </td>
                                         <td>
-                                            <a class="btn btn-warning btn-custome waves-effect waves-light pull-right m-rl-5">
-                                                <a class="fa fa-edit" asp-page="./Edit" asp-route-id="@item.Id">ویرایش </a>
-                                            </a>
-
-
+                                            @if (item.IsActive)
+                                            {
+                                                <form method="post" asp-page-handler="DisableAccount" asp-route-id="@item.Id">
+                                                    <button type="submit" class="btn btn-danger">غیرفعال کردن کاربر</button>
+                                                </form>
+                                            }
+                                            else
+                                            {
+                                                <form method="post" asp-page-handler="ActivateAccount" asp-route-id="@item.Id">
+                                                    <button type="submit" class="btn btn-success">فعال کردن کاربر</button>
+                                                </form>
+                                            }
                                         </td>
+
+
 
                                     </tr>
                                 }

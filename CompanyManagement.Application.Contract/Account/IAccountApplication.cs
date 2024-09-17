@@ -8,6 +8,7 @@ namespace AccountManagement.Application.Contracts.Account
         OperationResult Register (RegisterAccount command);
         OperationResult ChangePassword(ChangePassword command);
         EditAccount Getdetails(long id);
+         
         ChangePassword Getdetail(long id);
         List<AccountViewModel> Serach(AccountSearchModel searchModel);
         AccountViewModel GetLastLogin(string searchModel);
@@ -18,6 +19,9 @@ namespace AccountManagement.Application.Contracts.Account
         AccountViewModel GetAccountBy(long id);
         bool ActiveUser(string activeCode);
         void UpdateLastLogin(long accountId);
+        OperationResult DisableAccount(long id);
+        OperationResult EnableAccount(long id);
+
 
 
 

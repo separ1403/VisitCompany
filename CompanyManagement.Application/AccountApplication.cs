@@ -1,11 +1,11 @@
 ﻿using _0_Framework.Application;
 using AccountManagement.Application.Contracts.Account;
-using AccountManagement.Domain.AccountAgg;
 using AccountManagement.Domain.RoleAgg;
 using Framework.Application;
 using Framework.Application.Sender.Sms;
 using Microsoft.AspNetCore.Http;
 using System.Reflection;
+using CompanyManagement.Domain.AccountAgg;
 
 namespace AccountManagement.Application
 {
@@ -149,7 +149,8 @@ namespace AccountManagement.Application
             }
 
             // ایجاد کد فعالسازی
-            var codevalidate = CodeGenerator.RandomNumber();
+           // var codevalidate = CodeGenerator.RandomNumber();
+            var codevalidate = "11111";
             account.ChangeCodeValidateMobile(codevalidate);
             _accountRepository.SaveChanges();
           // _smsSender.SendByKavenagarAsync("کد فعالسازی شما: " + codevalidate, command.Mobile);
@@ -220,6 +221,28 @@ namespace AccountManagement.Application
             }
         }
 
-       
+        public OperationResult DisableAccount(long id)
+        {
+            var account = _accountRepository.Get(id);
+            if (account == null)
+                return new OperationResult().Failed("کاربر یافت نشد");
+
+            account.ChangeActiveMode(); // غیرفعال کردن کاربر
+            _accountRepository.SaveChanges(); // ذخیره تغییرات
+
+            return new OperationResult().Succeeded("کاربر با موفقیت غیرفعال شد");
+        }
+
+        public OperationResult EnableAccount(long id)
+        {
+            var account = _accountRepository.Get(id);
+            if (account == null)
+                return new OperationResult().Failed("کاربر یافت نشد");
+
+            account.ChangeToActiveMode(); //رفعال کردن کاربر
+            _accountRepository.SaveChanges(); // ذخیره تغییرات
+
+            return new OperationResult().Succeeded("کاربر با موفقیت فعال شد");
+        }
     }
 }

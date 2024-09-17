@@ -1,4 +1,4 @@
-﻿using AccountManagement.Domain.AccountAgg;
+﻿using CompanyManagement.Domain.AccountAgg;
 using CompanyManagement.Domain.CompanyAgg;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

@@ -1,5 +1,4 @@
 ﻿using AccountManagement.Application.Contracts.Role;
-using AccountManagement.Domain.AccountAgg;
 using AccountManagement.Domain.RoleAgg;
 using Framework.Application;
 

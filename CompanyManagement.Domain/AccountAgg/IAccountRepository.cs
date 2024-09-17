@@ -1,7 +1,7 @@
 ﻿using AccountManagement.Application.Contracts.Account;
 using Framework.Domain;
 
-namespace AccountManagement.Domain.AccountAgg
+namespace CompanyManagement.Domain.AccountAgg
 {
     public  interface IAccountRepository :IRepository<long ,Account >
     {

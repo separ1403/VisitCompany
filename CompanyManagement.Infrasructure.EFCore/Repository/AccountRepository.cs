@@ -1,5 +1,5 @@
 ﻿using AccountManagement.Application.Contracts.Account;
-using AccountManagement.Domain.AccountAgg;
+using CompanyManagement.Domain.AccountAgg;
 using CompanyManagement.Infrasructure.EFCore;
 using Framework.Application;
 using Framework.Infrastructure;
@@ -94,6 +94,7 @@ namespace AccountManagement.Infrastructure.EFCore.Repository
                 Role=x.Role.Name,
                 RoleId = x.RoleId,
                 UserName = x.UserName,
+                IsActive = x.IsActive,
                 CreationDate=x.CreationDate.ToFarsiWithTime(),
                 LastLogin = x.LastLogin.ToFarsiWithTime(),
                 PreviousLogin = x.PreviousLogin.HasValue ? x.PreviousLogin.Value.ToFarsiWithTime() : "N/A"

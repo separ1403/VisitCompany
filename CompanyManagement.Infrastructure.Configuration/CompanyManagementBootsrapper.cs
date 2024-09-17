@@ -17,13 +17,13 @@ using CompanyManagement.Domain.CompanyCategoryAgg;
 using AccountManagement.Application.Contracts.Account;
 using AccountManagement.Application.Contracts.Role;
 using AccountManagement.Application;
-using AccountManagement.Domain.AccountAgg;
 using AccountManagement.Domain.RoleAgg;
 using AccountManagement.Infrastructure.EFCore.Repository;
 using CompanyManagement.Infrastructure.Configuration.Permission;
 using Framework.Infrastructure;
 using CompanyManagement.Domain.LicenceCategoryAgg;
 using CompanyManagement.Application.Contract.LicenceCategory;
+using CompanyManagement.Domain.AccountAgg;
 
 namespace CompanyManagement.Infrastructure.Configuration
 {

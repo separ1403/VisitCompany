@@ -11,10 +11,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Framework.Application;
-using AccountManagement.Domain.AccountAgg;
 using CompanyManagement.Domain.CompanyAgg;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using AccountManagement.Application.Contracts.Account;
+using CompanyManagement.Domain.AccountAgg;
 
 namespace CompanyManagement.Infrasructure.EFCore.Repository
 {

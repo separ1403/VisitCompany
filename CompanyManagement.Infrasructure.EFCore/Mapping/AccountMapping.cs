@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AccountManagement.Domain.AccountAgg;
+using CompanyManagement.Domain.AccountAgg;
 using CompanyManagement.Domain.ChecklistAgg;
 using CompanyManagement.Domain.CompanyAgg;
 using Microsoft.EntityFrameworkCore;
