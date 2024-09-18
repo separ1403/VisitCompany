@@ -34,5 +34,8 @@ name safeheye junior to juniper
 https://localhost:7268/checklist/create   name ozve hazer ghabeliyate addd dashte bashad  
 joda kardane cheklist omomy  va entekhaby bodane select checklist prof ya general
 nomre dehi chelist haye takhasosi
-deactive kardane user
-OTP
+....deactive kardane user
+....OTP
+...domain dar profile company
+avg nomreh dar har checklist
+namayesh avg ha dar index checklist va kholase kardane search

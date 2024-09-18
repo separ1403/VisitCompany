@@ -116,6 +116,8 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                     LicenceId = c.LicenceId,
                     CompanyCreateDate = c.CreationDate.ToFarsi(),
                     AccountIds = MapAccounts(c.Accounts),
+                    Domain = c.Domain,
+                    
                     
                 }).ToList();
 
@@ -178,7 +180,8 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                     Description = x.Description,
                     NationalCode = x.NationalCode,
                    // AccountIds = x.Accounts != null ? x.Accounts.Select(a => a.Id).ToList() : new List<long>()
-                    AccountIds = x.AccountIds // اضافه کردن این خط
+                    AccountIds = x.AccountIds, // اضافه کردن این خط
+                    Doamin = x.Domain,
 
                 })
                 .FirstOrDefault();

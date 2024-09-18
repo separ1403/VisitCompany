@@ -57,6 +57,7 @@
                         <label class="sr-only" asp-for="SearchModel.Name"></label>
                         <input class="form-control" name="SearchModel.Name" placeholder="نام شرکت" value="@Model.SearchModel?.Name" />
                     </div>
+                    
                     <button type="submit" class="btn btn-success waves-effect waves-light m-l-10">جستجو</button>
                     <a class="btn btn-primary waves-effect waves-light m-l-10" asp-page="./Index">مشاهده همه</a>
                 </form>
@@ -87,6 +88,7 @@
                                     <th>توضیحات</th>
                                     <th>وضعیت</th>
                                     <th>دسته‌بندی</th>
+                                    <th>آدرس سایت</th>
                                     <th>تاریخ ثبت شرکت در سامانه</th>
                                     <th>میانگین نمرات ارزیابی سه ماهه</th>
                                     <th>عملیات</th>
@@ -108,6 +110,7 @@
                                         <td>@item.Description</td>
                                         <td>@item.IsActive</td>
                                         <td>@item.Category</td>
+                                        <td>@item.Domain</td>
                                         <td>@item.CompanyCreateDate</td>
                                         <td>@item.Average</td>
                                         <td>

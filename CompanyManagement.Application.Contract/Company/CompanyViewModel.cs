@@ -25,6 +25,7 @@ namespace CompanyManagement.Application.Contract.Company
         public string CompanyCreateDate { get;  set; }
         public List<long>? AccountIds { get; set; } // باید مقداردهی شود
         public string CheckByAccount { get; set; }
+        public string Domain { get; set;}
 
     }
 }

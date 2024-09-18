@@ -43,7 +43,7 @@ namespace CompanyManagement.Application
             }
 
             var accounts = _accountRepository.GetAccountsByIds(command.AccountIds);
-            var company = new Company(command.CompanyName, command.Brand, command.ManagerName, command.SecurityManagerName, command.PhoneNumber, command.Description, command.NationalCode, command.CategoryId, command.LicenceId, command.AccountIds);
+            var company = new Company(command.CompanyName, command.Brand, command.ManagerName, command.SecurityManagerName, command.PhoneNumber, command.Description, command.NationalCode, command.CategoryId, command.LicenceId, command.AccountIds,command.Doamin);
 
             company.AddAccounts(accounts);
 
@@ -79,7 +79,7 @@ namespace CompanyManagement.Application
                 company.Edit(command.CompanyName, command.Brand, command.ManagerName,
                 command.SecurityManagerName,
                 command.PhoneNumber, command.Description, command.NationalCode,
-                command.CategoryId, command.LicenceId,command.AccountIds);
+                command.CategoryId, command.LicenceId,command.AccountIds,command.Doamin);
 
             _companyRepository.SaveChanges();
 

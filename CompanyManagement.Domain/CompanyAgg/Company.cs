@@ -26,6 +26,8 @@ public class Company : EntityBase
 
     // ذخیره مقدار قبلی Description
     private string? _previousDescription;
+    public string Domain { get; private set; }
+
 
     // سازنده پیش‌فرض
     public Company()
@@ -34,7 +36,7 @@ public class Company : EntityBase
     }
 
     // سازنده با پارامترها
-    public Company(string companyName, string brand, string managerName, string securityManagerName, string phoneNumber, string description, string nationalCode, long categoryId, long licenceId, List<long> accountIds)
+    public Company(string companyName, string brand, string managerName, string securityManagerName, string phoneNumber, string description, string nationalCode, long categoryId, long licenceId, List<long> accountIds, string domain)
     {
         CompanyName = companyName;
         Brand = brand;
@@ -48,6 +50,7 @@ public class Company : EntityBase
         LicenceId = licenceId;
         IsActive = true;
         AccountIds = accountIds;
+        Domain = domain;
     }
 
     public void AddAccounts(List<Account> accounts)
@@ -58,7 +61,7 @@ public class Company : EntityBase
         }
     }
 
-    public void Edit(string companyName, string brand, string managerName, string securityManagerName, string phoneNumber, string? description, string nationalCode, long categoryId, long licenceId,List<long> accountIds)
+    public void Edit(string companyName, string brand, string managerName, string securityManagerName, string phoneNumber, string? description, string nationalCode, long categoryId, long licenceId,List<long> accountIds, string domain)
     {
         CompanyName = companyName;
         Brand = brand;
@@ -108,6 +111,7 @@ public class Company : EntityBase
         CategoryId = categoryId;
         LicenceId = licenceId;
         AccountIds = accountIds;
+        Domain = domain;
     }
 
     public void Active()

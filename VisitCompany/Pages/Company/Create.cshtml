@@ -33,7 +33,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label asp-for="@Model.Command.CompanyName" class="control-label">نام</label>
+                    <label asp-for="@Model.Command.CompanyName" class="control-label">نام شرکت</label>
                     <input type="text" class="form-control" asp-for="@Model.Command.CompanyName" >
                    
                 </div>
@@ -57,7 +57,7 @@
             
             <div class="col-md-6">
                 <div class="form-group">
-                    <label asp-for="Command.CategoryId" class="control-label">گروه محصول</label>
+                    <label asp-for="Command.CategoryId" class="control-label"> دسته بندی شرکت</label>
                     <select class="form-control" asp-for="Command.CategoryId" asp-items="Model.CompanyCategories" id="CategoryIdSelect">
                         <option value="0">انتخاب دسته بندی</option>
                     </select>
@@ -96,6 +96,14 @@
                 <div class="form-group">
                     <label asp-for="@Model.Command.SecurityManagerName" class="control-label">   مدیر امنیت</label>
                     <input type="text" class="form-control" asp-for="@Model.Command.SecurityManagerName">
+                    <span class="error"></span>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="@Model.Command.Doamin" class="control-label">    آدرس سایت</label>
+                    <input type="text" class="form-control" asp-for="@Model.Command.Doamin">
                     <span class="error"></span>
                 </div>
             </div>

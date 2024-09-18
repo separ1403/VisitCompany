@@ -18,5 +18,6 @@ namespace CompanyManagement.Application.Contract.Company
         public string? Description { get; set; }
         public string NationalCode { get; set; }
         public List<long> AccountIds { get; set; }
+        public string Doamin { get; set; }
     }
 }
