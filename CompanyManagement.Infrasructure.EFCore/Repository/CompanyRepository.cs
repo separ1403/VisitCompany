@@ -1,21 +1,12 @@
 ﻿using CompanyManagement.Application.Contract.Company;
-using CompanyManagement.Domain.CompanyAgg;
-using Framework.Infrastructure;
-
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using Framework.Application;
-using AccountManagement.Application.Contracts.Account;
 using CompanyManagement.Domain.AccountAgg;
-using Microsoft.Identity.Client;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
-using Microsoft.AspNetCore.Http;
+using CompanyManagement.Domain.CompanyAgg;
+using Framework.Application;
+using Framework.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using System.Text;
 
 namespace CompanyManagement.Infrasructure.EFCore.Repository
 {

@@ -36,6 +36,6 @@ joda kardane cheklist omomy  va entekhaby bodane select checklist prof ya genera
 nomre dehi chelist haye takhasosi
 ....deactive kardane user
 ....OTP
-...domain dar profile company
+....domain dar profile company
 avg nomreh dar har checklist
 namayesh avg ha dar index checklist va kholase kardane search

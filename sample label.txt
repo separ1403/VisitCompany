@@ -1,0 +1,599 @@
+@page
+@model VisitCompany.Pages.checklist.CreateHPEDL380Model
+@{
+    Layout = "Shared/_AdminLayout";
+    ViewData["Title"] = " ایجاد چک لیست ";
+}
+
+<div class="modal-header">
+    <h4 class="modal-title">چک لیست ارزیابی شرکت ها-Juniper Assets</h4>
+</div>
+<form method="post">
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsTPMEnabledAndRO" id="IsTPMEnabledAndRO" />
+            <label asp-for="Command.IsTPMEnabledAndRO">جنانچه ماژول  TPMفعال شده
+                است آیا بر روی  ROتنظیم شده
+                است ؟
+            </label>
+            <span class="bi bi-lightbulb lightbulb" title="TPM: Trusted Platform Module
+                  با فعال سازی این ماژول اطلاعات ILOبه صورت کدگزاری شده
+                  ذخیره میگردند
+                  Information>
+                Overview . انتخاب شودRead Only پس از فعال سازی گزینه
+                Enabling the Trusted Platform Module
+                1- During the server startup sequence, press the F9 key to access System
+                Utilities.
+                2- From the System Utilities screen, select System Configuration >
+                BIOS/Platform Configuration (RBSU) > Server Security.
+                3- Select Trusted Platform Module Options and press the Enter key">
+            </span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showTPMEnabledAndROdescription" onclick="toggleTextInput('showTPMEnabledAndROdescription', 'TPMEnabledAndROdescriptionContainer')">
+            <label for="showTPMEnabledAndROdescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="TPMEnabledAndROdescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsTPMEnabledAndROdescription">
+            <span asp-validation-for="Command.IsTPMEnabledAndROdescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.AreAppropriateUsernamesCreated" id="AreAppropriateUsernamesCreated" />
+            <label asp-for="Command.AreAppropriateUsernamesCreated">آیا نام کاربری های متناسب
+                ایحاد شده اند ؟</label>
+            <span class="bi bi-lightbulb lightbulb" title="به صورت پیش فرض تنها یک نام کاربری جهت اتصال به  ILOوجود دارد و باید
+                  متناسب با نیاز سازمان یوزر های متفاوت با سطح دسترسی ایجاد نماییم .
+                  Administration>
+                User
+                Administration
+                Administration > User
+                Administration">
+            </span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showAppropriateUsernamesCreateddescription" onclick="toggleTextInput('showAppropriateUsernamesCreateddescription', 'AppropriateUsernamesCreateddescriptionContainer')">
+            <label for="showAppropriateUsernamesCreateddescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="AppropriateUsernamesCreateddescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.AreAppropriateUsernamesCreateddescription">
+            <span asp-validation-for="Command.AreAppropriateUsernamesCreateddescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.AreAppropriateGroupsCreated" id="AreAppropriateGroupsCreated" />
+            <label asp-for="Command.AreAppropriateGroupsCreated">آیا گروه های متناسب برای
+                کاربری های مختلف ایجاد شده
+                اند؟</label>
+            <span class="bi bi-lightbulb lightbulb" title="به صورت پیش فرض دو گروه
+                  دارند که سطح دسترسی هر گروه مشخص میباشد و میتوانید با انتخاب هر
+                  گروه سطح دسترسی را تغییر دهید.
+                  Administration>
+                Directory Groups
+                Administration >
+                Directory Groups">
+            </span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showAppropriateGroupsCreateddescription" onclick="toggleTextInput('showAppropriateGroupsCreateddescription', 'AppropriateGroupsCreateddescriptionContainer')">
+            <label for="showAppropriateGroupsCreateddescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="AppropriateGroupsCreateddescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.AreAppropriateGroupsCreateddescription">
+            <span asp-validation-for="Command.AreAppropriateGroupsCreateddescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.AreNetworkSettingsForILOConfigured" id="AreNetworkSettingsForILOConfigured" />
+            <label asp-for="Command.AreNetworkSettingsForILOConfigured">  آیا تنظیمات مربوط به Access
+                ILO  در بخش شبکهsetting
+                اعمال شده اند؟  </label>
+            <span class="bi bi-lightbulb lightbulb" title="در این بخش تنظیمات مربوط به شبکه  ILOاعمال میگردد.
+                  مقادیر پیش فرض قبل از اعمال تنظیمات :
+                  Anonymous Data : Enabled
+                  IPMI /DCMI over LAN: Disabled
+                  Remote Console: Enabled
+                  Secure Shell (SSH): Enabled
+                  SNMP: Enabled
+                  Virtual Media: Enabled
+                  Virtual Serial Port Log: Disabled
+                  Web Server: Enabled
+                  Security>
+                Access
+                Settings
+                Security > Access Settings
+                Anonymous Data : Enabled
+                IPMI/DCMI over LAN: Disabled
+                Remote Console: Enabled (also must set port)
+                Secure Shell (SSH): Enabled (also must set port)
+                SNMP: Disabled
+                Virtual Media: Enabled (also must set port)
+                Virtual Serial Port Log: Enabled
+                Web Server: Enabled (also must set Non-SSL and SSL ports)">
+            </span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showNetworkSettingsForILOConfigureddescription" onclick="toggleTextInput('showNetworkSettingsForILOConfigureddescription', 'NetworkSettingsForILOConfigureddescriptionContainer')">
+            <label for="showNetworkSettingsForILOConfigureddescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="NetworkSettingsForILOConfigureddescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.AreNetworkSettingsForILOConfigureddescription">
+            <span asp-validation-for="Command.AreNetworkSettingsForILOConfigureddescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.AreInitialSettingsForILOConfigured" id="AreInitialSettingsForILOConfigured" />
+            <label asp-for="Command.AreInitialSettingsForILOConfigured"> آیا تنظیمات مربوط به Access
+                settingدر بخش تنظیمات اولیه
+                ILOاعمال شده اند؟</label>
+            <span class="bi bi-lightbulb lightbulb" title="در این بخش تنظیمات مربوط به  ILOاعمال میگردد.
+                  مقادیر پیش فرض قبل از اعمال تنظیمات:
+                  iLO Functionality: Enabled
+                  iLO RIBCL Interface: Enabled (although HPE recommends using the iLO
+                  RESTful API)
+                  iLO ROM-Based Setup Utility: Enabled
+                  iLO Web Interface: Enabled
+                  Require Host Authentication: Disable
+                  Require Login for iLO RBSU: Disable
+                  Serial Command Line Interface Status: Enabled-Authentication Required
+                  Show iLO Show iLO IP during POST: Enabled
+                  Security>
+                Access Settings
+                Security > Access Settings
+                iLO Functionality: Enabled
+                iLO RIBCL Interface: Enabled (although HPE recommends using the iLO RESTful
+                API)
+                iLO ROM-Based Setup Utility: Enabled
+                iLO Web Interface: Enabled
+                Require Host Authentication: Enabled
+                Require Login for iLO RBSU: Enabled
+                Serial Command Line Interface Status: Enabled-Authentication Required (Also
+                must set interface speed)
+                Show iLO IP during POST: Enabled">
+            </span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showInitialSettingsForILOConfigureddescription" onclick="toggleTextInput('showInitialSettingsForILOConfigureddescription', 'InitialSettingsForILOConfigureddescriptionContainer')">
+            <label for="showInitialSettingsForILOConfigureddescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="InitialSettingsForILOConfigureddescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.AreInitialSettingsForILOConfigureddescription">
+            <span asp-validation-for="Command.AreInitialSettingsForILOConfigureddescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsServerNameAndFQDNSet" id="IsServerNameAndFQDNSet" />
+            <label asp-for="Command.IsServerNameAndFQDNSet"> آیا تنظیمات مربوط به نام سرور و
+                مشخصات  FQDNسرور تعیین
+                شده است؟ </label>
+            <span class="bi bi-lightbulb lightbulb" title="در این بخش تنظیمات مربوط به نام سرور و  FQDNسرور را
+                  اعمال میشود که توصیه میگردد داده ای در این بخش وارد
+                  نشود
+                  مقادیر پیش فرض قبل از اعنال تنظیمات:
+                  Server Name: NOT Set
+                  Server FQDN /IP Address : NOT Set
+                  Security>
+                Access Settings Security > Access Settings
+                Server Name: Leave blank and let host OS assign
+                Server FQDN/IP Address : Leave blank and let host OS assign">
+            </span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showServerNameAndFQDNSetdescription" onclick="toggleTextInput('showServerNameAndFQDNSetdescription', 'ServerNameAndFQDNSetdescriptionContainer')">
+            <label for="showServerNameAndFQDNSetdescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="ServerNameAndFQDNSetdescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsServerNameAndFQDNSetdescription">
+            <span asp-validation-for="Command.IsServerNameAndFQDNSetdescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsAccountServiceConfigured" id="IsAccountServiceConfigured" />
+            <label asp-for="Command.IsAccountServiceConfigured">آیا تنظیمات مربوط به Account
+                serviceاعمال شده است؟</label>
+            <span class="bi bi-lightbulb lightbulb" title="در این بخش تنطیمات مربوط به لاگ این اکانت ها اعمال
+                  میشود.
+                  مقادیر پیش فرض قبل از اعمال تنظیمات:
+                  Authentication Failures Before Delay: 1 failure causes no delay
+                  Authentication Failure Delay Time: 10 seconds
+                  Authentication Failure Logging: Enabled-Every 3rd Failure
+                  Minimum Password Length: 8
+                  Password Complexity :Disabled
+                  Security>
+                Access Settings
+                Security > Access Settings
+                Authentication Failures Before Delay: 1 failure causes no delay
+                Authentication Failure Delay Time: 10 seconds
+                Authentication Failure Logging: Enabled-Every Failure
+                Minimum Password Length: 8
+                Password Complexity :Enabled">
+            </span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showAccountServiceConfigureddescription" onclick="toggleTextInput('showAccountServiceConfigureddescription', 'AccountServiceConfigureddescriptionContainer')">
+            <label for="showAccountServiceConfigureddescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="AccountServiceConfigureddescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsAccountServiceConfigureddescription">
+            <span asp-validation-for="Command.IsAccountServiceConfigureddescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.AreILOPortAndUSBPortConfigured" id="AreILOPortAndUSBPortConfigured" />
+            <label asp-for="Command.AreILOPortAndUSBPortConfigured">آیا تنطیمات مربوط به پورت  ILOو
+                پورت  USBاعمال شده است؟ </label>
+            <span class="bi bi-lightbulb lightbulb" title="در این بخش تنطیمات مربوط به پورت های  ILOو فعال بودن
+                  پورت USBمرتبط با ILOکه در حلوی شاسی سرور ها قرار
+                  دارند مدیریت میشوند. چنانچه فلشی به یان پورت متصل شده
+                  باشد قابل مدیریت کردن با سیسام عامل نمیباشد.
+                  مفادیر پیش فرض قبل از اعمال تنظیمات:
+                  iLO Service Port: Enabled
+                  USB flash drives: Disabled
+                  Require authentication: Disable
+                  USB Ethernet adapters :Disabled
+                  Security>
+                iLO Service Port
+                Security > iLO Service Port
+                iLO Service Port: Enabled
+                USB flash drives: Disabled
+                Require authentication: Enabled
+                USB Ethernet adapters :Disabled">
+            </span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showILOPortAndUSBPortConfigureddescription" onclick="toggleTextInput('showILOPortAndUSBPortConfigureddescription', 'ILOPortAndUSBPortConfigureddescriptionContainer')">
+            <label for="showILOPortAndUSBPortConfigureddescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="ILOPortAndUSBPortConfigureddescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.AreILOPortAndUSBPortConfigureddescription">
+            <span asp-validation-for="Command.AreILOPortAndUSBPortConfigureddescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.AreSSHKeysEnabled" id="AreSSHKeysEnabled" />
+            <label asp-for="Command.AreSSHKeysEnabled">آیا  SSH Keysفعال شده است؟</label>
+            <span class="bi bi-lightbulb lightbulb" title="توصیه میگردد که که  SSH Keysفعال و نصب شود و از کلمه
+                  عبور به صورت ساده و کد گزاری نشده استفاده نشود.
+                  مقادیر پیش فرض قبل از اعمال تنظیمات
+<No SSH public key installed>
+Security > Secure Shell Key Security > Secure Shell Key
+Keys must be 2048-bit DSA or RSA (or ECDSA 384-bit keys in SuiteB security
+state)"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showSSHKeysEnableddescription" onclick="toggleTextInput('showSSHKeysEnableddescription', 'SSHKeysEnableddescriptionContainer')">
+            <label for="showSSHKeysEnableddescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="SSHKeysEnableddescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.AreSSHKeysEnableddescription">
+            <span asp-validation-for="Command.AreSSHKeysEnableddescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.AreUserCertificatesConfigured" id="AreUserCertificatesConfigured" />
+            <label asp-for="Command.AreUserCertificatesConfigured">آیا تنظیمات مربوط به
+                Certificateبه ازای هر کاربر
+                اعمال شده است؟</label>
+            <span class="bi bi-lightbulb lightbulb" title="توصیه میگردد از  Smart cardها برای احراز هویت کاربران
+                  استفاده گردد.
+                  مقادیر پیش فرض قبل از اعمال تنظیمات:
+<No certificate installed>
+Security > Certificate Mappings Security > Certificate Mappings
+Each local user account must have an associated certificate."></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showUserCertificatesConfigureddescription" onclick="toggleTextInput('showUserCertificatesConfigureddescription', 'UserCertificatesConfigureddescriptionContainer')">
+            <label for="showUserCertificatesConfigureddescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="UserCertificatesConfigureddescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.AreUserCertificatesConfigureddescription">
+            <span asp-validation-for="Command.AreUserCertificatesConfigureddescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.AreSystemCertificatesConfigured" id="AreSystemCertificatesConfigured" />
+            <label asp-for="Command.AreSystemCertificatesConfigured"> آیا تنطیمات مربوط به Certificate
+                بر روی سیستم اعمال شده
+                است؟</label>
+            <span class="bi bi-lightbulb lightbulb" title="توصیه میگردد از  Certificateپیش فرض سیستم استفاده
+                  نشود و امن نمیباشد .
+                  Issued
+                  By
+                  CN=Default Issuer (Do not trust), O=Hewlett Packard
+                  Enterprise, OU=ISS, L=Americas, ST=Houston, C=US
+                  Security>
+                SSL Certificate Security > SSL Certificate
+                Customize Certificat">
+            </span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showSystemCertificatesConfigureddescription" onclick="toggleTextInput('showSystemCertificatesConfigureddescription', 'SystemCertificatesConfigureddescriptionContainer')">
+            <label for="showSystemCertificatesConfigureddescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="SystemCertificatesConfigureddescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.AreSystemCertificatesConfigureddescription">
+            <span asp-validation-for="Command.AreSystemCertificatesConfigureddescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsEncryptionConfigured" id="IsEncryptionConfigured" />
+            <label asp-for="Command.IsEncryptionConfigured">آیا تنطیمات مربوط به
+                Encryptionاعمال شده اند؟ </label>
+            <span class="bi bi-lightbulb lightbulb" title="توصیه میگردد گزینه  Encryptionرا بر روی  Highست نماید تا
+                  اطلاعات به صورت کد گزاری شده ذخیره گردند. به صورت پیش فرض این گزینه بر روی Productionست شده است. Security> Secur"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showEncryptionConfigureddescription" onclick="toggleTextInput('showEncryptionConfigureddescription', 'EncryptionConfigureddescriptionContainer')">
+            <label for="showEncryptionConfigureddescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="EncryptionConfigureddescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsEncryptionConfigureddescription">
+            <span asp-validation-for="Command.IsEncryptionConfigureddescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsUEFISecurityConfigured" id="IsUEFISecurityConfigured" />
+            <label asp-for="Command.IsUEFISecurityConfigured">  آیا تنطیمات بخش امنیتی UEFI
+                اعمال شده است؟</label>
+            <span class="bi bi-lightbulb lightbulb" title="در این بخش میتوانیم تنظیمات امنیتی مربوط به  UEFIرا اعمال
+                  نماییم.
+                  مقادیر پیش فرض قبل از اعمال تنظیمات :
+                  Set Power On Password: Password compliant with strong security
+                  standards.
+                  Set Admin Password: Set a password that is compliant with strong
+                  security standards.
+                  Intel TXT Support: Disable
+                  One-Time Boot Menu (F11 Prompt): Enabled
+                  Intelligent Provisioning (F10 Prompt): Enabled
+                  Processor AES-NI Support: Enabled
+                  Backup ROM Image Authentication: Disabled
+                  System Configuration>
+                BIOS/Platform Configuration
+                RBSU) > Server Security
+                System Configuration > BIOS/Platform Configuration RBSU) > Server Security
+                Set Power On Password: Password compliant with strong security standards.
+                Set Admin Password: Set a password that is compliant with strong security
+                standards.
+                Intel TXT Support: Enabled, if available on your system
+                One-Time Boot Menu (F11 Prompt): Disabled
+                Intelligent Provisioning (F10 Prompt): Enabled
+                Processor AES-NI Support: Enabled
+                Backup ROM Image Authentication: Enabled
+                System Intrusion Detection: Enabled">
+            </span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showUEFISecurityConfigureddescription" onclick="toggleTextInput('showUEFISecurityConfigureddescription', 'UEFISecurityConfigureddescriptionContainer')">
+            <label for="showUEFISecurityConfigureddescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="UEFISecurityConfigureddescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsUEFISecurityConfigureddescription">
+            <span asp-validation-for="Command.IsUEFISecurityConfigureddescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsSecureBootConfigured" id="IsSecureBootConfigured" />
+            <label asp-for="Command.IsSecureBootConfigured">  آیا تنطیمات مربوط به بوت امن
+                انجام شده است؟</label>
+            <span class="bi bi-lightbulb lightbulb" title="تنطیمات مربوط به  Secure bootرا در این بخش انجام میدهیم.
+                  کار Secure Bootمحافظت از کامپیوتر در زمان راهاندازی
+                  سیستمعامل است. هنگامی که سرور را روشن میکنید،
+                  بوت امن وارد عمل میشود و جلو دسترسی برنامههای مخرب
+                  زمان بوت سیستمعامل را میگیرد. درواقع، کار اصلی Secure
+                  Bootتأمین امنیت سیستم هنگام بوت سیستمعامل است.
+                  مقادیر پیش فرض قبل از اعمال تنظیمات :
+                  Attempt Secure Boot : Disabled
+                  System Configuration>
+                BIOS/Platform Configuration
+                (RBSU) > Server Security >
+                Secure Boot Settings
+                System Configuration > BIOS/Platform Configuration (RBSU) > Server Security >
+                Secure Boot Settings
+                Attempt Secure Boot : Enabled">
+            </span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showSecureBootConfigureddescription" onclick="toggleTextInput('showSecureBootConfigureddescription', 'SecureBootConfigureddescriptionContainer')">
+            <label for="showSecureBootConfigureddescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="SecureBootConfigureddescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsSecureBootConfigureddescription">
+            <span asp-validation-for="Command.IsSecureBootConfigureddescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsTPMConfigured" id="IsTPMConfigured" />
+            <label asp-for="Command.IsTPMConfigured"> آیا تنظیمات مربوط به  TPMها
+                اعمال شده است؟</label>
+            <span class="bi bi-lightbulb lightbulb" title="TPMها یک Chipsهستند که اطلاعاتی از جمله کلمه عبور را
+                  نگه داری میکنند. TPMها به پنج گروه تقسیم میشوند.
+                  .Discrete, Integrated, Firmware, Software, and Virtual.
+                  مقادیر پیش فرض قبل از اعمال تنظیمات :
+                  Current TPM Type: NO TPM
+                  Current TPM State: Not Present
+                  TPM 2.0 Operation: No Action
+                  System Configuration>
+                BIOS/Platform Configuration
+                (RBSU) > Server Security
+                >Trusted Platform Module Options
+                System Configuration > BIOS/Platform Configuration (RBSU) > Server Security
+                >Trusted Platform Module Options
+                Chipset-TPM: Enable
+                Current TPM Type: (Read only)
+                Current TPM State: (Read only)
+                TPM 2.0 Operation: No Action
+                TPM Mode Switch: TPM 2.0
+                TPM 2.0 Visibility: Visible
+                TPM UEFI Option ROM Measurement: Enable">
+            </span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showTPMConfigureddescription" onclick="toggleTextInput('showTPMConfigureddescription', 'TPMConfigureddescriptionContainer')">
+            <label for="showTPMConfigureddescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="TPMConfigureddescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsTPMConfigureddescription">
+            <span asp-validation-for="Command.IsTPMConfigureddescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.AreInitialILOSettingsConfigured" id="AreInitialILOSettingsConfigured" />
+            <label asp-for="Command.AreInitialILOSettingsConfigured">  آیا تنطیمات اولیه  ILOاز قسمت
+                اعمال شدهSystem Utility
+                است؟ </label>
+            <span class="bi bi-lightbulb lightbulb" title="اعمال تنظیمات اولیه  ILOاز جمله دسترسی تحت وب و اعمال
+                  دسترسی کاربران .
+                  مقادیر پیش فرض قبل از اعمال تنظیمات :
+                  iLO 5 Functionality: Enabled
+                  iLO 5 Configuration Utility: Enabled
+                  Require user login and configuration privilege for iLO 5 Configuration:
+                  Enabled
+                  Show iLO 5 IP Address during POST: Enabled
+                  Local Users: Enabled
+                  Serial CLI Status: Enabled
+                  Serial CLI Speed (bits / second): As appropriate for your environment
+                  iLO Web Interface: Enabled
+                  System Utilities>
+                System
+                Configuration >iLO 5
+                configuration Utility
+                System Utilities > System Configuration >iLO 5 configuration Utility
+                iLO 5 Functionality: Enabled
+                iLO 5 Configuration Utility: Enabled
+                Require user login and configuration privilege for iLO 5 Configuration: Enabled
+                Show iLO 5 IP Address during POST: Enabled
+                Local Users: Enabled
+                Serial CLI Status: Enabled
+                Serial CLI Speed (bits/ second): As appropriate for your environment
+                iLO Web Interface: Enabled">
+            </span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showInitialILOSettingsConfigureddescription" onclick="toggleTextInput('showInitialILOSettingsConfigureddescription', 'InitialILOSettingsConfigureddescriptionContainer')">
+            <label for="showInitialILOSettingsConfigureddescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="InitialILOSettingsConfigureddescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.AreInitialILOSettingsConfigureddescription">
+            <span asp-validation-for="Command.AreInitialILOSettingsConfigureddescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.IsDiskAndRaidConfigDeletionDisabled" id="IsDiskAndRaidConfigDeletionDisabled" />
+            <label asp-for="Command.IsDiskAndRaidConfigDeletionDisabled"> آیا تنظیمات مربوط به حذف
+                اطلاعات هارد دیسک و Raid
+                بندی غیرفعال شده است ؟</label>
+            <span class="bi bi-lightbulb lightbulb" title="مقادیر پیش فرض قبل از اعمال تنظیمات :
+                  Erase all hard drives: Disable
+                  Secure erase of nonvolatile storage: Disable
+                  Press F10 during POST, or from
+                  iLO 5, click Intelligent Provisioning
+                  Press F10 during POST, or from iLO 5, click Intelligent Provisioning>
+                Always On
+                Erase all hard drives: Enable
+                Secure erase of nonvolatile storage :Enable">
+            </span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showDiskAndRaidConfigDeletionDisableddescription" onclick="toggleTextInput('showDiskAndRaidConfigDeletionDisableddescription', 'DiskAndRaidConfigDeletionDisableddescriptionContainer')">
+            <label for="showDiskAndRaidConfigDeletionDisableddescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="DiskAndRaidConfigDeletionDisableddescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.IsDiskAndRaidConfigDeletionDisableddescription">
+            <span asp-validation-for="Command.IsDiskAndRaidConfigDeletionDisableddescription" class="error"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="checkbox" asp-for="Command.AreProvisioningSettingsDeleted" id="AreProvisioningSettingsDeleted" />
+            <label asp-for="Command.AreProvisioningSettingsDeleted">  آیا تنظیمات لازم جهت حذف
+                تنظیمات Provisioningانجام
+                شده است؟</label>
+            <span class="bi bi-lightbulb lightbulb" title="مقادیر پیش فرض قبل از اعمال تنظیمات :
+                  Clear Intelligent Provisioning preferences: Disable
+                  Then click Perform Maintenance>
+                System Erase and Reset
+                Press F10 during POST, or from iLO 5, click Intelligent Provisioning > Then click
+                Perform Maintenance > System Erase and Reset
+                Clear Intelligent Provisioning preferences : Enabled">
+            </span>
+
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="showProvisioningSettingsDeleteddescription" onclick="toggleTextInput('showProvisioningSettingsDeleteddescription', 'ProvisioningSettingsDeleteddescriptionContainer')">
+            <label for="showProvisioningSettingsDeleteddescription">افزودن توضیحات</label>
+        </div>
+        <div class="form-group" id="ProvisioningSettingsDeleteddescriptionContainer" style="display:none;">
+            <input type="text" class="form-control" asp-for="Command.AreProvisioningSettingsDeleteddescription">
+            <span asp-validation-for="Command.AreProvisioningSettingsDeleteddescription" class="error"></span>
+        </div>
+    </div>
+    
+<div class="modal-footer">        
+    <input type="hidden" asp-for="Command.ChecklistId" />
+
+    <button type="submit" class="btn btn-info waves-effect waves-light">بعدی</button>
+</div>
+
+</form>
+<script>
+    function toggleTextInput(checkboxId, containerId) {
+        var checkBox = document.getElementById(checkboxId);
+        var textInputContainer = document.getElementById(containerId);
+        if (checkBox.checked) {
+            textInputContainer.style.display = "block";
+        } else {
+            textInputContainer.style.display = "none";
+        }
+    }
+</script>

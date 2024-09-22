@@ -97,6 +97,8 @@ namespace CompanyManagement.Application
             
             var operation = new OperationResult();
 
+
+
             var checkListHPEDL380 = new HPEDL380(command.IsTPMEnabledAndRO,command.IsTPMEnabledAndROdescription, command.AreAppropriateUsernamesCreated,
                 command.AreAppropriateUsernamesCreateddescription,
                 command.AreAppropriateGroupsCreated,command.AreAppropriateGroupsCreateddescription,command.AreNetworkSettingsForILOConfigured,
@@ -115,7 +117,12 @@ namespace CompanyManagement.Application
                 command.AreInitialILOSettingsConfigureddescription,command.IsDiskAndRaidConfigDeletionDisabled
                 ,command.IsDiskAndRaidConfigDeletionDisableddescription,command.AreProvisioningSettingsDeleted,
                 command.AreProvisioningSettingsDeleteddescription);
-        
+
+
+            checkListHPEDL380.AverageHPEDLcal(command);
+
+
+
             _hPEDL380Repository.Create(checkListHPEDL380);
             _checklistRepository.SaveChanges();
             var currentId = checkListHPEDL380.Id; // گرفتن شناسه رکورد جدید

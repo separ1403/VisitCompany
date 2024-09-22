@@ -8,52 +8,53 @@ namespace CompanyManagement.Application.Contract.Checklist
 {
     public  class CreateHPEDL380Checklist
     {
-        public bool IsTPMEnabledAndRO { get; set; }
+        public long IsTPMEnabledAndRO { get; set; }
         public string IsTPMEnabledAndROdescription { get; set; }
 
-        public bool AreAppropriateUsernamesCreated { get; set; }
+        public long AreAppropriateUsernamesCreated { get; set; }
         public string AreAppropriateUsernamesCreateddescription { get; set; }
 
-        public bool AreAppropriateGroupsCreated { get; set; }
+        public long AreAppropriateGroupsCreated { get; set; }
         public string AreAppropriateGroupsCreateddescription { get; set; }
-        public bool AreNetworkSettingsForILOConfigured { get; set; }
+        public long AreNetworkSettingsForILOConfigured { get; set; }
         public string AreNetworkSettingsForILOConfigureddescription { get; set; }
-        public bool AreInitialSettingsForILOConfigured { get; set; }
+        public long AreInitialSettingsForILOConfigured { get; set; }
         public string AreInitialSettingsForILOConfigureddescription { get; set; }
-        public bool IsServerNameAndFQDNSet { get; set; }
+        public long IsServerNameAndFQDNSet { get; set; }
         public string IsServerNameAndFQDNSetdescription { get; set; }
-        public bool IsAccountServiceConfigured { get; set; }
+        public long IsAccountServiceConfigured { get; set; }
         public string IsAccountServiceConfigureddescription { get; set; }
-        public bool AreILOPortAndUSBPortConfigured { get; set; }
+        public long AreILOPortAndUSBPortConfigured { get; set; }
         public string AreILOPortAndUSBPortConfigureddescription { get; set; }
-        public bool AreSSHKeysEnabled { get; set; }
+        public long AreSSHKeysEnabled { get; set; }
         public string AreSSHKeysEnableddescription { get; set; }
 
-        public bool AreUserCertificatesConfigured { get; set; }
+        public long AreUserCertificatesConfigured { get; set; }
         public string AreUserCertificatesConfigureddescription { get; set; }
 
-        public bool AreSystemCertificatesConfigured { get; set; }
+        public long AreSystemCertificatesConfigured { get; set; }
         public string AreSystemCertificatesConfigureddescription { get; set; }
-        public bool IsEncryptionConfigured { get; set; }
+        public long IsEncryptionConfigured { get; set; }
         public string IsEncryptionConfigureddescription { get; set; }
 
-        public bool IsUEFISecurityConfigured { get; set; }
+        public long IsUEFISecurityConfigured { get; set; }
         public string IsUEFISecurityConfigureddescription { get; set; }
 
-        public bool IsSecureBootConfigured { get; set; }
+        public long IsSecureBootConfigured { get; set; }
         public string IsSecureBootConfigureddescription { get; set; }
 
-        public bool IsTPMConfigured { get; set; }
+        public long IsTPMConfigured { get; set; }
         public string IsTPMConfigureddescription { get; set; }
 
-        public bool AreInitialILOSettingsConfigured { get; set; }
+        public long AreInitialILOSettingsConfigured { get; set; }
         public string AreInitialILOSettingsConfigureddescription { get; set; }
 
-        public bool IsDiskAndRaidConfigDeletionDisabled { get; set; }
+        public long IsDiskAndRaidConfigDeletionDisabled { get; set; }
         public string IsDiskAndRaidConfigDeletionDisableddescription { get; set; }
 
-        public bool AreProvisioningSettingsDeleted { get; set; }
+        public long AreProvisioningSettingsDeleted { get; set; }
         public string AreProvisioningSettingsDeleteddescription { get; set; }
+        public double AverageHpedl380 { get;  set; }
 
         public long ChecklistId { get; set; }
 

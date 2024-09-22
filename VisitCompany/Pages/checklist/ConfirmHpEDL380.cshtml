@@ -6,7 +6,7 @@
 }
 
 
-<h2>تایید اطلاعات</h2>
+<h2>تایید نمرات اطلاعات-</h2>
 
 <form method="post">
     <div class="row">
@@ -16,115 +16,133 @@
                 است ؟:</label>
             <span>@Model.Command.IsTPMEnabledAndRO</span>
         </div>
+        <br>
         <div class="col-md-6">
-            <label>آیا نام کاربری های متناسب
-                ایحاد شده اند ؟:</label>
+            <label> نام کاربری های متناسب
+                :</label>
             <span>@Model.Command.AreAppropriateUsernamesCreated</span>
         </div>
+
     </div>
+    <br>
     <div class="row">
         <div class="col-md-6">
-            <label>آیا گروه های متناسب برای
-                کاربری های مختلف ایجاد شده
-                اند؟:</label>
+            <label> گروه های متناسب برای
+                کاربری های مختلف :</label>
             <span>@Model.Command.AreAppropriateGroupsCreated</span>
         </div>
+        <br>
         <div class="col-md-6">
-            <label>آیا تنظیمات مربوط به Access
+            <label> تنظیمات مربوط به Access
                 ILO  در بخش شبکهsetting
-                اعمال شده اند؟:</label>
+                اعمال شده اند:</label>
             <span>@Model.Command.AreNetworkSettingsForILOConfigured</span>
         </div>
     </div>
+    <br>
     <div class="row">
         <div class="col-md-6">
-            <label>آیا تنظیمات مربوط به Access
+            <label> تنظیمات مربوط به Access
                 settingدر بخش تنظیمات اولیه
-                ILOاعمال شده اند؟:</label>
+                ILOاعمال شده اند:</label>
             <span>@Model.Command.AreInitialSettingsForILOConfigured</span>
         </div>
+        <br>
         <div class="col-md-6">
-            <label>آیا تنظیمات مربوط به نام سرور و
+            <label> تنظیمات مربوط به نام سرور و
                 مشخصات  FQDNسرور تعیین
-                شده است؟:</label>
+                ده است:</label>
             <span>@Model.Command.IsServerNameAndFQDNSet</span>
         </div>
     </div>
+    <br>
     <div class="row">
         <div class="col-md-6">
-            <label>آیا تنظیمات مربوط به Account
-                serviceاعمال شده است؟:</label>
+            <label> تنظیمات مربوط به Account
+                serviceاعمال شده است :</label>
             <span>@Model.Command.IsAccountServiceConfigured</span>
         </div>
+        <br>
         <div class="col-md-6">
-            <label>آیا تنطیمات مربوط به پورت  ILOو
-                پورت  USBاعمال شده است؟:</label>
+            <label> تنطیمات مربوط به پورت  ILOو
+                پورت  USB اعمال شده است:</label>
             <span>@Model.Command.AreILOPortAndUSBPortConfigured</span>
         </div>
     </div>
+    <br>
     <div class="row">
         <div class="col-md-6">
-            <label>آیا  SSH Keysفعال شده است؟:</label>
+            <label>  SSH Keysفعال شده است :</label>
             <span>@Model.Command.AreSSHKeysEnabled</span>
         </div>
+        <br>
         <div class="col-md-6">
-            <label>آیا تنظیمات مربوط به
+            <label>  تنظیمات مربوط به
                 Certificateبه ازای هر کاربر
-                اعمال شده است؟:</label>
+                اعمال شده است :</label>
             <span>@Model.Command.AreUserCertificatesConfigured</span>
         </div>
+        <br>
     </div>
     <div class="row">
         <div class="col-md-6">
-            <label>آیا تنطیمات مربوط به Certificate
+            <label>  تنطیمات مربوط به Certificate
                 بر روی سیستم اعمال شده
-                است؟:</label>
+                است:</label>
             <span>@Model.Command.AreSystemCertificatesConfigured</span>
         </div>
+        <br>
         <div class="col-md-6">
-            <label>آیا تنطیمات مربوط به
-                Encryptionاعمال شده اند؟:</label>
+            <label> تنطیمات مربوط به
+                Encryptionاعمال شده اند:</label>
             <span>@Model.Command.IsEncryptionConfigured</span>
         </div>
+        <br>
     </div>
     <div class="row">
         <div class="col-md-6">
-            <label>آیا تنطیمات بخش امنیتی UEFI
-                اعمال شده است؟:</label>
+            <label> تنطیمات بخش امنیتی UEFI
+                اعمال شده است:</label>
             <span>@Model.Command.IsUEFISecurityConfigured</span>
         </div>
+        <br>
         <div class="col-md-6">
-            <label>آیا تنطیمات مربوط به بوت امن
-                انجام شده است؟:</label>
+            <label> تنطیمات مربوط به بوت امن
+                انجام شده است:</label>
             <span>@Model.Command.IsSecureBootConfigured</span>
         </div>
+        <br>
     </div>
     <div class="row">
         <div class="col-md-6">
-            <label>آیا تنظیمات مربوط به  TPMها
-                اعمال شده است؟:</label>
+            <label> تنظیمات مربوط به  TPMها
+                اعمال شده است:</label>
             <span>@Model.Command.IsTPMConfigured</span>
         </div>
+        <br>
         <div class="col-md-6">
-            <label>آیا تنطیمات اولیه  ILOاز قسمت
+            <label> تنطیمات اولیه  ILOاز قسمت
                 اعمال شدهSystem Utility
-                است؟:</label>
+                است:</label>
             <span>@Model.Command.AreInitialILOSettingsConfigured</span>
         </div>
+        <br>
     </div>
     <div class="row">
         <div class="col-md-6">
-            <label>آیا تنظیمات مربوط به حذف
+            <label> تنظیمات مربوط به حذف
                 اطلاعات هارد دیسک و Raid
-                بندی غیرفعال شده است ؟:</label>
+                بندی غیرفعال شده است :</label>
             <span>@Model.Command.IsDiskAndRaidConfigDeletionDisabled</span>
         </div>
+        <br>
         <div class="col-md-6">
-            <label>آیا تنظیمات لازم جهت حذف
+            <label> تنظیمات لازم جهت حذف
                 تنظیمات Provisioningانجام
-                شده است؟:</label>
+                شده است:</label>
             <span>@Model.Command.AreProvisioningSettingsDeleted</span>
         </div>
+        <br>
     </div>
     
     <H3>در صورت تایید امکان ویرایش وجود ندارد :</H3>

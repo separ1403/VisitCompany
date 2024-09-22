@@ -1,15 +1,6 @@
-﻿using CompanyManagement.Domain.CompanyAgg;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using Framework.Domain;
-using AccountManagement;
-using AccountManagement.Domain;
-using CompanyManagement.Application.Contract.Checklist;
+﻿using CompanyManagement.Application.Contract.Checklist;
 using CompanyManagement.Domain.AccountAgg;
+using Framework.Domain;
 
 namespace CompanyManagement.Domain.ChecklistAgg
 {
@@ -118,6 +109,7 @@ namespace CompanyManagement.Domain.ChecklistAgg
         public JuniperHardening? JuniperHardening { get; set; }
         public HPEDL380? HPEDL380 { get; set; }
         public Win2019? Win2019 { get; set; }
+
 
         public Checklist(string title, string description, string namePeopleCo, string rspponsePeopleCo, string phonePeopleCo, long countEmployees, long countFolowers, long companyId,List<long> accountId, long organizationalSecurityStatusScore, string organizationalSecurityStatus, long securityManagerStatusScore, string securityManagerStatus, long securityPolicyStatusScore, string securityPolicyStatus, long securityChangeApprovalStatusScore, string securityChangeApprovalStatus, long thirdPartyServiceStatusScore, string thirdPartyServiceStatus, long personnelHiringStatusScore, string personnelHiringStatus, long accessManagementStatusScore, string accessManagementStatus, long complianceManagementStatusScore, string complianceManagementStatus, long incidentResponseStatusScore, string incidentResponseStatus, long networkLogicalPhysicalMapStatusScore, string networkLogicalPhysicalMapStatus, long physicalAssetsInventoryStatusScore, string physicalAssetsInventoryStatus, long zoningStatusScore, string zoningStatus, long accessControlStatusScore, string accessControlStatus, long developmentTestOperationsControlStatusScore, string developmentTestOperationsControlStatus, long remoteAdministrativeAccessStatusScore, string remoteAdministrativeAccessStatus, long secureCodingConfigStatusScore, string secureCodingConfigStatus, long securityEvaluationStatusScore, string securityEvaluationStatus, long backupStatusScore, string backupStatus, long sessionExpirationStatusScore, string sessionExpirationStatus, long antivirusStatusScore, string antivirusStatus, long updateStatusScore, string updateStatus, long wirelessNetworkStatusScore, string wirelessNetworkStatus, long passwordPolicyStatusScore, string passwordPolicyStatus, long dataDestructionStatusScore, string dataDestructionStatus, long logManagementStatusScore, string logManagementStatus, long clockSynchronizationStatusScore, string clockSynchronizationStatus, long authenticationStatusScore, string authenticationStatus, long businessIdentificationStatusScore, string businessIdentificationStatus, long entryExitManagementStatusScore, string entryExitManagementStatus, long cctvStatusScore, string cctvStatus, long hostingServiceStatusScore, string hostingServiceStatus, long privacyPolicyStatusScore, string privacyPolicyStatus, long publicComplaintsStatusScore, string publicComplaintsStatus, long cyberAttackResponseStatusScore, string cyberAttackResponseStatus, long dataSalesTradeStatusScore, string dataSalesTradeStatus, long financialPaymentPlatformStatusScore, string financialPaymentPlatformStatus, long userDataCollectionStatusScore, string userDataCollectionStatus, long employeeTrainingStatusScore, string employeeTrainingStatus/*, long junuperhardeningID, long hPEDL380ID*/)
         {
