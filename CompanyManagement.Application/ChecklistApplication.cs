@@ -162,7 +162,7 @@ namespace CompanyManagement.Application
            command.IsKeepAliveTimeManaged, command.IsKeepAliveTimeManagedDescription, command.IsIRDPOptionDisabled,
            command.IsIRDPOptionDisabledDescription, command.IsDataRetransmissionManaged, command.IsDataRetransmissionManagedDescription
           );
-
+            checkListWin2019.AverageWin2019cal(command);
             _win2019Repository.Create(checkListWin2019);
             _checklistRepository.SaveChanges();
             var currentId = checkListWin2019.Id; // گرفتن شناسه رکورد جدید
