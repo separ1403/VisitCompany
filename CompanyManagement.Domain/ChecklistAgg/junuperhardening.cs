@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CompanyManagement.Application.Contract.Checklist;
 using Framework.Domain;
 
 namespace CompanyManagement.Domain.ChecklistAgg
@@ -13,7 +14,7 @@ namespace CompanyManagement.Domain.ChecklistAgg
         {
 
         }
-        public JuniperHardening(bool isConsolePortSecured, string isConsolePortSecureddescription, bool isRootLoginDisabled, string isRootLoginDisableddescription, bool isPasswordRecoveryDisabled, string isPasswordRecoveryDisableddescription, bool isAuxiliaryPortDisabled, string isAuxiliaryPortDisableddescription, bool isRootLoginAuxDisabled, string isRootLoginAuxDisableddescription, bool isDiagnosticPortDisabled, string isDiagnosticPortDisableddescription, bool isUsbPortDisabled, string isUsbPortDisableddescription, bool isCraftInterfaceDisabled, string isCraftInterfaceDisableddescription, bool isLcdMenuDisabled, string isLcdMenuDisableddescription, bool isResetButtonDisabled, string isResetButtonDisableddescription, bool areUnusedInterfacesDisabled, string areUnusedInterfacesDisableddescription, bool isConfigFileEncrypted, string isConfigFileEncrypteddescription)
+        public JuniperHardening(long isConsolePortSecured, string isConsolePortSecureddescription, long isRootLoginDisabled, string isRootLoginDisableddescription, long isPasswordRecoveryDisabled, string isPasswordRecoveryDisableddescription, long isAuxiliaryPortDisabled, string isAuxiliaryPortDisableddescription, long isRootLoginAuxDisabled, string isRootLoginAuxDisableddescription, long isDiagnosticPortDisabled, string isDiagnosticPortDisableddescription, long isUsbPortDisabled, string isUsbPortDisableddescription, long isCraftInterfaceDisabled, string isCraftInterfaceDisableddescription, long isLcdMenuDisabled, string isLcdMenuDisableddescription, long isResetButtonDisabled, string isResetButtonDisableddescription, long areUnusedInterfacesDisabled, string areUnusedInterfacesDisableddescription, long isConfigFileEncrypted, string isConfigFileEncrypteddescription)
         {
             IsConsolePortSecured = isConsolePortSecured;
             IsConsolePortSecureddescription = isConsolePortSecureddescription;
@@ -42,30 +43,60 @@ namespace CompanyManagement.Domain.ChecklistAgg
         }
 
 
-        public bool? IsConsolePortSecured { get; set; }
+        public long? IsConsolePortSecured { get; set; }
         public string? IsConsolePortSecureddescription { get; set; }
-        public bool? IsRootLoginDisabled { get; set; }
+        public long? IsRootLoginDisabled { get; set; }
         public string? IsRootLoginDisableddescription { get; set; }
-        public bool? IsPasswordRecoveryDisabled { get; set; }
+        public long? IsPasswordRecoveryDisabled { get; set; }
         public string? IsPasswordRecoveryDisableddescription { get; set; }
-        public bool? IsAuxiliaryPortDisabled { get; set; }
+        public long? IsAuxiliaryPortDisabled { get; set; }
         public string? IsAuxiliaryPortDisableddescription { get; set; }
-        public bool? IsRootLoginAuxDisabled { get; set; }
+        public long? IsRootLoginAuxDisabled { get; set; }
         public string? IsRootLoginAuxDisableddescription { get; set; }
-        public bool? IsDiagnosticPortDisabled { get; set; }
+        public long? IsDiagnosticPortDisabled { get; set; }
         public string? IsDiagnosticPortDisableddescription { get; set; }
-        public bool? IsUSBPortDisabled { get; set; }
+        public long? IsUSBPortDisabled { get; set; }
         public string? IsUSBPortDisableddescription { get; set; }
-        public bool? IsCraftInterfaceDisabled { get; set; }
+        public long? IsCraftInterfaceDisabled { get; set; }
         public string? IsCraftInterfaceDisableddescription { get; set; }
-        public bool? IsLCDMenuDisabled { get; set; }
+        public long? IsLCDMenuDisabled { get; set; }
         public string? IsLCDMenuDisableddescription { get; set; }
-        public bool? IsResetButtonDisabled { get; set; }
+        public long? IsResetButtonDisabled { get; set; }
         public string? IsResetButtonDisableddescription { get; set; }
-        public bool? AreUnusedInterfacesDisabled { get; set; }
+        public long? AreUnusedInterfacesDisabled { get; set; }
         public string? AreUnusedInterfacesDisableddescription { get; set; }
-        public bool? IsConfigFileEncrypted { get; set; }
+        public long? IsConfigFileEncrypted { get; set; }
         public string? IsConfigFileEncrypteddescription { get; set; }
+        public double AverageJuniper { get; private set; }
         public Checklist Checklist { get; set; }
+
+        public void AverageJunipercal(CreateJuniperChecklist command)
+        {
+
+            IsConsolePortSecured ??= 0;
+            IsRootLoginDisabled ??= 0;
+            IsPasswordRecoveryDisabled ??= 0;
+            IsAuxiliaryPortDisabled ??= 0;
+            IsRootLoginAuxDisabled ??= 0;
+            IsDiagnosticPortDisabled ??= 0;
+            IsUSBPortDisabled ??= 0;
+            IsCraftInterfaceDisabled ??= 0;
+            IsLCDMenuDisabled ??= 0;
+            IsResetButtonDisabled ??= 0;
+            AreUnusedInterfacesDisabled ??= 0;
+            IsConfigFileEncrypted ??= 0;
+
+            var Sum = command.IsConsolePortSecured + command.IsRootLoginDisabled + command.IsPasswordRecoveryDisabled +
+                      command.IsAuxiliaryPortDisabled + command.IsRootLoginAuxDisabled +
+                      command.IsDiagnosticPortDisabled +
+                      command.IsUSBPortDisabled + command.IsCraftInterfaceDisabled + command.IsLCDMenuDisabled +
+                      command.IsResetButtonDisabled + command.AreUnusedInterfacesDisabled +
+                      command.IsConfigFileEncrypted;
+
+            var Avg = ((double)Sum / 12);
+            var Average = Math.Round(Avg, 2);
+            AverageJuniper = Average;
+
+        }
     }
 }

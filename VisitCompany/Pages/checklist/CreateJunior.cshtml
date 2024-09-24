@@ -9,214 +9,224 @@
 </div>
 <form method="post" >
 
-    <div class="col-md-6">
-        <div class="form-group">
-            <input type="checkbox" asp-for="Command.IsConsolePortSecured" id="IsConsolePortSecured" onclick="toggleHelp('helpIsConsolePortSecured')" />
-            <label asp-for="Command.IsConsolePortSecured">امنیت پورت کنسول</label>
-            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+    <div class="row">
+        <!-- Console Port Secured Status -->
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Command.IsConsolePortSecured">نمره وضعیت امنیت پورت کنسول</label>
+                <input type="range" asp-for="Command.IsConsolePortSecured" min="0" max="100" />
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="showConsolePortSecured" onclick="toggleTextInput('showConsolePortSecured', 'consolePortSecuredContainer')">
+                <label for="showConsolePortSecured">افزودن توضیحات</label>
+            </div>
+            <div class="form-group" id="consolePortSecuredContainer" style="display:none;">
+                <input type="text" class="form-control" asp-for="Command.IsConsolePortSecureddescription">
+                <span asp-validation-for="Command.IsConsolePortSecureddescription" class="error"></span>
+            </div>
         </div>
-        <div class="form-group">
-            <input type="checkbox" id="showConsolePortSecureddescription" onclick="toggleTextInput('showConsolePortSecureddescription', 'ConsolePortSecureddescriptionContainer')">
-            <label for="showConsolePortSecureddescription">افزودن توضیحات</label>
-        </div>
-        <div class="form-group" id="ConsolePortSecureddescriptionContainer" style="display:none;">
-            <input type="text" class="form-control" asp-for="Command.IsConsolePortSecureddescription">
-            <span asp-validation-for="Command.IsConsolePortSecureddescription" class="error"></span>
+
+        <!-- Root Login Disabled Status -->
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Command.IsRootLoginDisabled">نمره وضعیت غیرفعال شدن ورود ریشه</label>
+                <input type="range" asp-for="Command.IsRootLoginDisabled" min="0" max="100" />
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="showRootLoginDisabled" onclick="toggleTextInput('showRootLoginDisabled', 'rootLoginDisabledContainer')">
+                <label for="showRootLoginDisabled">افزودن توضیحات</label>
+            </div>
+            <div class="form-group" id="rootLoginDisabledContainer" style="display:none;">
+                <input type="text" class="form-control" asp-for="Command.IsRootLoginDisableddescription">
+                <span asp-validation-for="Command.IsRootLoginDisableddescription" class="error"></span>
+            </div>
         </div>
     </div>
 
-    <div class="col-md-6">
-        <div class="form-group">
-            <input type="checkbox" asp-for="Command.IsRootLoginDisabled" id="IsRootLoginDisabled" />
-            <label asp-for="Command.IsRootLoginDisabled">غیرفعال کردن ورود روت</label>
-            <span class="bi bi-lightbulb lightbulb" title=" جلوگیری شود"></span>
+    <br>
 
+    <div class="row">
+        <!-- Password Recovery Disabled Status -->
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Command.IsPasswordRecoveryDisabled">نمره وضعیت غیرفعال شدن بازیابی رمز عبور</label>
+                <input type="range" asp-for="Command.IsPasswordRecoveryDisabled" min="0" max="100" />
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="showPasswordRecoveryDisabled" onclick="toggleTextInput('showPasswordRecoveryDisabled', 'passwordRecoveryDisabledContainer')">
+                <label for="showPasswordRecoveryDisabled">افزودن توضیحات</label>
+            </div>
+            <div class="form-group" id="passwordRecoveryDisabledContainer" style="display:none;">
+                <input type="text" class="form-control" asp-for="Command.IsPasswordRecoveryDisableddescription">
+                <span asp-validation-for="Command.IsPasswordRecoveryDisableddescription" class="error"></span>
+            </div>
         </div>
-        <div class="form-group">
-            <input type="checkbox" id="showRootLoginDisableddescription" onclick="toggleTextInput('showRootLoginDisableddescription', 'RootLoginDisableddescriptionContainer')">
-            <label for="showRootLoginDisableddescription">افزودن توضیحات</label>
-        </div>
-        <div class="form-group" id="RootLoginDisableddescriptionContainer" style="display:none;">
-            <input type="text" class="form-control" asp-for="Command.IsRootLoginDisableddescription">
-            <span asp-validation-for="Command.IsRootLoginDisableddescription" class="error"></span>
+
+        <!-- Auxiliary Port Disabled Status -->
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Command.IsAuxiliaryPortDisabled">نمره وضعیت غیرفعال شدن پورت کمکی</label>
+                <input type="range" asp-for="Command.IsAuxiliaryPortDisabled" min="0" max="100" />
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="showAuxiliaryPortDisabled" onclick="toggleTextInput('showAuxiliaryPortDisabled', 'auxiliaryPortDisabledContainer')">
+                <label for="showAuxiliaryPortDisabled">افزودن توضیحات</label>
+            </div>
+            <div class="form-group" id="auxiliaryPortDisabledContainer" style="display:none;">
+                <input type="text" class="form-control" asp-for="Command.IsAuxiliaryPortDisableddescription">
+                <span asp-validation-for="Command.IsAuxiliaryPortDisableddescription" class="error"></span>
+            </div>
         </div>
     </div>
 
-    <div class="col-md-6">
-        <div class="form-group">
-            <input type="checkbox" asp-for="Command.IsPasswordRecoveryDisabled" id="IsPasswordRecoveryDisabled" />
-            <label asp-for="Command.IsPasswordRecoveryDisabled">غیرفعال کردن بازیابی رمز عبور</label>
-            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+    <br>
 
+    <div class="row">
+        <!-- Root Login Auxiliary Disabled Status -->
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Command.IsRootLoginAuxDisabled">نمره وضعیت غیرفعال شدن ورود ریشه کمکی</label>
+                <input type="range" asp-for="Command.IsRootLoginAuxDisabled" min="0" max="100" />
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="showRootLoginAuxDisabled" onclick="toggleTextInput('showRootLoginAuxDisabled', 'rootLoginAuxDisabledContainer')">
+                <label for="showRootLoginAuxDisabled">افزودن توضیحات</label>
+            </div>
+            <div class="form-group" id="rootLoginAuxDisabledContainer" style="display:none;">
+                <input type="text" class="form-control" asp-for="Command.IsRootLoginAuxDisableddescription">
+                <span asp-validation-for="Command.IsRootLoginAuxDisableddescription" class="error"></span>
+            </div>
         </div>
-        <div class="form-group">
-            <input type="checkbox" id="showPasswordRecoveryDisableddescription" onclick="toggleTextInput('showPasswordRecoveryDisableddescription', 'PasswordRecoveryDisableddescriptionContainer')">
-            <label for="showPasswordRecoveryDisableddescription">افزودن توضیحات</label>
-        </div>
-        <div class="form-group" id="PasswordRecoveryDisableddescriptionContainer" style="display:none;">
-            <input type="text" class="form-control" asp-for="Command.IsPasswordRecoveryDisableddescription">
-            <span asp-validation-for="Command.IsPasswordRecoveryDisableddescription" class="error"></span>
+
+        <!-- Diagnostic Port Disabled Status -->
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Command.IsDiagnosticPortDisabled">نمره وضعیت غیرفعال شدن پورت تشخیصی</label>
+                <input type="range" asp-for="Command.IsDiagnosticPortDisabled" min="0" max="100" />
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="showDiagnosticPortDisabled" onclick="toggleTextInput('showDiagnosticPortDisabled', 'diagnosticPortDisabledContainer')">
+                <label for="showDiagnosticPortDisabled">افزودن توضیحات</label>
+            </div>
+            <div class="form-group" id="diagnosticPortDisabledContainer" style="display:none;">
+                <input type="text" class="form-control" asp-for="Command.IsDiagnosticPortDisableddescription">
+                <span asp-validation-for="Command.IsDiagnosticPortDisableddescription" class="error"></span>
+            </div>
         </div>
     </div>
-
+    <!-- USB Port Disabled Status -->
     <div class="col-md-6">
         <div class="form-group">
-            <input type="checkbox" asp-for="Command.IsAuxiliaryPortDisabled" id="IsAuxiliaryPortDisabled" />
-            <label asp-for="Command.IsAuxiliaryPortDisabled">غیرفعال کردن پورت کمکی</label>
-            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
-
+            <label asp-for="Command.IsUSBPortDisabled">نمره وضعیت غیرفعال شدن پورت USB</label>
+            <input type="range" asp-for="Command.IsUSBPortDisabled" min="0" max="100" />
         </div>
         <div class="form-group">
-            <input type="checkbox" id="showAuxiliaryPortDisableddescription" onclick="toggleTextInput('showAuxiliaryPortDisableddescription', 'AuxiliaryPortDisableddescriptionContainer')">
-            <label for="showAuxiliaryPortDisableddescription">افزودن توضیحات</label>
+            <input type="checkbox" id="showUSBPortDisabled" onclick="toggleTextInput('showUSBPortDisabled', 'usbPortDisabledContainer')">
+            <label for="showUSBPortDisabled">افزودن توضیحات</label>
         </div>
-        <div class="form-group" id="AuxiliaryPortDisableddescriptionContainer" style="display:none;">
-            <input type="text" class="form-control" asp-for="Command.IsAuxiliaryPortDisableddescription">
-            <span asp-validation-for="Command.IsAuxiliaryPortDisableddescription" class="error"></span>
-        </div>
-    </div>
-
-    <div class="col-md-6">
-        <div class="form-group">
-            <input type="checkbox" asp-for="Command.IsRootLoginAuxDisabled" id="IsRootLoginAuxDisabled" />
-            <label asp-for="Command.IsRootLoginAuxDisabled">غیرفعال کردن ورود روت به پورت کمکی</label>
-            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
-
-        </div>
-        <div class="form-group">
-            <input type="checkbox" id="showRootLoginAuxDisableddescription" onclick="toggleTextInput('showRootLoginAuxDisableddescription', 'RootLoginAuxDisableddescriptionContainer')">
-            <label for="showRootLoginAuxDisableddescription">افزودن توضیحات</label>
-        </div>
-        <div class="form-group" id="RootLoginAuxDisableddescriptionContainer" style="display:none;">
-            <input type="text" class="form-control" asp-for="Command.IsRootLoginAuxDisableddescription">
-            <span asp-validation-for="Command.IsRootLoginAuxDisableddescription" class="error"></span>
-        </div>
-    </div>
-
-    <div class="col-md-6">
-        <div class="form-group">
-            <input type="checkbox" asp-for="Command.IsDiagnosticPortDisabled" id="IsDiagnosticPortDisabled" />
-            <label asp-for="Command.IsDiagnosticPortDisabled">غیرفعال کردن پورت تشخیصی</label>
-            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
-
-        </div>
-        <div class="form-group">
-            <input type="checkbox" id="showDiagnosticPortDisableddescription" onclick="toggleTextInput('showDiagnosticPortDisableddescription', 'DiagnosticPortDisableddescriptionContainer')">
-            <label for="showDiagnosticPortDisableddescription">افزودن توضیحات</label>
-        </div>
-        <div class="form-group" id="DiagnosticPortDisableddescriptionContainer" style="display:none;">
-            <input type="text" class="form-control" asp-for="Command.IsDiagnosticPortDisableddescription">
-            <span asp-validation-for="Command.IsDiagnosticPortDisableddescription" class="error"></span>
-        </div>
-    </div>
-
-    <div class="col-md-6">
-        <div class="form-group">
-            <input type="checkbox" asp-for="Command.IsUSBPortDisabled" id="IsUSBPortDisabled" />
-            <label asp-for="Command.IsUSBPortDisabled">غیرفعال کردن پورت USB</label>
-            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
-
-        </div>
-        <div class="form-group">
-            <input type="checkbox" id="showUSBPortDisableddescription" onclick="toggleTextInput('showUSBPortDisableddescription', 'USBPortDisableddescriptionContainer')">
-            <label for="showUSBPortDisableddescription">افزودن توضیحات</label>
-        </div>
-        <div class="form-group" id="USBPortDisableddescriptionContainer" style="display:none;">
+        <div class="form-group" id="usbPortDisabledContainer" style="display:none;">
             <input type="text" class="form-control" asp-for="Command.IsUSBPortDisableddescription">
             <span asp-validation-for="Command.IsUSBPortDisableddescription" class="error"></span>
         </div>
     </div>
 
+    <!-- Craft Interface Disabled Status -->
     <div class="col-md-6">
         <div class="form-group">
-            <input type="checkbox" asp-for="Command.IsCraftInterfaceDisabled" id="IsCraftInterfaceDisabled" />
-            <label asp-for="Command.IsCraftInterfaceDisabled">غیرفعال کردن رابط Craft</label>
-            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
-
+            <label asp-for="Command.IsCraftInterfaceDisabled">نمره وضعیت غیرفعال شدن رابط کاربری</label>
+            <input type="range" asp-for="Command.IsCraftInterfaceDisabled" min="0" max="100" />
         </div>
         <div class="form-group">
-            <input type="checkbox" id="showCraftInterfaceDisableddescription" onclick="toggleTextInput('showCraftInterfaceDisableddescription', 'CraftInterfaceDisableddescriptionContainer')">
-            <label for="showCraftInterfaceDisableddescription">افزودن توضیحات</label>
+            <input type="checkbox" id="showCraftInterfaceDisabled" onclick="toggleTextInput('showCraftInterfaceDisabled', 'craftInterfaceDisabledContainer')">
+            <label for="showCraftInterfaceDisabled">افزودن توضیحات</label>
         </div>
-        <div class="form-group" id="CraftInterfaceDisableddescriptionContainer" style="display:none;">
+        <div class="form-group" id="craftInterfaceDisabledContainer" style="display:none;">
             <input type="text" class="form-control" asp-for="Command.IsCraftInterfaceDisableddescription">
             <span asp-validation-for="Command.IsCraftInterfaceDisableddescription" class="error"></span>
         </div>
     </div>
+    </div>
 
-    <div class="col-md-6">
-        <div class="form-group">
-            <input type="checkbox" asp-for="Command.IsLCDMenuDisabled" id="IsLCDMenuDisabled" />
-            <label asp-for="Command.IsLCDMenuDisabled">غیرفعال کردن منوی LCD</label>
-            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+    <br>
 
+    <div class="row">
+        <!-- LCD Menu Disabled Status -->
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Command.IsLCDMenuDisabled">نمره وضعیت غیرفعال شدن منوی LCD</label>
+                <input type="range" asp-for="Command.IsLCDMenuDisabled" min="0" max="100" />
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="showLCDMenuDisabled" onclick="toggleTextInput('showLCDMenuDisabled', 'lcdMenuDisabledContainer')">
+                <label for="showLCDMenuDisabled">افزودن توضیحات</label>
+            </div>
+            <div class="form-group" id="lcdMenuDisabledContainer" style="display:none;">
+                <input type="text" class="form-control" asp-for="Command.IsLCDMenuDisableddescription">
+                <span asp-validation-for="Command.IsLCDMenuDisableddescription" class="error"></span>
+            </div>
         </div>
-        <div class="form-group">
-            <input type="checkbox" id="showLCDMenuDisableddescription" onclick="toggleTextInput('showLCDMenuDisableddescription', 'LCDMenuDisableddescriptionContainer')">
-            <label for="showLCDMenuDisableddescription">افزودن توضیحات</label>
-        </div>
-        <div class="form-group" id="LCDMenuDisableddescriptionContainer" style="display:none;">
-            <input type="text" class="form-control" asp-for="Command.IsLCDMenuDisableddescription">
-            <span asp-validation-for="Command.IsLCDMenuDisableddescription" class="error"></span>
+
+        <!-- Reset Button Disabled Status -->
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Command.IsResetButtonDisabled">نمره وضعیت غیرفعال شدن دکمه ریست</label>
+                <input type="range" asp-for="Command.IsResetButtonDisabled" min="0" max="100" />
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="showResetButtonDisabled" onclick="toggleTextInput('showResetButtonDisabled', 'resetButtonDisabledContainer')">
+                <label for="showResetButtonDisabled">افزودن توضیحات</label>
+            </div>
+            <div class="form-group" id="resetButtonDisabledContainer" style="display:none;">
+                <input type="text" class="form-control" asp-for="Command.IsResetButtonDisableddescription">
+                <span asp-validation-for="Command.IsResetButtonDisableddescription" class="error"></span>
+            </div>
         </div>
     </div>
 
-    <div class="col-md-6">
-        <div class="form-group">
-            <input type="checkbox" asp-for="Command.IsResetButtonDisabled" id="IsResetButtonDisabled" />
-            <label asp-for="Command.IsResetButtonDisabled">غیرفعال کردن دکمه تنظیم مجدد</label>
-            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+    <br>
 
+    <div class="row">
+        <!-- Unused Interfaces Disabled Status -->
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Command.AreUnusedInterfacesDisabled">نمره وضعیت غیرفعال شدن اینترفیس‌های بلااستفاده</label>
+                <input type="range" asp-for="Command.AreUnusedInterfacesDisabled" min="0" max="100" />
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="showUnusedInterfacesDisabled" onclick="toggleTextInput('showUnusedInterfacesDisabled', 'unusedInterfacesDisabledContainer')">
+                <label for="showUnusedInterfacesDisabled">افزودن توضیحات</label>
+            </div>
+            <div class="form-group" id="unusedInterfacesDisabledContainer" style="display:none;">
+                <input type="text" class="form-control" asp-for="Command.AreUnusedInterfacesDisableddescription">
+                <span asp-validation-for="Command.AreUnusedInterfacesDisableddescription" class="error"></span>
+            </div>
         </div>
-        <div class="form-group">
-            <input type="checkbox" id="showResetButtonDisableddescription" onclick="toggleTextInput('showResetButtonDisableddescription', 'ResetButtonDisableddescriptionContainer')">
-            <label for="showResetButtonDisableddescription">افزودن توضیحات</label>
-        </div>
-        <div class="form-group" id="ResetButtonDisableddescriptionContainer" style="display:none;">
-            <input type="text" class="form-control" asp-for="Command.IsResetButtonDisableddescription">
-            <span asp-validation-for="Command.IsResetButtonDisableddescription" class="error"></span>
-        </div>
-    </div>
 
-    <div class="col-md-6">
-        <div class="form-group">
-            <input type="checkbox" asp-for="Command.AreUnusedInterfacesDisabled" id="AreUnusedInterfacesDisabled" />
-            <label asp-for="Command.AreUnusedInterfacesDisabled">غیرفعال کردن رابط‌های استفاده نشده</label>
-            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
+        <!-- Config File Encrypted Status -->
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Command.IsConfigFileEncrypted">نمره وضعیت رمزگذاری فایل پیکربندی</label>
+                <input type="range" asp-for="Command.IsConfigFileEncrypted" min="0" max="100" />
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="showConfigFileEncrypted" onclick="toggleTextInput('showConfigFileEncrypted', 'configFileEncryptedContainer')">
+                <label for="showConfigFileEncrypted">افزودن توضیحات</label>
+            </div>
+            <div class="form-group" id="configFileEncryptedContainer" style="display:none;">
+                <input type="text" class="form-control" asp-for="Command.IsConfigFileEncrypteddescription">
+                <span asp-validation-for="Command.IsConfigFileEncrypteddescription" class="error"></span>
+            </div>
+        </div>
+        </div>
 
-        </div>
-        <div class="form-group">
-            <input type="checkbox" id="showUnusedInterfacesDisableddescription" onclick="toggleTextInput('showUnusedInterfacesDisableddescription', 'UnusedInterfacesDisableddescriptionContainer')">
-            <label for="showUnusedInterfacesDisableddescription">افزودن توضیحات</label>
-        </div>
-        <div class="form-group" id="UnusedInterfacesDisableddescriptionContainer" style="display:none;">
-            <input type="text" class="form-control" asp-for="Command.AreUnusedInterfacesDisableddescription">
-            <span asp-validation-for="Command.AreUnusedInterfacesDisableddescription" class="error"></span>
-        </div>
-    </div>
 
-    <div class="col-md-6">
-        <div class="form-group">
-            <input type="checkbox" asp-for="Command.IsConfigFileEncrypted" id="IsConfigFileEncrypted" />
-            <label asp-for="Command.IsConfigFileEncrypted">رمزگذاری فایل پیکربندی</label>
-            <span class="bi bi-lightbulb lightbulb" title="پورت کنسول باید به طور ایمن تنظیم شود تا از دسترسی غیرمجاز جلوگیری شود"></span>
-
-        </div>
-        <div class="form-group">
-            <input type="checkbox" id="showConfigFileEncrypteddescription" onclick="toggleTextInput('showConfigFileEncrypteddescription', 'ConfigFileEncrypteddescriptionContainer')">
-            <label for="showConfigFileEncrypteddescription">افزودن توضیحات</label>
-        </div>
-        <div class="form-group" id="ConfigFileEncrypteddescriptionContainer" style="display:none;">
-            <input type="text" class="form-control" asp-for="Command.IsConfigFileEncrypteddescription">
-            <span asp-validation-for="Command.IsConfigFileEncrypteddescription" class="error"></span>
-        </div>
-    </div>
-    <div class="modal-footer">        
+<div class="modal-footer">        
         <input type="hidden" asp-for="Command.ChecklistId" />
 
         <button type="submit" class="btn btn-info waves-effect waves-light">بعدی</button>
     </div>
-    </form>
+</form>
+
 <script>
     function toggleTextInput(checkboxId, containerId) {
         var checkBox = document.getElementById(checkboxId);
@@ -227,9 +237,4 @@
             textInputContainer.style.display = "none";
         }
     }
-
-    // function toggleHelp(id) {
-    //     var helpIcon = document.getElementById(id);
-    //     helpIcon.style.display = helpIcon.style.display === "none" ? "inline-block" : "none";
-    // }
 </script>

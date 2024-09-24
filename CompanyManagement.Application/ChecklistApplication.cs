@@ -85,6 +85,10 @@ namespace CompanyManagement.Application
                 command.AreUnusedInterfacesDisabled, command.AreUnusedInterfacesDisableddescription,
                 command.IsConfigFileEncrypted, command.IsConfigFileEncrypteddescription);
 
+            checkListJuniperHardenin.AverageJunipercal(command);
+
+
+            
             _junuperhardeningRepository.Create(checkListJuniperHardenin);
             _checklistRepository.SaveChanges();
             var currentId = checkListJuniperHardenin.Id; // گرفتن شناسه رکورد جدید

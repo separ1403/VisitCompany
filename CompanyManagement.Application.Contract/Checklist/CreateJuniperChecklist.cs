@@ -8,29 +8,29 @@ namespace CompanyManagement.Application.Contract.Checklist
 {
     public  class CreateJuniperChecklist
     {
-        public bool IsConsolePortSecured { get; set; }
+        public long IsConsolePortSecured { get; set; }
         public string IsConsolePortSecureddescription { get; set; }
-        public bool IsRootLoginDisabled { get; set; }
+        public long IsRootLoginDisabled { get; set; }
         public string IsRootLoginDisableddescription { get; set; }
-        public bool IsPasswordRecoveryDisabled { get; set; }
+        public long IsPasswordRecoveryDisabled { get; set; }
         public string IsPasswordRecoveryDisableddescription { get; set; }
-        public bool IsAuxiliaryPortDisabled { get; set; }
+        public long IsAuxiliaryPortDisabled { get; set; }
         public string IsAuxiliaryPortDisableddescription { get; set; }
-        public bool IsRootLoginAuxDisabled { get; set; }
+        public long IsRootLoginAuxDisabled { get; set; }
         public string IsRootLoginAuxDisableddescription { get; set; }
-        public bool IsDiagnosticPortDisabled { get; set; }
+        public long IsDiagnosticPortDisabled { get; set; }
         public string IsDiagnosticPortDisableddescription { get; set; }
-        public bool IsUSBPortDisabled { get; set; }
+        public long IsUSBPortDisabled { get; set; }
         public string IsUSBPortDisableddescription { get; set; }
-        public bool IsCraftInterfaceDisabled { get; set; }
+        public long IsCraftInterfaceDisabled { get; set; }
         public string IsCraftInterfaceDisableddescription { get; set; }
-        public bool IsLCDMenuDisabled { get; set; }
+        public long IsLCDMenuDisabled { get; set; }
         public string IsLCDMenuDisableddescription { get; set; }
-        public bool IsResetButtonDisabled { get; set; }
+        public long IsResetButtonDisabled { get; set; }
         public string IsResetButtonDisableddescription { get; set; }
-        public bool AreUnusedInterfacesDisabled { get; set; }
+        public long AreUnusedInterfacesDisabled { get; set; }
         public string AreUnusedInterfacesDisableddescription { get; set; }
-        public bool IsConfigFileEncrypted { get; set; }
+        public long IsConfigFileEncrypted { get; set; }
         public string IsConfigFileEncrypteddescription { get; set; }
         public long ChecklistId { get; set; } 
 

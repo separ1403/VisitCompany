@@ -280,7 +280,7 @@ namespace CompanyManagement.Domain.ChecklistAgg
                       command.IsKeepAliveTimeManaged + command.IsIRDPOptionDisabled +
                       command.IsDataRetransmissionManaged;
 
-            var Avg = ((double)Sum / 18);
+            var Avg = ((double)Sum / 38);
             var Average = Math.Round(Avg, 2);
             AverageWin2019 = Average;
         }
