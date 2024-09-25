@@ -25,21 +25,17 @@ namespace CompanyManagement.Application.Contract.Checklist
 
         public long AccountCount { get;  set; } // har nafar che tedad checklist anjam dade
 
-        public double AverageGeneral { get; set; }
+        public double? AverageGeneral { get; set; }
 
-        public double AverageProfessional { get; set; }
+        public double? AverageHpedl380 { get; set; }
+        public double? AverageWin2019 { get; set; }
+        public double? AverageJunipper { get; set; }
+
+        public double AverageProfessional { get; set; }// dar vaghe in ro bayad hazf mikardam am
+        // chon safeheye chart mirikht be ham inkaro nakardam
 
         public DateTime CalDate { get; set; }
-        //junior
-        public string IsRootLoginDisableddescription { get; set; }
-        public string IsPasswordRecoveryDisableddescription { get; set; }
-        public string IsAuxiliaryPortDisableddescription { get; set; }
-        public string IsRootLoginAuxDisableddescription { get; set; }
-        public string IsDiagnosticPortDisableddescription { get; set; }
-        public string IsUSBPortDisableddescription { get; set; }
-        public string IsCraftInterfaceDisableddescription { get; set; }
-        public string IsLCDMenuDisableddescription { get; set; }
-        public string IsResetButtonDisableddescription { get; set; }
+        
 
     }
 }

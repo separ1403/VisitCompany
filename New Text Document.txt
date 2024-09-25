@@ -27,15 +27,17 @@ form sazi auotomatic baraye checklist ha
 to safehe haye checklist ha mesle junior , ...  confirm ha maeni ha va jomalat ro dorost konam
 cheragh checklist zadam vali tozih daghigh mikhad ( hp ok shod )
 company/create  chandta eirad dare
-average nomarat sayere checklist ha
-name safeheye junior to juniper
+....average nomarat sayere checklist ha
+...name safeheye junior to juniper
 .....username pereneli bashad
 ...har user list sherkat haee ke behesh dade shode ro bebine
 https://localhost:7268/checklist/create   name ozve hazer ghabeliyate addd dashte bashad  
 joda kardane cheklist omomy  va entekhaby bodane select checklist prof ya general
-nomre dehi chelist haye takhasosi
+...nomre dehi chelist haye takhasosi
 ....deactive kardane user
 ....OTP
 ....domain dar profile company
-avg nomreh dar har checklist
-namayesh avg ha dar index checklist va kholase kardane search
+... avg nomreh dar har checklist
+...namayesh avg ha dar index checklist va kholase kardane search
+chart
+label be checklist ha

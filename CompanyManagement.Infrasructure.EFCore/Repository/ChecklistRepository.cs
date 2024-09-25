@@ -241,35 +241,30 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
     public List<ChecklistViewModel> Serach(ChecklistSearchModel searchModel)
         {
             var query = _companyContext.Checklists
-                .Include(x => x.Company)
-                .Include(x => x.Accounts)
-                .Include (x=>x.JuniperHardening)
-                .Include(x=>x.JuniperHardening)
-                .Select(x => new ChecklistViewModel
-                {
-                    Id = x.Id,
-                    Title = x.Title,
-                    NamePeopleCo = x.NamePeopleCo,
-                    RspponsePeopleCo = x.RspponsePeopleCo,
-                    PhonePeopleCo = x.PhonePeopleCo,
-                    CountEmployees = x.CountEmployees,
-                    CountFolowers = x.CountFolowers,
-                    Company = x.Company.Brand,
-                    CompanyId = x.CompanyId,
-                    AccountId = x.AccountIds,
-                    Accounts = MappAccounts(x.Accounts),
-                    AverageGeneral = x.AverageGeneral,
-                    IsRootLoginDisableddescription =x.JuniperHardening.IsRootLoginDisableddescription ,
-                    IsPasswordRecoveryDisableddescription=x.JuniperHardening.IsPasswordRecoveryDisableddescription,
-                    IsAuxiliaryPortDisableddescription=x.JuniperHardening.IsAuxiliaryPortDisableddescription,
-                    IsRootLoginAuxDisableddescription=x.JuniperHardening.IsRootLoginAuxDisableddescription,
-                    IsDiagnosticPortDisableddescription =x.JuniperHardening.IsDiagnosticPortDisableddescription,
-                    IsUSBPortDisableddescription =x.JuniperHardening.IsUSBPortDisableddescription,
-                    IsCraftInterfaceDisableddescription =x.JuniperHardening.IsCraftInterfaceDisableddescription,
-                    IsLCDMenuDisableddescription =x.JuniperHardening.IsLCDMenuDisableddescription,
-                    IsResetButtonDisableddescription =x.JuniperHardening.IsResetButtonDisableddescription
-                    //   AverageProfessional = x.AverageProfessional,
-                });
+              .Include(x => x.Company)
+              .Include(x => x.Accounts)
+              .Include(x => x.JuniperHardening)
+              .Include(x => x.Win2019)
+              .Include(x => x.HPEDL380)
+              .Select(x => new ChecklistViewModel
+              {
+                  Id = x.Id,
+                  Title = x.Title,
+                  NamePeopleCo = x.NamePeopleCo,
+                  RspponsePeopleCo = x.RspponsePeopleCo,
+                  PhonePeopleCo = x.PhonePeopleCo,
+                  CountEmployees = x.CountEmployees,
+                  CountFolowers = x.CountFolowers,
+                  Company = x.Company.Brand,
+                  CompanyId = x.CompanyId,
+                  AccountId = x.AccountIds,
+                  Accounts = MappAccounts(x.Accounts),
+                  AverageGeneral = x.AverageGeneral,
+                  AverageHpedl380 = x.HPEDL380.AverageHpedl380,
+                  AverageJunipper = x.JuniperHardening.AverageJuniper,
+                  AverageWin2019 = x.Win2019.AverageWin2019,
+
+              });
 
             if (!string.IsNullOrWhiteSpace(searchModel.Name))
             {
