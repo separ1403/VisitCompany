@@ -26,6 +26,8 @@ namespace CompanyManagement.Infrasructure.EFCore
         public DbSet<JuniperHardening> JuniperHardenings { get; set; }
         public DbSet<Win2019> Win2019s { get; set; }
 
+        public DbSet<GeneralChecklist> GeneralChecklists { get; set; }
+
         public CompanyContext(DbContextOptions<CompanyContext> options) : base(options)
         {
 

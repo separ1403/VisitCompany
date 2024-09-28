@@ -32,7 +32,9 @@ namespace CompanyManagement.Application.Contract.Checklist
         public string AreUnusedInterfacesDisableddescription { get; set; }
         public long IsConfigFileEncrypted { get; set; }
         public string IsConfigFileEncrypteddescription { get; set; }
-        public long ChecklistId { get; set; } 
+        public long ChecklistId { get; set; }
+        public bool IsCompleted { get; set; } // فیلدی که وضعیت ارزیابی را ذخیره می‌کند
+
 
     }
 }

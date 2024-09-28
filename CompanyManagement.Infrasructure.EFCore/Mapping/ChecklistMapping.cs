@@ -24,6 +24,7 @@ namespace CompanyManagement.Infrasructure.EFCore.Mapping
             builder.HasMany(x => x.Accounts).WithMany(x => x.Checklists);
             builder.HasOne(x => x.HPEDL380).WithOne(x => x.Checklist);
             builder.HasOne(x => x.JuniperHardening).WithOne(x => x.Checklist);
+            builder.HasOne(x => x.GeneralChecklist).WithOne(x => x.Checklist);
 
 
             //builder.HasMany(e => e.Accounts)

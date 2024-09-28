@@ -9,19 +9,25 @@ using CompanyManagement.Application.Contract.Checklist;
 
 namespace CompanyManagement.Infrasructure.EFCore.Repository
 {
-    public class Win2019Repository : RepositoryBase<long, Win2019>, IWin2019Repository
+  
+
+    public class GeneralChecklistRepository : RepositoryBase<long, GeneralChecklist>, IGeneralChecklistRepository
     {
-        
-        public Win2019Repository(CompanyContext companyContext) : base(companyContext)
+
+
+
+        public GeneralChecklistRepository(CompanyContext companyContext) : base(companyContext)
         {
             _companyContext = companyContext;
         }
         private readonly CompanyContext _companyContext;
 
 
-        public EditWin2019Checklist Getdetails(long id)
+      
+
+        public EditGeneralChecklist Getdetails(long id)
         {
-            return _companyContext.Win2019s.Select(x => new EditWin2019Checklist()
+            return _companyContext.GeneralChecklists.Select(x => new EditGeneralChecklist()
             {
                 Id = x.Id,
                 // AccountIds = x.AccountId,

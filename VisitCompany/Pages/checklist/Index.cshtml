@@ -105,6 +105,8 @@
                                     <th>معدل نمرات ارزیابی Juniper</th>
                                     <th>معدل نمرات ارزیابی Win2019</th>
                                     <th>معدل نمرات ارزیابی Hpedl380</th>
+                                    <th>عملیات</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -124,6 +126,11 @@
                                         <td>@item.AverageJunipper</td>
                                         <td>@item.AverageWin2019</td>
                                         <td>@item.AverageHpedl380</td>
+                                        <td>
+                                            <a class="btn btn-warning btn-custome waves-effect waves-light pull-right m-rl-5">
+                                                <a class="fa fa-edit" asp-page="./ChecklistMenu" asp-route-id="@item.Id">ویرایش</a>
+                                            </a>
+                                        </td>
                                     </tr>
                                 }
                             </tbody>
@@ -134,8 +141,9 @@
         </div>
     </div>
 </div>
-<a href="/checklist/Confirm?isBackFromIndex=true">بازگشت به صفحه‌ی چک لیست ها </a>  @* برای اینکه کاربر وقتی دوباره رفت صفحه ی کانفرم محتوای صفحه رو دوباره نبینه
- *@
+
+ 
+<a href="/checklist/ChecklistMenu">بازگشت به صفحه‌ی چک لیست ها </a>
 
 @section Scripts {
     <script src="~/adminTheme/assets/datatables/jquery.dataTables.min.js"></script>

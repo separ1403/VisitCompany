@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace CompanyManagement.Application.Contract.Checklist
 {
-    public class EditChecklist :CreateChecklist
+    public class EditGeneralChecklist:CreateGeneralChecklist
     {
         public long Id { get; set; }
-
     }
 }

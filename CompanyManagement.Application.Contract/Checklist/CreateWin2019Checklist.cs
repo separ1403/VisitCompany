@@ -123,5 +123,7 @@ namespace CompanyManagement.Application.Contract.Checklist
         public string IsDataRetransmissionManagedDescription { get; set; }
 
         public long ChecklistId { get; set; }
+        public bool IsCompleted { get; set; } // فیلدی که وضعیت ارزیابی را ذخیره می‌کند
+
     }
 }

@@ -14,11 +14,9 @@ namespace VisitCompany.Pages.checklist
     [Authorize]
     public class CreateModel : PageModel
     {
-        [TempData]
-        public string ErrorMessageame { get; set; }
+        [TempData] public string ErrorMessageame { get; set; }
 
-        [TempData]
-        public string SuccessMessageame { get; set; }
+        [TempData] public string SuccessMessageame { get; set; }
 
         public List<SelectListItem> AccountList = new List<SelectListItem>();
 
@@ -27,7 +25,8 @@ namespace VisitCompany.Pages.checklist
         private readonly IChecklistApplication _checklistApplication;
         private readonly ICompanyApplication _companyApplication;
 
-        public CreateModel(IAccountApplication accountApplication, IChecklistApplication checklistApplication, ICompanyApplication companyApplication)
+        public CreateModel(IAccountApplication accountApplication, IChecklistApplication checklistApplication,
+            ICompanyApplication companyApplication)
         {
             _accountApplication = accountApplication;
             _checklistApplication = checklistApplication;
@@ -35,38 +34,76 @@ namespace VisitCompany.Pages.checklist
         }
 
 
-      //  public ChecklistViewModel ChecklistViewModel { get; set; }
-
+        //  public ChecklistViewModel ChecklistViewModel { get; set; }
+        [BindProperty]
         public CreateChecklist Command { get; set; }
-        
+
         public void OnGet()
         {
             var accounts = _accountApplication.GetAccounts();
-            AccountList = accounts.Select(accounts => new SelectListItem(accounts.Fullname, accounts.Id.ToString())).ToList();
+            AccountList = accounts.Select(accounts => new SelectListItem(accounts.Fullname, accounts.Id.ToString()))
+                .ToList();
 
             Companies = new SelectList(_companyApplication.GetCompeniesWithUsername(), "Id", "Brand");
         }
 
-       public IActionResult OnPostCreate(CreateChecklist command)
+        public IActionResult OnPostCreate(CreateChecklist command)
         {
-           var operationResult = _checklistApplication.Create(command);
+            var operationResult = _checklistApplication.Create(command);
 
 
-           if (operationResult.IsSucceeded)
-           {
-               SuccessMessageame = operationResult.Message;
-               var getid = operationResult.EntityId; // گرفتن شناسه رکورد جدید از نتیجه عملیات
-               return RedirectToPage("./CreateGeneralCheck", new { id = getid });
+            if (operationResult.IsSucceeded)
+            {
+                SuccessMessageame = operationResult.Message;
+               // TempData["CommandId"] = operationResult.EntityId.ToString(); // تبدیل long به string برای ذخیره در TempData
+
+                var getid = operationResult.EntityId; // گرفتن شناسه رکورد جدید از نتیجه عملیات
+                return RedirectToPage("./ChecklistMenu", new { id = getid });
             }
 
-           else
-           {
-               ErrorMessageame = operationResult.Message;
-               return Page();
+            else
+            {
+                ErrorMessageame = operationResult.Message;
+                return Page();
             }
-               
+
         }
-        
+
+
+
+        //public IActionResult OnPostSwitch(string action)
+        //{
+        //    if (TempData["CommandId"] == null)
+        //    {
+        //        ErrorMessageame = "Command Id is not set.";
+        //        return Page();
+        //    }
+
+        //    long commandId = long.Parse(TempData["CommandId"].ToString());
+
+
+
+        //    // تبدیل دوباره مقدار TempData به long
+
+
+        //    switch (action)
+        //    {
+        //        case "CreateJunior":
+        //            return RedirectToPage("./CreateJunior", new { id = commandId });
+        //        case "CreateHPEDL380":
+        //            return RedirectToPage("./CreateHPEDL380", new { id = commandId });
+        //        case "CreateGeneralCheck":
+        //            return RedirectToPage("./CreateGeneralCheck", new { id = commandId });
+
+        //        case "Createwin2019":
+        //            return RedirectToPage("./Createwin2019", new { id = commandId });
+
+        //        default:
+        //            return Page();
+        //    }
+        //}
+
+
     }
 
 }

@@ -12,6 +12,6 @@ namespace CompanyManagement.Domain.ChecklistAgg
 {
     public  interface IjuniperhardeningRepository : IRepository<long, JuniperHardening>
     {
-       
+        EditJuniperChecklist Getdetails(long id);
     }
 }

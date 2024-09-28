@@ -88,6 +88,7 @@ namespace CompanyManagement.Domain.ChecklistAgg
             IsIRDPOptionDisabledDescription = isIrdpOptionDisabledDescription;
             IsDataRetransmissionManaged = isDataRetransmissionManaged;
             IsDataRetransmissionManagedDescription = isDataRetransmissionManagedDescription;
+            IsCompleted = true;
         }
 
         public Win2019()
@@ -212,6 +213,8 @@ namespace CompanyManagement.Domain.ChecklistAgg
         public double AverageWin2019 { get; private set; }
 
         public Checklist Checklist { get; set; }
+        public bool IsCompleted { get; set; } // فیلدی که وضعیت ارزیابی را ذخیره می‌کند
+
 
 
         public void AverageWin2019cal(CreateWin2019Checklist command)

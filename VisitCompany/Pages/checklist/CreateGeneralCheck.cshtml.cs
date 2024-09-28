@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using CompanyManagement.Application.Contract.Checklist;
 using System.Text.Json;
+using CompanyManagement.Domain.ChecklistAgg;
 using Microsoft.AspNetCore.Authorization;
 
 namespace VisitCompany.Pages.checklist
@@ -9,30 +10,49 @@ namespace VisitCompany.Pages.checklist
     [Authorize]
     public class CreateGeneralCheckModel : PageModel
     {
-        private readonly IChecklistApplication _checklistApplication;
-
         public CreateGeneralCheckModel(IChecklistApplication checklistApplication)
         {
             _checklistApplication = checklistApplication;
         }
 
-        [BindProperty]
-        public EditChecklist Command { get; set; }
 
-        public void OnGet(long id)
+        private readonly IChecklistApplication _checklistApplication;
+
+
+
+        [TempData] public string ErrorMessageame { get; set; }
+
+
+        [BindProperty]
+        public CreateGeneralChecklist Command { get; set; }
+        public IActionResult OnGet(long id)
         {
-            Command = _checklistApplication.Getdetails(id);
+            // دریافت شناسه چک لیست و بررسی وضعیت آن
+            var checklistId = _checklistApplication.Getdetails(id);
+
+            if (checklistId == null)
+            {
+                ErrorMessageame = "چک لیست با این شناسه یافت نشد.";
+                return RedirectToPage("Index"); // کاربر را به صفحه Index بازمی‌گرداند
+            }
+
+
+            var generalChecklist = _checklistApplication.GetdetailsGeneralChecklist(checklistId.GeneralchecklistId);
+
+            // اگر ارزیابی قبلاً تکمیل شده باشد
+            if (generalChecklist != null && generalChecklist.IsCompleted)
+            {
+                ErrorMessageame = "این ارزیابی قبلاً تکمیل شده است و نمی‌توانید مجدداً آن را انجام دهید.";
+                return RedirectToPage("Index"); // به صفحه Index بازمی‌گردد
+            }
+
+            Command = new CreateGeneralChecklist { ChecklistId = id }; //{ ChecklistId = id } yani command.checklistId = id;
+            return Page(); // ادامه صفحه برای کاربر
         }
 
-        public IActionResult OnPost(EditChecklist command)
+        public IActionResult OnPost(CreateGeneralChecklist command)
         {
-            HttpContext.Session.SetString("ChecklistId", command.Id.ToString()); // ذخیره کردن id در Session  ---> inja set karde
-
-            TempData["EditChecklist"] = JsonSerializer.Serialize(command); // ذخیره کردن اطلاعات در TempData  // baraye in bod ke nakhastam to url dadahe dide beshan 
-            // hala in dada ha ro to page confirm estefade konam
-
-            return RedirectToPage("./Confirm");
-
+            return RedirectToPage("./Confirm", command);
         }
     }
 }

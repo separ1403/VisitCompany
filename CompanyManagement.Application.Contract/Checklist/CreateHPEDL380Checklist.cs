@@ -57,6 +57,8 @@ namespace CompanyManagement.Application.Contract.Checklist
         public double AverageHpedl380 { get;  set; }
 
         public long ChecklistId { get; set; }
+        public bool IsCompleted { get; set; } // فیلدی که وضعیت ارزیابی را ذخیره می‌کند
+
 
     }
 }

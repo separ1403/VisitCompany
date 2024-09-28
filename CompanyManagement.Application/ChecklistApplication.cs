@@ -7,21 +7,23 @@ namespace CompanyManagement.Application
 {
     public class ChecklistApplication : IChecklistApplication
     {
-        public ChecklistApplication(IChecklistRepository checklistRepository, IjuniperhardeningRepository junuperhardeningRepository, IHPEDL380Repository hPedl380Repository, IWin2019Repository win2019Repository)
-        {
-            _checklistRepository = checklistRepository;
-            _junuperhardeningRepository = junuperhardeningRepository;
-            _hPEDL380Repository = hPedl380Repository;
-            _win2019Repository = win2019Repository;
-        }
+     
 
 
         private readonly IChecklistRepository _checklistRepository;
         private readonly IjuniperhardeningRepository _junuperhardeningRepository;
         private readonly IHPEDL380Repository _hPEDL380Repository;
         private readonly IWin2019Repository _win2019Repository;
-       
+        private readonly IGeneralChecklistRepository _generalChecklistRepository;
 
+        public ChecklistApplication(IChecklistRepository checklistRepository, IjuniperhardeningRepository junuperhardeningRepository, IHPEDL380Repository hPEDL380Repository, IWin2019Repository win2019Repository, IGeneralChecklistRepository generalChecklistRepository)
+        {
+            _checklistRepository=checklistRepository;
+            _junuperhardeningRepository=junuperhardeningRepository;
+            _hPEDL380Repository=hPEDL380Repository;
+            _win2019Repository=win2019Repository;
+            _generalChecklistRepository=generalChecklistRepository;
+        }
 
         public OperationResult  Create(CreateChecklist command)
         {
@@ -34,32 +36,7 @@ namespace CompanyManagement.Application
             }
             var checkList = new Checklist(
      command.Title, command.Description, command.NamePeopleCo, command.RspponsePeopleCo, command.PhonePeopleCo,
-     command.CountEmployees, command.CountFolowers, command.CompanyId, command.AccountIds, command.OrganizationalSecurityStatusScore,
-     command.OrganizationalSecurityStatus, command.SecurityManagerStatusScore, command.SecurityManagerStatus,
-     command.SecurityPolicyStatusScore, command.SecurityPolicyStatus, command.SecurityChangeApprovalStatusScore,
-     command.SecurityChangeApprovalStatus, command.ThirdPartyServiceStatusScore, command.ThirdPartyServiceStatus,
-     command.PersonnelHiringStatusScore, command.PersonnelHiringStatus, command.AccessManagementStatusScore,
-     command.AccessManagementStatus, command.ComplianceManagementStatusScore, command.ComplianceManagementStatus,
-     command.IncidentResponseStatusScore, command.IncidentResponseStatus, command.NetworkLogicalPhysicalMapStatusScore,
-     command.NetworkLogicalPhysicalMapStatus, command.PhysicalAssetsInventoryStatusScore, command.PhysicalAssetsInventoryStatus,
-     command.ZoningStatusScore, command.ZoningStatus, command.AccessControlStatusScore, command.AccessControlStatus,
-     command.DevelopmentTestOperationsControlStatusScore, command.DevelopmentTestOperationsControlStatus,
-     command.RemoteAdministrativeAccessStatusScore, command.RemoteAdministrativeAccessStatus, command.SecureCodingConfigStatusScore,
-     command.SecureCodingConfigStatus, command.SecurityEvaluationStatusScore, command.SecurityEvaluationStatus,
-     command.BackupStatusScore, command.BackupStatus, command.SessionExpirationStatusScore, command.SessionExpirationStatus,
-     command.AntivirusStatusScore, command.AntivirusStatus, command.UpdateStatusScore, command.UpdateStatus,
-     command.WirelessNetworkStatusScore, command.WirelessNetworkStatus, command.PasswordPolicyStatusScore,
-     command.PasswordPolicyStatus, command.DataDestructionStatusScore, command.DataDestructionStatus,
-     command.LogManagementStatusScore, command.LogManagementStatus, command.ClockSynchronizationStatusScore,
-     command.ClockSynchronizationStatus, command.AuthenticationStatusScore, command.AuthenticationStatus,
-     command.BusinessIdentificationStatusScore, command.BusinessIdentificationStatus, command.EntryExitManagementStatusScore,
-     command.EntryExitManagementStatus, command.CCTVStatusScore, command.CCTVStatus, command.HostingServiceStatusScore,
-     command.HostingServiceStatus, command.PrivacyPolicyStatusScore, command.PrivacyPolicyStatus,
-     command.PublicComplaintsStatusScore, command.PublicComplaintsStatus, command.CyberAttackResponseStatusScore,
-     command.CyberAttackResponseStatus, command.DataSalesTradeStatusScore, command.DataSalesTradeStatus,
-     command.FinancialPaymentPlatformStatusScore, command.FinancialPaymentPlatformStatus, command.UserDataCollectionStatusScore,
-     command.UserDataCollectionStatus, command.EmployeeTrainingStatusScore, command.EmployeeTrainingStatus
-     /*,command.JuniperHardeningID, command.HPEDL380ID*/);
+     command.CountEmployees, command.CountFolowers, command.CompanyId, command.AccountIds /*,command.JuniperHardeningID, command.HPEDL380ID*/);
 
             _checklistRepository.Create(checkList);
             _checklistRepository.SaveChanges();
@@ -84,6 +61,7 @@ namespace CompanyManagement.Application
                 command.IsResetButtonDisabled, command.IsResetButtonDisableddescription,
                 command.AreUnusedInterfacesDisabled, command.AreUnusedInterfacesDisableddescription,
                 command.IsConfigFileEncrypted, command.IsConfigFileEncrypteddescription);
+            
 
             checkListJuniperHardenin.AverageJunipercal(command);
 
@@ -236,52 +214,52 @@ namespace CompanyManagement.Application
             return operation;
         }
 
-        public OperationResult Edit(EditChecklist command, string sourcePage)
-        {
-            var operation = new OperationResult();
-            var checklist = _checklistRepository.Get(command.Id);
+        //public OperationResult Edit(EditGeneralChecklist command, string sourcePage)
+        //{
+        //    var operation = new OperationResult();
+        //    var checklist = _checklistRepository.Get(command.Id);
 
-            if (checklist == null)
-            {
-                operation.Failed(ApplicationMessages.RecordNotFound);
-                return operation;
-            }
-            if (sourcePage == "Confirm") // baraye inke az kodom safhe request amade
-            {
-                command.AverageGeneral = _checklistRepository.AverageGeneralcal(command);
+        //    if (checklist == null)
+        //    {
+        //        operation.Failed(ApplicationMessages.RecordNotFound);
+        //        return operation;
+        //    }
+        //    if (sourcePage == "Confirm") // baraye inke az kodom safhe request amade
+        //    {
+        //        command.AverageGeneral = _checklistRepository.AverageGeneralcal(command);
 
-            }
+        //    }
 
-            //if (sourcePage == "Create2") // baraye inke az kodom safhe request amade
-            //{
-            //    command.AverageProfesional = _checklistRepository.AverageProffcal(command);
-            //}
+        //    //if (sourcePage == "Create2") // baraye inke az kodom safhe request amade
+        //    //{
+        //    //    command.AverageProfesional = _checklistRepository.AverageProffcal(command);
+        //    //}
 
 
-            checklist.Edit(command.OrganizationalSecurityStatusScore,
-                command.OrganizationalSecurityStatus, command.SecurityManagerStatusScore, command.SecurityManagerStatus,command.SecurityPolicyStatusScore,
-                command.SecurityPolicyStatus, command.SecurityChangeApprovalStatusScore,
-                command.SecurityChangeApprovalStatus, command.ThirdPartyServiceStatusScore, command.ThirdPartyServiceStatus, command.PersonnelHiringStatusScore,
-                command.PersonnelHiringStatus, command.AccessManagementStatusScore, command.AccessManagementStatus, command.ComplianceManagementStatusScore,
-                command.ComplianceManagementStatus, command.IncidentResponseStatusScore, command.IncidentResponseStatus, command.NetworkLogicalPhysicalMapStatusScore,
-                command.NetworkLogicalPhysicalMapStatus, command.PhysicalAssetsInventoryStatusScore, command.PhysicalAssetsInventoryStatus, command.ZoningStatusScore,
-                command.ZoningStatus, command.AccessControlStatusScore, command.AccessControlStatus, command.DevelopmentTestOperationsControlStatusScore,
-                command.DevelopmentTestOperationsControlStatus, command.RemoteAdministrativeAccessStatusScore, command.RemoteAdministrativeAccessStatus,
-                command.SecureCodingConfigStatusScore, command.SecureCodingConfigStatus, command.SecurityEvaluationStatusScore, command.SecurityEvaluationStatus,
-                command.BackupStatusScore, command.BackupStatus, command.SessionExpirationStatusScore, command.SessionExpirationStatus, command.AntivirusStatusScore,
-                command.AntivirusStatus, command.UpdateStatusScore, command.UpdateStatus, command.WirelessNetworkStatusScore, command.WirelessNetworkStatus,
-                command.PasswordPolicyStatusScore, command.PasswordPolicyStatus, command.DataDestructionStatusScore, command.DataDestructionStatus,
-                command.LogManagementStatusScore, command.LogManagementStatus, command.ClockSynchronizationStatusScore, command.ClockSynchronizationStatus,
-                command.AuthenticationStatusScore, command.AuthenticationStatus, command.BusinessIdentificationStatusScore, command.BusinessIdentificationStatus,
-                command.EntryExitManagementStatusScore, command.EntryExitManagementStatus, command.CCTVStatusScore, command.CCTVStatus, command.HostingServiceStatusScore,
-                command.HostingServiceStatus, command.PrivacyPolicyStatusScore, command.PrivacyPolicyStatus, command.PublicComplaintsStatusScore,
-                command.PublicComplaintsStatus, command.CyberAttackResponseStatusScore, command.CyberAttackResponseStatus, command.DataSalesTradeStatusScore,
-                command.DataSalesTradeStatus, command.FinancialPaymentPlatformStatusScore, command.FinancialPaymentPlatformStatus, command.UserDataCollectionStatusScore,
-                command.UserDataCollectionStatus, command.EmployeeTrainingStatusScore, command.EmployeeTrainingStatus,command.AverageGeneral);
-            _checklistRepository.SaveChanges();
-            operation.Succeeded(ApplicationMessages.SuccessMessage);
-            return operation;
-        }
+        //    checklist.Edit(command.OrganizationalSecurityStatusScore,
+        //        command.OrganizationalSecurityStatus, command.SecurityManagerStatusScore, command.SecurityManagerStatus,command.SecurityPolicyStatusScore,
+        //        command.SecurityPolicyStatus, command.SecurityChangeApprovalStatusScore,
+        //        command.SecurityChangeApprovalStatus, command.ThirdPartyServiceStatusScore, command.ThirdPartyServiceStatus, command.PersonnelHiringStatusScore,
+        //        command.PersonnelHiringStatus, command.AccessManagementStatusScore, command.AccessManagementStatus, command.ComplianceManagementStatusScore,
+        //        command.ComplianceManagementStatus, command.IncidentResponseStatusScore, command.IncidentResponseStatus, command.NetworkLogicalPhysicalMapStatusScore,
+        //        command.NetworkLogicalPhysicalMapStatus, command.PhysicalAssetsInventoryStatusScore, command.PhysicalAssetsInventoryStatus, command.ZoningStatusScore,
+        //        command.ZoningStatus, command.AccessControlStatusScore, command.AccessControlStatus, command.DevelopmentTestOperationsControlStatusScore,
+        //        command.DevelopmentTestOperationsControlStatus, command.RemoteAdministrativeAccessStatusScore, command.RemoteAdministrativeAccessStatus,
+        //        command.SecureCodingConfigStatusScore, command.SecureCodingConfigStatus, command.SecurityEvaluationStatusScore, command.SecurityEvaluationStatus,
+        //        command.BackupStatusScore, command.BackupStatus, command.SessionExpirationStatusScore, command.SessionExpirationStatus, command.AntivirusStatusScore,
+        //        command.AntivirusStatus, command.UpdateStatusScore, command.UpdateStatus, command.WirelessNetworkStatusScore, command.WirelessNetworkStatus,
+        //        command.PasswordPolicyStatusScore, command.PasswordPolicyStatus, command.DataDestructionStatusScore, command.DataDestructionStatus,
+        //        command.LogManagementStatusScore, command.LogManagementStatus, command.ClockSynchronizationStatusScore, command.ClockSynchronizationStatus,
+        //        command.AuthenticationStatusScore, command.AuthenticationStatus, command.BusinessIdentificationStatusScore, command.BusinessIdentificationStatus,
+        //        command.EntryExitManagementStatusScore, command.EntryExitManagementStatus, command.CCTVStatusScore, command.CCTVStatus, command.HostingServiceStatusScore,
+        //        command.HostingServiceStatus, command.PrivacyPolicyStatusScore, command.PrivacyPolicyStatus, command.PublicComplaintsStatusScore,
+        //        command.PublicComplaintsStatus, command.CyberAttackResponseStatusScore, command.CyberAttackResponseStatus, command.DataSalesTradeStatusScore,
+        //        command.DataSalesTradeStatus, command.FinancialPaymentPlatformStatusScore, command.FinancialPaymentPlatformStatus, command.UserDataCollectionStatusScore,
+        //        command.UserDataCollectionStatus, command.EmployeeTrainingStatusScore, command.EmployeeTrainingStatus,command.AverageGeneral);
+        //    _checklistRepository.SaveChanges();
+        //    operation.Succeeded(ApplicationMessages.SuccessMessage);
+        //    return operation;
+        //}
 
 
 
@@ -289,10 +267,12 @@ namespace CompanyManagement.Application
         {
             return _checklistRepository.GetChecklists();
         }
-        public EditChecklist Getdetails(long id)
-        {
-            return _checklistRepository.Getdetails(id);
-        }
+        //public EditGeneralChecklist Getdetails(long id)
+        //{
+        //    return _generalChecklistRepository.Getdetails(id);
+        //}
+
+       
 
         public List<ChecklistViewModel> Serach(ChecklistSearchModel searchModel)
         {
@@ -326,6 +306,81 @@ namespace CompanyManagement.Application
             return _checklistRepository.SerachByAccount(accountId);
         }
 
-       
+        public OperationResult CreateGeneralChecklist(CreateGeneralChecklist command)
+        {
+            var operation = new OperationResult();
+            var generalChecklist = new GeneralChecklist(command.OrganizationalSecurityStatusScore,
+                command.OrganizationalSecurityStatus, command.SecurityManagerStatusScore, command.SecurityManagerStatus, command.SecurityPolicyStatusScore,
+                command.SecurityPolicyStatus, command.SecurityChangeApprovalStatusScore,
+                command.SecurityChangeApprovalStatus, command.ThirdPartyServiceStatusScore, command.ThirdPartyServiceStatus, command.PersonnelHiringStatusScore,
+                command.PersonnelHiringStatus, command.AccessManagementStatusScore, command.AccessManagementStatus, command.ComplianceManagementStatusScore,
+                command.ComplianceManagementStatus, command.IncidentResponseStatusScore, command.IncidentResponseStatus, command.NetworkLogicalPhysicalMapStatusScore,
+                command.NetworkLogicalPhysicalMapStatus, command.PhysicalAssetsInventoryStatusScore, command.PhysicalAssetsInventoryStatus, command.ZoningStatusScore,
+                command.ZoningStatus, command.AccessControlStatusScore, command.AccessControlStatus, command.DevelopmentTestOperationsControlStatusScore,
+                command.DevelopmentTestOperationsControlStatus, command.RemoteAdministrativeAccessStatusScore, command.RemoteAdministrativeAccessStatus,
+                command.SecureCodingConfigStatusScore, command.SecureCodingConfigStatus, command.SecurityEvaluationStatusScore, command.SecurityEvaluationStatus,
+                command.BackupStatusScore, command.BackupStatus, command.SessionExpirationStatusScore, command.SessionExpirationStatus, command.AntivirusStatusScore,
+                command.AntivirusStatus, command.UpdateStatusScore, command.UpdateStatus, command.WirelessNetworkStatusScore, command.WirelessNetworkStatus,
+                command.PasswordPolicyStatusScore, command.PasswordPolicyStatus, command.DataDestructionStatusScore, command.DataDestructionStatus,
+                command.LogManagementStatusScore, command.LogManagementStatus, command.ClockSynchronizationStatusScore, command.ClockSynchronizationStatus,
+                command.AuthenticationStatusScore, command.AuthenticationStatus, command.BusinessIdentificationStatusScore, command.BusinessIdentificationStatus,
+                command.EntryExitManagementStatusScore, command.EntryExitManagementStatus, command.CCTVStatusScore, command.CCTVStatus, command.HostingServiceStatusScore,
+                command.HostingServiceStatus, command.PrivacyPolicyStatusScore, command.PrivacyPolicyStatus, command.PublicComplaintsStatusScore,
+                command.PublicComplaintsStatus, command.CyberAttackResponseStatusScore, command.CyberAttackResponseStatus, command.DataSalesTradeStatusScore,
+                command.DataSalesTradeStatus, command.FinancialPaymentPlatformStatusScore, command.FinancialPaymentPlatformStatus, command.UserDataCollectionStatusScore,
+                command.UserDataCollectionStatus, command.EmployeeTrainingStatusScore, command.EmployeeTrainingStatus);
+
+
+            generalChecklist.AverageGeneralcal(command);
+            _generalChecklistRepository.Create(generalChecklist);
+            _checklistRepository.SaveChanges();
+            var currentId = generalChecklist.Id; // گرفتن شناسه رکورد جدید
+
+            return operation.Succeeded("عملیات با موفقیت انجام گردید", currentId);
+        }
+
+        public OperationResult EditGeneralChecklist(long id, long chekid)
+        {
+            var operation = new OperationResult();
+            var checklist = _checklistRepository.Get(chekid);
+
+            if (checklist == null)
+            {
+                operation.Failed(ApplicationMessages.RecordNotFound);
+                return operation;
+            }
+
+
+
+            checklist.EditGeneralChecklist(id);
+            _checklistRepository.SaveChanges();
+            operation.Succeeded(ApplicationMessages.SuccessMessage);
+            return operation;
+        }
+
+        public EditGeneralChecklist GetdetailsGeneralChecklist(long id)
+        {
+                return _generalChecklistRepository.Getdetails(id);
+        }
+
+        public EditHPEDL380Checklist GetdetailsHPEDL380Checklist(long id)
+        {
+                return _hPEDL380Repository.Getdetails(id);
+        }
+
+        public EditJuniperChecklist GetdetailsJuniperChecklist(long id)
+        {
+            return _junuperhardeningRepository.Getdetails(id);
+        }
+
+        public EditWin2019Checklist GetdetailsWin2019Checklist(long id)
+        {
+            return _win2019Repository.Getdetails(id);
+        }
+
+        public EditChecklist Getdetails(long id)
+        {
+            return _checklistRepository.Getdetails(id);
+        }
     }
 }

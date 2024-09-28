@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace CompanyManagement.Domain.ChecklistAgg
 {
-
-    public interface IWin2019Repository : IRepository<long, Win2019>
+    public  interface  IGeneralChecklistRepository : IRepository<long, GeneralChecklist>
     {
-        EditWin2019Checklist Getdetails(long id);
+        EditGeneralChecklist Getdetails(long id);
 
     }
+    
 }

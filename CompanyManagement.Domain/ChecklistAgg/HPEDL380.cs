@@ -43,7 +43,8 @@ namespace CompanyManagement.Domain.ChecklistAgg
             IsDiskAndRaidConfigDeletionDisableddescription = isDiskAndRaidConfigDeletionDisableddescription;
             AreProvisioningSettingsDeleted = areProvisioningSettingsDeleted;
             AreProvisioningSettingsDeleteddescription = areProvisioningSettingsDeleteddescription;
-         //   AverageHpedl380 = averageHpedl380;
+            //   AverageHpedl380 = averageHpedl380;
+            IsCompleted = true;
 
         }
 
@@ -102,6 +103,8 @@ namespace CompanyManagement.Domain.ChecklistAgg
 
       public double AverageHpedl380 { get; private set; }
         public Checklist Checklist { get; set; }
+        public bool IsCompleted { get; set; } // فیلدی که وضعیت ارزیابی را ذخیره می‌کند
+
 
 
         public void AverageHPEDLcal(CreateHPEDL380Checklist command)

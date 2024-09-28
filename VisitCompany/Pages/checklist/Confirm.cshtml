@@ -7,7 +7,7 @@
 }
 
 <h2>تایید اطلاعات</h2>
-@if (!Model.IsBackFromIndex)
+
 
     {
     <form method="post">
@@ -413,20 +413,13 @@
         <br />
     </form>
 }
-else
-{
-    <h3>لطفا چک لیست مورد نظر را انتخاب کنید</h3>
-}
+
 <br/>
 
- <form method="post">
-        
-    <br/>
-    <button type="submit" name="action" value="CreateJunior">   ارزیابی جونیپر</button>
-    <button type="submit" name="action" value="CreateHPEDL380">   ارزیابی HP</button>
-    <button type="submit" name="action" value="Fortigate">   ارزیابی Fortigate</button>
-    <button type="submit" name="action" value="Createwin2019">   ارزیابی Win2019 </button>
-</form>
+
+<!-- دکمه بازگشت -->
+<a href="/checklist/create" class="btn btn-secondary">بازگشت به صقحه ی انتخاب چک لیست ها</a>
+
     
 
    

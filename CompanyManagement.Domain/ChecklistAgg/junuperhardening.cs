@@ -40,6 +40,7 @@ namespace CompanyManagement.Domain.ChecklistAgg
             AreUnusedInterfacesDisableddescription = areUnusedInterfacesDisableddescription;
             IsConfigFileEncrypted = isConfigFileEncrypted;
             IsConfigFileEncrypteddescription = isConfigFileEncrypteddescription;
+            IsCompleted = true;
         }
 
 
@@ -69,6 +70,8 @@ namespace CompanyManagement.Domain.ChecklistAgg
         public string? IsConfigFileEncrypteddescription { get; set; }
         public double AverageJuniper { get; private set; }
         public Checklist Checklist { get; set; }
+        public bool IsCompleted { get; set; } // فیلدی که وضعیت ارزیابی را ذخیره می‌کند
+
 
         public void AverageJunipercal(CreateJuniperChecklist command)
         {

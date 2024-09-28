@@ -12,7 +12,7 @@ namespace CompanyManagement.Domain.ChecklistAgg
 {
     public  interface IChecklistRepository : IRepository<long, Checklist>
     {
-        EditChecklist Getdetails(long id);
+      //  EditGeneralChecklist Getdetails(long id);
         List<ChecklistViewModel> Serach(ChecklistSearchModel searchModel);
         List<ChecklistViewModel> GetChecklists();
         List<ChecklistViewModel> SerachByAccount(long accountId);
@@ -27,9 +27,9 @@ namespace CompanyManagement.Domain.ChecklistAgg
         List<ChecklistViewModel> GetAverageGeneralByCompany(ChecklistSearchModel searchModel);
         List<ChecklistViewModel> GetAverageGeneralByCompareCompany(ChecklistSearchModel2 searchModel);
 
+        EditChecklist Getdetails(long id);
 
         List<ChecklistViewModel> GetAverageProffesionalByCompany(ChecklistSearchModel searchModel);
-        public double AverageGeneralcal(EditChecklist command); 
-       // public double AverageProffcal(EditChecklist command);
+     
     }
 }

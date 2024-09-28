@@ -59,6 +59,8 @@ namespace CompanyManagement.Infrastructure.Configuration
 
             services.AddTransient<IWin2019Repository, Win2019Repository>();
 
+            services.AddTransient<IGeneralChecklistRepository, GeneralChecklistRepository>();
+
 
             services.AddDbContext<CompanyContext>(x => x.UseSqlServer(connectionString));
         }

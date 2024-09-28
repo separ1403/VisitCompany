@@ -29,25 +29,30 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
 
         private readonly CompanyContext _companyContext;
 
+
+
+
        
-
-
 
         public EditChecklist Getdetails(long id)
         {
             return _companyContext.Checklists.Select(x => new EditChecklist()
             {
                 Id = x.Id,
-               // AccountIds = x.AccountId,
-                CompanyId = x.CompanyId ?? 0,
-                Description = x.Description,
-                
-                
+                // AccountIds = x.AccountId,
+                GeneralchecklistId = x.GeneralChecklistID ?? 0 ,// بررسی null بودن GeneralChecklistID
+                Win2019Id = x.Win2019ID ?? 0,
+                HpedlId = x.HPEDL380ID ?? 0,
+                JuniperId = x.JuniperHardeningID ?? 0,
+
+
+
+
 
             }).FirstOrDefault(x => x.Id == id);
         }
 
-    
+
 
 
         private static string MappAccounts(List<Account>? accounts)
@@ -108,9 +113,11 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
             bool conditionExecuted = false;
             // داده‌ها را بازیابی کرده و کوئری را مادی‌سازی کنید
             var checklists = _companyContext.Checklists
-                .Include(x => x.Company).Select(x => new ChecklistViewModel
+                .Include(x => x.Company)
+                .Include(x => x.GeneralChecklist)
+                .Select(x => new ChecklistViewModel
                 {
-                    AverageGeneral = x.AverageGeneral,
+                    AverageGeneral = x.GeneralChecklist.AverageGeneral,
                     Company = x.Company.Brand,
                     CompanyId = x.CompanyId,
                     Id = x.Id,
@@ -189,15 +196,15 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
             return checklists;
         }
 
-        public double AverageGeneralcal(EditChecklist command)
-        {
+        //public double AverageGeneralcal(EditGeneralChecklist command)
+        //{
             
-                var checklist = Get(command.Id);
+        //        var checklist = Get(command.Id);
                 
-                var hh = checklist.AverageGeneralcal(command);
-                return hh;
+        //        var hh = checklist.AverageGeneralcal(command);
+        //        return hh;
             
-        }
+        //}
 
         public List<ChecklistViewModel> SerachByAccount(long accountId)
         {
@@ -246,6 +253,7 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
               .Include(x => x.JuniperHardening)
               .Include(x => x.Win2019)
               .Include(x => x.HPEDL380)
+              .Include(x=>x.GeneralChecklist)
               .Select(x => new ChecklistViewModel
               {
                   Id = x.Id,
@@ -259,10 +267,11 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                   CompanyId = x.CompanyId,
                   AccountId = x.AccountIds,
                   Accounts = MappAccounts(x.Accounts),
-                  AverageGeneral = x.AverageGeneral,
+                  AverageGeneral = x.GeneralChecklist.AverageGeneral,
                   AverageHpedl380 = x.HPEDL380.AverageHpedl380,
                   AverageJunipper = x.JuniperHardening.AverageJuniper,
                   AverageWin2019 = x.Win2019.AverageWin2019,
+                 
 
               });
 
@@ -289,9 +298,10 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
             bool conditionExecuted = false;
             // داده‌ها را بازیابی کرده و کوئری را مادی‌سازی کنید
             var checklists = _companyContext.Checklists
-                .Include(x => x.Company).Select(x => new ChecklistViewModel
+                .Include(x => x.Company)
+                .Select(x => new ChecklistViewModel
                 {
-                    AverageGeneral = x.AverageGeneral,
+                    AverageGeneral = x.GeneralChecklist.AverageGeneral,
                     Company = x.Company.Brand,
                     CompanyId = x.CompanyId,
                     Id = x.Id,
@@ -335,7 +345,7 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
             return checklists;
         }
 
-        //public double AverageProffcal(EditChecklist command)
+        //public double AverageProffcal(EditGeneralChecklist command)
         //{
         //    var checklist = Get(command.Id);
         //    return checklist.AverageProffcal(command);

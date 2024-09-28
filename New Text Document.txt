@@ -41,3 +41,5 @@ joda kardane cheklist omomy  va entekhaby bodane select checklist prof ya genera
 ...namayesh avg ha dar index checklist va kholase kardane search
 chart
 label be checklist ha
+tozih koli babte har checklist
+agar ye checklisti anjam shode doge ezaje dobare nade 
