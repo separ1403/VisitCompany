@@ -32,7 +32,7 @@ company/create  chandta eirad dare
 .....username pereneli bashad
 ...har user list sherkat haee ke behesh dade shode ro bebine
 https://localhost:7268/checklist/create   name ozve hazer ghabeliyate addd dashte bashad  
-joda kardane cheklist omomy  va entekhaby bodane select checklist prof ya general
+...joda kardane cheklist omomy  va entekhaby bodane select checklist prof ya general
 ...nomre dehi chelist haye takhasosi
 ....deactive kardane user
 ....OTP
@@ -42,4 +42,4 @@ joda kardane cheklist omomy  va entekhaby bodane select checklist prof ya genera
 chart
 label be checklist ha
 tozih koli babte har checklist
-agar ye checklisti anjam shode doge ezaje dobare nade 
+.....agar ye checklisti anjam shode doge ezaje dobare nade 

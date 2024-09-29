@@ -14,7 +14,7 @@ namespace CompanyManagement.Domain.ChecklistAgg
         {
 
         }
-        public JuniperHardening(long isConsolePortSecured, string isConsolePortSecureddescription, long isRootLoginDisabled, string isRootLoginDisableddescription, long isPasswordRecoveryDisabled, string isPasswordRecoveryDisableddescription, long isAuxiliaryPortDisabled, string isAuxiliaryPortDisableddescription, long isRootLoginAuxDisabled, string isRootLoginAuxDisableddescription, long isDiagnosticPortDisabled, string isDiagnosticPortDisableddescription, long isUsbPortDisabled, string isUsbPortDisableddescription, long isCraftInterfaceDisabled, string isCraftInterfaceDisableddescription, long isLcdMenuDisabled, string isLcdMenuDisableddescription, long isResetButtonDisabled, string isResetButtonDisableddescription, long areUnusedInterfacesDisabled, string areUnusedInterfacesDisableddescription, long isConfigFileEncrypted, string isConfigFileEncrypteddescription)
+        public JuniperHardening(long isConsolePortSecured, string isConsolePortSecureddescription, long isRootLoginDisabled, string isRootLoginDisableddescription, long isPasswordRecoveryDisabled, string isPasswordRecoveryDisableddescription, long isAuxiliaryPortDisabled, string isAuxiliaryPortDisableddescription, long isRootLoginAuxDisabled, string isRootLoginAuxDisableddescription, long isDiagnosticPortDisabled, string isDiagnosticPortDisableddescription, long isUsbPortDisabled, string isUsbPortDisableddescription, long isCraftInterfaceDisabled, string isCraftInterfaceDisableddescription, long isLcdMenuDisabled, string isLcdMenuDisableddescription, long isResetButtonDisabled, string isResetButtonDisableddescription, long areUnusedInterfacesDisabled, string areUnusedInterfacesDisableddescription, long isConfigFileEncrypted, string isConfigFileEncrypteddescription, string finallDescription)
         {
             IsConsolePortSecured = isConsolePortSecured;
             IsConsolePortSecureddescription = isConsolePortSecureddescription;
@@ -41,6 +41,8 @@ namespace CompanyManagement.Domain.ChecklistAgg
             IsConfigFileEncrypted = isConfigFileEncrypted;
             IsConfigFileEncrypteddescription = isConfigFileEncrypteddescription;
             IsCompleted = true;
+            FinallDescription = finallDescription;
+
         }
 
 
@@ -71,6 +73,8 @@ namespace CompanyManagement.Domain.ChecklistAgg
         public double AverageJuniper { get; private set; }
         public Checklist Checklist { get; set; }
         public bool IsCompleted { get; set; } // فیلدی که وضعیت ارزیابی را ذخیره می‌کند
+        public string? FinallDescription { get; private set; }
+
 
 
         public void AverageJunipercal(CreateJuniperChecklist command)

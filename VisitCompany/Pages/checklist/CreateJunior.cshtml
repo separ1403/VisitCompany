@@ -217,10 +217,18 @@
                 <span asp-validation-for="Command.IsConfigFileEncrypteddescription" class="error"></span>
             </div>
         </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="Command.FinallDescription" class="control-label">توضیحات</label>
+            <input type="text" class="form-control" asp-for="Command.FinallDescription">
+            <span  class="error"></span>
         </div>
+    </div>
 
 
-<div class="modal-footer">        
+    <div class="modal-footer">        
         <input type="hidden" asp-for="Command.ChecklistId" />
 
         <button type="submit" class="btn btn-info waves-effect waves-light">بعدی</button>

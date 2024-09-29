@@ -31,6 +31,10 @@ namespace CompanyManagement.Application.Contract.Checklist
         public double? AverageWin2019 { get; set; }
         public double? AverageJunipper { get; set; }
        
+        public string? FinallDescriptionGeneral { get; set; }
+        public string? FinallDescriptionHpedl380 { get; set; }
+        public string? FinallDescriptionWin2019 { get; set; }
+        public string? FinallDescriptionJunipper { get; set; }
 
         public double AverageProfessional { get; set; }// dar vaghe in ro bayad hazf mikardam am
         // chon safeheye chart mirikht be ham inkaro nakardam

@@ -420,20 +420,25 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-6">
-            <label>آیا ارسال مجدد داده‌ها مدیریت شده است؟</label>
-            <span>@Model.Command.IsDataRetransmissionManaged</span>
-        </div>
-        <div class="col-md-6">
-            <label>توضیحات ارسال مجدد داده‌ها:</label>
-            <span>@Model.Command.IsDataRetransmissionManagedDescription</span>
-        </div>
+<div class="row">
+    <div class="col-md-6">
+        <label>آیا ارسال مجدد داده‌ها مدیریت شده است؟</label>
+        <span>@Model.Command.IsDataRetransmissionManaged</span>
     </div>
+    <div class="col-md-6">
+        <label>توضیحات ارسال مجدد داده‌ها:</label>
+        <span>@Model.Command.IsDataRetransmissionManagedDescription</span>
+    </div>
+</div>
+
+<div class="col-md-12">
+    <label>توضیح کلی ‌:</label>
+    <span>@Model.Command.FinallDescription</span>
+</div>
 
     
   
-    <H3>در صورت تایید امکان ویرایش وجود ندارد :</H3>
+<H3>در صورت تایید امکان ویرایش وجود ندارد :</H3>
     <button type="submit"> ذخیره و ادامه ارزیابی</button>
 </form>
 

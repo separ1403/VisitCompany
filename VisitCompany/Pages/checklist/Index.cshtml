@@ -102,9 +102,14 @@
                                     <th>نام شرکت</th>
                                     <th>نام ارزیاب</th>
                                     <th>معدل نمرات ارزیابی عمومی</th>
+                                    <th>توضیحات کلی  ارزیابی عمومی</th>
                                     <th>معدل نمرات ارزیابی Juniper</th>
+                                    <th>توضیحات کلی  ارزیابی Juniper</th>
                                     <th>معدل نمرات ارزیابی Win2019</th>
+                                    <th>توضیحات کلی  ارزیابی Win2019</th>
                                     <th>معدل نمرات ارزیابی Hpedl380</th>
+                                    <th>توضیحات کلی  ارزیابی Hpedl380</th>
+
                                     <th>عملیات</th>
 
                                 </tr>
@@ -123,9 +128,15 @@
                                         <td>@item.Company</td>
                                         <td>@item.Accounts</td>
                                         <td>@item.AverageGeneral</td>
+                                        <td>@item.FinallDescriptionGeneral</td>
                                         <td>@item.AverageJunipper</td>
+                                        <td>@item.FinallDescriptionJunipper</td>
                                         <td>@item.AverageWin2019</td>
+                                        <td>@item.FinallDescriptionWin2019</td>
                                         <td>@item.AverageHpedl380</td>
+                                        <td>@item.FinallDescriptionHpedl380</td>
+
+                                     
                                         <td>
                                             <a class="btn btn-warning btn-custome waves-effect waves-light pull-right m-rl-5">
                                                 <a class="fa fa-edit" asp-page="./ChecklistMenu" asp-route-id="@item.Id">ویرایش</a>

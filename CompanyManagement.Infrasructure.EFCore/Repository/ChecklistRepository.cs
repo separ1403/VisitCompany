@@ -271,6 +271,11 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                   AverageHpedl380 = x.HPEDL380.AverageHpedl380,
                   AverageJunipper = x.JuniperHardening.AverageJuniper,
                   AverageWin2019 = x.Win2019.AverageWin2019,
+                  FinallDescriptionGeneral = x.GeneralChecklist.FinallDescription,
+                  FinallDescriptionHpedl380 = x.HPEDL380.FinallDescription,
+                  FinallDescriptionJunipper = x.JuniperHardening.FinallDescription,
+                  FinallDescriptionWin2019 = x.Win2019.FinallDescription,
+                  
                  
 
               });

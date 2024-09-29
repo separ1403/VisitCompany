@@ -124,6 +124,7 @@ namespace CompanyManagement.Application.Contract.Checklist
 
         public long ChecklistId { get; set; }
         public bool IsCompleted { get; set; } // فیلدی که وضعیت ارزیابی را ذخیره می‌کند
+        public string FinallDescription { get; set; }
 
     }
 }

@@ -60,7 +60,7 @@ namespace CompanyManagement.Application
                 command.IsLCDMenuDisabled, command.IsLCDMenuDisableddescription,
                 command.IsResetButtonDisabled, command.IsResetButtonDisableddescription,
                 command.AreUnusedInterfacesDisabled, command.AreUnusedInterfacesDisableddescription,
-                command.IsConfigFileEncrypted, command.IsConfigFileEncrypteddescription);
+                command.IsConfigFileEncrypted, command.IsConfigFileEncrypteddescription,command.FinallDescription );
             
 
             checkListJuniperHardenin.AverageJunipercal(command);
@@ -98,7 +98,7 @@ namespace CompanyManagement.Application
                 ,command.AreInitialILOSettingsConfigured,
                 command.AreInitialILOSettingsConfigureddescription,command.IsDiskAndRaidConfigDeletionDisabled
                 ,command.IsDiskAndRaidConfigDeletionDisableddescription,command.AreProvisioningSettingsDeleted,
-                command.AreProvisioningSettingsDeleteddescription);
+                command.AreProvisioningSettingsDeleteddescription, command.FinallDescription);
 
 
             checkListHPEDL380.AverageHPEDLcal(command);
@@ -142,7 +142,7 @@ namespace CompanyManagement.Application
            command.IsSharedPrinterDriverInstallationManaged, command.IsSharedPrinterDriverInstallationManagedDescription, command.IsPrinterSpoolerServiceManaged,
            command.IsPrinterSpoolerServiceManagedDescription, command.IsOnlineTipManaged, command.IsOnlineTipManagedDescription,
            command.IsKeepAliveTimeManaged, command.IsKeepAliveTimeManagedDescription, command.IsIRDPOptionDisabled,
-           command.IsIRDPOptionDisabledDescription, command.IsDataRetransmissionManaged, command.IsDataRetransmissionManagedDescription
+           command.IsIRDPOptionDisabledDescription, command.IsDataRetransmissionManaged, command.IsDataRetransmissionManagedDescription, command.FinallDescription
           );
             checkListWin2019.AverageWin2019cal(command);
             _win2019Repository.Create(checkListWin2019);
@@ -328,7 +328,7 @@ namespace CompanyManagement.Application
                 command.HostingServiceStatus, command.PrivacyPolicyStatusScore, command.PrivacyPolicyStatus, command.PublicComplaintsStatusScore,
                 command.PublicComplaintsStatus, command.CyberAttackResponseStatusScore, command.CyberAttackResponseStatus, command.DataSalesTradeStatusScore,
                 command.DataSalesTradeStatus, command.FinancialPaymentPlatformStatusScore, command.FinancialPaymentPlatformStatus, command.UserDataCollectionStatusScore,
-                command.UserDataCollectionStatus, command.EmployeeTrainingStatusScore, command.EmployeeTrainingStatus);
+                command.UserDataCollectionStatus, command.EmployeeTrainingStatusScore, command.EmployeeTrainingStatus, command.FinallDescription);
 
 
             generalChecklist.AverageGeneralcal(command);
