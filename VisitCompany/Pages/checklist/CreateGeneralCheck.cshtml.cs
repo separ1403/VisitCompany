@@ -20,7 +20,7 @@ namespace VisitCompany.Pages.checklist
 
 
 
-        [TempData] public string ErrorMessageame { get; set; }
+        [TempData] public string ErrorMessageameEd { get; set; }
 
 
         [BindProperty]
@@ -32,7 +32,7 @@ namespace VisitCompany.Pages.checklist
 
             if (checklistId == null)
             {
-                ErrorMessageame = "چک لیست با این شناسه یافت نشد.";
+                ErrorMessageameEd = "چک لیست با این شناسه یافت نشد.";
                 return RedirectToPage("Index"); // کاربر را به صفحه Index بازمی‌گرداند
             }
 
@@ -42,7 +42,7 @@ namespace VisitCompany.Pages.checklist
             // اگر ارزیابی قبلاً تکمیل شده باشد
             if (generalChecklist != null && generalChecklist.IsCompleted)
             {
-                ErrorMessageame = "این ارزیابی قبلاً تکمیل شده است و نمی‌توانید مجدداً آن را انجام دهید.";
+                ErrorMessageameEd = "این ارزیابی قبلاً تکمیل شده است و نمی‌توانید مجدداً آن را انجام دهید.";
                 return RedirectToPage("Index"); // به صفحه Index بازمی‌گردد
             }
 
