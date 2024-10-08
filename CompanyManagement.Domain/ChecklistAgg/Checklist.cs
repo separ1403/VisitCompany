@@ -8,15 +8,16 @@ namespace CompanyManagement.Domain.ChecklistAgg
     {
         public string? Title { get; private set; }
         public string? Description { get; private set; }
-        public string? NamePeopleCo { get; set; } 
-        public string? RspponsePeopleCo { get;private set; }
-        public string? PhonePeopleCo { get; private set; }
         public long? CountEmployees { get; private set; } 
         public long? CountFolowers { get; private set; }
         public long? CompanyId { get; private set; }
         public List<long>? AccountIds { get; private set; }
         public Company? Company { get; private set; }
         public List<Account>? Accounts { get; private set; }
+
+        public List<long>? PeopleIds { get; private set; }
+        public List<Person> People { get; private set; } = new List<Person>();
+
 
 
 
@@ -38,23 +39,19 @@ namespace CompanyManagement.Domain.ChecklistAgg
         public GeneralChecklist? GeneralChecklist { get; set; }
 
 
-        public Checklist(string title, string description, string namePeopleCo, string rspponsePeopleCo, string phonePeopleCo, long countEmployees, long countFolowers, long companyId,List<long> accountId)
+        public Checklist(string title, string description, List<Person> people, long countEmployees, long countFolowers, long companyId, List<long> accountIds)
         {
             Title = title;
             Description = description;
-            NamePeopleCo = namePeopleCo;
-            RspponsePeopleCo = rspponsePeopleCo;
-            PhonePeopleCo = phonePeopleCo;
+            People = people;  // تخصیص لیست اشخاص
             CountEmployees = countEmployees;
             CountFolowers = countFolowers;
             CompanyId = companyId;
-            AccountIds = accountId;
-           
+            AccountIds = accountIds;
+
             CreationDate = DateTime.Now;
-            //JuniperHardeningID = junuperhardeningID;
-            //HPEDL380ID = hPEDL380ID;
-           
         }
+
         public Checklist()
         {
             // Parameterless constructor

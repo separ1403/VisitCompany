@@ -29,14 +29,28 @@ namespace CompanyManagement.Application
         {
             var LastVisitTime = _checklistRepository.GetLastCompanyDate();//آخرین رکورد تاریخ رو بر میگردونه
             var operation = new OperationResult();
-            if (_checklistRepository.Exists(x => x.CompanyId == command.CompanyId && LastVisitTime <= DateTime.Now.AddMonths(-3)))
+            //if (_checklistRepository.Exists(x => x.CompanyId == command.CompanyId && LastVisitTime <= DateTime.Now.AddMonths(-3)))
+            //{
+            //    operation.Failed(ApplicationMessages.DuplicatedRecord);
+            //    return operation;
+            //}  اینجا میخواستم شرط بذارم که زودتر از سه ماه نتونه دوباره چک لیست انجام بده
+
+            var people = command.People.Select(p => new Person
             {
-                operation.Failed(ApplicationMessages.DuplicatedRecord);
-                return operation;
-            }
+                NamePeopleCo = p.NamePeopleCo,
+                RspponsePeopleCo = p.RspponsePeopleCo,
+                PhonePeopleCo = p.PhonePeopleCo
+            }).ToList();
+
             var checkList = new Checklist(
-     command.Title, command.Description, command.NamePeopleCo, command.RspponsePeopleCo, command.PhonePeopleCo,
-     command.CountEmployees, command.CountFolowers, command.CompanyId, command.AccountIds /*,command.JuniperHardeningID, command.HPEDL380ID*/);
+                command.Title,
+                command.Description,
+                people,
+                command.CountEmployees,
+                command.CountFolowers,
+                command.CompanyId,
+                command.AccountIds
+            );
 
             _checklistRepository.Create(checkList);
             _checklistRepository.SaveChanges();

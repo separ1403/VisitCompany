@@ -4,6 +4,7 @@ using CompanyManagement.Infrasructure.EFCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CompanyManagement.Infrasructure.EFCore.Migrations
 {
     [DbContext(typeof(CompanyContext))]
-    partial class CompanyContextModelSnapshot : ModelSnapshot
+    [Migration("20240930080425_checklist")]
+    partial class checklist
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -248,9 +251,6 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
 
                     b.Property<long?>("JuniperHardeningID")
                         .HasColumnType("bigint");
-
-                    b.Property<string>("PeopleIds")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
@@ -775,9 +775,6 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                     b.Property<long>("ChecklistId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("NamePeopleCo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -794,7 +791,7 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
 
                     b.HasIndex("ChecklistId");
 
-                    b.ToTable("Persons", (string)null);
+                    b.ToTable("Person");
                 });
 
             modelBuilder.Entity("CompanyManagement.Domain.ChecklistAgg.Win2019", b =>
@@ -1235,13 +1232,11 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
 
             modelBuilder.Entity("CompanyManagement.Domain.ChecklistAgg.Person", b =>
                 {
-                    b.HasOne("CompanyManagement.Domain.ChecklistAgg.Checklist", "Checklist")
+                    b.HasOne("CompanyManagement.Domain.ChecklistAgg.Checklist", null)
                         .WithMany("People")
                         .HasForeignKey("ChecklistId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Checklist");
                 });
 
             modelBuilder.Entity("AccountManagement.Domain.RoleAgg.Role", b =>

@@ -13,9 +13,7 @@ namespace CompanyManagement.Application.Contract.Checklist
         public long Id { get; set; } // شناسه چک‌لیست
         public string Title { get; set; }
         public string Description { get; set; }
-        public string NamePeopleCo { get; set; }
-        public string RspponsePeopleCo { get; set; }
-        public string PhonePeopleCo { get; set; }
+        public List<PersonDetail> People { get; set; } = new List<PersonDetail>();
         public long CountEmployees { get; set; }
         public long CountFolowers { get; set; }
         public DateTime CreationDate { get; set; }
@@ -25,13 +23,6 @@ namespace CompanyManagement.Application.Contract.Checklist
         public long Win2019Id { get; set; }
         public long JuniperId { get; set; }
         public long HpedlId { get; set; }
-
-
-
-        //professional
-
-        //public long JuniperHardeningID { get; private set; }
-        //public long HPEDL380ID { get; private set; }
 
     }
 }

@@ -185,7 +185,7 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
 
             if (searchModel.TopCompaniesCount.HasValue && searchModel.TopCompaniesCount > 0)
             {
-                checklists = checklists.OrderByDescending(x => x.AverageProfessional)
+                checklists = checklists.OrderByDescending(x => x.AverageGeneral)
                     .Take(searchModel.TopCompaniesCount.Value).ToList();
             }
             else
@@ -198,54 +198,59 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
 
         //public double AverageGeneralcal(EditGeneralChecklist command)
         //{
-            
+
         //        var checklist = Get(command.Id);
-                
+
         //        var hh = checklist.AverageGeneralcal(command);
         //        return hh;
-            
+
         //}
 
         public List<ChecklistViewModel> SerachByAccount(long accountId)
         {
             var query = _companyContext.Checklists
-               .Include(x => x.Company)
-               .Include(x => x.Accounts)
-               .Include(x => x.JuniperHardening)
-               .Include(x => x.JuniperHardening)
-               .Select(x => new ChecklistViewModel
-               {
-                   Id = x.Id,
-                   Title = x.Title,
-                   NamePeopleCo = x.NamePeopleCo,
-                   RspponsePeopleCo = x.RspponsePeopleCo,
-                   PhonePeopleCo = x.PhonePeopleCo,
-                   CreattionDate =x.CreationDate.ToFarsi(),
-                   Company = x.Company.Brand,
-                   CompanyId = x.CompanyId,
-                   AccountId = x.AccountIds,
-                   Accounts = MappAccounts(x.Accounts),
-                 
-               });
+                .Include(x => x.Company)
+                .Include(x => x.Accounts)
+                .Include(x => x.JuniperHardening)
+                .Include(x => x.Win2019)
+                .Include(x => x.HPEDL380)
+                .Include(x => x.GeneralChecklist)
+                .Include(x => x.People)  // اضافه کردن رابطه مربوط به افراد
+                .Select(x => new ChecklistViewModel
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    People = x.People.Select(p => new PersonViewModel
+                    {
+                        NamePeopleCo = p.NamePeopleCo,
+                        RspponsePeopleCo = p.RspponsePeopleCo,
+                        PhonePeopleCo = p.PhonePeopleCo
+                    }).ToList(),
+                    CreattionDate = x.CreationDate.ToFarsi(),
+                    Company = x.Company.Brand,
+                    CompanyId = x.CompanyId,
+                    AccountId = x.AccountIds,
+                    Accounts = MappAccounts(x.Accounts),
+                    AverageGeneral = x.GeneralChecklist.AverageGeneral,
+                    AverageHpedl380 = x.HPEDL380.AverageHpedl380,
+                    AverageJunipper = x.JuniperHardening.AverageJuniper,
+                    AverageWin2019 = x.Win2019.AverageWin2019,
+                    FinallDescriptionGeneral = x.GeneralChecklist.FinallDescription,
+                    FinallDescriptionHpedl380 = x.HPEDL380.FinallDescription,
+                    FinallDescriptionJunipper = x.JuniperHardening.FinallDescription,
+                    FinallDescriptionWin2019 = x.Win2019.FinallDescription,
+                });
 
-           
-
-            if ( accountId > 0)
+            if (accountId > 0)
             {
-                //  query = query.Where(x => x.AccountId.Contains(accountId)); ببینم کدوم دقیق تره
-                query = query.Where(x => x.AccountId.Any(id => id == accountId));
-
+                // استفاده از Any برای چک کردن وجود حساب کاربری در لیست
+                query = query.Where(x => x.AccountId != null && x.AccountId.Any(id => id == accountId));
             }
 
-
-
-            return query.OrderByDescending(x => x.Id).ToList(); throw new NotImplementedException();
+            return query.OrderByDescending(x => x.Id).ToList();
         }
 
-    
-
-
-    public List<ChecklistViewModel> Serach(ChecklistSearchModel searchModel)
+        public List<ChecklistViewModel> Serach(ChecklistSearchModel searchModel)
         {
             var query = _companyContext.Checklists
               .Include(x => x.Company)
@@ -253,14 +258,18 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
               .Include(x => x.JuniperHardening)
               .Include(x => x.Win2019)
               .Include(x => x.HPEDL380)
-              .Include(x=>x.GeneralChecklist)
+              .Include(x => x.GeneralChecklist)
+              .Include(x => x.People) // اضافه کردن People به کوئری برای بارگذاری افراد
               .Select(x => new ChecklistViewModel
               {
                   Id = x.Id,
                   Title = x.Title,
-                  NamePeopleCo = x.NamePeopleCo,
-                  RspponsePeopleCo = x.RspponsePeopleCo,
-                  PhonePeopleCo = x.PhonePeopleCo,
+                  People = x.People.Select(p => new PersonViewModel
+                  {
+                      NamePeopleCo = p.NamePeopleCo,
+                      RspponsePeopleCo = p.RspponsePeopleCo,
+                      PhonePeopleCo = p.PhonePeopleCo
+                  }).ToList(), // بارگذاری لیست افراد به صورت کامل
                   CountEmployees = x.CountEmployees,
                   CountFolowers = x.CountFolowers,
                   Company = x.Company.Brand,
@@ -275,11 +284,9 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                   FinallDescriptionHpedl380 = x.HPEDL380.FinallDescription,
                   FinallDescriptionJunipper = x.JuniperHardening.FinallDescription,
                   FinallDescriptionWin2019 = x.Win2019.FinallDescription,
-                  
-                 
-
               });
 
+            // فیلتر کردن داده‌ها
             if (!string.IsNullOrWhiteSpace(searchModel.Name))
             {
                 query = query.Where(x => x.Title.Contains(searchModel.Name));
@@ -295,7 +302,7 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                 query = query.Where(x => x.CompanyId == searchModel.CompanyId.Value);
             }
 
-            return query.OrderByDescending(x => x.Id).ToList(); throw new NotImplementedException();
+            return query.OrderByDescending(x => x.Id).ToList();
         }
 
         public List<ChecklistViewModel> GetAverageGeneralByCompareCompany(ChecklistSearchModel2 searchModel)

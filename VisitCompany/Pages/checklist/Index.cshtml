@@ -94,24 +94,20 @@
                                 <tr>
                                     <th>#</th>
                                     <th>عنوان</th>
-                                    <th>نام فرد مسئول حاضر در کسب و کار</th>
-                                    <th>مسئولیت فرد</th>
-                                    <th>شماره تماس</th>
+                                    <th>افراد حاضر در کسب و کار</th>
                                     <th>تعداد کارمندان شرکت</th>
                                     <th>تعداد مشتریان شرکت</th>
                                     <th>نام شرکت</th>
                                     <th>نام ارزیاب</th>
                                     <th>معدل نمرات ارزیابی عمومی</th>
-                                    <th>توضیحات کلی  ارزیابی عمومی</th>
+                                    <th>توضیحات کلی ارزیابی عمومی</th>
                                     <th>معدل نمرات ارزیابی Juniper</th>
-                                    <th>توضیحات کلی  ارزیابی Juniper</th>
+                                    <th>توضیحات کلی ارزیابی Juniper</th>
                                     <th>معدل نمرات ارزیابی Win2019</th>
-                                    <th>توضیحات کلی  ارزیابی Win2019</th>
+                                    <th>توضیحات کلی ارزیابی Win2019</th>
                                     <th>معدل نمرات ارزیابی Hpedl380</th>
-                                    <th>توضیحات کلی  ارزیابی Hpedl380</th>
-
+                                    <th>توضیحات کلی ارزیابی Hpedl380</th>
                                     <th>عملیات</th>
-
                                 </tr>
                             </thead>
                             <tbody>
@@ -120,9 +116,25 @@
                                     <tr>
                                         <td>@item.Id</td>
                                         <td>@item.Title</td>
-                                        <td>@item.NamePeopleCo</td>
-                                        <td>@item.RspponsePeopleCo</td>
-                                        <td>@item.PhonePeopleCo</td>
+                                        <td>
+                                            @if (item.People != null && item.People.Any())
+                                            {
+                                                <ul>
+                                                    @foreach (var person in item.People)
+                                                    {
+                                                        <li>
+                                                            <strong>نام:</strong> @person.NamePeopleCo<br />
+                                                            <strong>مسئولیت:</strong> @person.RspponsePeopleCo<br />
+                                                            <strong>شماره تماس:</strong> @person.PhonePeopleCo
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            }
+                                            else
+                                            {
+                                                <span>فردی موجود نیست</span>
+                                            }
+                                        </td>
                                         <td>@item.CountEmployees</td>
                                         <td>@item.CountFolowers</td>
                                         <td>@item.Company</td>
@@ -135,8 +147,6 @@
                                         <td>@item.FinallDescriptionWin2019</td>
                                         <td>@item.AverageHpedl380</td>
                                         <td>@item.FinallDescriptionHpedl380</td>
-
-                                     
                                         <td>
                                             <a class="btn btn-warning btn-custome waves-effect waves-light pull-right m-rl-5">
                                                 <a class="fa fa-edit" asp-page="./ChecklistMenu" asp-route-id="@item.Id">ویرایش</a>
@@ -152,6 +162,7 @@
         </div>
     </div>
 </div>
+
 
  
 <a href="/checklist/ChecklistMenu">بازگشت به صفحه‌ی چک لیست ها </a>

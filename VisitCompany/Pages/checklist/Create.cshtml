@@ -6,7 +6,6 @@
 }
 
 
-
 <div class="modal-header">
     
     <h4 class="modal-title">ثبت شرکت جدید</h4>
@@ -38,33 +37,31 @@
                     
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="Command.NamePeopleCo " class="control-label">نام عضو حاضر در کسب و کار  </label>
-                    <input type="text" class="form-control" asp-for="Command.NamePeopleCo ">
-                    <span asp-validation-for="Command.NamePeopleCo" class="error"></span>
-                   
-                </div>
-            </div> 
+           
         </div>
-        <div class="row">
-            <div class="col-md-6">
+        <div id="people-container">
+            <div class="person-form">
+                <h5>اطلاعات فرد جدید</h5>
                 <div class="form-group">
-                    <label asp-for="Command.RspponsePeopleCo " class="control-label">مسئولیت فرد  </label>
-                    <input type="text" class="form-control" asp-for="Command.RspponsePeopleCo ">
-                    <span asp-validation-for="Command.RspponsePeopleCo" class="error"></span>
-                   
+                    <label>نام عضو حاضر</label>
+                    <input type="text" name="Command.People[0].NamePeopleCo" class="form-control">
                 </div>
-            </div> 
-            <div class="col-md-6">
                 <div class="form-group">
-                    <label asp-for="Command.PhonePeopleCo " class="control-label">شماره تماس   </label>
-                    <input type="number" class="form-control" asp-for="Command.PhonePeopleCo ">
-                    <span asp-validation-for="Command.PhonePeopleCo" class="error"></span>
-                   
+                    <label>مسئولیت فرد</label>
+                    <input type="text" name="Command.People[0].RspponsePeopleCo" class="form-control">
                 </div>
-            </div> 
+                <div class="form-group">
+                    <label>شماره تماس</label>
+                    <input type="text" name="Command.People[0].PhonePeopleCo" class="form-control">
+                </div>
+            </div>
+            
         </div>
+
+        <button type="button" class="btn btn-success" id="add-person-btn">اضافه کردن فرد جدید</button>
+    </div>
+    
+
     <div class="row">
         <div class="col-md-6">
         <div class="form-group">
@@ -111,7 +108,8 @@
 
             </div>
         </div>
-    </div>
+   
+
    
      
     <div class="modal-footer">
@@ -121,32 +119,46 @@
     </div>
 </form>
 
-    <h3>لطفا چک لیست مورد نظر را انتخاب کنید</h3>
     
     <br/>
-@* 
-    <form method="post" asp-page-handler="Switch">
-        
-        <br/>
-        <button type="submit" name="action" value="CreateJunior">   ارزیابی جونیپر</button>
-        <button type="submit" name="action" value="CreateHPEDL380">   ارزیابی HP</button>
-        <button type="submit" name="action" value="Createwin2019">   ارزیابی Win2019 </button>
-    <button type="submit" name="action" value="CreateGeneralCheck">   ارزیابی عمومی </button>
-    </form> *@
-
-
-
 
     @section Scripts {
         <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
+            // تنظیمات select2 برای انتخاب شرکت‌ها
             $('#CategoryIdSelect').select2({
                 placeholder: "انتخاب دسته بندی",
                 allowClear: true,
                 language: "fa"
             });
+
+            let personIndex = 1; // شروع ایندکس از 1 زیرا 0 برای فرم موجود است
+
+            $('#add-person-btn').on('click', function () {
+                const container = document.getElementById("people-container");
+
+                const newPersonForm = `
+                    <div class="person-form mt-3">
+                        <h5>اطلاعات فرد جدید</h5>
+                        <div class="form-group">
+                            <label>نام عضو حاضر</label>
+                            <input type="text" name="Command.People[${personIndex}].NamePeopleCo" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>مسئولیت فرد</label>
+                            <input type="text" name="Command.People[${personIndex}].RspponsePeopleCo" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>شماره تماس</label>
+                            <input type="text" name="Command.People[${personIndex}].PhonePeopleCo" class="form-control">
+                        </div>
+                    </div>
+                `;
+
+                container.insertAdjacentHTML('beforeend', newPersonForm);
+                personIndex++; // افزایش ایندکس برای فرم‌های بعدی
             });
-
-
+        });
     </script>
     }
+

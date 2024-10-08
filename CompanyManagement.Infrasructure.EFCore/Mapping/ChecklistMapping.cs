@@ -25,15 +25,10 @@ namespace CompanyManagement.Infrasructure.EFCore.Mapping
             builder.HasOne(x => x.HPEDL380).WithOne(x => x.Checklist);
             builder.HasOne(x => x.JuniperHardening).WithOne(x => x.Checklist);
             builder.HasOne(x => x.GeneralChecklist).WithOne(x => x.Checklist);
+            builder.HasMany(x => x.People) .WithOne(x=>x.Checklist);
 
 
-            //builder.HasMany(e => e.Accounts)
-            //    .WithMany(e => e.Checklists)
-            //    .UsingEntity(
-            //        "CheckAccount",
-            //        l => l.HasOne(typeof(Account)).WithMany().HasForeignKey("AccountId").HasPrincipalKey(nameof(Account.Id)),
-            //        r => r.HasOne(typeof(Checklist)).WithMany().HasForeignKey("ChecklistId").HasPrincipalKey(nameof(Checklist.Id)),
-            //        j => j.HasKey("AccountId", "ChecklistId"));
+           
 
         }
     }

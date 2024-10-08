@@ -41,5 +41,6 @@ https://localhost:7268/checklist/create   name ozve hazer ghabeliyate addd dasht
 ...namayesh avg ha dar index checklist va kholase kardane search
 chart
 label be checklist ha
-tozih koli babte har checklist
+.....tozih koli babte har checklist
 .....agar ye checklisti anjam shode doge ezaje dobare nade 
+baraye bare aval lastlogin dar database khata dare

@@ -79,7 +79,7 @@ namespace VisitCompany.Pages
                 {
                     //تو صفحه ی چارت ما دیگه پروفشنال نداریم  بنابر این باید من این رو تغغیر بدم به سایر ارزیابی ها
                     doubAvgGen.Add(avg.AverageGeneral ?? 0);
-                    doubAvgProff.Add(avg.AverageProfessional);
+                    doubAvgProff.Add(avg.AverageGeneral ?? 0);// inja averagegeneral bod ke man zadam AverageGeneral dobare
                     strCompany.Add(avg.Company);
                     strCreationDates.Add(avg.CalDate.ToFarsi());
                 }
@@ -91,7 +91,7 @@ namespace VisitCompany.Pages
                 foreach (var avg2 in AvgGen2)
                 {
                     doubAvgGen2.Add(avg2.AverageGeneral ?? 0);
-                    doubAvgProff2.Add(avg2.AverageProfessional);
+                    doubAvgProff2.Add(avg2.AverageGeneral ?? 0);
                     strCompany2.Add(avg2.Company);
                     strCreationDates2.Add(avg2.CalDate.ToFarsi());
                 }

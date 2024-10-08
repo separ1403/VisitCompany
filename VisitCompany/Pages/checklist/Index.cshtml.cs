@@ -50,9 +50,6 @@ namespace VisitCompany.Pages.checklist
             // ممکنه که عدد 1 در 11 هم باشه تست کنم ببینم چطور میشه
         }
 
-       
-
-
     }
 }
 
