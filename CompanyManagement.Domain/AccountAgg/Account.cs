@@ -13,7 +13,7 @@ namespace CompanyManagement.Domain.AccountAgg
         public long RoleId { get; private set; }
         public bool IsActive { get; private set; }
         public Role Role { get; private set; }
-        public DateTime LastLogin { get; private set; }
+        public DateTime? LastLogin { get; private set; }
         public DateTime? PreviousLogin { get; private set; }
         public string? CodeValidateMobile { get; private set; }  //be khatere errore SqlNullValueException: Data is Null. This method or property cannot be called on Null values.  ro midad ke search kardam goft ? inja bezaram va inke to table sql ham mishod ke null bashe
 
@@ -37,6 +37,7 @@ namespace CompanyManagement.Domain.AccountAgg
                 RoleId = 2; // 2 bod
             }
 
+            LastLogin = null;
             IsActive = true;
 
             Companies = new List<Company>();

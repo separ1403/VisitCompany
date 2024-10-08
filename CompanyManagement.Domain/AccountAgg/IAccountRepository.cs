@@ -11,7 +11,8 @@ namespace CompanyManagement.Domain.AccountAgg
         List<Account> GetAccountsByIds(List<long> accountIds);
 
         AccountViewModel GetLastLogin( string searchModel);
-        Account GetBy(string username);
+        Account GetBy(string userName);
+        Account GetById(long id);
         Account GetByMobile(string mobile); // Add this method to fetch account by mobile number
 
         List<AccountViewModel> GetAccounts();

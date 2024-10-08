@@ -200,7 +200,10 @@ namespace AccountManagement.Application
                 RoleId = account.RoleId,
                 //Role = account.Role.Name, // یا هر ویژگی‌ای که باید نمایش داده شود
                 CreationDate = account.CreationDate.ToString("yyyy-MM-dd HH:mm:ss"), // یا فرمت دلخواه
-                LastLogin = account.LastLogin.ToString("yyyy-MM-dd HH:mm:ss"),
+                // LastLogin = account.LastLogin.ToString("yyyy-MM-dd HH:mm:ss"),
+                LastLogin = account.LastLogin.HasValue
+                    ? account.LastLogin.Value.ToString("yyyy-MM-dd HH:mm:ss")
+                    : "N/A",
                 PreviousLogin = account.PreviousLogin?.ToString("yyyy-MM-dd HH:mm:ss"), // برای مقدار null-safe
                 CodeValidateMobile = account.CodeValidateMobile
             };
@@ -211,9 +214,9 @@ namespace AccountManagement.Application
 
         public void UpdateLastLogin(long accountId)
         {
-            var id = accountId.ToString();
+          
 
-            var account = _accountRepository.GetBy(id);
+            var account = _accountRepository.GetById(accountId);
             if (account != null)
             {
                 account.LastLoginCal();

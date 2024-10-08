@@ -42,12 +42,17 @@ namespace AccountManagement.Infrastructure.EFCore.Repository
         }
 
 
-        public Account GetBy(string username)
+        public Account GetBy(string  userName)
         {
             
-            return _context.Accounts.FirstOrDefault(x => x.UserName == username);
+            return _context.Accounts.FirstOrDefault(x => x.UserName == userName);
         }
 
+        public Account GetById(long id)
+        {
+
+            return _context.Accounts.FirstOrDefault(x => x.Id == id);
+        }
         public Account GetByMobile(string mobile)
         {
             return _context.Accounts.FirstOrDefault(x => x.Mobile == mobile);

@@ -1,6 +1,7 @@
 ﻿using AccountManagement.Application.Contracts.Account;
 using AccountManagement.Application.Contracts.Role;
 using Framework.Application;
+using Framework.Infrastructure;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc;
 
@@ -56,6 +57,11 @@ namespace VisitCompany.Pages
             // فرض بر این است که LastLoginCal و SaveChanges در لایه Application وجود دارد و پیاده‌سازی شده است
             _accountApplication.UpdateLastLogin(accountViewModel.Id);
 
+            if (accountViewModel.RoleId == 1)
+            {
+                return RedirectToPage("ManagerProfile");
+            }
+            else
             return RedirectToPage("UserProfile");
         }
     }
