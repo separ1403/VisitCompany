@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Framework.Domain;
 using CompanyManagement.Application.Contract.LicenceCategory;
+using CompanyManagement.Domain.AccountAgg;
 
 namespace CompanyManagement.Domain.LicenceCategoryAgg
 {
@@ -15,6 +16,8 @@ namespace CompanyManagement.Domain.LicenceCategoryAgg
         List<LicenceCategoryViewModel> Search(LicenceCategorySearchModel searchModel);
 
         List<LicenceCategoryViewModel> GetLicenceCategories();
-       
+        List<LicenceCategory> GetLicenceByIds(List<long> licenceIds);
+
+
     }
 }

@@ -22,7 +22,7 @@ namespace VisitCompany.Areas.Administration.Pages.Accounts.Role
             
             _roleAplication = roleAplication;
         }
-        [NeedsPermission(CompanyPermission.ListRoles)]
+       [NeedsPermission(CompanyPermission.ListRoles)]
         public void OnGet()
         {
 

@@ -44,3 +44,6 @@ label be checklist ha
 .....tozih koli babte har checklist
 .....agar ye checklisti anjam shode doge ezaje dobare nade 
 baraye bare aval lastlogin dar database khata dare
+....ghesmate edit dar  Administration/Accounts/Account/Edit  dar select list dovom dar virayesh zaher nemishavad
+ip dar log login ha
+

@@ -14,13 +14,14 @@ public class Company : EntityBase
     public string? Description { get; private set; }
     public bool IsActive { get; private set; }
     public string? NationalCode { get; private set; }
-    public double Average { get; private set; }
+    public string Address { get; private set; }
     public long CategoryId { get; private set; }
     public long ChecklistId { get; private set; }
-    public long LicenceId { get; private set; }
+
+    public List<LicenceCategory> LicenceCategories { get; private set; } = new List<LicenceCategory>();
+    public List<long> LicenceIds { get; private set; }
     public List<Checklist> Checklists { get; private set; }
     public CompanyCategory CompanyCategory { get; private set; }
-    public List<LicenceCategory> LicenceCategories { get; private set; }
     public List<Account> Accounts { get; private set; } = new List<Account>();
     public List<long> AccountIds { get; private set; }
 
@@ -36,7 +37,7 @@ public class Company : EntityBase
     }
 
     // سازنده با پارامترها
-    public Company(string companyName, string brand, string managerName, string securityManagerName, string phoneNumber, string description, string nationalCode, long categoryId, long licenceId, List<long> accountIds, string domain)
+    public Company(string companyName, string brand, string managerName, string securityManagerName, string phoneNumber, string description, string nationalCode,string address, long categoryId, List<long> licenceIds, List<long> accountIds, string domain)
     {
         CompanyName = companyName;
         Brand = brand;
@@ -46,8 +47,9 @@ public class Company : EntityBase
         Description = description;
         _previousDescription = description ?? null; // مقداردهی اولیه _previousDescription
         NationalCode = nationalCode;
+        Address = address;
         CategoryId = categoryId;
-        LicenceId = licenceId;
+        LicenceIds = licenceIds;
         IsActive = true;
         AccountIds = accountIds;
         Domain = domain;
@@ -61,7 +63,16 @@ public class Company : EntityBase
         }
     }
 
-    public void Edit(string companyName, string brand, string managerName, string securityManagerName, string phoneNumber, string? description, string nationalCode, long categoryId, long licenceId,List<long> accountIds, string domain)
+    public void AddLicence(List<LicenceCategory> licences)
+    {
+        foreach (var licence in licences)
+        {
+            LicenceCategories.Add(licence);
+        }
+    }
+
+
+    public void Edit(string companyName, string brand, string managerName, string securityManagerName, string phoneNumber, string? description, string nationalCode,string address, long categoryId, List<long> licenceIds,List<long> accountIds, string domain)
     {
         CompanyName = companyName;
         Brand = brand;
@@ -108,8 +119,9 @@ public class Company : EntityBase
         }
 
         NationalCode = nationalCode;
+        Address = address;
         CategoryId = categoryId;
-        LicenceId = licenceId;
+        LicenceIds = licenceIds;
         AccountIds = accountIds;
         Domain = domain;
     }

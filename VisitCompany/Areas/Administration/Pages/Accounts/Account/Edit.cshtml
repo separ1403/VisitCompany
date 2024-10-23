@@ -58,6 +58,18 @@
                     <span asp-validation-for="Command.RoleId " class="error"></span>
                 </div>
             </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="Command.StateCategoryId " class="control-label"> محل خدمت  </label>
+                    <select class="form-control" asp-for="Command.StateCategoryId" asp-items="Model.States">
+                        <option value="0">انتخاب  محل خدمت</option>
+
+                    </select>
+
+                    <span asp-validation-for="Command.StateCategoryId " class="error"></span>
+                </div>
+            </div>
         </div>
 
 

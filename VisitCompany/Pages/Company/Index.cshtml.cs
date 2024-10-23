@@ -5,6 +5,7 @@ using CompanyManagement.Application.Contract.LicenceCategory;
 using CompanyManagement.Infrastructure.Configuration.Permission;
 using Framework.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -51,6 +52,19 @@ namespace VisitCompany.Pages.Company
 
 
         }
+
+        public IActionResult OnGetDetails(int id)
+        {
+            if (id == 0)
+                return Content("Invalid ID received");
+
+            var company = _company.Getdetailpartial(id);
+            if (company == null)
+                return Content("اطلاعات شرکت یافت نشد.");
+
+            return Partial("_CompanyDetails", company);
+        }
+
 
         [NeedsPermission(CompanyPermission.ListCompanies)]
         public void OnPost(CompanySearchModel searchModel)

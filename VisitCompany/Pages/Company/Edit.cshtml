@@ -51,12 +51,12 @@
 
             <div class="col-md-12">
                 <div class="form-group">
-                    <label asp-for="Command.LicenceId " class="control-label">گروه محصول </label>
-                    <select class="form-control" asp-for="Command.LicenceId" asp-items="Model.LicenceCategories">
+                    <label asp-for="Command.LicenceIds " class="control-label">گروه محصول </label>
+                    <select class="form-control" asp-for="Command.LicenceIds" asp-items="Model.LicenceCategories">
                         <option value="0">انتخاب دسته بندی</option>
 
                     </select>
-                    <span asp-validation-for="Command.LicenceId " class="error"></span>
+                    <span asp-validation-for="Command.LicenceIds " class="error"></span>
                 </div>
             </div>
         </div>
@@ -110,6 +110,11 @@
                     <label asp-for="Command.NationalCode" class="control-label"> شناسه ملی </label>
                     <input type="text" class="form-control" asp-for="Command.NationalCode">
                     <span asp-validation-for="Command.NationalCode" class="error"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Command.Address" class="control-label"> آدرس </label>
+                    <input type="text" class="form-control" asp-for="Command.Address">
+                    <span asp-validation-for="Command.Address" class="error"></span>
                 </div>
             </div>
 

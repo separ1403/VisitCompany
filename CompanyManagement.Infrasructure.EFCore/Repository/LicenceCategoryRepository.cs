@@ -4,6 +4,8 @@ using CompanyManagement.Domain.CompanyCategoryAgg;
 using CompanyManagement.Domain.LicenceCategoryAgg;
 using Framework.Domain;
 using Framework.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using System.Linq.Expressions;
 
 namespace CompanyManagement.Infrasructure.EFCore.Repository
@@ -28,6 +30,12 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                 
 
             }).ToList();
+        }
+
+        public List<LicenceCategory> GetLicenceByIds(List<long> licenceIds)
+        {
+            return _companyContext.LicenceCategories.Where(a => licenceIds.Contains(a.Id)).ToList();// account hayee ro az table account mide ke id on ha barabar bashe ba Accountids ha
+
         }
 
         public EditLicenceCategory GetDetails(long id)

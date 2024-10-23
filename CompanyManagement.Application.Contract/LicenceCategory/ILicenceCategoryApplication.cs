@@ -16,5 +16,6 @@ namespace CompanyManagement.Application.Contract.LicenceCategory
         List<LicenceCategoryViewModel> Search(LicenceCategorySearchModel searchModel);
         List<LicenceCategoryViewModel> GetLicenceCategories();
 
+
     }
 }

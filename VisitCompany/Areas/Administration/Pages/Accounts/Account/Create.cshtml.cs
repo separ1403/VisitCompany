@@ -1,5 +1,6 @@
 ﻿using AccountManagement.Application.Contracts.Account;
 using AccountManagement.Application.Contracts.Role;
+using CompanyManagement.Application.Contract.StateCategory;
 using CompanyManagement.Infrastructure.Configuration.Permission;
 using Framework.Application;
 using Framework.Infrastructure;
@@ -21,20 +22,32 @@ namespace VisitCompany.Areas.Administration.Pages.Accounts.Account
         public string SuccessMessageame { get; set; }
 
         public SelectList Roles;
+
+        public SelectList States;
+
         public RegisterAccount Command { get; set; }
 
         private readonly IAccountApplication _accountApplication;
         private readonly IRoleAplication _roleAplication;
+        private readonly IStatecategoryApplication _statecategoryApplication;
 
-        public CreateModel(IAccountApplication accountApplication, IRoleAplication roleAplication)
+        public CreateModel(IAccountApplication accountApplication, IRoleAplication roleAplication, IStatecategoryApplication statecategoryApplication)
         {
             _accountApplication = accountApplication;
             _roleAplication = roleAplication;
+            _statecategoryApplication = statecategoryApplication;
         }
+
+        
 
         private void PopulateRoles()
         {
             Roles = new SelectList(_roleAplication.List(), "Id", "Name");
+        }
+
+        private void PopulateStates()
+        {
+            States = new SelectList(_statecategoryApplication.List(), "Id", "Name");
         }
 
         [NeedsPermission(CompanyPermission.CreateAccounts)]
@@ -43,6 +56,7 @@ namespace VisitCompany.Areas.Administration.Pages.Accounts.Account
             SuccessMessageame = null;
             ErrorMessageame = null;
             PopulateRoles();
+            PopulateStates();
         }
 
         [NeedsPermission(CompanyPermission.CreateAccounts)]
@@ -52,6 +66,7 @@ namespace VisitCompany.Areas.Administration.Pages.Accounts.Account
             {
                 ErrorMessageame = "لطفاً تمامی فیلدها را به درستی پر کنید.";
                 PopulateRoles();
+                PopulateStates();
                 return Page();
             }
 

@@ -1,0 +1,20 @@
+﻿@model CompanyManagement.Application.Contract.Company.CompanyViewModel
+
+<div class="company-details">
+    <h3>اطلاعات کامل شرکت</h3>
+    <p><strong>نام رسمی شرکت:</strong> @Model.CompanyName</p>
+    <p><strong>نام برند:</strong> @Model.Brand</p>
+    <p><strong>مدیر شرکت:</strong> @Model.ManagerName</p>
+    <p><strong>نام مدیر امنیت:</strong> @Model.SecurityManagerName</p>
+    <p><strong>شماره تماس:</strong> @Model.PhoneNumber</p>
+    <p><strong>شناسه ملی:</strong> @Model.NationalCode</p>
+    <p><strong>توضیحات:</strong> @Model.Description</p>
+    <p><strong>وضعیت:</strong> @Model.IsActive ? "فعال" : "غیرفعال"</p>
+    <p><strong>دسته‌بندی:</strong> @Model.Category</p>
+    <p><strong>آدرس سایت:</strong> @Model.Domain</p>
+    <p><strong>تاریخ ثبت:</strong> @Model.CompanyCreateDate</p>
+    <p><strong>آدرس:</strong> @Model.Address</p>
+    <p><strong>تاریخ ایجاد:</strong> @Model.CompanyCreateDate</p>
+   
+    <!-- سایر اطلاعات را نیز اضافه کنید -->
+</div>

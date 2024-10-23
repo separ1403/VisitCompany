@@ -14,8 +14,11 @@ namespace CompanyManagement.Application.Contract.Company
         OperationResult Create(CreateCompany command);
         OperationResult Edit(EditCompany command);
         EditCompany Getdetails(long id);
-      
+        CompanyViewModel Getdetailpartial(long id);
+
+
         List<CompanyViewModel> Serach(CompanySearchModel searchModel);
+
         List<CompanyViewModel> GetCompenies();
         List<CompanyViewModel> GetCompeniesWithUsername();
 

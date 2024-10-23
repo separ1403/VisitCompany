@@ -58,6 +58,19 @@ namespace CompanyManagement.Infrastructure.Configuration.Permission
                     new PermissionDto(CompanyPermission.EditLicenceCategories, "ویرایش مجوزها"),
                 }
 
+            },
+
+
+
+                {
+                "استان محل خدمت", new List<PermissionDto>
+                {
+                    new PermissionDto(CompanyPermission.SearchStateCategories, "جستجوی دسته بندی استانی "),
+                    new PermissionDto(CompanyPermission.ListStateCategories, "لیست دسته بندی استانی "),
+                    new PermissionDto(CompanyPermission.CreateStateCategory, "ایجاد دسته بندی استانی "),
+                    new PermissionDto(CompanyPermission.EditStateCategory, "ویرایش دسته بندی استانی"),
+                }
+
             }
 
 

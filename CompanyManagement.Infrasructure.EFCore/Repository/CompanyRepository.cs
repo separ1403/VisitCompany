@@ -1,6 +1,7 @@
 ﻿using CompanyManagement.Application.Contract.Company;
 using CompanyManagement.Domain.AccountAgg;
 using CompanyManagement.Domain.CompanyAgg;
+using CompanyManagement.Domain.LicenceCategoryAgg;
 using Framework.Application;
 using Framework.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
@@ -68,9 +69,39 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
         }
 
 
+        public CompanyViewModel GetdetailPartialview(long id)
+        {
+            {
+                return _companyContext.Companies
+                    .Where(x => x.Id == id)
+                    .Include(c => c.Accounts)
+                    .Include(c => c.CompanyCategory)
 
 
+                    .Select(x => new CompanyViewModel
+                    {
+                        Id = x.Id,
+                        CompanyName = x.CompanyName,
+                        Brand = x.Brand,
+                        ManagerName = x.ManagerName,
+                        SecurityManagerName = x.SecurityManagerName,
+                        PhoneNumber = x.PhoneNumber,
+                        CategoryId = x.CategoryId,
+                        Description = x.Description,
+                        NationalCode = x.NationalCode,
+                        IsActive = x.IsActive,
+                        Address=x.Address,
+                        CompanyCreateDate = x.CreationDate.ToFarsi(),
+                        Domain = x.Domain,
+                        AccountIds = MapAccounts(x.Accounts),
+                        Category = x.CompanyCategory.Name,
 
+                        
+                    })
+                    .FirstOrDefault();
+            }
+        }
+       
         public List<CompanyViewModel> Serach(CompanySearchModel searchModel)
         {
             var companies = _companyContext.Companies
@@ -79,16 +110,7 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                 .Include(c => c.Accounts)
                 .ToList();
             
-            //foreach (var company in companies)
-            //{
-            //    // بررسی داده‌های Accounts
-            //    Console.WriteLine($"Company: {company.CompanyName}, Accounts Count: {company.Accounts.Count}");
-
-            //    foreach (var account in company.Accounts)
-            //    {
-            //        Console.WriteLine($"Account Id: {account.Id}");
-            //    }
-            //}   برای چک کردن مقدار برای اینکه بفهمیم ایا اینکلود ها کار میکندد یا نه
+           
 
             var query = companies
                 .Select(c => new CompanyViewModel
@@ -104,18 +126,16 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                     IsActive = c.IsActive,
                     Category = c.CompanyCategory.Name,
                     CategoryId = c.CategoryId,
-                    LicenceId = c.LicenceId,
+                    LicenceIds = MapLicences(c.LicenceCategories),
                     CompanyCreateDate = c.CreationDate.ToFarsi(),
                     AccountIds = MapAccounts(c.Accounts),
                     Domain = c.Domain,
+                    Address = c.Address,
                     
                     
                 }).ToList();
 
-            //foreach (var company in query)
-            //{
-            //    Console.WriteLine($"Company: {company.CompanyName}, AccountIds: {string.Join(", ", company.AccountIds)}");
-            //}
+         
 
             if (!string.IsNullOrWhiteSpace(searchModel.Name))
                 query = query.Where(c => c.CompanyName.Contains(searchModel.Name)).ToList();
@@ -125,21 +145,51 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
 
 
             if (searchModel.LicenceId > 0)
-                query = query.Where(c => c.LicenceId == searchModel.LicenceId).ToList();
+                query = query.Where(c => c.LicenceIds.Contains(searchModel.LicenceId)).ToList();
+
+            if (searchModel.LicenceId2 > 0)
+                query = query.Where(c => c.LicenceIds.Contains(searchModel.LicenceId2)).ToList();
 
             if (searchModel.AccountId > 0)
             {
                 query = query.Where(c => c.AccountIds.Contains(searchModel.AccountId)).ToList();
             }
 
+            if (!string.IsNullOrWhiteSpace(searchModel.Brand))
+                query = query.Where(c => c.Brand.Contains(searchModel.Brand)).ToList();
+
+            if (!string.IsNullOrWhiteSpace(searchModel.NationalCode))
+                query = query.Where(c => c.NationalCode.Contains(searchModel.NationalCode)).ToList();
+
+            if (!string.IsNullOrWhiteSpace(searchModel.ManagerName))
+                query = query.Where(c => c.ManagerName.Contains(searchModel.ManagerName)).ToList();
+
+            if (!string.IsNullOrWhiteSpace(searchModel.Address))
+                query = query.Where(c => c.Address.Contains(searchModel.Address)).ToList();
+
+
             return query.OrderByDescending(c => c.Id).ToList();
         }
+
+      
+
+
         private static List<long> MapAccounts(List<Account>? accounts)
         {
             if (accounts == null)
                 return new List<long>();
 
             return accounts.Select(x => x.Id).ToList();
+        }
+
+        private static List<long> MapLicences(List<LicenceCategory>? licenceCategories)
+        {
+            // بررسی اینکه لیست مجوزها null یا خالی نباشد
+            if (licenceCategories == null || !licenceCategories.Any())
+                return new List<long>();
+
+            // نگاشت شناسه‌های مجوزها به لیست شناسه‌ها
+            return licenceCategories.Select(x => x.Id).ToList();
         }
 
         public List<CompanyViewModel> GetCompenies()

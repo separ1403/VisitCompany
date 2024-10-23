@@ -24,6 +24,8 @@ using Framework.Infrastructure;
 using CompanyManagement.Domain.LicenceCategoryAgg;
 using CompanyManagement.Application.Contract.LicenceCategory;
 using CompanyManagement.Domain.AccountAgg;
+using CompanyManagement.Application.Contract.StateCategory;
+using CompanyManagement.Domain.StatesCategoryAgg;
 
 namespace CompanyManagement.Infrastructure.Configuration
 {
@@ -40,6 +42,9 @@ namespace CompanyManagement.Infrastructure.Configuration
 
             services.AddTransient<ILicenceCategoryRepository, LicenceCategoryRepository>();
             services.AddTransient<ILicenceCategoryApplication, LicenceCategoryApplication>();
+
+            services.AddTransient<IStatecategoryApplication, StateCategoryApplication>();
+            services.AddTransient<IStateCategoryRepository, StatecategoryRepository>();
 
 
             services.AddTransient<IChecklistApplication, ChecklistApplication>();

@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using AccountManagement.Domain.RoleAgg;
 using CompanyManagement.Domain.AccountAgg;
 using CompanyManagement.Domain.LicenceCategoryAgg;
+using CompanyManagement.Domain.StatesCategoryAgg;
 
 namespace CompanyManagement.Infrasructure.EFCore
 {
@@ -21,6 +22,7 @@ namespace CompanyManagement.Infrasructure.EFCore
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<CompanyCategory> CompanyCategories { get; set; }
+        public DbSet<StateCategory> StateCategories { get; set; }
         public DbSet<LicenceCategory> LicenceCategories { get; set; }
         public DbSet<HPEDL380> HPEDL380s { get; set; }
         public DbSet<JuniperHardening> JuniperHardenings { get; set; }

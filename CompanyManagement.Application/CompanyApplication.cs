@@ -8,19 +8,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CompanyManagement.Domain.AccountAgg;
+using CompanyManagement.Domain.LicenceCategoryAgg;
 
 namespace CompanyManagement.Application
 {
     public class CompanyApplication : ICompanyApplication
     {
-        public CompanyApplication(ICompanyRepository companyRepository, IAccountRepository accountRepository)
+        public CompanyApplication(ICompanyRepository companyRepository, IAccountRepository accountRepository, ILicenceCategoryRepository licenceCategoryRepository)
         {
             _companyRepository = companyRepository;
             _accountRepository = accountRepository;
+            _licenceCategoryRepository = licenceCategoryRepository;
         }
+
 
         private readonly ICompanyRepository _companyRepository;
         private readonly IAccountRepository _accountRepository;
+        private readonly ILicenceCategoryRepository _licenceCategoryRepository;
+
 
 
 
@@ -43,9 +48,11 @@ namespace CompanyManagement.Application
             }
 
             var accounts = _accountRepository.GetAccountsByIds(command.AccountIds);
-            var company = new Company(command.CompanyName, command.Brand, command.ManagerName, command.SecurityManagerName, command.PhoneNumber, command.Description, command.NationalCode, command.CategoryId, command.LicenceId, command.AccountIds,command.Doamin);
+            var licences = _licenceCategoryRepository.GetLicenceByIds(command.LicenceIds);
+            var company = new Company(command.CompanyName, command.Brand, command.ManagerName, command.SecurityManagerName, command.PhoneNumber, command.Description, command.NationalCode,command.Address, command.CategoryId, command.LicenceIds, command.AccountIds,command.Doamin);
 
             company.AddAccounts(accounts);
+            company.AddLicence(licences);
 
             _companyRepository.Create(company);
             _companyRepository.SaveChanges();
@@ -78,14 +85,16 @@ namespace CompanyManagement.Application
 
                 company.Edit(command.CompanyName, command.Brand, command.ManagerName,
                 command.SecurityManagerName,
-                command.PhoneNumber, command.Description, command.NationalCode,
-                command.CategoryId, command.LicenceId,command.AccountIds,command.Doamin);
+                command.PhoneNumber, command.Description, command.NationalCode,command.Address,
+                command.CategoryId, command.LicenceIds,command.AccountIds,command.Doamin);
 
             _companyRepository.SaveChanges();
 
             operation.Succeeded(ApplicationMessages.SuccessMessage);
             return operation;
         }
+
+       
 
         public List<CompanyViewModel> GetCompenies()
         {
@@ -103,8 +112,11 @@ namespace CompanyManagement.Application
             return _companyRepository.Getdetails(id);
         }
 
-        
-       
+        public CompanyViewModel Getdetailpartial(long id)
+        {
+            return _companyRepository.GetdetailPartialview(id);
+        }
+
 
         public List<CompanyViewModel> Serach(CompanySearchModel searchModel)
         {

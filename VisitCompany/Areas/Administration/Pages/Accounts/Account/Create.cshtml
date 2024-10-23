@@ -49,11 +49,11 @@
                 </div>
             </div>
 
-            <div class="col-md-6 mb-20">
+           @*  <div class="col-md-6 mb-20">
                 <label>رمز عبور</label>
                 <input type="password" asp-for="Command.Password" placeholder="رمز عبور">
                 <span asp-validation-for="Command.Password" class="text-danger"></span>
-            </div>
+            </div> *@
         </div>
 
         <div class="row">
@@ -67,6 +67,20 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="Command.StateCategoryId" class="control-label">انتخاب محل خدمت</label>
+                    <select class="form-control" asp-for="Command.StateCategoryId" asp-items="Model.States">
+                        <option value="0">انتخاب محل خدمت </option>
+                    </select>
+                    <span asp-validation-for="Command.StateCategoryId" class="error"></span>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 
     <div class="modal-footer">

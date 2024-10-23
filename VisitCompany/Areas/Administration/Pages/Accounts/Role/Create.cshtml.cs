@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace VisitCompany.Areas.Administration.Pages.Accounts.Role
 {
-    [Authorize]
+   [Authorize]
     public class CreateModel : PageModel
     {
         [TempData]

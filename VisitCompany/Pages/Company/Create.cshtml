@@ -65,15 +65,15 @@
                 </div>
             </div>
 
-        <div class="col-md-6">
+      @*   <div class="col-md-6">
             <div class="form-group">
-                <label asp-for="Command.LicenceId" class="control-label">گروه لایسنس ها</label>
-                <select class="form-control" asp-for="Command.LicenceId" asp-items="Model.LicenceCategories" id="LicenceIdSelect">
+                <label asp-for="Command.LicenceIds" class="control-label">گروه لایسنس ها</label>
+                <select class="form-control" asp-for="Command.LicenceIds" asp-items="Model.LicenceCategories" id="LicenceIdSelect">
                     <option value="0">انتخاب لایسنس ها </option>
                 </select>
-                <span asp-validation-for="Command.LicenceId" class="error"></span>
+                <span asp-validation-for="Command.LicenceIds" class="error"></span>
             </div>
-        </div>
+        </div> *@
        
        
         
@@ -120,6 +120,13 @@
                     <span class="error"></span>
                 </div>
                 <div class="form-group no-margin">
+                    <label asp-for="@Model.Command.Address" class="control-label">آدرس</label>
+                    <textarea class="form-control autogrow" asp-for="@Model.Command.Address" 
+                              style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 90px;"></textarea>
+                    <span class="error"></span>
+                </div>
+
+                <div class="form-group no-margin">
                     <label asp-for="@Model.Command.Description" class="control-label">توضیحات</label>
                     <textarea class="form-control autogrow" asp-for="@Model.Command.Description" 
                               style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 90px;"></textarea>
@@ -137,7 +144,16 @@
                 </div>
 
             </div>
-           
+
+            <div class="col-md-6">
+                <label class="control-label col-md-3">انتخاب  مجوزها </label>
+                <div class="col-md-12">
+                    <select asp-for="Command.LicenceIds" asp-items="Model.LicenceCategories" class="multi-select" multiple="multiple" id="my_multi_select3">
+                    </select>
+
+                </div>
+
+            </div>
 
         </div>
         

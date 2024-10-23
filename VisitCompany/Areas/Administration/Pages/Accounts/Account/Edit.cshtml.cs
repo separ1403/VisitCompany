@@ -1,5 +1,7 @@
 using AccountManagement.Application.Contracts.Account;
 using AccountManagement.Application.Contracts.Role;
+using CompanyManagement.Application.Contract.StateCategory;
+using CompanyManagement.Domain.StatesCategoryAgg;
 using CompanyManagement.Infrastructure.Configuration.Permission;
 using Framework.Application;
 using Framework.Infrastructure;
@@ -23,21 +25,26 @@ namespace VisitCompany.Areas.Administration.Pages.Accounts.Account
        
         public EditAccount Command {get; set; }
         public SelectList Roles;
+        public SelectList States;
+
         private readonly IAccountApplication _accountApplication;
         private readonly IRoleAplication _roleAplication;
+        private readonly IStatecategoryApplication _statecategoryApplication;
 
-        public EditModel(IAccountApplication accountApplication, IRoleAplication roleAplication)
+        public EditModel(IAccountApplication accountApplication, IRoleAplication roleAplication, IStatecategoryApplication statecategoryApplication)
         {
             _accountApplication = accountApplication;
             _roleAplication = roleAplication;
+            _statecategoryApplication = statecategoryApplication;
         }
+
         [NeedsPermission(CompanyPermission.EditAccounts)]
         public void OnGet(long id)
         {
 
             Command = _accountApplication.Getdetails(id);
             Roles = new SelectList(_roleAplication.List(), "Id", "Name");
-
+            States = new SelectList(_statecategoryApplication.List(), "Id", "Name");
         }
         [NeedsPermission(CompanyPermission.EditAccounts)]
         public IActionResult  OnPostEdit(EditAccount command)

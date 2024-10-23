@@ -76,7 +76,8 @@ namespace AccountManagement.Infrastructure.EFCore.Repository
                 Fullname = x.Fullname,
                 Mobile = x.Mobile,
                 RoleId = x.RoleId,
-                Username = x.UserName
+                Username = x.UserName,
+                StateCategoryId = x.StateCategoryId
             }).FirstOrDefault(x => x.Id == id);
         }
 
@@ -91,19 +92,28 @@ namespace AccountManagement.Infrastructure.EFCore.Repository
 
         public List<AccountViewModel> Serach(AccountSearchModel searchModel)
         {
-            var query = _context.Accounts.Include(x=>x.Role).Select(x => new AccountViewModel
+            var query = _context.Accounts.Include(x=>x.Role)
+                .Include(x => x.LoginAttempts) // اضافه کردن تاریخچه ورود
+
+                .Select(x => new AccountViewModel
             {
                 Id = x.Id,
                 Fullname = x.Fullname,
                 Mobile = x.Mobile,
                 Role=x.Role.Name,
                 RoleId = x.RoleId,
+                StateCategoryId =x.StateCategoryId,
+                StatesCategory=x.StateCategory.Name,
                 UserName = x.UserName,
                 IsActive = x.IsActive,
                 CreationDate=x.CreationDate.ToFarsiWithTime(),
                 LastLogin = x.LastLogin.ToFarsiWithTime(),
-                PreviousLogin = x.PreviousLogin.HasValue ? x.PreviousLogin.Value.ToFarsiWithTime() : "N/A"
-
+                PreviousLogin = x.PreviousLogin.HasValue ? x.PreviousLogin.Value.ToFarsiWithTime() : "N/A",
+                 LastLogins = x.LoginAttempts
+                .OrderByDescending(l => l.LoginTime)
+                .Take(20)
+                .Select(l => l.LoginTime.ToFarsiWithTime())
+                .ToList() // اضافه شدن لیست ورودها
             });
 
             if (!string.IsNullOrWhiteSpace(searchModel.Fullname))
@@ -117,6 +127,9 @@ namespace AccountManagement.Infrastructure.EFCore.Repository
 
             if (searchModel.RoleId > 0)
                 query = query.Where(x => x.RoleId == searchModel.RoleId);
+
+            if (searchModel.StateCategoryId > 0)
+                query = query.Where(x => x.StateCategoryId == searchModel.StateCategoryId);
 
             return query.OrderByDescending(x => x.Id).ToList();
         }

@@ -11,6 +11,7 @@ namespace CompanyManagement.Application.Contract.CompanyCategory
         public string Name { get; set; }
         public long Id { get; set; }
         public string Description { get; set; }
+        public string count { get; set; }
         
     }
 }

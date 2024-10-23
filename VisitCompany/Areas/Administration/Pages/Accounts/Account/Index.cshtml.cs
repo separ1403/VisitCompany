@@ -1,5 +1,6 @@
 ﻿using AccountManagement.Application.Contracts.Account;
 using AccountManagement.Application.Contracts.Role;
+using CompanyManagement.Application.Contract.StateCategory;
 using CompanyManagement.Infrastructure.Configuration.Permission;
 using Framework.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
@@ -16,20 +17,27 @@ namespace VisitCompany.Areas.Administration.Pages.Accounts.Account
         public AccountSearchModel SearchModel;
         public List<AccountViewModel> Accounts;
         public SelectList Roles;
+        public SelectList States;
+
 
         private readonly IAccountApplication _accountApplication;
         private readonly IRoleAplication _roleAplication;
+        private readonly IStatecategoryApplication _statecategoryApplication;
 
-        public IndexModel(IAccountApplication accountApplication, IRoleAplication roleAplication)
+        public IndexModel(IAccountApplication accountApplication, IRoleAplication roleAplication, IStatecategoryApplication statecategoryApplication)
         {
             _accountApplication = accountApplication;
             _roleAplication = roleAplication;
+            _statecategoryApplication = statecategoryApplication;
         }
+
 
         [NeedsPermission(CompanyPermission.ListAccounts)]
         public void OnGet(AccountSearchModel searchModel)
         {
             Roles = new SelectList(_roleAplication.List(), "Id", "Name");
+            States = new SelectList(_statecategoryApplication.List(), "Id", "Name");
+
             Accounts = _accountApplication.Serach(searchModel);
         }
 

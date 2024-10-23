@@ -17,7 +17,7 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.5")
+                .HasAnnotation("ProductVersion", "8.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -100,8 +100,9 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<long>("LicenceId")
-                        .HasColumnType("bigint");
+                    b.Property<string>("LicenceIds")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ManagerName")
                         .HasMaxLength(255)
@@ -183,7 +184,7 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("LastLogin")
+                    b.Property<DateTime?>("LastLogin")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Mobile")
@@ -191,15 +192,13 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
                     b.Property<DateTime?>("PreviousLogin")
                         .HasColumnType("datetime2");
 
                     b.Property<long>("RoleId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("StateCategoryId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("UserName")
@@ -211,7 +210,33 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
 
                     b.HasIndex("RoleId");
 
+                    b.HasIndex("StateCategoryId");
+
                     b.ToTable("Accounts", (string)null);
+                });
+
+            modelBuilder.Entity("CompanyManagement.Domain.AccountAgg.LoginAttempt", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("AccountId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("LoginTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountId");
+
+                    b.ToTable("LoginAttempts", (string)null);
                 });
 
             modelBuilder.Entity("CompanyManagement.Domain.ChecklistAgg.Checklist", b =>
@@ -1102,6 +1127,27 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                     b.ToTable("LicenceCategories", (string)null);
                 });
 
+            modelBuilder.Entity("CompanyManagement.Domain.StatesCategoryAgg.StateCategory", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("StateCategories", (string)null);
+                });
+
             modelBuilder.Entity("AccountChecklist", b =>
                 {
                     b.HasOne("CompanyManagement.Domain.AccountAgg.Account", null)
@@ -1197,7 +1243,26 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("CompanyManagement.Domain.StatesCategoryAgg.StateCategory", "StateCategory")
+                        .WithMany("Accounts")
+                        .HasForeignKey("StateCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Role");
+
+                    b.Navigation("StateCategory");
+                });
+
+            modelBuilder.Entity("CompanyManagement.Domain.AccountAgg.LoginAttempt", b =>
+                {
+                    b.HasOne("CompanyManagement.Domain.AccountAgg.Account", "Account")
+                        .WithMany("LoginAttempts")
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Account");
                 });
 
             modelBuilder.Entity("CompanyManagement.Domain.ChecklistAgg.Checklist", b =>
@@ -1254,6 +1319,11 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                     b.Navigation("Checklists");
                 });
 
+            modelBuilder.Entity("CompanyManagement.Domain.AccountAgg.Account", b =>
+                {
+                    b.Navigation("LoginAttempts");
+                });
+
             modelBuilder.Entity("CompanyManagement.Domain.ChecklistAgg.Checklist", b =>
                 {
                     b.Navigation("People");
@@ -1286,6 +1356,11 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
             modelBuilder.Entity("CompanyManagement.Domain.CompanyCategoryAgg.CompanyCategory", b =>
                 {
                     b.Navigation("Companies");
+                });
+
+            modelBuilder.Entity("CompanyManagement.Domain.StatesCategoryAgg.StateCategory", b =>
+                {
+                    b.Navigation("Accounts");
                 });
 #pragma warning restore 612, 618
         }

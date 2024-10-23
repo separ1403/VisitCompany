@@ -15,6 +15,8 @@
         public const int CreateCompanyCategory = 22;
         public const int EditCompanyCategory = 23;
 
+
+
         //Account
         public const int ListAccounts = 30;
         public const int SearchAccounts = 31;
@@ -33,6 +35,14 @@
         public const int SearchLicenceCategories = 51;
         public const int CreateLicenceCategories = 52;
         public const int EditLicenceCategories = 53;
+
+
+
+        //StateCategory
+        public const int ListStateCategories = 60;
+        public const int SearchStateCategories = 61;
+        public const int CreateStateCategory = 62;
+        public const int EditStateCategory = 63;
 
     }
 

@@ -53,7 +53,7 @@ namespace AccountManagement.Application
 
 
 
-            account.Edit(command.Fullname, command.Username, command.Mobile, command.RoleId);
+            account.Edit(command.Fullname, command.Username, command.Mobile, command.RoleId,command.StateCategoryId);
             _accountRepository.SaveChanges();
             operation.Succeeded(ApplicationMessages.SuccessMessage);
             return operation;
@@ -73,9 +73,9 @@ namespace AccountManagement.Application
             }
             else
             {
-                var password = _passwordHasher.Hash(command.Password);
+                //var password = _passwordHasher.Hash(command.Password);
 
-                var account = new Account(command.Fullname, command.Username, password, command.Mobile, command.RoleId);
+                var account = new Account(command.Fullname, command.Username, /*password,*/ command.Mobile, command.RoleId,command.StateCategoryId);
 
                 //   _smsSender.SendByKavenagarAsync("کد فعالسازی شما در سایت لوازم خانگی حمید :  " + codevalidate , command.Mobile  );  // in r bayad badan faal konam alan be khatere sharj nabodan gheyre faale
 
@@ -104,8 +104,8 @@ namespace AccountManagement.Application
                 return operation;
             }
 
-            var password = _passwordHasher.Hash(command.Password);
-            account.ChangePassword(password);
+            //var password = _passwordHasher.Hash(command.Password);
+            //account.ChangePassword(password);
             _accountRepository.SaveChanges();
             operation.Succeeded(ApplicationMessages.SuccessMessage);
             return operation;
@@ -219,7 +219,9 @@ namespace AccountManagement.Application
             var account = _accountRepository.GetById(accountId);
             if (account != null)
             {
-                account.LastLoginCal();
+                 account.LastLoginCal();
+                account.RecordLogin();
+
                 _accountRepository.SaveChanges();
             }
         }

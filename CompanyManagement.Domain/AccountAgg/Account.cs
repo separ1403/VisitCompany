@@ -1,5 +1,6 @@
 ﻿using AccountManagement.Domain.RoleAgg;
 using CompanyManagement.Domain.ChecklistAgg;
+using CompanyManagement.Domain.StatesCategoryAgg;
 using Framework.Domain;
 
 namespace CompanyManagement.Domain.AccountAgg
@@ -8,13 +9,16 @@ namespace CompanyManagement.Domain.AccountAgg
     {
         public string Fullname { get; private set; }
         public string UserName { get; private set; }
-        public string Password { get; private set; }
+       // public string Password { get; private set; }
         public string Mobile { get; private set; }
         public long RoleId { get; private set; }
         public bool IsActive { get; private set; }
         public Role Role { get; private set; }
-        public DateTime? LastLogin { get; private set; }
-        public DateTime? PreviousLogin { get; private set; }
+        public StateCategory StateCategory { get; private set; }
+        public long StateCategoryId { get; private set; }
+
+        public DateTime? LastLogin { get; private set; } //in dige estefade nashod bekhatere lsiti az login ha
+        public DateTime? PreviousLogin { get; private set; }//in dige estefade nashod bekhatere lsiti az login ha
         public string? CodeValidateMobile { get; private set; }  //be khatere errore SqlNullValueException: Data is Null. This method or property cannot be called on Null values.  ro midad ke search kardam goft ? inja bezaram va inke to table sql ham mishod ke null bashe
 
         public long ChecklistId { get; private set; }
@@ -22,14 +26,15 @@ namespace CompanyManagement.Domain.AccountAgg
         public long CompanyId { get; private set; }
 
         public List<Company> Companies { get; private set; } // تغییر برای ارتباط Many-to-Many
+        public List<LoginAttempt> LoginAttempts { get; private set; }
 
 
 
-        public Account(string fullname, string userName, string password, string mobile, long roleId)
+        public Account(string fullname, string userName,/* string password,*/ string mobile, long roleId,long stateCategoryId)
         {
             Fullname = fullname;
             UserName = userName;
-            Password = password;
+         //   Password = password;
             Mobile = mobile;
             RoleId = roleId;
             if (roleId == 0)
@@ -41,11 +46,13 @@ namespace CompanyManagement.Domain.AccountAgg
             IsActive = true;
 
             Companies = new List<Company>();
+            StateCategoryId=stateCategoryId;
 
+            LoginAttempts = new List<LoginAttempt>();
 
         }
 
-        public void Edit(string fullname, string userName, string mobile, long roleId)
+        public void Edit(string fullname, string userName, string mobile, long roleId,long stateCategoryId)
         {
             if (fullname != null)
                 Fullname = fullname;
@@ -59,11 +66,12 @@ namespace CompanyManagement.Domain.AccountAgg
             if (roleId != 0)
                 RoleId = roleId;
 
-
+            if (stateCategoryId != 0)
+                StateCategoryId = stateCategoryId;
 
         }
 
-        public void LastLoginCal()
+        public void LastLoginCal() 
         {
             PreviousLogin = LastLogin; // ذخیره زمان ورود قبلی
 
@@ -71,10 +79,17 @@ namespace CompanyManagement.Domain.AccountAgg
         }
 
 
-        public void ChangePassword(string password)
+        public void RecordLogin()
         {
-            Password = password;
+            var loginAttempt = new LoginAttempt(this.Id);
+            LoginAttempts.Add(loginAttempt);
         }
+
+
+        //public void ChangePassword(string password)
+        //{
+        //    Password = password;
+        //}
 
 
         public void ChangeActiveMode()

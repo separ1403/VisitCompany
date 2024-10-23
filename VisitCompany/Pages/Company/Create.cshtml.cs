@@ -32,7 +32,8 @@ namespace VisitCompany.Pages.Company
 
         public List<SelectListItem> AccountList = new List<SelectListItem>();
         public SelectList CompanyCategories;
-        public SelectList LicenceCategories;
+        //  public SelectList LicenceCategories;
+        public List<SelectListItem> LicenceCategories = new List<SelectListItem>();
 
         private readonly ICompanyCategoryApplication _companyCategoryApplication;
         private readonly ICompanyApplication _companyApplication;
@@ -87,9 +88,13 @@ namespace VisitCompany.Pages.Company
         private void PopulateSelectLists()
         {
             CompanyCategories = new SelectList(_companyCategoryApplication.GetCompanyCategories(), "Id", "Name");
-            LicenceCategories = new SelectList(_licenceApplication.GetLicenceCategories(), "Id", "Name");
+          //  LicenceCategories = new SelectList(_licenceApplication.GetLicenceCategories(), "Id", "Name");
             var accounts = _accountApplication.GetAccounts();
             AccountList = accounts.Select(accounts => new SelectListItem(accounts.Fullname, accounts.Id.ToString())).ToList();
+           
+            var licence = _licenceApplication.GetLicenceCategories();
+            LicenceCategories = licence.Select(licence => new SelectListItem(licence.Name, licence.Id.ToString())).ToList();
+
         }
 
 

@@ -21,11 +21,15 @@ namespace CompanyManagement.Application.Contract.Company
         public double Average { get;  set; }
 
         public long CategoryId { get; set; }
-        public  long LicenceId { get; set; }
+        public List<long>?  LicenceIds { get; set; }
+        public string Licence { get; set; }
+
         public string CompanyCreateDate { get;  set; }
         public List<long>? AccountIds { get; set; } // باید مقداردهی شود
         public string CheckByAccount { get; set; }
         public string Domain { get; set;}
+        public string Address { get; set; }
+
 
     }
 }
