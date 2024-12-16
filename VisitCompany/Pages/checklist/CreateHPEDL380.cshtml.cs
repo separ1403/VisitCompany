@@ -42,12 +42,12 @@ namespace VisitCompany.Pages.checklist
 
 
 
-            // اگر ارزیابی قبلاً تکمیل شده باشد
-            if (checklist != null && checklist.IsCompleted)
-            {
-                ErrorMessageame = "این ارزیابی قبلاً تکمیل شده است و نمی‌توانید مجدداً آن را انجام دهید.";
-                return RedirectToPage("Index"); // به صفحه Index بازمی‌گردد
-            }
+            //// اگر ارزیابی قبلاً تکمیل شده باشد
+            //if (checklist != null && checklist.IsCompleted)
+            //{
+            //    ErrorMessageame = "این ارزیابی قبلاً تکمیل شده است و نمی‌توانید مجدداً آن را انجام دهید.";
+            //    return RedirectToPage("Index"); // به صفحه Index بازمی‌گردد
+            //}
 
             Command = new CreateHPEDL380Checklist { ChecklistId = id };
             return Page(); // ادامه صفحه برای کاربر

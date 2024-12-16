@@ -10,5 +10,7 @@ namespace AccountManagement.Application.Contracts.Account
     {
         public string Username { get; set; }
         public string Mobile { get; set; }
+        
+
     }
 }

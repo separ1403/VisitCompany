@@ -10,8 +10,10 @@ namespace AccountManagement.Application.Contracts.Account
         EditAccount Getdetails(long id);
          
         ChangePassword Getdetail(long id);
-        List<AccountViewModel> Serach(AccountSearchModel searchModel);
+        List<AccountViewModel> Search(AccountSearchModel searchModel, long? provincialAdminStateCategoryId = null);
         AccountViewModel GetLastLogin(string searchModel);
+        List<AccountViewModel> SearchTotal(AccountSearchModel searchModel, long? provincialAdminStateCategoryId = null);
+
         AccountViewModel GetByMobile(string mobile);
         OperationResult Login(Login command);
         void Logout();

@@ -1,0 +1,664 @@
+﻿@page
+@using Newtonsoft.Json
+@model VisitCompany.Pages.ReportModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>گزارش</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- لینک‌های CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/persian-datepicker/dist/css/persian-datepicker.min.css" />
+    <style>
+        body {
+            font-family: 'Tahoma', Arial, sans-serif;
+            direction: rtl;
+            text-align: center;
+            background: #fbe6d4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ff6f61;
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .statistics-container {
+            padding: 20px;
+        }
+
+        .statistics-box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .statistics-item {
+            background: #f0f4f8;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 100%;
+            max-width: 45%;
+        }
+
+            .statistics-item h3 {
+                color: #333;
+                margin-bottom: 10px;
+            }
+
+            .statistics-item span {
+                font-size: 24px;
+                color: #0077ff;
+            }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+            table th, table td {
+                padding: 10px;
+                border: 1px solid #ddd;
+                text-align: center;
+            }
+
+            table th {
+                background: #0077ff;
+                color: #fff;
+            }
+
+            table tbody tr:nth-child(even) {
+                background: #f9f9f9;
+            }
+
+        .calendar-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        #calendar {
+            width: 400px;
+            background-color: #87CEEB;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .datepicker-header {
+            background: linear-gradient(135deg, #0077ff, #00bbff);
+            color: #ffffff;
+            padding: 14px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .datepicker-day-view .datepicker-day {
+            padding: 12px;
+            margin: 6px;
+            font-size: 16px;
+            border-radius: 50%;
+            display: inline-block;
+            width: 42px;
+            height: 42px;
+            line-height: 42px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+            .datepicker-day-view .datepicker-day:hover {
+                background: linear-gradient(135deg, #0077ff, #00bbff);
+                color: #fff;
+            }
+
+        .datepicker-day-view .datepicker-selected {
+            background: linear-gradient(135deg, #00bbff, #33d9ff);
+            color: #fff;
+        }
+
+        .datepicker-day-view .datepicker-today {
+            background: #ffd700;
+            border: 2px solid #ff9478;
+        }
+
+        /* اضافه کردن استایل‌ها برای دکمه‌ها */
+        .btn-container {
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #0077ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .btn:hover {
+                background-color: #005bb5;
+            }
+
+    </style>
+</head>
+<body>
+    <h1>گزارش</h1>
+   
+
+@* جستجو
+ *@
+    <div class="panel-body">
+        <form class="form-inline" role="form" method="get" asp-page="/Report">
+            <div class="form-group">
+                <label class="sr-only" for="keyword">کلمه کلیدی</label>
+                <input asp-for="Keyword" class="form-control" id="keyword" name="Keyword" placeholder="عبارت جستجو" />
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" asp-for="SearchCompanies" /> شرکت‌ها
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" asp-for="SearchChecklists" /> چک‌لیست‌ها
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" asp-for="SearchLicences" /> مجوزها
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" asp-for="SearchPersons" /> افراد
+                </label>
+            </div>
+            <button type="submit" class="btn btn-success waves-effect waves-light m-l-10">جستجو</button>
+        </form>
+    </div>
+
+
+    <div class="statistics-item">
+
+        <div class="statistics-item">
+            <h3>نتیجه ی برای نمایش در نمودار</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>شهر</th>
+                        <th>تعداد چک‌لیست‌ها (کل)</th>
+                        <th>چک‌لیست‌ها (هفته)</th>
+                        <th>چک‌لیست‌ها (ماه)</th>
+                        <th>تعداد شرکت‌ها (کل)</th>
+                        <th>شرکت‌ها (هفته)</th>
+                        <th>شرکت‌ها (ماه)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.MergedData)
+                    {
+                        <tr>
+                            <td>@item.StateCategory</td>
+                            <td>@item.ChecklistCount</td>
+                            <td>@item.ChecklistCountOneWeek</td>
+                            <td>@item.ChecklistCountOneMonth</td>
+                            <td>@item.CompanyCount</td>
+                            <td>@item.CompanyCountOneWeek</td>
+                            <td>@item.CompanyCountOneMonth</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <div class="statistics-item">
+
+        <div class="statistics-item">
+            <h3>نتیجه ی جستجو در شرکت ها</h3>
+
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>تاریخ</th>
+                        <th>نام کسب‌وکار</th>
+                        <th>دسته‌بندی</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var company in Model.CompaniesSearch)
+                    {
+                        <tr>
+                            <td>@company.CompanyCreateDate</td>
+                            <td>@company.CompanyName</td>
+                            <td>@company.Category</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="statistics-item">
+     
+
+        <h4>نتیجه جستجو در ارزیابی‌ها</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>تاریخ</th>
+                    <th>نام شرکت</th>
+                    <th>نمرات انطباق پذیری </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var checklist in Model.ChecklistsSearch)
+                {
+                    <tr>
+                        <td>@checklist.CreattionDate</td>
+                        <td>@checklist.CompanyName</td>
+                        <!-- معدل نمرات ارزیابی -->
+                        <td>
+                            @if (checklist.AverageGeneral > 0)
+                            {
+                                <div>ارزیابی عمومی : @checklist.AverageGeneral</div>
+                            }
+
+                            @if (checklist.AverageGeneralProff > 0)
+                            {
+                                <div> فنی- ارزیابی عمومی : @checklist.AverageGeneralProff</div>
+                            }
+                            @if (checklist.AverageGeneralPol > 0)
+                            {
+                                <div>ارزیابی عمومی- انتظامی : @checklist.AverageGeneralPol</div>
+                            }
+
+                            @if (checklist.AverageJunipper > 0)
+                            {
+                                <div> ارزیابی تخصصی جونیپر: @checklist.AverageJunipper</div>
+                            }
+                            @if (checklist.AverageWin2019 > 0)
+                            {
+                                <div>ارزیابی تحصصیWin2019:  @checklist.AverageWin2019</div>
+                            }
+                            @if (checklist.AverageHpedl380 > 0)
+                            {
+                                <div>ارزیابی تخصصیHPEDL380: @checklist.AverageHpedl380</div>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="statistics-item">
+        <h3>نتیجه ی جستجو در مجوزها</h3>
+
+
+        <table>
+            <thead>
+                <tr>
+                    <th>نام</th>
+                    <th>توضیحات</th>
+                    <th>وضعیت‌</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var company in Model.LicencesSearch)
+                {
+                    <tr>
+                        <td>@company.Name</td>
+                        <td>@company.Description</td>
+                        <td>@company.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="statistics-item">
+        <h3>نتیجه ی جستجو در افراد حاضر در کسب و کارها</h3>
+
+
+        <table>
+            <thead>
+                <tr>
+                    <th>نام شرکت</th>
+                    <th>نام فرد</th>
+                    <th>مسئولیت فرد‌</th>
+                    <th>موبایل فرد‌</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var company in Model.PersonSearch)
+                {
+                    <tr>
+                        <td>@company.CompanyBrand</td>
+                        <td>@company.NamePeopleCo</td>
+                        <td>@company.RspponsePeopleCo</td>
+                        <td>@company.PhonePeopleCo</td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="statistics-item">
+        <h3>نتیجه ی جستجو بر اساس  میانگین دسته بندی ها </h3>
+
+
+        <table>
+            <thead>
+                <tr>
+                    <th>نام دسته بندی</th>
+                    <th>میانگین کسب شده </th>
+                  
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var category in Model.CategoryAverage)
+                {
+                    <tr>
+                        <td>@category.CategoryName</td>
+                        <td>@category.AverageScore</td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+    <ul>
+        <li>تعداد کل شرکت‌ها: @Model.TotalCountCompanies</li>
+        <li>تعداد کل شرکت‌های اضافه شده در یک ماه اخیر: @Model.TotalCountCompaniesInOneMonth</li>
+        <li>تعداد کل چک‌لیست‌ها: @Model.TotalCountCheckLists</li>
+        <li>تعداد کل چک‌لیست‌های اضافه شده در یک ماه اخیر: @Model.TotalCountCheckListsInOneMonth</li>
+        <li>تعداد کل اکانت‌ها: @Model.TotalCountAccounts</li>
+        <li>تعداد کل چک‌لیست‌های اضافه شده در یک هفته اخیر: @Model.TotalCountCheckListsInOneWeek</li>
+
+        <li>تعداد اکانت‌های غیر از ادمین: @Model.TotalCountAccountsExeptAdm</li>
+        <li>تعداد افراد در چک‌لیست‌ها: @Model.TotalCountCheckListsPeoples</li>
+    </ul>
+
+
+    <h2> (10 شرکت ضعیف)کمترین میانگین نمرات شرکت ها</h2>
+
+    @if (Model.AllAverageInOneCompany != null && Model.AllAverageInOneCompany.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Company Name</th>
+                    <th>Average Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var companyAverage in Model.AllAverageInOneCompany)
+                {
+                    <tr>
+                        <td>@companyAverage.CompanyName</td>
+                        <td>@companyAverage.AverageScore</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No company averages available.</p>
+    }
+
+
+        <table>
+        <thead        
+            <h3>نمایش بیشترین ضعف در بین آیتم های ارزیابی</h3>
+>
+            <tr>
+                <th>نام ویژگی</th>
+                <th>مجموع امتیازات کسب شده در بین تمام شرکت ها</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var score in Model.TopScores)
+            {
+                <tr>
+                    <td>@score.PropertyName</td>
+                    <td>@score.TotalScore</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    <div class="statistics-container">
+        <h2>وضعیت آماری</h2>
+        <div class="statistics-box">
+            <div class="statistics-item">
+                <h3>تعداد کل ارزیابی‌ها</h3>
+                <span>@Model.TotalCountCheckLists</span>
+                <p>بازدیدهای ماه اخیر: @Model.TotalCountCheckListsInOneMonth</p>
+
+                <h4>آخرین ارزیابی‌ها</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>تاریخ</th>
+                            <th>نام شرکت</th>
+                            <th>نمرات انطباق پذیری </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var checklist in Model.ChecklistsTen)
+                        {
+                            <tr>
+                                <td>@checklist.CreattionDate</td>
+                                <td>@checklist.CompanyName</td>
+                                <!-- معدل نمرات ارزیابی -->
+                                <td>
+                                    @if (checklist.AverageGeneral > 0)
+                                    {
+                                        <div>ارزیابی عمومی : @checklist.AverageGeneral</div>
+                                    }
+                                    @if (checklist.AverageGeneralProff > 0)
+                                    {
+                                        <div> فنی- ارزیابی عمومی : @checklist.AverageGeneralProff</div>
+                                    }
+                                    @if (checklist.AverageGeneralPol > 0)
+                                    {
+                                        <div>ارزیابی عمومی- انتظامی : @checklist.AverageGeneralPol</div>
+                                    }
+                                    @if (checklist.AverageJunipper > 0)
+                                    {
+                                        <div> ارزیابی تخصصی جونیپر: @checklist.AverageJunipper</div>
+                                    }
+                                    @if (checklist.AverageWin2019 > 0)
+                                    {
+                                        <div>ارزیابی تحصصیWin2019:  @checklist.AverageWin2019</div>
+                                    }
+                                    @if (checklist.AverageHpedl380 > 0)
+                                    {
+                                        <div>ارزیابی تخصصیHPEDL380: @checklist.AverageHpedl380</div>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="statistics-item">
+                <h3>تعداد کل کسب‌وکارها</h3>
+                <span>@Model.TotalCountCompanies</span>
+                <p>اضافه شده در ماه اخیر: @Model.TotalCountCompaniesInOneMonth</p>
+
+                <h4>آخرین کسب‌وکارهای اضافه شده</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>تاریخ</th>
+                            <th>نام کسب‌وکار</th>
+                            <th>دسته‌بندی</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var company in Model.CompaniesTen)
+                        {
+                            <tr>
+                                <td>@company.CompanyCreateDate</td>
+                                <td>@company.CompanyName</td>
+                                <td>@company.Category</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="calendar" class="calendar-container"></div>
+
+    <!-- دکمه‌ها -->
+    <div class="btn-container">
+        <button class="btn" id="weekButton">یک هفته اخیر</button>
+        <button class="btn" id="monthButton">یک ماه اخیر</button>
+    </div>
+
+
+    <!-- اولین نمودار -->
+    <canvas id="chart1" width="400" height="200"></canvas>
+    <!-- لینک‌های JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/persian-date/dist/persian-date.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/persian-datepicker/dist/js/persian-datepicker.min.js"></script>
+    <script>
+        $('#calendar').persianDatepicker({
+            inline: true,
+            calendarType: 'persian',
+        });
+        // انتقال مدل ها و تبدیل انها جهت اتصال به نمودار
+        // داده ها با توجه به بازه ی یک ماهه است
+        const statusAssignedCount = @Html.Raw(JsonConvert.SerializeObject(Model.StatusAssignedCount));
+        const statusWaitingEvaluationCount = @Html.Raw(JsonConvert.SerializeObject(Model.StatusWaitingEvaluationCount));
+        const statusEndingEvaluationCount = @Html.Raw(JsonConvert.SerializeObject(Model.StatusEndingEvaluationCount));
+        const statusExpireEvaluationCount = @Html.Raw(JsonConvert.SerializeObject(Model.StatusExpireEvaluationCount));
+
+
+        // داده ها با توجه به بازه ی یک هفته  است
+
+        const statusAssignedCountWeek = @Html.Raw(JsonConvert.SerializeObject(Model.StatusAssignedCountWeek));
+        const statusWaitingEvaluationCountWeek = @Html.Raw(JsonConvert.SerializeObject(Model.StatusWaitingEvaluationCountWeek));
+        const statusEndingEvaluationCountWeek = @Html.Raw(JsonConvert.SerializeObject(Model.StatusEndingEvaluationCountWeek));
+        const statusExpireEvaluationCountWeek = @Html.Raw(JsonConvert.SerializeObject(Model.StatusExpireEvaluationCountWeek));
+
+
+        const chartData = {
+            labels: ['ارزیاب تعیین شده', 'منتظر تعیین ارزیاب', 'درحال اتمام زمان ارزیابی', 'منقضی شدن زمان ارزیابی'],
+            datasets: [{
+                label: 'وضعیت آماری',
+                data: [statusAssignedCount, statusWaitingEvaluationCount, statusEndingEvaluationCount, statusExpireEvaluationCount],
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(255, 206, 86, 0.6)',
+                    'rgba(255, 99, 132, 0.6)'
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        // تنظیمات نمودار
+        const chartOptions = {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top'
+                }
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'وضعیت‌ها',
+                        font: {
+                            size: 16
+                        }
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'تعداد',
+                        font: {
+                            size: 16
+                        }
+                    }
+                }
+            }
+        };
+
+        // رسم نمودار
+        const ctx = document.getElementById('chart1').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: chartData,
+            options: chartOptions
+        });
+
+        // تابع برای تغییر داده‌های نمودار
+        function updateChartData(data) {
+            chart.data.datasets[0].data = data;
+            chart.update();
+        }
+
+        // رویداد برای دکمه یک هفته اخیر
+        $('#weekButton').click(function () {
+            const weekData = [
+                statusAssignedCountWeek,
+                statusWaitingEvaluationCountWeek,
+                statusEndingEvaluationCountWeek,
+                statusExpireEvaluationCountWeek
+            ];
+            updateChartData(weekData);
+        });
+
+        // رویداد برای دکمه یک ماه اخیر
+        $('#monthButton').click(function () {
+            const monthData = [
+                statusAssignedCount,
+                statusWaitingEvaluationCount,
+                statusEndingEvaluationCount,
+                statusExpireEvaluationCount
+            ];
+            updateChartData(monthData);
+        });
+
+    </script>
+</body>
+</html>

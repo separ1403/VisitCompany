@@ -11,7 +11,8 @@ namespace CompanyManagement.Domain.ChecklistAgg
     public  interface  IGeneralChecklistRepository : IRepository<long, GeneralChecklist>
     {
         EditGeneralChecklist Getdetails(long id);
+        List<(string PropertyName, long TotalScore)> GetMostVulnerableProperties();
 
     }
-    
+
 }

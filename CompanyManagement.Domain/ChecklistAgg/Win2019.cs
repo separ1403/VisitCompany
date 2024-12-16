@@ -12,6 +12,8 @@ namespace CompanyManagement.Domain.ChecklistAgg
     {
         public Win2019(long? isPasswordHistoryEnabled, string? isPasswordHistoryEnabledDescription, long? isMaxPasswordAgeConfigured, string? isMaxPasswordAgeConfiguredDescription, long? isMinPasswordAgeConfigured, string? isMinPasswordAgeConfiguredDescription, long? isMinPasswordLengthConfigured, string? isMinPasswordLengthConfiguredDescription, long? isComplexPasswordRequired, string? isComplexPasswordRequiredDescription, long? isPlainTextPasswordStorageDisabled, string? isPlainTextPasswordStorageDisabledDescription, long? isAccountLockoutDurationConfigured, string? isAccountLockoutDurationConfiguredDescription, long? isFailedLogonAttemptsLimited, string? isFailedLogonAttemptsLimitedDescription, long? isAdminLockoutConfigured, string? isAdminLockoutConfiguredDescription, long? isPasswordResetErrorCountConfigured, string? isPasswordResetErrorCountConfiguredDescription, long? isUserAccountManagementRestricted, string? isUserAccountManagementRestrictedDescription, long? isRemoteAccessManaged, string? isRemoteAccessManagedDescription, long? isOsAccountAccessLimited, string? isOsAccountAccessLimitedDescription, long? isDomainJoinRestricted, string? isDomainJoinRestrictedDescription, long? isMemoryManagementPermissionGranted, string? isMemoryManagementPermissionGrantedDescription, long? isLocalConsoleLogonRestricted, string? isLocalConsoleLogonRestrictedDescription, long? isRemoteLogonGroupManaged, string? isRemoteLogonGroupManagedDescription, long? isBackupAccessManaged, string? isBackupAccessManagedDescription, long? isSystemTimeChangeManaged, string? isSystemTimeChangeManagedDescription, long? isAccessTokenCreationLimited, string? isAccessTokenCreationLimitedDescription, long? isRemoteLogonRestrictedForGuests, string? isRemoteLogonRestrictedForGuestsDescription, long? isScheduledTasksPermissionManaged, string? isScheduledTasksPermissionManagedDescription, long? isLogonAsServicePermissionManaged, string? isLogonAsServicePermissionManagedDescription, long? isGuestLogonManaged, string? isGuestLogonManagedDescription, long? isLocalAccountLogonManaged, string? isLocalAccountLogonManagedDescription, long? isLogonAsServiceSettingsApplied, string? isLogonAsServiceSettingsAppliedDescription, long? isRemoteShutdownPermissionManaged, string? isRemoteShutdownPermissionManagedDescription, long? isAdministratorUsernameChanged, string? isAdministratorUsernameChangedDescription, long? isCachedUsernameCountManaged, string? isCachedUsernameCountManagedDescription, long? isPasswordExpirationWarningManaged, string? isPasswordExpirationWarningManagedDescription, long? isAnonymousSidRequestManaged, string? isAnonymousSidRequestManagedDescription, long? isNtfsMediaAccessManaged, string? isNtfsMediaAccessManagedDescription, long? isSharedPrinterDriverInstallationManaged, string? isSharedPrinterDriverInstallationManagedDescription, long? isPrinterSpoolerServiceManaged, string? isPrinterSpoolerServiceManagedDescription, long? isOnlineTipManaged, string? isOnlineTipManagedDescription, long? isKeepAliveTimeManaged, string? isKeepAliveTimeManagedDescription, long? isIrdpOptionDisabled, string? isIrdpOptionDisabledDescription, long? isDataRetransmissionManaged, string? isDataRetransmissionManagedDescription, string finallDescription)
         {
+            Name = "چک لیست تخصصی - Win2019";
+
             IsPasswordHistoryEnabled = isPasswordHistoryEnabled;
             IsPasswordHistoryEnabledDescription = isPasswordHistoryEnabledDescription;
             IsMaxPasswordAgeConfigured = isMaxPasswordAgeConfigured;
@@ -96,6 +98,7 @@ namespace CompanyManagement.Domain.ChecklistAgg
         {
 
         }
+        public string Name { get; private set; }
 
         public long? IsPasswordHistoryEnabled { get; set; }
         public string? IsPasswordHistoryEnabledDescription { get; set; }
@@ -216,6 +219,7 @@ namespace CompanyManagement.Domain.ChecklistAgg
         public Checklist Checklist { get; set; }
         public bool IsCompleted { get; set; } // فیلدی که وضعیت ارزیابی را ذخیره می‌کند
         public string? FinallDescription { get; private set; }
+        public string? UniqueCode { get; set; }
 
 
 

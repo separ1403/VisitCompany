@@ -1,11 +1,13 @@
 ﻿using CompanyManagement.Application.Contract.Checklist;
 using CompanyManagement.Domain.AccountAgg;
+using CompanyManagement.Domain.StatesCategoryAgg;
 using Framework.Domain;
 
 namespace CompanyManagement.Domain.ChecklistAgg
 {
     public class Checklist : EntityBase
     {
+
         public string? Title { get; private set; }
         public string? Description { get; private set; }
         public long? CountEmployees { get; private set; } 
@@ -13,10 +15,12 @@ namespace CompanyManagement.Domain.ChecklistAgg
         public long? CompanyId { get; private set; }
         public List<long>? AccountIds { get; private set; }
         public Company? Company { get; private set; }
-        public List<Account>? Accounts { get; private set; }
+        public List<Account>? Accounts { get; private set; } = new List<Account>();         //برای اینکه در رابطه ی چند به چند مقدار دهی در این جدول در دیتابیس ایجاد بشه
+
 
         public List<long>? PeopleIds { get; private set; }
         public List<Person> People { get; private set; } = new List<Person>();
+
 
 
 
@@ -29,7 +33,8 @@ namespace CompanyManagement.Domain.ChecklistAgg
         public long? HPEDL380ID { get; private set; }
         public long? Win2019ID { get; private set; }
         public long? GeneralChecklistID { get; private set; }
-
+        public long? GeneralChecklistProfessionalID { get; private set; }
+        public long? GeneralChecklistPolicyID { get; private set; }
 
 
         // Navigation properties for specialized checklists
@@ -37,10 +42,13 @@ namespace CompanyManagement.Domain.ChecklistAgg
         public HPEDL380? HPEDL380 { get; set; }
         public Win2019? Win2019 { get; set; }
         public GeneralChecklist? GeneralChecklist { get; set; }
+        public GeneralProffesional GeneralProffesional { get; set; }
+        public GeneralPolicy GeneralPolicy { get; set; }
 
 
         public Checklist(string title, string description, List<Person> people, long countEmployees, long countFolowers, long companyId, List<long> accountIds)
         {
+            
             Title = title;
             Description = description;
             People = people;  // تخصیص لیست اشخاص
@@ -55,6 +63,22 @@ namespace CompanyManagement.Domain.ChecklistAgg
         public Checklist()
         {
             // Parameterless constructor
+        }
+
+        public void EditGeneralChecklistProffessional(long generalChecklistProffID)
+        {
+            if (generalChecklistProffID != 0)
+            {
+                GeneralChecklistProfessionalID = generalChecklistProffID;
+            }
+        }
+
+        public void EditGeneralChecklistPolicy(long generalChecklistPolID)
+        {
+            if (generalChecklistPolID != 0)
+            {
+                GeneralChecklistPolicyID = generalChecklistPolID;
+            }
         }
 
         public void Editjunior(long juniperHardeningID)
@@ -91,7 +115,14 @@ namespace CompanyManagement.Domain.ChecklistAgg
         }
 
 
-
+        //برای اینکه در رابطه ی چند به چند مقدار دهی در این جدول در دیتابیس ایجاد بشه
+        public void AddAccounts(List<Account> accounts)
+        {
+            foreach (var account in accounts)
+            {
+                Accounts.Add(account);
+            }
+        }
 
 
 

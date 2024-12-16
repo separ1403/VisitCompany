@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace VisitCompany.Areas.Administration.Pages.Accounts.Role
 {
-    [Authorize]
+  //  [Authorize]
     public class EditModel : PageModel
     {
        
@@ -34,7 +34,7 @@ namespace VisitCompany.Areas.Administration.Pages.Accounts.Role
             _exposers = exposers;
         }
 
-        [NeedsPermission(CompanyPermission.EditRoles)]
+     //   [NeedsPermission(CompanyPermission.EditRoles)]
         public void OnGet(long id)
         {
 
@@ -63,7 +63,7 @@ namespace VisitCompany.Areas.Administration.Pages.Accounts.Role
             
 
         }
-        [NeedsPermission(CompanyPermission.EditRoles)]
+       // [NeedsPermission(CompanyPermission.EditRoles)]
         public IActionResult  OnPostEdit(EditRole command)
         {
             var operationResult = _roleAplication.Edit(command);

@@ -15,6 +15,8 @@ namespace CompanyManagement.Infrastructure.Configuration.Permission
                         new PermissionDto(CompanyPermission.SearchCompanies, "جستجوی شرکت ها"),
                         new PermissionDto(CompanyPermission.CreateCompanies, "ایجاد شرکت"),
                         new PermissionDto(CompanyPermission.EditCompanies, "ویرایش شرکت"),
+                        new PermissionDto(CompanyPermission.ReferCompanies, "ارجاع شرکت"),
+
 
                     }
                 },

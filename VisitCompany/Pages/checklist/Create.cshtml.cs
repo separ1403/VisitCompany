@@ -4,10 +4,12 @@ using CompanyManagement.Application.Contract.Checklist;
 using CompanyManagement.Application.Contract.Company;
 using CompanyManagement.Application.Contract.CompanyCategory;
 using Framework.Application;
+using Framework.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Security.Claims;
 
 namespace VisitCompany.Pages.checklist
 {
@@ -40,9 +42,12 @@ namespace VisitCompany.Pages.checklist
 
         public void OnGet()
         {
-            var accounts = _accountApplication.GetAccounts();
-            AccountList = accounts.Select(accounts => new SelectListItem(accounts.Fullname, accounts.Id.ToString()))
-                .ToList();
+            var currentUserRole = Convert.ToInt64(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value);
+            var currentUserProvinceId = Convert.ToInt64(HttpContext.User.Claims.FirstOrDefault(c => c.Type == "StateCategoryId")?.Value);
+
+            var accounts = _accountApplication.Search(new AccountSearchModel(), currentUserRole == Convert.ToInt64(RolesConst.State) ? currentUserProvinceId : (long?)null);
+            AccountList = accounts.Select(accounts => new SelectListItem(accounts.Fullname, accounts.Id.ToString())).ToList();
+                
 
             Companies = new SelectList(_companyApplication.GetCompeniesWithUsername(), "Id", "Brand");
         }

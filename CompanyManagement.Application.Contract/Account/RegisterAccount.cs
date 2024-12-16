@@ -6,6 +6,9 @@ namespace AccountManagement.Application.Contracts.Account
     public  class RegisterAccount
     {
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
+        public string Name { get; set; }
+
+        [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Fullname { get; set; }
 
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
@@ -27,7 +30,8 @@ namespace AccountManagement.Application.Contracts.Account
         public long RoleId { get; set; }
         public long StateCategoryId { get; set; }
 
-        
+        public string Description { get; set; }
+
 
 
 

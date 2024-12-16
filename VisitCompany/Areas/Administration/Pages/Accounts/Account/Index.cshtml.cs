@@ -1,4 +1,5 @@
-﻿using AccountManagement.Application.Contracts.Account;
+﻿using System.Security.Claims;
+using AccountManagement.Application.Contracts.Account;
 using AccountManagement.Application.Contracts.Role;
 using CompanyManagement.Application.Contract.StateCategory;
 using CompanyManagement.Infrastructure.Configuration.Permission;
@@ -10,7 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace VisitCompany.Areas.Administration.Pages.Accounts.Account
 {
-    [Authorize]
+ //   [Authorize]
     public class IndexModel : PageModel
     {
 
@@ -32,14 +33,18 @@ namespace VisitCompany.Areas.Administration.Pages.Accounts.Account
         }
 
 
-        [NeedsPermission(CompanyPermission.ListAccounts)]
+     //   [NeedsPermission(CompanyPermission.ListAccounts)]
         public void OnGet(AccountSearchModel searchModel)
         {
+            var currentUserRole = Convert.ToInt64(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value);
+            var currentUserProvinceId = Convert.ToInt64(HttpContext.User.Claims.FirstOrDefault(c => c.Type == "StateCategoryId")?.Value);
+
             Roles = new SelectList(_roleAplication.List(), "Id", "Name");
             States = new SelectList(_statecategoryApplication.List(), "Id", "Name");
 
-            Accounts = _accountApplication.Serach(searchModel);
+            Accounts = _accountApplication.Search(searchModel, currentUserRole == Convert.ToInt64(RolesConst.State) ? currentUserProvinceId : (long?)null);
         }
+
 
 
         public IActionResult OnPostDisableAccount(long id)

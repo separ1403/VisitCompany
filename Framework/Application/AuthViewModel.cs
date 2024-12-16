@@ -9,13 +9,15 @@
         public string Username { get; set; }
         public string Mobile { get; set; }
         public List<int> Permissions;
+        public long StateCategoryId { get; set; }
+
 
 
         public AuthViewModel()
         {
            
         }
-        public AuthViewModel(long id, long roleId, string fullname, string username,string mobile, List<int> permissions)
+        public AuthViewModel(long id, long roleId, string fullname, string username,string mobile, List<int> permissions, long stateCategoryId)
         {
             Id = id;
             RoleId = roleId;
@@ -23,6 +25,7 @@
             Username = username;
             Mobile = mobile;
             Permissions = permissions;
+            StateCategoryId = stateCategoryId;
         }
     }
 }

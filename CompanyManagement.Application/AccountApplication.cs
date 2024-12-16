@@ -6,6 +6,7 @@ using Framework.Application.Sender.Sms;
 using Microsoft.AspNetCore.Http;
 using System.Reflection;
 using CompanyManagement.Domain.AccountAgg;
+using Framework.Infrastructure;
 
 namespace AccountManagement.Application
 {
@@ -53,7 +54,7 @@ namespace AccountManagement.Application
 
 
 
-            account.Edit(command.Fullname, command.Username, command.Mobile, command.RoleId,command.StateCategoryId);
+            account.Edit(command.Name,command.Fullname, command.Username, command.Mobile, command.RoleId,command.StateCategoryId,command.Description);
             _accountRepository.SaveChanges();
             operation.Succeeded(ApplicationMessages.SuccessMessage);
             return operation;
@@ -75,7 +76,7 @@ namespace AccountManagement.Application
             {
                 //var password = _passwordHasher.Hash(command.Password);
 
-                var account = new Account(command.Fullname, command.Username, /*password,*/ command.Mobile, command.RoleId,command.StateCategoryId);
+                var account = new Account(command.Name,command.Fullname, command.Username, /*password,*/ command.Mobile, command.RoleId,command.StateCategoryId,command.Description);
 
                 //   _smsSender.SendByKavenagarAsync("کد فعالسازی شما در سایت لوازم خانگی حمید :  " + codevalidate , command.Mobile  );  // in r bayad badan faal konam alan be khatere sharj nabodan gheyre faale
 
@@ -121,10 +122,7 @@ namespace AccountManagement.Application
             return _accountRepository.Getdetail(id);
         }
 
-        public List<AccountViewModel> Serach(AccountSearchModel searchModel)
-        {
-            return _accountRepository.Serach(searchModel);
-        }
+        
 
         public AccountViewModel GetLastLogin(string searchModel)
         {
@@ -174,6 +172,7 @@ namespace AccountManagement.Application
             var account = _accountRepository.Get(id);
             return new AccountViewModel()
             {
+                Name = account.Name,
                 Fullname = account.Fullname,
                 Mobile = account.Mobile
 
@@ -195,6 +194,7 @@ namespace AccountManagement.Application
             {
                 Id = account.Id,
                 UserName = account.UserName,
+                Name = account.Name,
                 Fullname = account.Fullname,
                 Mobile = account.Mobile,
                 RoleId = account.RoleId,
@@ -205,7 +205,9 @@ namespace AccountManagement.Application
                     ? account.LastLogin.Value.ToString("yyyy-MM-dd HH:mm:ss")
                     : "N/A",
                 PreviousLogin = account.PreviousLogin?.ToString("yyyy-MM-dd HH:mm:ss"), // برای مقدار null-safe
-                CodeValidateMobile = account.CodeValidateMobile
+                CodeValidateMobile = account.CodeValidateMobile,
+                StateCategoryId = account.StateCategoryId,
+                
             };
 
         }
@@ -248,6 +250,16 @@ namespace AccountManagement.Application
             _accountRepository.SaveChanges(); // ذخیره تغییرات
 
             return new OperationResult().Succeeded("کاربر با موفقیت فعال شد");
+        }
+
+        public List<AccountViewModel> Search(AccountSearchModel searchModel, long? provincialAdminStateCategoryId = null)
+        {
+            return _accountRepository.Serach(searchModel, provincialAdminStateCategoryId); // مقدار درست ارسال می‌شود
+        }
+
+        public List<AccountViewModel> SearchTotal(AccountSearchModel searchModel, long? provincialAdminStateCategoryId = null)
+        {
+            return _accountRepository.SerachTotal(searchModel, provincialAdminStateCategoryId); // مقدار درست ارسال می‌شود
         }
     }
 }

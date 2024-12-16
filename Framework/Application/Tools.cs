@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 
+
 namespace Framework.Application
 {
     public static class Tools
@@ -55,11 +56,22 @@ namespace Framework.Application
 
         public static string ToEnglishNumber(this string strNum)
         {
+            // بررسی null یا خالی بودن ورودی
+            if (string.IsNullOrEmpty(strNum))
+                return string.Empty;
+
+            // تعریف اعداد فارسی و انگلیسی
+            var Pn = new string[] { "۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹" };
+            var En = new string[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+
+            // جایگزینی اعداد فارسی با انگلیسی
             var cash = strNum;
             for (var i = 0; i < 10; i++)
                 cash = cash.Replace(Pn[i], En[i]);
+
             return cash;
         }
+
 
         public static string ToPersianNumber(this int intNum)
         {
@@ -90,14 +102,35 @@ namespace Framework.Application
             return c.ToDateTime(year, month, day, 0, 0, 0, 0);
         }
 
-
         public static DateTime ToGeorgianDateTime(this string persianDate)
         {
+            // مقدار پیش‌فرض برای ورودی null یا خالی
+            if (string.IsNullOrEmpty(persianDate))
+                return DateTime.MinValue; // یا هر مقدار دلخواه
+
+            // تبدیل اعداد فارسی به انگلیسی
             persianDate = persianDate.ToEnglishNumber();
-            var year = Convert.ToInt32(persianDate.Substring(0, 4));
-            var month = Convert.ToInt32(persianDate.Substring(5, 2));
-            var day = Convert.ToInt32(persianDate.Substring(8, 2));
-            return new DateTime(year, month, day, new PersianCalendar());
+
+            // بررسی فرمت تاریخ ورودی (مثلاً "1402/09/15")
+            var dateParts = persianDate.Split('/');
+            if (dateParts.Length != 3 ||
+                !int.TryParse(dateParts[0], out var year) ||
+                !int.TryParse(dateParts[1], out var month) ||
+                !int.TryParse(dateParts[2], out var day))
+            {
+                throw new FormatException("The provided Persian date is not in a valid format.");
+            }
+
+            // تبدیل تاریخ شمسی به میلادی
+            try
+            {
+                var persianCalendar = new PersianCalendar();
+                return persianCalendar.ToDateTime(year, month, day, 0, 0, 0, 0);
+            }
+            catch (Exception ex)
+            {
+                throw new FormatException("Error occurred while converting Persian date to Gregorian.", ex);
+            }
         }
 
         public static string ToMoney(this double myMoney)

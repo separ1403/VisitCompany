@@ -13,6 +13,11 @@ namespace CompanyManagement.Application.Contract.LicenceCategory
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Name { get; set; }
         public string Description { get; set; }
+        public string Refrence { get; set; }
+        public bool Status { get;  set; }
+        public string? Fullname { get;  set; }
+        public string? CompanyName { get;  set; }
+
 
     }
 }

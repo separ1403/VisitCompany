@@ -2,6 +2,7 @@
 using CompanyManagement.Application.Contract.Company;
 using CompanyManagement.Application.Contract.CompanyCategory;
 using CompanyManagement.Application.Contract.LicenceCategory;
+using CompanyManagement.Application.Contract.StateCategory;
 using CompanyManagement.Infrastructure.Configuration.Permission;
 using Framework.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
@@ -19,27 +20,35 @@ namespace VisitCompany.Pages.Company
         public List<CompanyViewModel> Companies { get; set; }
         public SelectList CompanyCategories { get; set; }
         public SelectList LicenceCategories { get; set; }
+        public SelectList States;
+
+
+        public List<SelectListItem> AccountList = new List<SelectListItem>();
+        public BatchEditCompany Command { get; set; }
+
+        public CompanyCategorySearchModel SearchModelCategory;
+        public List<CompanyCategoryViewModel> CompanyCategoriesList;
 
         private readonly ICompanyApplication _company;
         private readonly ICompanyCategoryApplication _companyCategoryApplication;
         private readonly ILicenceCategoryApplication _licenceCategoryApplication;
         private readonly IAccountApplication _accountApplication;
+        private readonly IStatecategoryApplication _statecategoryApplication;
 
-        public IndexModel(
-            ICompanyApplication company,
-            ICompanyCategoryApplication companyCategoryApplication,
-            ILicenceCategoryApplication licenceCategoryApplication,
-            IAccountApplication accountApplication)
+        public IndexModel(ICompanyApplication company, ICompanyCategoryApplication companyCategoryApplication, ILicenceCategoryApplication licenceCategoryApplication, IAccountApplication accountApplication, IStatecategoryApplication statecategoryApplication)
         {
             _company = company;
             _companyCategoryApplication = companyCategoryApplication;
             _licenceCategoryApplication = licenceCategoryApplication;
             _accountApplication = accountApplication;
+            _statecategoryApplication = statecategoryApplication;
         }
 
         [NeedsPermission(CompanyPermission.ListCompanies)]
         public void OnGet()
         {
+            PopulateSelectLists();
+
             // مقداردهی اولیه لیست‌ها برای نمایش در dropdown ها
             CompanyCategories = new SelectList(_companyCategoryApplication.GetCompanyCategories(), "Id", "Name");
             LicenceCategories = new SelectList(_licenceCategoryApplication.GetLicenceCategories(), "Id", "Name");
@@ -49,7 +58,9 @@ namespace VisitCompany.Pages.Company
             // من اینکار رو کردم یعنی هم تو اینجا و هم تو آن پست نوشتم چرا؟
             // چون تو اینجا گذاشتم که هنگامی که صفحه برای بار اول لود میشه من تمام رکوردها رو ببینم
             // هم تو پست نوشتم چونکه میخواستم وقتی جستجو انجام بدم تو یو آر ال مقادیر جستجو ظاهر نشه
+           
 
+           // CompanyCategoriesList = _companyCategoryApplication.Search(SearchModelCategory) ?? new List<CompanyCategoryViewModel>();
 
         }
 
@@ -76,6 +87,39 @@ namespace VisitCompany.Pages.Company
 
             // جستجو بر اساس مدل جستجو
             Companies = _company.Serach(searchModel) ?? new List<CompanyViewModel>();
+
+            PopulateSelectLists();
+
         }
+
+        public IActionResult OnPostBatchEdit(BatchEditCompany command)
+        {
+            PopulateSelectLists();
+
+            var result =_company.BatchEdit(command);
+            if (result.IsSucceeded)
+            {
+                TempData["SuccessMessageameEd"] = "تغییرات با موفقیت اعمال شد.";
+            }
+            else
+            {
+                TempData["ErrorMessageameEd"] = "خطایی در اعمال تغییرات رخ داد.";
+            }
+            return RedirectToPage("./Index");
+        }
+
+
+        private void PopulateSelectLists()
+        {
+            var accounts = _accountApplication.GetAccounts();
+            AccountList = accounts.Select(accounts => new SelectListItem(accounts.Fullname, accounts.Id.ToString())).ToList();
+            States = new SelectList(_statecategoryApplication.List(), "Id", "Name");
+            CompanyCategoriesList = _companyCategoryApplication.Search(SearchModelCategory) ?? new List<CompanyCategoryViewModel>();
+
+
+        }
+
+
+
     }
 }

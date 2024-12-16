@@ -24,15 +24,15 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
 
             modelBuilder.Entity("AccountChecklist", b =>
                 {
-                    b.Property<long>("AccountsId")
+                    b.Property<long>("AccountId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("ChecklistsId")
+                    b.Property<long>("ChecklistId")
                         .HasColumnType("bigint");
 
-                    b.HasKey("AccountsId", "ChecklistsId");
+                    b.HasKey("AccountId", "ChecklistId");
 
-                    b.HasIndex("ChecklistsId");
+                    b.HasIndex("ChecklistId");
 
                     b.ToTable("AccountChecklist");
                 });
@@ -70,8 +70,8 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Average")
-                        .HasColumnType("float");
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Brand")
                         .HasMaxLength(255)
@@ -79,6 +79,9 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
 
                     b.Property<long>("CategoryId")
                         .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("CheckDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<long>("ChecklistId")
                         .HasColumnType("bigint");
@@ -94,7 +97,6 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Domain")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
@@ -115,13 +117,24 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<DateTime?>("ReferDateFrom")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ReferDateTo")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("SecurityManagerName")
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<long>("StateCategoryIds")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("StateCategoryIds");
 
                     b.ToTable("Companies", (string)null);
                 });
@@ -176,6 +189,9 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Fullname")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -191,6 +207,10 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("PreviousLogin")
                         .HasColumnType("datetime2");
@@ -268,6 +288,12 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                     b.Property<long?>("GeneralChecklistID")
                         .HasColumnType("bigint");
 
+                    b.Property<long?>("GeneralChecklistPolicyID")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("GeneralChecklistProfessionalID")
+                        .HasColumnType("bigint");
+
                     b.Property<long?>("HPEDL380ID")
                         .HasColumnType("bigint");
 
@@ -290,6 +316,14 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                     b.HasIndex("GeneralChecklistID")
                         .IsUnique()
                         .HasFilter("[GeneralChecklistID] IS NOT NULL");
+
+                    b.HasIndex("GeneralChecklistPolicyID")
+                        .IsUnique()
+                        .HasFilter("[GeneralChecklistPolicyID] IS NOT NULL");
+
+                    b.HasIndex("GeneralChecklistProfessionalID")
+                        .IsUnique()
+                        .HasFilter("[GeneralChecklistProfessionalID] IS NOT NULL");
 
                     b.HasIndex("HPEDL380ID")
                         .IsUnique()
@@ -314,23 +348,91 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<string>("AccessControlStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("AccessControlStatusScore")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("AccessManagementStatus")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<long?>("AccessManagementStatusScore")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("AntivirusStatus")
+                    b.Property<double>("AverageGeneral")
+                        .HasColumnType("float");
+
+                    b.Property<string>("ComplianceManagementStatus")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long?>("AntivirusStatusScore")
+                    b.Property<long?>("ComplianceManagementStatusScore")
                         .HasColumnType("bigint");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FinallDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IncidentResponseStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("IncidentResponseStatusScore")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("IsCompleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OrganizationalSecurityStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("OrganizationalSecurityStatusScore")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("PersonnelHiringStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("PersonnelHiringStatusScore")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("SecurityChangeApprovalStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("SecurityChangeApprovalStatusScore")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("SecurityManagerStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("SecurityManagerStatusScore")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("SecurityPolicyStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("SecurityPolicyStatusScore")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("ThirdPartyServiceStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("ThirdPartyServiceStatusScore")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("UniqueCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GeneralChecklists", (string)null);
+                });
+
+            modelBuilder.Entity("CompanyManagement.Domain.ChecklistAgg.GeneralPolicy", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<string>("AuthenticationStatus")
                         .HasColumnType("nvarchar(max)");
@@ -338,14 +440,8 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                     b.Property<long?>("AuthenticationStatusScore")
                         .HasColumnType("bigint");
 
-                    b.Property<double>("AverageGeneral")
+                    b.Property<double>("AverageGeneralPolicy")
                         .HasColumnType("float");
-
-                    b.Property<string>("BackupStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("BackupStatusScore")
-                        .HasColumnType("bigint");
 
                     b.Property<string>("BusinessIdentificationStatus")
                         .HasColumnType("nvarchar(max)");
@@ -359,18 +455,6 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                     b.Property<long?>("CCTVStatusScore")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("ClockSynchronizationStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("ClockSynchronizationStatusScore")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("ComplianceManagementStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("ComplianceManagementStatusScore")
-                        .HasColumnType("bigint");
-
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
@@ -380,22 +464,10 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                     b.Property<long?>("CyberAttackResponseStatusScore")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("DataDestructionStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("DataDestructionStatusScore")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("DataSalesTradeStatus")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<long?>("DataSalesTradeStatusScore")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("DevelopmentTestOperationsControlStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("DevelopmentTestOperationsControlStatusScore")
                         .HasColumnType("bigint");
 
                     b.Property<string>("EmployeeTrainingStatus")
@@ -425,50 +497,12 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                     b.Property<long?>("HostingServiceStatusScore")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("IncidentResponseStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("IncidentResponseStatusScore")
-                        .HasColumnType("bigint");
-
                     b.Property<bool>("IsCompleted")
                         .HasColumnType("bit");
 
-                    b.Property<string>("LogManagementStatus")
+                    b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("LogManagementStatusScore")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("NetworkLogicalPhysicalMapStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("NetworkLogicalPhysicalMapStatusScore")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("OrganizationalSecurityStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("OrganizationalSecurityStatusScore")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("PasswordPolicyStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("PasswordPolicyStatusScore")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("PersonnelHiringStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("PersonnelHiringStatusScore")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("PhysicalAssetsInventoryStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("PhysicalAssetsInventoryStatusScore")
-                        .HasColumnType("bigint");
 
                     b.Property<string>("PrivacyPolicyStatus")
                         .HasColumnType("nvarchar(max)");
@@ -480,6 +514,104 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<long?>("PublicComplaintsStatusScore")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("UniqueCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserDataCollectionStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("UserDataCollectionStatusScore")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GeneralPolicies", (string)null);
+                });
+
+            modelBuilder.Entity("CompanyManagement.Domain.ChecklistAgg.GeneralProffesional", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("AccessControlStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("AccessControlStatusScore")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("AntivirusStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("AntivirusStatusScore")
+                        .HasColumnType("bigint");
+
+                    b.Property<double>("AverageGeneralProffesional")
+                        .HasColumnType("float");
+
+                    b.Property<string>("BackupStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("BackupStatusScore")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("ClockSynchronizationStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("ClockSynchronizationStatusScore")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DataDestructionStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("DataDestructionStatusScore")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("DevelopmentTestOperationsControlStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("DevelopmentTestOperationsControlStatusScore")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("FinallDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsCompleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LogManagementStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("LogManagementStatusScore")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NetworkLogicalPhysicalMapStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("NetworkLogicalPhysicalMapStatusScore")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("PasswordPolicyStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("PasswordPolicyStatusScore")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("PhysicalAssetsInventoryStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("PhysicalAssetsInventoryStatusScore")
                         .HasColumnType("bigint");
 
                     b.Property<string>("RemoteAdministrativeAccessStatus")
@@ -494,28 +626,10 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                     b.Property<long?>("SecureCodingConfigStatusScore")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("SecurityChangeApprovalStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("SecurityChangeApprovalStatusScore")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("SecurityEvaluationStatus")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<long?>("SecurityEvaluationStatusScore")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("SecurityManagerStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("SecurityManagerStatusScore")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("SecurityPolicyStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("SecurityPolicyStatusScore")
                         .HasColumnType("bigint");
 
                     b.Property<string>("SessionExpirationStatus")
@@ -524,22 +638,13 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                     b.Property<long?>("SessionExpirationStatusScore")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("ThirdPartyServiceStatus")
+                    b.Property<string>("UniqueCode")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("ThirdPartyServiceStatusScore")
-                        .HasColumnType("bigint");
 
                     b.Property<string>("UpdateStatus")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<long?>("UpdateStatusScore")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("UserDataCollectionStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("UserDataCollectionStatusScore")
                         .HasColumnType("bigint");
 
                     b.Property<string>("WirelessNetworkStatus")
@@ -556,7 +661,7 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("GeneralChecklists", (string)null);
+                    b.ToTable("GeneralProffesionals", (string)null);
                 });
 
             modelBuilder.Entity("CompanyManagement.Domain.ChecklistAgg.HPEDL380", b =>
@@ -687,6 +792,13 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                     b.Property<string>("IsUEFISecurityConfigureddescription")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UniqueCode")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("HPEDL380s", (string)null);
@@ -782,6 +894,13 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("IsUSBPortDisableddescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UniqueCode")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -1070,6 +1189,13 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                     b.Property<string>("IsUserAccountManagementRestrictedDescription")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UniqueCode")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Win2019s", (string)null);
@@ -1109,6 +1235,9 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
+                    b.Property<string>("CompanyName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
@@ -1117,10 +1246,20 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
+                    b.Property<string>("Fullname")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Refrence")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -1152,13 +1291,13 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                 {
                     b.HasOne("CompanyManagement.Domain.AccountAgg.Account", null)
                         .WithMany()
-                        .HasForeignKey("AccountsId")
+                        .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("CompanyManagement.Domain.ChecklistAgg.Checklist", null)
                         .WithMany()
-                        .HasForeignKey("ChecklistsId")
+                        .HasForeignKey("ChecklistId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -1202,7 +1341,15 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("CompanyManagement.Domain.StatesCategoryAgg.StateCategory", "StateCategory")
+                        .WithMany("companies")
+                        .HasForeignKey("StateCategoryIds")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
                     b.Navigation("CompanyCategory");
+
+                    b.Navigation("StateCategory");
                 });
 
             modelBuilder.Entity("CompanyAccount", b =>
@@ -1275,6 +1422,14 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                         .WithOne("Checklist")
                         .HasForeignKey("CompanyManagement.Domain.ChecklistAgg.Checklist", "GeneralChecklistID");
 
+                    b.HasOne("CompanyManagement.Domain.ChecklistAgg.GeneralPolicy", "GeneralPolicy")
+                        .WithOne("Checklist")
+                        .HasForeignKey("CompanyManagement.Domain.ChecklistAgg.Checklist", "GeneralChecklistPolicyID");
+
+                    b.HasOne("CompanyManagement.Domain.ChecklistAgg.GeneralProffesional", "GeneralProffesional")
+                        .WithOne("Checklist")
+                        .HasForeignKey("CompanyManagement.Domain.ChecklistAgg.Checklist", "GeneralChecklistProfessionalID");
+
                     b.HasOne("CompanyManagement.Domain.ChecklistAgg.HPEDL380", "HPEDL380")
                         .WithOne("Checklist")
                         .HasForeignKey("CompanyManagement.Domain.ChecklistAgg.Checklist", "HPEDL380ID");
@@ -1290,6 +1445,10 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                     b.Navigation("Company");
 
                     b.Navigation("GeneralChecklist");
+
+                    b.Navigation("GeneralPolicy");
+
+                    b.Navigation("GeneralProffesional");
 
                     b.Navigation("HPEDL380");
 
@@ -1335,6 +1494,18 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("CompanyManagement.Domain.ChecklistAgg.GeneralPolicy", b =>
+                {
+                    b.Navigation("Checklist")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CompanyManagement.Domain.ChecklistAgg.GeneralProffesional", b =>
+                {
+                    b.Navigation("Checklist")
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("CompanyManagement.Domain.ChecklistAgg.HPEDL380", b =>
                 {
                     b.Navigation("Checklist")
@@ -1361,6 +1532,8 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
             modelBuilder.Entity("CompanyManagement.Domain.StatesCategoryAgg.StateCategory", b =>
                 {
                     b.Navigation("Accounts");
+
+                    b.Navigation("companies");
                 });
 #pragma warning restore 612, 618
         }

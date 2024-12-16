@@ -20,8 +20,8 @@ namespace CompanyManagement.Domain.StatesCategoryAgg
 
         List<StateCategoryViewModel> GetStateCategories();
 
-        List<StateCategoryViewModel> list();
 
+        List<StateCategoryViewModel> List(long? provincialAdminStateCategoryId = null);
 
     }
 }

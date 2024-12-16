@@ -109,6 +109,8 @@
                                     <th>ردیف</th>
                                     @* <th>عکس</th> *@
                                     <th>نام</th>
+
+                                    <th>نام حانوادگی</th>
                                     <th>نام کاربری</th>
                                     <th>موبایل</th>
                                     <th>نقش</th>
@@ -118,7 +120,12 @@
                                     <th>ورودهای اخیر</th>
 
 @*                                     <th>عملیات</th>
- *@                                    <th>عملیات2</th>
+
+                                    *@
+                                    <th>توصیحات</th>
+
+ 
+                                    <th>عملیات2</th>
                                     <th>غیر فعال کردن کاربر</th>
 
                                    
@@ -132,6 +139,8 @@
                                         @* <td>
                                             <center> <img src="~/ProductPictures/@item.ProfilePhoto" style="width: 70px; height: 70px" /></center>
                                         </td> *@
+                                        <td><center>@item.Name</center></td>
+
                                         <td><center>@item.Fullname</center></td>
                                         <td><center>@item.UserName</center></td>
                                         <td><center>@item.Mobile</center></td>
@@ -139,6 +148,8 @@
                                         <td> <center>@item.StatesCategory</center></td>
                                         <td> <center>@item.CreationDate</center></td>
                                         <td> <center>@item.LastLogin</center></td>
+                                        <td> <center>@item.Description</center></td>
+
                                         <td>
                                             <ul>
                                                 @foreach (var login in item.LastLogins)

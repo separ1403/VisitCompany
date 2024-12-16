@@ -16,6 +16,8 @@ namespace CompanyManagement.Domain.ChecklistAgg
         }
         public JuniperHardening(long isConsolePortSecured, string isConsolePortSecureddescription, long isRootLoginDisabled, string isRootLoginDisableddescription, long isPasswordRecoveryDisabled, string isPasswordRecoveryDisableddescription, long isAuxiliaryPortDisabled, string isAuxiliaryPortDisableddescription, long isRootLoginAuxDisabled, string isRootLoginAuxDisableddescription, long isDiagnosticPortDisabled, string isDiagnosticPortDisableddescription, long isUsbPortDisabled, string isUsbPortDisableddescription, long isCraftInterfaceDisabled, string isCraftInterfaceDisableddescription, long isLcdMenuDisabled, string isLcdMenuDisableddescription, long isResetButtonDisabled, string isResetButtonDisableddescription, long areUnusedInterfacesDisabled, string areUnusedInterfacesDisableddescription, long isConfigFileEncrypted, string isConfigFileEncrypteddescription, string finallDescription)
         {
+            Name = "چک لیست تخصصی - junipper";
+
             IsConsolePortSecured = isConsolePortSecured;
             IsConsolePortSecureddescription = isConsolePortSecureddescription;
             IsRootLoginDisabled = isRootLoginDisabled;
@@ -45,6 +47,7 @@ namespace CompanyManagement.Domain.ChecklistAgg
 
         }
 
+        public string Name { get; private set; }
 
         public long? IsConsolePortSecured { get; set; }
         public string? IsConsolePortSecureddescription { get; set; }
@@ -74,6 +77,8 @@ namespace CompanyManagement.Domain.ChecklistAgg
         public Checklist Checklist { get; set; }
         public bool IsCompleted { get; set; } // فیلدی که وضعیت ارزیابی را ذخیره می‌کند
         public string? FinallDescription { get; private set; }
+        public string? UniqueCode { get; set; }
+
 
 
 

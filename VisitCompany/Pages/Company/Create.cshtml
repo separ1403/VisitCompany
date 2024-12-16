@@ -9,7 +9,7 @@
 
 
 <div class="modal-header">
-    
+
     <h4 class="modal-title">ثبت شرکت جدید</h4>
 </div>
 
@@ -20,63 +20,74 @@
 
     </div>
 }
-    @if (Model.ErrorMessageame != null)
-    {
-        <div class="alert alert-danger">
-            @Model.ErrorMessageame
+@if (Model.ErrorMessageame != null)
+{
+    <div class="alert alert-danger">
+        @Model.ErrorMessageame
 
-        </div>
-    }
+    </div>
+}
 
-<form method="post" asp-page-handler="Create" permission="@CompanyPermission.CreateCompanies"  enctype="multipart/form-data">
+<form method="post" asp-page-handler="Create" permission="@CompanyPermission.CreateCompanies" enctype="multipart/form-data">
     <div class="modal-body">
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="@Model.Command.CompanyName" class="control-label">نام شرکت</label>
-                    <input type="text" class="form-control" asp-for="@Model.Command.CompanyName" >
-                   
+                    <input type="text" class="form-control" asp-for="@Model.Command.CompanyName">
+
                 </div>
             </div>
-                  <div class="col-md-6">
+            <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="Command.Brand " class="control-label">برند شرکت </label>
                     <input type="text" class="form-control" asp-for="Command.Brand ">
                     <span asp-validation-for="Command.Brand " class="error"></span>
                 </div>
             </div>
-        @*      <div>
-                 <label for="rangeInput">مقدار را وارد کنید:</label>
-                <input type="range" id="rangeInput" name="rangeInput" min="0" max="100" value="50">
+            @*      <div>
+            <label for="rangeInput">مقدار را وارد کنید:</label>
+            <input type="range" id="rangeInput" name="rangeInput" min="0" max="100" value="50">
             </div> *@
-            
-   
+
+
         </div>
-        
-       
-            
-            <div class="col-md-6">
+
+
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Command.CategoryId" class="control-label"> دسته بندی شرکت</label>
+                <select class="form-control" asp-for="Command.CategoryId" asp-items="Model.CompanyCategories" id="CategoryIdSelect">
+                    <option value="0">انتخاب دسته بندی</option>
+                </select>
+                <span asp-validation-for="Command.CategoryId" class="error"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
                 <div class="form-group">
-                    <label asp-for="Command.CategoryId" class="control-label"> دسته بندی شرکت</label>
-                    <select class="form-control" asp-for="Command.CategoryId" asp-items="Model.CompanyCategories" id="CategoryIdSelect">
-                        <option value="0">انتخاب دسته بندی</option>
+                    <label asp-for="Command.StateCategoryId" class="control-label">انتخاب محل خدمت</label>
+                    <select class="form-control" asp-for="Command.StateCategoryId" asp-items="Model.States">
+                        <option value="0">انتخاب محل خدمت </option>
                     </select>
-                    <span asp-validation-for="Command.CategoryId" class="error"></span>
+                    <span asp-validation-for="Command.StateCategoryId" class="error"></span>
                 </div>
             </div>
+        </div>
 
-      @*   <div class="col-md-6">
-            <div class="form-group">
-                <label asp-for="Command.LicenceIds" class="control-label">گروه لایسنس ها</label>
-                <select class="form-control" asp-for="Command.LicenceIds" asp-items="Model.LicenceCategories" id="LicenceIdSelect">
-                    <option value="0">انتخاب لایسنس ها </option>
-                </select>
-                <span asp-validation-for="Command.LicenceIds" class="error"></span>
-            </div>
+        @*   <div class="col-md-6">
+        <div class="form-group">
+        <label asp-for="Command.LicenceIds" class="control-label">گروه لایسنس ها</label>
+        <select class="form-control" asp-for="Command.LicenceIds" asp-items="Model.LicenceCategories" id="LicenceIdSelect">
+        <option value="0">انتخاب لایسنس ها </option>
+        </select>
+        <span asp-validation-for="Command.LicenceIds" class="error"></span>
+        </div>
         </div> *@
-       
-       
-        
+
+
+
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
@@ -99,7 +110,7 @@
                     <span class="error"></span>
                 </div>
             </div>
-            
+
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="@Model.Command.Doamin" class="control-label">    آدرس سایت</label>
@@ -108,12 +119,12 @@
                 </div>
             </div>
         </div>
-      
+
         <div class="row">
-           
+
 
             <div class="col-md-6">
-                
+
                 <div class="form-group">
                     <label asp-for="@Model.Command.NationalCode" class="control-label">   شناسه ملی</label>
                     <input type="text" class="form-control" asp-for="@Model.Command.NationalCode">
@@ -121,29 +132,33 @@
                 </div>
                 <div class="form-group no-margin">
                     <label asp-for="@Model.Command.Address" class="control-label">آدرس</label>
-                    <textarea class="form-control autogrow" asp-for="@Model.Command.Address" 
+                    <textarea class="form-control autogrow" asp-for="@Model.Command.Address"
                               style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 90px;"></textarea>
                     <span class="error"></span>
                 </div>
 
                 <div class="form-group no-margin">
                     <label asp-for="@Model.Command.Description" class="control-label">توضیحات</label>
-                    <textarea class="form-control autogrow" asp-for="@Model.Command.Description" 
+                    <textarea class="form-control autogrow" asp-for="@Model.Command.Description"
                               style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 90px;"></textarea>
                     <span class="error"></span>
                 </div>
-                
+
             </div>
-          
+
             <div class="col-md-6">
                 <label class="control-label col-md-3">انتخاب ارزیاب ها</label>
                 <div class="col-md-12">
                     <select asp-for="Command.AccountIds" asp-items="Model.AccountList" class="multi-select" multiple="multiple" id="my_multi_select3">
-                    </select> 
+                    </select>
 
                 </div>
 
+
             </div>
+
+
+
 
             <div class="col-md-6">
                 <label class="control-label col-md-3">انتخاب  مجوزها </label>
@@ -156,19 +171,126 @@
             </div>
 
         </div>
-        
-         </div>
-   
-    
+
+    </div>
+
+    <!-- پنجره پاپ‌آپ برای دکمه جدید -->
+    <div id="popupModalNew" style="display:none; position:fixed; top:10%; left:10%; width:80%; height:80%; background-color:white; border: 2px solid #ccc; z-index:1000;">
+        <iframe id="popupIframeNew" src="/LicenceCategories/Create" style="width:100%; height:100%; border:none;"></iframe>
+        <button onclick="closeNewPopup()" style="position: absolute; top: 10px; right: 10px;">بستن</button>
+    </div>
+
+
     <div class="modal-footer">
-        
-        <button type="submit" class="btn btn-info waves-effect waves-light" >ایجاد</button>
+
+        <label class="control-label col-md-3"> لطفا در صورتیکه مجوز شرکت در لیست وجود ندارد از این قسمت اضافه نمایید </label>
+
+        <button id="openNewPopupButton" class="btn btn-info m-b-10">ایجاد مجوز جدید</button>
+
+        <button type="submit" class="btn btn-info waves-effect waves-light">ایجاد</button>
     </div>
 </form>
+<style>
+    /* تنظیمات CSS پنجره پاپ‌آپ (مشابه پنجره قبلی) */
+    .popup {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+    }
+
+    .popup-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 600px;
+        border-radius: 10px;
+    }
+
+    .close-btn {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+        .close-btn:hover, .close-btn:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
 
 
-    @section Scripts {
-        <script>
+    /* استایل آیکون برای نمایش پاپ‌آپ */
+    .show-logins-icon {
+        cursor: pointer;
+        font-size: 20px;
+        color: #007bff;
+    }
+
+    /* پاپ‌آپ مخفی به طور پیش‌فرض */
+    .popup {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* محتوای پاپ‌آپ */
+    .popup-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 600px;
+        max-height: 70vh;
+        overflow-y: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* دکمه بستن */
+    .close-button {
+        cursor: pointer;
+        color: #007bff;
+        font-weight: bold;
+        text-decoration: underline;
+        display: block;
+        text-align: right;
+        margin-top: 10px;
+    }
+
+    /* نمایش پاپ‌آپ وقتی checkbox فعال است */
+    .popup-checkbox:checked + .popup {
+        display: flex;
+    }
+
+    /* مخفی کردن checkbox */
+    .popup-checkbox {
+        display: none;
+    }
+
+</style>
+
+
+@section Scripts {
+    <script>
         $(document).ready(function() {
             $('#CategoryIdSelect').select2({
                 placeholder: "انتخاب دسته بندی",
@@ -180,9 +302,21 @@
                 allowClear: true,
                 language: "fa"
             });
+
+            // باز کردن پاپ‌آپ جدید با دکمه جدید
+            document.getElementById("openNewPopupButton").addEventListener("click", function() {
+                document.getElementById("popupIframeNew").src = "file:///C:/Users/hrirh/OneDrive/Desktop/.net9/VisitCompany/VisitCompany/Areas/Administration/Pages/Accounts/Account/Create.cshtml";
+                document.getElementById("popupModalNew").style.display = "block";
+            });
+
+            // بستن پاپ‌آپ popupModalNew با دکمه بستن درون آن
+            $(document).on('click', '#popupModalNew button', function() {
+                $('#popupModalNew').fadeOut();
+            });
+
         });
 
 
     </script>
-    }
+}
 

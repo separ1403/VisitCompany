@@ -20,7 +20,14 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label asp-for="@Model.Command.Fullname " class="control-label">نام</label>
+                    <label asp-for="@Model.Command.Name " class="control-label">نام</label>
+                    <input type="text" class="form-control" asp-for="@Model.Command.Name">
+                    <span asp-validation-for="@Model.Command.Name" class="error"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="@Model.Command.Fullname " class="control-label"> نام خانوادگی</label>
                     <input type="text" class="form-control" asp-for="@Model.Command.Fullname">
                     <span asp-validation-for="@Model.Command.Fullname" class="error"></span>
                 </div>
@@ -68,6 +75,14 @@
                     </select>
 
                     <span asp-validation-for="Command.StateCategoryId " class="error"></span>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="@Model.Command.Description " class="control-label">توضیحات</label>
+                    <input type="text" class="form-control" asp-for="@Model.Command.Description">
+                    <span asp-validation-for="@Model.Command.Description" class="error"></span>
                 </div>
             </div>
         </div>

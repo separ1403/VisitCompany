@@ -20,5 +20,14 @@ namespace CompanyManagement.Application.Contract.Company
         public string Address { get; set; }
         public List<long> AccountIds { get; set; }
         public string Doamin { get; set; }
+        public string? ReferDateFrom { get; set; }
+        public string? ReferDateTo { get; set; }
+
+        public string? ReferDate { get; set; }
+
+        public string? CheckDate { get; set; }
+
+        public long StateCategoryId { get; set; }
+
     }
 }

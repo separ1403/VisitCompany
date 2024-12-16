@@ -424,9 +424,9 @@
  
 @*     version akhar baraye man javab nadad va man mesle ostad neveshtam
     *@
-       @RenderSection("Scripts",false)
-	   
-       <script>
+    @RenderSection("Scripts", required: false)
+
+    <script>
     $(document).ready(function () {
         $('.persianDateInput').persianDatepicker({
             format: 'YYYY/MM/DD',

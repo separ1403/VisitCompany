@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace VisitCompany.Areas.Administration.Pages.Accounts.Role  
 {
-    [Authorize]
+ //   [Authorize]
     public class IndexModel : PageModel
     {
       
@@ -22,7 +22,7 @@ namespace VisitCompany.Areas.Administration.Pages.Accounts.Role
             
             _roleAplication = roleAplication;
         }
-       [NeedsPermission(CompanyPermission.ListRoles)]
+     //  [NeedsPermission(CompanyPermission.ListRoles)]
         public void OnGet()
         {
 

@@ -1,7 +1,12 @@
-﻿using Azure;
+﻿using AccountManagement.Application.Contracts.Account;
+using Azure;
 using CompanyManagement.Application.Contract.Checklist;
+using CompanyManagement.Domain.AccountAgg;
 using CompanyManagement.Domain.ChecklistAgg;
+using CompanyManagement.Infrasructure.EFCore.Repository;
 using Framework.Application;
+using Microsoft.EntityFrameworkCore;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace CompanyManagement.Application
 {
@@ -9,20 +14,25 @@ namespace CompanyManagement.Application
     {
      
 
-
+        private readonly IAccountRepository _accountRepository;
         private readonly IChecklistRepository _checklistRepository;
         private readonly IjuniperhardeningRepository _junuperhardeningRepository;
         private readonly IHPEDL380Repository _hPEDL380Repository;
         private readonly IWin2019Repository _win2019Repository;
         private readonly IGeneralChecklistRepository _generalChecklistRepository;
+        private readonly IGeneralChecklistProffesionalRepository _generalProffesionalRepository;
+        private readonly IGeneralChecklistPolicyRepository _generalChecklistPolicyRepository;
 
-        public ChecklistApplication(IChecklistRepository checklistRepository, IjuniperhardeningRepository junuperhardeningRepository, IHPEDL380Repository hPEDL380Repository, IWin2019Repository win2019Repository, IGeneralChecklistRepository generalChecklistRepository)
+        public ChecklistApplication(IAccountRepository accountRepository, IChecklistRepository checklistRepository, IjuniperhardeningRepository junuperhardeningRepository, IHPEDL380Repository hPEDL380Repository, IWin2019Repository win2019Repository, IGeneralChecklistRepository generalChecklistRepository, IGeneralChecklistProffesionalRepository generalProffesionalRepository, IGeneralChecklistPolicyRepository generalChecklistPolicyRepository)
         {
-            _checklistRepository=checklistRepository;
-            _junuperhardeningRepository=junuperhardeningRepository;
-            _hPEDL380Repository=hPEDL380Repository;
-            _win2019Repository=win2019Repository;
-            _generalChecklistRepository=generalChecklistRepository;
+            _accountRepository = accountRepository;
+            _checklistRepository = checklistRepository;
+            _junuperhardeningRepository = junuperhardeningRepository;
+            _hPEDL380Repository = hPEDL380Repository;
+            _win2019Repository = win2019Repository;
+            _generalChecklistRepository = generalChecklistRepository;
+            _generalProffesionalRepository = generalProffesionalRepository;
+            _generalChecklistPolicyRepository = generalChecklistPolicyRepository;
         }
 
         public OperationResult  Create(CreateChecklist command)
@@ -34,6 +44,7 @@ namespace CompanyManagement.Application
             //    operation.Failed(ApplicationMessages.DuplicatedRecord);
             //    return operation;
             //}  اینجا میخواستم شرط بذارم که زودتر از سه ماه نتونه دوباره چک لیست انجام بده
+            var accounts = _accountRepository.GetAccountsByIds(command.AccountIds);
 
             var people = command.People.Select(p => new Person
             {
@@ -51,6 +62,7 @@ namespace CompanyManagement.Application
                 command.CompanyId,
                 command.AccountIds
             );
+            checkList.AddAccounts(accounts);
 
             _checklistRepository.Create(checkList);
             _checklistRepository.SaveChanges();
@@ -78,9 +90,10 @@ namespace CompanyManagement.Application
             
 
             checkListJuniperHardenin.AverageJunipercal(command);
+            checkListJuniperHardenin.UniqueCode = GenerateUniqueCode(); // تولید کد یکتا
 
 
-            
+
             _junuperhardeningRepository.Create(checkListJuniperHardenin);
             _checklistRepository.SaveChanges();
             var currentId = checkListJuniperHardenin.Id; // گرفتن شناسه رکورد جدید
@@ -117,6 +130,7 @@ namespace CompanyManagement.Application
 
             checkListHPEDL380.AverageHPEDLcal(command);
 
+            checkListHPEDL380.UniqueCode = GenerateUniqueCode(); // تولید کد یکتا
 
 
             _hPEDL380Repository.Create(checkListHPEDL380);
@@ -159,6 +173,8 @@ namespace CompanyManagement.Application
            command.IsIRDPOptionDisabledDescription, command.IsDataRetransmissionManaged, command.IsDataRetransmissionManagedDescription, command.FinallDescription
           );
             checkListWin2019.AverageWin2019cal(command);
+            checkListWin2019.UniqueCode = GenerateUniqueCode(); // تولید کد یکتا
+
             _win2019Repository.Create(checkListWin2019);
             _checklistRepository.SaveChanges();
             var currentId = checkListWin2019.Id; // گرفتن شناسه رکورد جدید
@@ -285,20 +301,26 @@ namespace CompanyManagement.Application
         //{
         //    return _generalChecklistRepository.Getdetails(id);
         //}
-
        
 
-        public List<ChecklistViewModel> Serach(ChecklistSearchModel searchModel)
+
+        public List<ChecklistViewModel> Serach(ChecklistSearchModel searchModel, long? provincialAdminStateCategoryId = null)
         {
-            return _checklistRepository.Serach(searchModel);
+            return _checklistRepository.Serach(searchModel, provincialAdminStateCategoryId);
         }
 
+
+
+        public List<ChecklistViewModel> SerachTotal(ChecklistSearchModel searchModel, long? provincialAdminStateCategoryId = null)
+        {
+            return _checklistRepository.SerachTotal(searchModel, provincialAdminStateCategoryId);
+        }
         //public long GetLastCompanyId()
         //{
         //    return _checklistRepository.GetLastCompanyId();
         //}
 
-      
+
 
         public List<ChecklistViewModel> GetAverageGeneralByCompany(ChecklistSearchModel searchModel)
         {
@@ -328,7 +350,26 @@ namespace CompanyManagement.Application
                 command.SecurityPolicyStatus, command.SecurityChangeApprovalStatusScore,
                 command.SecurityChangeApprovalStatus, command.ThirdPartyServiceStatusScore, command.ThirdPartyServiceStatus, command.PersonnelHiringStatusScore,
                 command.PersonnelHiringStatus, command.AccessManagementStatusScore, command.AccessManagementStatus, command.ComplianceManagementStatusScore,
-                command.ComplianceManagementStatus, command.IncidentResponseStatusScore, command.IncidentResponseStatus, command.NetworkLogicalPhysicalMapStatusScore,
+                command.ComplianceManagementStatus, command.IncidentResponseStatusScore, command.IncidentResponseStatus, command.FinallDescription);
+
+
+            generalChecklist.AverageGeneralcal(command);
+            generalChecklist.UniqueCode = GenerateUniqueCode(); // تولید کد یکتا
+
+
+            _generalChecklistRepository.Create(generalChecklist);
+            _checklistRepository.SaveChanges();
+            var currentId = generalChecklist.Id; // گرفتن شناسه رکورد جدید
+
+            return operation.Succeeded("عملیات با موفقیت انجام گردید", currentId);
+        }
+
+
+
+        public OperationResult CreateGeneralChecklistProfff(CreateCheckGenpro command)
+        {
+            var operation = new OperationResult();
+            var generalChecklist = new GeneralProffesional( command.NetworkLogicalPhysicalMapStatusScore,
                 command.NetworkLogicalPhysicalMapStatus, command.PhysicalAssetsInventoryStatusScore, command.PhysicalAssetsInventoryStatus, command.ZoningStatusScore,
                 command.ZoningStatus, command.AccessControlStatusScore, command.AccessControlStatus, command.DevelopmentTestOperationsControlStatusScore,
                 command.DevelopmentTestOperationsControlStatus, command.RemoteAdministrativeAccessStatusScore, command.RemoteAdministrativeAccessStatus,
@@ -337,7 +378,24 @@ namespace CompanyManagement.Application
                 command.AntivirusStatus, command.UpdateStatusScore, command.UpdateStatus, command.WirelessNetworkStatusScore, command.WirelessNetworkStatus,
                 command.PasswordPolicyStatusScore, command.PasswordPolicyStatus, command.DataDestructionStatusScore, command.DataDestructionStatus,
                 command.LogManagementStatusScore, command.LogManagementStatus, command.ClockSynchronizationStatusScore, command.ClockSynchronizationStatus,
-                command.AuthenticationStatusScore, command.AuthenticationStatus, command.BusinessIdentificationStatusScore, command.BusinessIdentificationStatus,
+                command.FinallDescription);
+
+
+            generalChecklist.CalculateAverage(command);
+            generalChecklist.UniqueCode = GenerateUniqueCode(); // تولید کد یکتا
+
+
+            _generalProffesionalRepository.Create(generalChecklist);
+            _checklistRepository.SaveChanges();
+            var currentId = generalChecklist.Id; // گرفتن شناسه رکورد جدید
+
+            return operation.Succeeded("عملیات با موفقیت انجام گردید", currentId);
+        }
+
+        public OperationResult CreateGeneralChecklistPol(CreateCheckGenPol command)
+        {
+            var operation = new OperationResult();
+            var generalChecklist = new GeneralPolicy(command.AuthenticationStatusScore, command.AuthenticationStatus, command.BusinessIdentificationStatusScore, command.BusinessIdentificationStatus,
                 command.EntryExitManagementStatusScore, command.EntryExitManagementStatus, command.CCTVStatusScore, command.CCTVStatus, command.HostingServiceStatusScore,
                 command.HostingServiceStatus, command.PrivacyPolicyStatusScore, command.PrivacyPolicyStatus, command.PublicComplaintsStatusScore,
                 command.PublicComplaintsStatus, command.CyberAttackResponseStatusScore, command.CyberAttackResponseStatus, command.DataSalesTradeStatusScore,
@@ -345,13 +403,17 @@ namespace CompanyManagement.Application
                 command.UserDataCollectionStatus, command.EmployeeTrainingStatusScore, command.EmployeeTrainingStatus, command.FinallDescription);
 
 
-            generalChecklist.AverageGeneralcal(command);
-            _generalChecklistRepository.Create(generalChecklist);
+            generalChecklist.CalculateAverage(command);
+            generalChecklist.UniqueCode = GenerateUniqueCode(); // تولید کد یکتا
+
+
+            _generalChecklistPolicyRepository.Create(generalChecklist);
             _checklistRepository.SaveChanges();
             var currentId = generalChecklist.Id; // گرفتن شناسه رکورد جدید
 
             return operation.Succeeded("عملیات با موفقیت انجام گردید", currentId);
         }
+
 
         public OperationResult EditGeneralChecklist(long id, long chekid)
         {
@@ -372,6 +434,46 @@ namespace CompanyManagement.Application
             return operation;
         }
 
+        public OperationResult EditGeneralChecklistProff(long id, long chekid)
+        {
+            var operation = new OperationResult();
+            var checklist = _checklistRepository.Get(chekid);
+
+            if (checklist == null)
+            {
+                operation.Failed(ApplicationMessages.RecordNotFound);
+                return operation;
+            }
+
+
+
+            checklist.EditGeneralChecklistProffessional(id);
+            _checklistRepository.SaveChanges();
+            operation.Succeeded(ApplicationMessages.SuccessMessage);
+            return operation;
+        }
+
+
+        public OperationResult EditGeneralChecklistPol(long id, long chekid)
+        {
+            var operation = new OperationResult();
+            var checklist = _checklistRepository.Get(chekid);
+
+            if (checklist == null)
+            {
+                operation.Failed(ApplicationMessages.RecordNotFound);
+                return operation;
+            }
+
+
+
+            checklist.EditGeneralChecklistPolicy(id);
+            _checklistRepository.SaveChanges();
+            operation.Succeeded(ApplicationMessages.SuccessMessage);
+            return operation;
+        }
+
+
         public EditGeneralChecklist GetdetailsGeneralChecklist(long id)
         {
                 return _generalChecklistRepository.Getdetails(id);
@@ -381,6 +483,18 @@ namespace CompanyManagement.Application
         {
                 return _hPEDL380Repository.Getdetails(id);
         }
+
+       public EditCheckGenpro GetdetailsGeneralChecklistProff(long id)
+        {
+            return _generalProffesionalRepository.Getdetails(id);
+        }
+
+        public EditCheckGenPol GetdetailsGeneralChecklistPol(long id)
+        {
+            return _generalChecklistPolicyRepository.Getdetails(id);
+        }
+
+
 
         public EditJuniperChecklist GetdetailsJuniperChecklist(long id)
         {
@@ -392,9 +506,36 @@ namespace CompanyManagement.Application
             return _win2019Repository.Getdetails(id);
         }
 
+
+
         public EditChecklist Getdetails(long id)
         {
             return _checklistRepository.Getdetails(id);
         }
+
+        public bool Exists(string uniqueCode)
+        {
+            return _junuperhardeningRepository.Exists(x => x.UniqueCode == uniqueCode) ||
+       _hPEDL380Repository.Exists(x => x.UniqueCode == uniqueCode) ||
+         _win2019Repository.Exists(x => x.UniqueCode == uniqueCode) ||
+         _generalChecklistRepository.Exists(x => x.UniqueCode == uniqueCode) ;
+        }
+
+
+        private string GenerateUniqueCode()
+        {
+            Random random = new Random();
+            string code;
+
+            do
+            {
+                // تولید یک عدد تصادفی 6 رقمی
+                code = random.Next(100000, 100000 + 100000).ToString();
+            } while (Exists(code)); // بررسی وجود کد در دیتابیس
+
+            return code;
+        }
+
+
     }
 }

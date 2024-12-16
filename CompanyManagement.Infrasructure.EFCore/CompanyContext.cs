@@ -19,6 +19,10 @@ namespace CompanyManagement.Infrasructure.EFCore
     {
         public DbSet<Company> Companies { get; set; }
         public DbSet<Checklist> Checklists { get; set; }
+        public DbSet<GeneralProffesional> GeneralProffesionals { get; set; }
+        public DbSet<GeneralPolicy> GeneralPoliies { get; set; }
+
+
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<CompanyCategory> CompanyCategories { get; set; }
@@ -27,6 +31,8 @@ namespace CompanyManagement.Infrasructure.EFCore
         public DbSet<HPEDL380> HPEDL380s { get; set; }
         public DbSet<JuniperHardening> JuniperHardenings { get; set; }
         public DbSet<Win2019> Win2019s { get; set; }
+        public DbSet<Person> Persons { get; set; }
+
 
         public DbSet<GeneralChecklist> GeneralChecklists { get; set; }
 

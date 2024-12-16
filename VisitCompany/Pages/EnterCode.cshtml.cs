@@ -49,15 +49,16 @@ namespace VisitCompany.Pages
             }
 
             // تایید کد موفقیت‌آمیز است، کاربر را لاگین کنید
-            var authViewModel = new AuthViewModel(accountViewModel.Id, accountViewModel.RoleId, accountViewModel.Fullname, accountViewModel.UserName, accountViewModel.Mobile, permissions);
+            var authViewModel = new AuthViewModel(accountViewModel.Id, accountViewModel.RoleId, accountViewModel.Fullname, accountViewModel.UserName, accountViewModel.Mobile, permissions,accountViewModel.StateCategoryId);
 
             _httpContextAccessor.HttpContext.Session.SetString("CommandId", accountViewModel.Id.ToString());
+            _httpContextAccessor.HttpContext.Session.SetString("StateCategoryId", accountViewModel.StateCategoryId.ToString());
             _authHelper.Signin(authViewModel);
 
             // فرض بر این است که LastLoginCal و SaveChanges در لایه Application وجود دارد و پیاده‌سازی شده است
             _accountApplication.UpdateLastLogin(accountViewModel.Id);
 
-            if (accountViewModel.RoleId == 1)
+            if (accountViewModel.RoleId == 1 || accountViewModel.RoleId == 4)
             {
                 return RedirectToPage("ManagerProfile");
             }

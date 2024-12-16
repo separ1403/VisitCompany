@@ -23,6 +23,10 @@ namespace CompanyManagement.Application.Contract.Checklist
         public long Win2019Id { get; set; }
         public long JuniperId { get; set; }
         public long HpedlId { get; set; }
+        public long GeneralchecklistProffId { get; set; }
+        public long GeneralchecklistPolId { get; set; }
+
+
 
     }
 }

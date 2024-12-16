@@ -16,8 +16,8 @@ namespace CompanyManagement.Application.Contract.StateCategory
         EditStateCategory GetDetails(long id);
         List<StateCategoryViewModel> Search(StatecategorySearchModel searchModel);
         List<StateCategoryViewModel> GetStateCategories();
-        List<StateCategoryViewModel> List();
 
+        List<StateCategoryViewModel> List(long? provincialAdminStateCategoryId = null);
 
     }
 }

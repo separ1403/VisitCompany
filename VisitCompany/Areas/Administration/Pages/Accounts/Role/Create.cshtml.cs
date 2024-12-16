@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace VisitCompany.Areas.Administration.Pages.Accounts.Role
 {
-   [Authorize]
+  // [Authorize]
     public class CreateModel : PageModel
     {
         [TempData]
@@ -29,13 +29,13 @@ namespace VisitCompany.Areas.Administration.Pages.Accounts.Role
 
             _roleAplication = roleAplication;
         }
-        [NeedsPermission(CompanyPermission.CreateRoles)]
+      //  [NeedsPermission(CompanyPermission.CreateRoles)]
         public void OnGet()
         {
 
         }
 
-        [NeedsPermission(CompanyPermission.CreateRoles)]
+       // [NeedsPermission(CompanyPermission.CreateRoles)]
         public IActionResult OnPostCreate(CreateRole command)
 
         {

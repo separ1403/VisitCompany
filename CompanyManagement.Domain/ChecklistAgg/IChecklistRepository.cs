@@ -7,13 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Framework.Domain;
+using AccountManagement.Application.Contracts.Account;
 
 namespace CompanyManagement.Domain.ChecklistAgg
 {
     public  interface IChecklistRepository : IRepository<long, Checklist>
     {
       //  EditGeneralChecklist Getdetails(long id);
-        List<ChecklistViewModel> Serach(ChecklistSearchModel searchModel);
+        List<ChecklistViewModel> Serach(ChecklistSearchModel searchModel, long? provincialAdminStateCategoryId = null);
+        List<ChecklistViewModel> SerachTotal(ChecklistSearchModel searchModel, long? provincialAdminStateCategoryId = null);
+
         List<ChecklistViewModel> GetChecklists();
         List<ChecklistViewModel> SerachByAccount(long accountId);
 

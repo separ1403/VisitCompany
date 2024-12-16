@@ -22,33 +22,35 @@ namespace VisitCompany.Pages.checklist
 
         [TempData] public string ErrorMessageameEd { get; set; }
 
-
         [BindProperty]
         public CreateGeneralChecklist Command { get; set; }
+
         public IActionResult OnGet(long id)
         {
-            // دریافت شناسه چک لیست و بررسی وضعیت آن
             var checklistId = _checklistApplication.Getdetails(id);
 
             if (checklistId == null)
             {
                 ErrorMessageameEd = "چک لیست با این شناسه یافت نشد.";
-                return RedirectToPage("Index"); // کاربر را به صفحه Index بازمی‌گرداند
+                return RedirectToPage("Index");
             }
-
 
             var generalChecklist = _checklistApplication.GetdetailsGeneralChecklist(checklistId.GeneralchecklistId);
 
-            // اگر ارزیابی قبلاً تکمیل شده باشد
             if (generalChecklist != null && generalChecklist.IsCompleted)
             {
                 ErrorMessageameEd = "این ارزیابی قبلاً تکمیل شده است و نمی‌توانید مجدداً آن را انجام دهید.";
-                return RedirectToPage("Index"); // به صفحه Index بازمی‌گردد
+                return RedirectToPage("Index");
             }
 
-            Command = new CreateGeneralChecklist { ChecklistId = id }; //{ ChecklistId = id } yani command.checklistId = id;
-            return Page(); // ادامه صفحه برای کاربر
+            Command = new CreateGeneralChecklist { ChecklistId = id };
+
+            // تست مقداردهی
+            Console.WriteLine($"Command Name: {Command.Name}");
+
+            return Page();
         }
+
 
         public IActionResult OnPost(CreateGeneralChecklist command)
         {

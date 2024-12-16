@@ -7,7 +7,9 @@ namespace CompanyManagement.Domain.AccountAgg
     {
         EditAccount Getdetails(long id);
         ChangePassword Getdetail(long id);
-        List<AccountViewModel> Serach(AccountSearchModel searchModel);
+        List<AccountViewModel> Serach(AccountSearchModel searchModel, long? provincialAdminStateCategoryId= null);
+
+        List<AccountViewModel> SerachTotal(AccountSearchModel searchModel, long? provincialAdminStateCategoryId = null);
         List<Account> GetAccountsByIds(List<long> accountIds);
 
         AccountViewModel GetLastLogin( string searchModel);
@@ -17,6 +19,9 @@ namespace CompanyManagement.Domain.AccountAgg
 
         List<AccountViewModel> GetAccounts();
         bool ActiveUser(string activeCode);
+
+        public List<Account> GetUsersByProvince(long stateId);
+
 
     }
 }

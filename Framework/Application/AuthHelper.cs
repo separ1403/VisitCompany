@@ -45,6 +45,8 @@ namespace Framework.Application
                 new Claim(ClaimTypes.Role, account.RoleId.ToString()),
                 new Claim("Username", account.Username), // Or Use ClaimTypes.NameIdentifier
                 new Claim("Permission", permissions),
+                new Claim("StateCategoryId", account.StateCategoryId.ToString()) // بررسی اضافه شدن StateCategoryId
+
 
             };
 

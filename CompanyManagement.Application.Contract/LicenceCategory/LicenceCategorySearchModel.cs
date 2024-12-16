@@ -9,6 +9,9 @@ namespace CompanyManagement.Application.Contract.LicenceCategory
     public class LicenceCategorySearchModel
     {
         public string Name { get; set; }
+        public string Refrence { get; set; }
+
+
     }
 }
 

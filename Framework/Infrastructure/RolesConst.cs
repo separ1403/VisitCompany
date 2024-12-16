@@ -5,7 +5,7 @@
         public const string Administrator = "1";
         public const string ContetntUploader = "3";
         public const string SystemUser = "2";
-        public const string Colleague = "4";
+        public const string State = "4";
 
         public static string GetByRole(long id)
         {
@@ -19,6 +19,8 @@
 
                 case 3:
                     return "کاربر محتوا گذار";
+                case 4:
+                    return "ادمین استانی";
 
                 default:
                     return "";

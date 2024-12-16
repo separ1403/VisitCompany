@@ -2,6 +2,7 @@
 using CompanyManagement.Application.Contract.Company;
 using CompanyManagement.Application.Contract.CompanyCategory;
 using CompanyManagement.Application.Contract.LicenceCategory;
+using CompanyManagement.Application.Contract.StateCategory;
 using CompanyManagement.Infrastructure.Configuration.Permission;
 using Framework.Application;
 using Framework.Infrastructure;
@@ -15,13 +16,6 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.Products
     [Authorize]
     public class EditModel : PageModel
     {
-        public EditModel(ICompanyApplication companyApplication, ICompanyCategoryApplication companyCategoryApplication, ILicenceCategoryApplication licenceCategoryApplication, IAccountApplication accountApplication)
-        {
-            _companyApplication = companyApplication;
-            _companyCategoryApplication = companyCategoryApplication;
-            _licenceCategoryApplication = licenceCategoryApplication;
-            _accountApplication = accountApplication;
-        }
 
 
         [TempData]
@@ -34,16 +28,29 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.Products
         public EditCompany Command { get; set; }
         public SelectList CompanyCategories;
         public SelectList LicenceCategories;
+        public SelectList States;
+
 
         private readonly ICompanyApplication _companyApplication;
         private readonly ICompanyCategoryApplication _companyCategoryApplication;
         private readonly ILicenceCategoryApplication _licenceCategoryApplication;
         private readonly IAccountApplication _accountApplication;
+        private readonly IStatecategoryApplication _statecategoryApplication;
 
+        public EditModel(ICompanyApplication companyApplication, ICompanyCategoryApplication companyCategoryApplication, ILicenceCategoryApplication licenceCategoryApplication, IAccountApplication accountApplication, IStatecategoryApplication statecategoryApplication)
+        {
+            _companyApplication = companyApplication;
+            _companyCategoryApplication = companyCategoryApplication;
+            _licenceCategoryApplication = licenceCategoryApplication;
+            _accountApplication = accountApplication;
+            _statecategoryApplication = statecategoryApplication;
+        }
 
         [NeedsPermission(CompanyPermission.EditCompanies)]
         public void OnGet(long id)
         {
+            States = new SelectList(_statecategoryApplication.List(), "Id", "Name");
+
             Command = _companyApplication.Getdetails(id);
 
             if (Command == null)

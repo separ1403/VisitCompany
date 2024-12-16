@@ -14,8 +14,13 @@ namespace CompanyManagement.Application.Contract.LicenceCategory
         OperationResult Edit(EditLicenceCategory command);
         EditLicenceCategory GetDetails(long id);
         List<LicenceCategoryViewModel> Search(LicenceCategorySearchModel searchModel);
-        List<LicenceCategoryViewModel> GetLicenceCategories();
+        List<LicenceCategoryViewModel> SearchDisable(LicenceCategorySearchModel searchModel);
+        List<LicenceCategoryViewModel> SearchTotal(LicenceCategorySearchModel searchModel);
 
+
+        List<LicenceCategoryViewModel> GetLicenceCategories();
+        OperationResult DisableLicence(long id);
+        OperationResult EnableLicence(long id);
 
     }
 }

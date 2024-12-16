@@ -24,7 +24,7 @@ namespace VisitCompany.Pages
             _checklistApplication = checklistApplication;
         }
 
-        public List<string> CompanyNames { get; set; }
+        public List<string> CompanyNames { get; set; } // برای نمایش ودسترسی در ویو به این شکل تعریف میشود
         public List<double> AverageGenerals { get; set; }
         public List<double> AverageProff { get; set; }
         public List<string> CreationDates { get; set; }
@@ -33,7 +33,6 @@ namespace VisitCompany.Pages
         public List<string> CompanyNames2 { get; set; }
         public List<double> AverageGenerals2 { get; set; }
         public List<double> AverageProff2 { get; set; }
-
         public List<string> CreationDates2 { get; set; }
 
 
@@ -75,12 +74,12 @@ namespace VisitCompany.Pages
 
             if (AvgGen != null)
             {
-                foreach (var avg in AvgGen)
+                foreach (var avg in AvgGen) // این همان متغیری است که در بالا از جستجو به دست اکده و شامل تعدادی پارمتر هست حالا این پارمتر ها رو  فکر کنم میچسبونه به نمودار
                 {
                     //تو صفحه ی چارت ما دیگه پروفشنال نداریم  بنابر این باید من این رو تغغیر بدم به سایر ارزیابی ها
                     doubAvgGen.Add(avg.AverageGeneral ?? 0);
                     doubAvgProff.Add(avg.AverageGeneral ?? 0);// inja averagegeneral bod ke man zadam AverageGeneral dobare
-                    strCompany.Add(avg.Company);
+                    strCompany.Add(avg.CompanyBrand);
                     strCreationDates.Add(avg.CalDate.ToFarsi());
                 }
             }
@@ -92,12 +91,12 @@ namespace VisitCompany.Pages
                 {
                     doubAvgGen2.Add(avg2.AverageGeneral ?? 0);
                     doubAvgProff2.Add(avg2.AverageGeneral ?? 0);
-                    strCompany2.Add(avg2.Company);
+                    strCompany2.Add(avg2.CompanyBrand);
                     strCreationDates2.Add(avg2.CalDate.ToFarsi());
                 }
             }
 
-
+             // مقادیر پیدا شده و انتساب داده شده در حلقه ی بالا حالا اینجا برای نمایش در پراپرتی ها ریخته میشوند 
             CompanyNames = strCompany;
             AverageGenerals = doubAvgGen;
             AverageProff = doubAvgProff;

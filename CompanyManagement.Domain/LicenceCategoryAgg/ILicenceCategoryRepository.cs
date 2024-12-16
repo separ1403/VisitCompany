@@ -14,6 +14,9 @@ namespace CompanyManagement.Domain.LicenceCategoryAgg
     {
         EditLicenceCategory GetDetails(long id);
         List<LicenceCategoryViewModel> Search(LicenceCategorySearchModel searchModel);
+        List<LicenceCategoryViewModel> SearchTotal(LicenceCategorySearchModel searchModel);
+
+        List<LicenceCategoryViewModel> SearchDisable(LicenceCategorySearchModel searchModel);
 
         List<LicenceCategoryViewModel> GetLicenceCategories();
         List<LicenceCategory> GetLicenceByIds(List<long> licenceIds);
