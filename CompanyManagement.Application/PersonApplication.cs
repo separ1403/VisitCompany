@@ -8,8 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CompanyManagement.Application
-{
-       
+{       
     public  class PersonApplication :IPersonApplication
         
     {
