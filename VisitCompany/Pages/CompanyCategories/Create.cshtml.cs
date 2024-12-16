@@ -1,6 +1,5 @@
 ﻿using CompanyManagement.Application.Contract.CompanyCategory;
 using CompanyManagement.Infrastructure.Configuration.Permission;
-using Framework.Application;
 using Framework.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
