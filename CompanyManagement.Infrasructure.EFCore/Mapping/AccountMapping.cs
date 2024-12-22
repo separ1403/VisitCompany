@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CompanyManagement.Domain.AccountAgg;
 using CompanyManagement.Domain.ChecklistAgg;
 using CompanyManagement.Domain.CompanyAgg;
+using CompanyManagement.Infrasructure.EFCore.Migrations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -25,7 +26,16 @@ namespace AccountManagement.Infrastructure.EFCore.Mapping
             builder.Property(x => x.Mobile).HasMaxLength(20).IsRequired();
 
             builder.HasOne(x => x.Role).WithMany(x => x.Accounts).HasForeignKey(x => x.RoleId);
-            builder.HasMany(x => x.Checklists).WithMany(x => x.Accounts);
+
+
+            builder.HasMany(x => x.Checklists)
+                   .WithMany(x => x.Accounts)
+                   .UsingEntity<Dictionary<string, object>>(
+            "AccountChecklist",
+                       j => j.HasOne<Checklist>().WithMany().HasForeignKey("ChecklistId"), 
+                       j => j.HasOne<Account>().WithMany().HasForeignKey("AccountId"));
+
+
             builder.HasOne(x => x.StateCategory).WithMany(x => x.Accounts).HasForeignKey(x => x.StateCategoryId);
 
             builder.HasMany(x => x.LoginAttempts).WithOne(x => x.Account).HasForeignKey(x => x.AccountId);

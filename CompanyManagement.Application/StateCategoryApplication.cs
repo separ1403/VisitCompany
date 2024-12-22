@@ -1,4 +1,5 @@
-﻿using AccountManagement.Application.Contracts.Role;
+﻿using AccountManagement.Application.Contracts.Account;
+using AccountManagement.Application.Contracts.Role;
 using CompanyManagement.Application.Contract.CompanyCategory;
 using CompanyManagement.Application.Contract.StateCategory;
 using CompanyManagement.Domain.CompanyCategoryAgg;
@@ -84,9 +85,10 @@ namespace CompanyManagement.Application
             return _statecategoryRepository.Search(searchModel);
         }
 
-        public List<StateCategoryViewModel> List()
+        public List<StateCategoryViewModel> List(long? provincialAdminStateCategoryId = null)
+
         {
-            return _statecategoryRepository.list();
+            return _statecategoryRepository.List(provincialAdminStateCategoryId);
         }
     }
 }

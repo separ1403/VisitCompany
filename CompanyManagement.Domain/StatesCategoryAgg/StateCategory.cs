@@ -14,6 +14,8 @@ namespace CompanyManagement.Domain.StatesCategoryAgg
         public string Name { get; private set; }
        
         public List<Account> Accounts { get; private set; }
+        public List<Company> companies { get; private set; }
+
 
 
         public StateCategory()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CompanyManagement.Application.Contract.Checklist;
 
 namespace CompanyManagement.Application.Contract.Company
 {
@@ -18,7 +19,23 @@ namespace CompanyManagement.Application.Contract.Company
         public string? Description { get; set; }
         public string NationalCode { get; set; }
         public string Address { get; set; }
-        public List<long> AccountIds { get; set; }
+      
+        public List<PersonDetail>? People { get; set; } = new List<PersonDetail>();
+        public List<long>? PeopleIds { get; set; }
+        public string? PostalCode { get; set; }
+        public long? CountEmployees { get; set; }
+        public long? CountFolowers { get; set; }
+
+        public List<long>? AccountIds { get; set; } = new List<long>();
         public string Doamin { get; set; }
+        public string? ReferDateFrom { get; set; }
+        public string? ReferDateTo { get; set; }
+
+        public string? ReferDate { get; set; }
+
+        public string? CheckDate { get; set; }
+
+        public long StateCategoryId { get; set; }
+
     }
 }

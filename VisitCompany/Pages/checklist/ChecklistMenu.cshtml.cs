@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CompanyManagement.Application.Contract.Checklist;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace VisitCompany.Pages.checklist
@@ -9,13 +10,21 @@ namespace VisitCompany.Pages.checklist
         [TempData] public string ErrorMessageame { get; set; }
 
         [TempData] public string SuccessMessageame { get; set; }
-        public void OnGet(long? id)
-        {
-            if (id.HasValue)
-            {
-                TempData["CommandId"] = id.Value.ToString(); // ذخیره `id` در TempData
-            }
-        }
+       public IActionResult OnGet(long? id)
+{
+    //if (id == null)
+    //{
+    //    return RedirectToPage("Create");
+    //}
+
+    if (id.HasValue)
+    {
+        TempData["CommandId"] = id.Value.ToString(); // ذخیره `id` در TempData
+    }
+
+    return Page();
+}
+
 
 
 
@@ -23,23 +32,45 @@ namespace VisitCompany.Pages.checklist
         {
             if (TempData["CommandId"] == null)
             {
-                ErrorMessageame = "Command Id is not set.";
-                return Page();
+                ErrorMessageame = "جهت ایجاد چک لیست ابتدا می بایست این صفحه را تکمیل نمایید";
+                return RedirectToPage("Create");
             }
 
             long commandId = long.Parse(TempData["CommandId"].ToString()); // دریافت `id` از TempData
+            TempData.Remove("CommandId"); // حذف مقدار از TempData
 
             switch (action)
             {
                 case "CreateJunior":
-                    return RedirectToPage("./CreateJunior", new { id = commandId });
+                    var redirectPage = RedirectToPage("./CreateJunior", new { id = commandId });
+                    commandId = 0; // خالی کردن مقدار commandId
+                    return redirectPage;
                 case "CreateHPEDL380":
-                    return RedirectToPage("./CreateHPEDL380", new { id = commandId });
+                    redirectPage = RedirectToPage("./CreateHPEDL380", new { id = commandId });
+                    commandId = 0;
+                    return redirectPage;
                 case "CreateGeneralCheck":
-                    return RedirectToPage("./CreateGeneralCheck", new { id = commandId });
+                    redirectPage = RedirectToPage("./CreateGeneralCheck", new { id = commandId });
+                    commandId = 0;
+                    return redirectPage;
+
+                    
+                case "CreateCheckGenProff":
+                    redirectPage = RedirectToPage("./CreateCheckGenProff", new { id = commandId });
+                    commandId = 0;
+                    return redirectPage;
+
+                case "CreateCheckGenPol":
+                    redirectPage = RedirectToPage("./CreateCheckGenPol", new { id = commandId });
+                    commandId = 0;
+                    return redirectPage;
+
                 case "Createwin2019":
-                    return RedirectToPage("./Createwin2019", new { id = commandId });
+                    redirectPage = RedirectToPage("./Createwin2019", new { id = commandId });
+                    commandId = 0;
+                    return redirectPage;
                 default:
+                    commandId = 0;
                     return Page();
             }
         }

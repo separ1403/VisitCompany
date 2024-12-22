@@ -1,12 +1,15 @@
 ﻿@page
 @model VisitCompany.Pages.checklist.IndexModel
-@{
-}
+@using System.Security.Claims
+
 
 @{
     Layout = "Shared/_AdminLayout";
     ViewData["title"] = "مدیریت چک لیست ها";
-
+    var roleState = Convert.ToInt64(ViewData["RolesState"]);
+    var roleAdmin = Convert.ToInt64(ViewData["RolesAdministrator"]);
+    var currentUserRole = Convert.ToInt64(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value);
+    var isAllowedToShowButton = currentUserRole == roleState || currentUserRole == roleAdmin;
 }
 
 
@@ -31,7 +34,7 @@
     <div class="col-sm-12">
         <h4 class="page-title pull- left">@ViewData["title"]</h4>
 
-       
+
     </div>
 </div>
 
@@ -47,16 +50,38 @@
                         <label class="sr-only" asp-for="@Model.SearchModel.Name"></label>
                         <input class="form-control" asp-for="@Model.SearchModel.Name" placeholder="  عنوان چک لیست">
                     </div>
+                    <div class="form-group">
+                        <label class="sr-only" asp-for="@Model.SearchModel.Brand"></label>
+                        <input class="form-control" asp-for="@Model.SearchModel.Brand" placeholder="  نام تجاری شرکت">
+                    </div>
+                    
+            
+
+
+                    <div class="form-group">
+                        <label class="sr-only" asp-for="@Model.SearchModel.CompanyName"></label>
+                        <input class="form-control" asp-for="@Model.SearchModel.CompanyName" placeholder="  نام رسمی شرکت">
+                    </div>
+                    <div class="form-group">
+
+                        <label class="sr-only" asp-for="@Model.SearchModel.TypeCheckList">نوع چک لیست</label>
+                        <input class="form-control" asp-for="@Model.SearchModel.TypeCheckList" placeholder="  نوع چک لیست">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="sr-only" asp-for="@Model.SearchModel.UniqeCode"></label>
+                        <input class="form-control" asp-for="@Model.SearchModel.UniqeCode" placeholder="  کد یکتای ارزیابی">
+                    </div>
+
 
                     <div class="form-group">
                         <label class="sr-only" asp-for="@Model.SearchModel.CompanyId"></label>
-                        <select class="form-control" asp-for="@Model.SearchModel.CompanyId" asp-items="@Model.Companies" id="CategoryIdSelect">
+                        <select class="form-control" asp-for="@Model.SearchModel.CompanyId" asp-items="@Model.Companies" id="CompanyIdSelect">
 
                             <option value="0">  شرکت مورد نظر را انتخاب نمایید</option>
 
                         </select>
                     </div>
-
 
 
 
@@ -69,7 +94,22 @@
                         </select>
                     </div>
 
-
+                    <div >
+                        <label class="sr-only" asp-for="@Model.SearchModel.ScoreRange">بازه دسته‌بندی</label>
+                        <select class="form-control" asp-for="@Model.SearchModel.ScoreRange" id="ScoreRangeSelect">
+                            <option value="all">همه</option>
+                            <option value="0-9">نمرات بین 0 تا 9</option>
+                            <option value="10-20">نمرات بین 10 تا 20</option>
+                            <option value="21-30">نمرات بین 21 تا 30</option>
+                            <option value="31-40">نمرات بین 31 تا 40</option>
+                            <option value="41-50">نمرات بین 41 تا 50</option>
+                            <option value="51-60">نمرات بین 51 تا 60</option>
+                            <option value="61-70">نمرات بین 61 تا 70</option>
+                            <option value="71-80">نمرات بین 71 تا 80</option>
+                            <option value="81-90">نمرات بین 81 تا 90</option>
+                            <option value="91-100">نمرات بین 91 تا 100</option>
+                        </select>
+                    </div>
 
 
                     <button type="submit" class="btn btn-success waves-effect waves-light m-l-10">جستجو</button>
@@ -85,6 +125,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">لیست چک لیست ها (@Model.Checklists.Count)</h3>
+                <h3 class="panel-title">لیست چک لیست ها (@Model.Checklists.Count)</h3>
             </div>
             <div class="panel-body">
                 <div class="row">
@@ -92,30 +133,28 @@
                         <table id="datatable" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>عنوان</th>
+
+                                    <th>تاریخ ارزیابی</th>
                                     <th>افراد حاضر در کسب و کار</th>
-                                    <th>تعداد کارمندان شرکت</th>
-                                    <th>تعداد مشتریان شرکت</th>
-                                    <th>نام شرکت</th>
+                                    <th>نام تجاری شرکت</th>
+                                    <th>نوع ارزیابی </th>
+                                    <th>دسته‌بندی</th>
                                     <th>نام ارزیاب</th>
-                                    <th>معدل نمرات ارزیابی عمومی</th>
-                                    <th>توضیحات کلی ارزیابی عمومی</th>
-                                    <th>معدل نمرات ارزیابی Juniper</th>
-                                    <th>توضیحات کلی ارزیابی Juniper</th>
-                                    <th>معدل نمرات ارزیابی Win2019</th>
-                                    <th>توضیحات کلی ارزیابی Win2019</th>
-                                    <th>معدل نمرات ارزیابی Hpedl380</th>
-                                    <th>توضیحات کلی ارزیابی Hpedl380</th>
-                                    <th>عملیات</th>
+                                    <th>معدل نمرات ارزیابی</th>
+                                    <th>توضیحات کلی ارزیابی</th>
+                                    <th>کد یکتا ارزیابی</th>
+
+                                    @*                                 <th>عملیات</th>
+                                    *@
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var item in Model.Checklists)
                                 {
                                     <tr>
-                                        <td>@item.Id</td>
-                                        <td>@item.Title</td>
+
+                                        <td>@item.CreattionDate</td>
+
                                         <td>
                                             @if (item.People != null && item.People.Any())
                                             {
@@ -135,69 +174,531 @@
                                                 <span>فردی موجود نیست</span>
                                             }
                                         </td>
-                                        <td>@item.CountEmployees</td>
-                                        <td>@item.CountFolowers</td>
-                                        <td>@item.Company</td>
-                                        <td>@item.Accounts</td>
-                                        <td>@item.AverageGeneral</td>
-                                        <td>@item.FinallDescriptionGeneral</td>
-                                        <td>@item.AverageJunipper</td>
-                                        <td>@item.FinallDescriptionJunipper</td>
-                                        <td>@item.AverageWin2019</td>
-                                        <td>@item.FinallDescriptionWin2019</td>
-                                        <td>@item.AverageHpedl380</td>
-                                        <td>@item.FinallDescriptionHpedl380</td>
+                                        <td>@item.CompanyBrand</td>
                                         <td>
-                                            <a class="btn btn-warning btn-custome waves-effect waves-light pull-right m-rl-5">
-                                                <a class="fa fa-edit" asp-page="./ChecklistMenu" asp-route-id="@item.Id">ویرایش</a>
+
+                                            @if (!string.IsNullOrEmpty(item.TypeChecklistGeneral))
+
+                                            {
+                                                    <div>ارزیابی عمومی</div>
+                                                }
+
+                                            @if (!string.IsNullOrEmpty(item.TypeChecklistGeneralProff))
+
+                                            {
+                                                <div>ارزیابی عمومی-فنی</div>
+                                            }
+
+                                            @if (!string.IsNullOrEmpty(item.TypeChecklistGeneralPol))
+
+                                            {
+                                                <div>ارزیابی عمومی-انتظامی</div>
+                                            }
+                                            @if (!string.IsNullOrEmpty(item.TypeChecklistHpedl380))
+
+                                            {
+                                                <div>ارزیابی تخصصی Hpedl380</div>
+                                            }
+
+                                            @if (!string.IsNullOrEmpty(item.TypeChecklistunniper))
+
+                                            {
+                                                <div>ارزیابی تخصصی Junipper</div>
+                                            }
+
+                                            @if (!string.IsNullOrEmpty (item.TypeChecklistwin2019))
+
+                                            {
+                                                <div>ارزیابی تخصصی Win2019</div>
+                                            }
+
+                                            
+                                        </td>
+
+                                        <td>@item.CompanyCategory</td>
+                                        <td>
+                                            @if (item.Accounts != null && item.Accounts.Any())
+                                            {
+                                                <ul>
+                                                    @foreach (var account in item.Accounts)
+                                                    {
+                                                        <li>@account.Fullname</li>
+                                                    }
+                                                </ul>
+                                            }
+                                            else
+                                            {
+                                                <span>اکانتی موجود نیست</span>
+                                            }
+                                        </td>
+
+                                        <!-- معدل نمرات ارزیابی -->
+                                        <td>
+                                            @if (item.AverageGeneral > 0)
+                                            {
+                                                <div> @item.AverageGeneral</div>
+                                            }
+                                            @if (item.AverageGeneralProff > 0)
+                                            {
+                                                <div> @item.AverageGeneralProff</div>
+                                            }
+                                            @if (item.AverageGeneralPol > 0)
+                                            {
+                                                <div> @item.AverageGeneralPol</div>
+                                            }
+                                            @if (item.AverageJunipper > 0)
+                                            {
+                                                <div> @item.AverageJunipper</div>
+                                            }
+                                            @if (item.AverageWin2019 > 0)
+                                            {
+                                                <div> @item.AverageWin2019</div>
+                                            }
+                                            @if (item.AverageHpedl380 > 0)
+                                            {
+                                                <div> @item.AverageHpedl380</div>
+                                            }
+                                        </td>
+
+                                        <!-- توضیحات کلی ارزیابی -->
+                                        <td>
+                                            @if (!string.IsNullOrEmpty(item.FinallDescriptionGeneral))
+                                            {
+                                                <div> @item.FinallDescriptionGeneral</div>
+                                            }
+                                            @if (!string.IsNullOrEmpty(item.FinallDescriptionGeneralProff))
+                                            {
+                                                <div> @item.FinallDescriptionGeneralProff</div>
+                                            }
+                                            @if (!string.IsNullOrEmpty(item.FinallDescriptionGeneralPol))
+                                            {
+                                                <div> @item.FinallDescriptionGeneralPol</div>
+                                            }
+                                            @if (!string.IsNullOrEmpty(item.FinallDescriptionJunipper))
+                                            {
+                                                <div> @item.FinallDescriptionJunipper</div>
+                                            }
+                                            @if (!string.IsNullOrEmpty(item.FinallDescriptionWin2019))
+                                            {
+                                                <div>Win2019: @item.FinallDescriptionWin2019</div>
+                                            }
+                                            @if (!string.IsNullOrEmpty(item.FinallDescriptionHpedl380))
+                                            {
+                                                <div> @item.FinallDescriptionHpedl380</div>
+                                            }
+                                        </td>
+
+                                        <td>
+                                            @if (!string.IsNullOrEmpty(item.UniqeCodeGeneral))
+                                            {
+                                                <div> @item.UniqeCodeGeneral</div>
+                                            }
+                                            @if (!string.IsNullOrEmpty(item.UniqeCodeGeneralproff))
+                                            {
+                                                <div> @item.UniqeCodeGeneralproff</div>
+                                            }
+                                            @if (!string.IsNullOrEmpty(item.UniqeCodeGeneralpol))
+                                            {
+                                                <div> @item.UniqeCodeGeneralpol</div>
+                                            }
+                                            @if (!string.IsNullOrEmpty(item.UniqeCodeHpedl380))
+                                            {
+                                                <div> @item.UniqeCodeHpedl380</div>
+                                            }
+                                            @if (!string.IsNullOrEmpty(item.UniqeCodeJunipper))
+                                            {
+                                                <div> @item.UniqeCodeJunipper</div>
+                                            }
+                                            @if (!string.IsNullOrEmpty(item.UniqeCodeWin2019))
+                                            {
+                                                <div> @item.UniqeCodeWin2019</div>
+                                            }
+                                        </td>
+
+
+                                        @*  <td>
+                                    <a class="btn btn-warning btn-custome waves-effect waves-light pull-right m-rl-5">
+                                    <a class="fa fa-edit" asp-page="./ChecklistMenu" asp-route-id="@item.Id">ویرایش</a>
+                                    </a>
+                                    </td> *@
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                        <div style="height: 2px; background-color: #333; margin: 20px 0;"></div> <!-- خط فاصله بین دو جدول -->
+                        <div style="height: 2px; background-color: #333; margin: 20px 0;"></div> <!-- خط فاصله بین دو جدول -->
+                      @if (isAllowedToShowButton)
+                        {
+                            <!-- دکمه باز کردن پنجره پاپ‌آپ جدید -->
+                            <button id="openPopupButton" class="btn btn-info m-b-10">ارجاع جهت ارزیابی</button>
+                        }
+                        <h4 class="page-title pull-left">جدول شرکت ها</h4>
+
+                        <!-- جدول شرکت‌ها (بدون تغییر) -->
+                        <table id="datatable" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>نام رسمی شرکت</th>
+                                    <th>نام برند</th>
+                                    <th>تاریخ ارجاع</th>
+                                    <th>تاریخ ارزیابی</th>
+                                    <th>نام ارزیاب</th>
+
+                                    <th>وضعیت</th>
+
+                                    <th>جزییات</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Companiess)
+                                {
+                                    <tr>
+                                        <td>@item.CompanyName</td>
+                                        <td>@item.Brand</td>
+                                     
+                                        <td>@item.CheckDate</td>
+                                        <td>@item.ReferDateFrom تا  @item.ReferDateTo </td>
+                                        <td>
+                                            @if (item.Accounts != null && item.Accounts.Any())
+                                            {
+                                                <ul>
+                                                    @foreach (var account in item.Accounts)
+                                                    {
+                                                        <li>@account.Fullname</li>
+                                                    }
+                                                </ul>
+                                            }
+                                            else
+                                            {
+                                                <span>اکانتی موجود نیست</span>
+                                            }
+                                        </td>
+                                        <td>@item.StatusMessage</td> <!-- نمایش پیام وضعیت -->
+
+                                        <td>
+                                            <a href="javascript:void(0);" class="view-details" data-id="@item.Id">
+                                                <i class="fa fa-search"></i>
                                             </a>
                                         </td>
                                     </tr>
                                 }
                             </tbody>
                         </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
+                        <!-- دکمه باز کردن پنجره پاپ‌آپ جدید -->
+                        <h4 class="page-title pull-left">جدول ارزیاب ها</h4>
+                       
+
+                        <div style="height: 2px; background-color: #333; margin: 20px 0;"></div> <!-- خط فاصله بین دو جدول -->
+                        <div style="height: 2px; background-color: #333; margin: 20px 0;"></div> <!-- خط فاصله بین دو جدول -->
+                        <!-- دکمه باز کردن پنجره پاپ‌آپ جدید -->
+                        @if (isAllowedToShowButton)
+                        {
+                            <button id="openNewPopupButton" class="btn btn-info m-b-10">افزودن حساب کاربری جدید</button>
+                        }
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <table id="datatable" class="table table-striped table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>ردیف</th>
+                                                            <th>نام</th>
+                                                            <th>نام خانوادگی</th>
+
+                                                            <th>نام کاربری</th>
+                                                            <th>محل خدمت</th>
+                                                            <th>ورودهای اخیر</th>
+
+                                                            @*                                     <th>عملیات</th>
+                                                            *@
+                                                            <th>عملیات2</th>
+                                                            <th>غیر فعال کردن کاربر</th>
 
 
- 
-<a href="/checklist/ChecklistMenu">بازگشت به صفحه‌ی چک لیست ها </a>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var item in Model.AccountsList)
+                                                        {
+                                                            <tr>
+                                                                <td>@item.Id</td>
+                                                                @* <td>
+                                                            <center> <img src="~/ProductPictures/@item.ProfilePhoto" style="width: 70px; height: 70px" /></center>
+                                                            </td> *@
+                                                                <td><center>@item.Name</center></td>
 
-@section Scripts {
-    <script src="~/adminTheme/assets/datatables/jquery.dataTables.min.js"></script>
-    <script src="~/adminTheme/assets/datatables/dataTables.bootstrap.js"></script>
+                                                                <td><center>@item.Fullname</center></td>
+                                                                <td><center>@item.UserName</center></td>
+                                                                <td> <center>@item.StatesCategory</center></td>
+                                                                <td>
+                                                                    <center>
+                                                                        <label for="popup-checkbox-@item.Id" class="show-logins-icon">🔍</label>
+                                                                    </center>
+                                                                    <!-- Checkbox مخفی برای مدیریت نمایش پاپ‌آپ -->
+                                                                    <input type="checkbox" id="popup-checkbox-@item.Id" class="popup-checkbox" />
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#datatable').dataTable();
-        });
-    </script>
-
-    <script>
-        $(document).ready(function () {
-            $('#CategoryIdSelect').select2({
-                placeholder: "انتخاب دسته بندی",
-                allowClear: true,
-                language: "fa"
-            });
-        });
-
-     </script>
-
-    <script>
-        $(document).ready(function () {
-            $('#AccountSelect').select2({
-                placeholder: "انتخاب دسته بندی",
-                allowClear: true,
-                language: "fa"
-            });
-        });
-
-    </script>
+                                                                    <!-- پاپ‌آپ -->
+                                                                    <div class="popup" id="popup-@item.Id">
+                                                                        <div class="popup-content">
+                                                                            <h4>ورودهای اخیر</h4>
+                                                                            <ul>
+                                                                                @foreach (var login in item.LastLogins)
+                                                                                {
+                                                                                    <li>@login</li>
+                                                                                }
+                                                                            </ul>
+                                                                            <label for="popup-checkbox-@item.Id" class="close-button">بستن</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                @*  <td>
+                                                            <a class="btn btn-primary waves-effect waves-light m-b-5">
+                                                            <a class="fa fa-key" asp-page="./ChangePassword" asp-route-id="@item.Id">تغییر پسورد </a>
+                                                            </a>
+                                                            </td> *@
+                                                                <td>
+                                                                    <a class="btn btn-warning btn-custome waves-effect waves-light pull-right m-rl-5">
+                                                                        <a class="fa fa-edit" asp-page="/Administration/Accounts/Account/Edit" asp-route-id="@item.Id">ویرایش </a>
+                                                                    </a>
 
 
-}
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.IsActive)
+                                                                    {
+                                                                        <form method="post" asp-page-handler="DisableAccount" asp-route-id="@item.Id">
+                                                                            <button type="submit" class="btn btn-danger">غیرفعال کردن کاربر</button>
+                                                                        </form>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <form method="post" asp-page-handler="ActivateAccount" asp-route-id="@item.Id">
+                                                                            <button type="submit" class="btn btn-success">فعال کردن کاربر</button>
+                                                                        </form>
+                                                                    }
+                                                                </td>
+
+
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal برای نمایش صفحه ارجاع شرکت به ارزیاب به عنوان پاپ‌آپ -->
+                        <div id="popupModal" style="display:none; position:fixed; top:10%; left:10%; width:80%; height:80%; background-color:white; border: 2px solid #ccc; z-index:1000;">
+                            <iframe id="popupIframe" src="/checklist/RegisterToAccount" style="width:100%; height:100%; border:none;"></iframe>
+                            <button onclick="closePopup()" style="position: absolute; top: 10px; right: 10px;">بستن</button>
+                        </div>
+
+
+                        <!-- پنجره پاپ‌آپ برای دکمه جدید -->
+                        <div id="popupModalNew" style="display:none; position:fixed; top:10%; left:10%; width:80%; height:80%; background-color:white; border: 2px solid #ccc; z-index:1000;">
+                            <iframe id="popupIframeNew" src="/Administration/Accounts/Account/Create" style="width:100%; height:100%; border:none;"></iframe>
+                            <button onclick="closeNewPopup()" style="position: absolute; top: 10px; right: 10px;">بستن</button>
+                        </div>
+
+
+                        <!-- پاپ‌آپ برای نمایش جزئیات شرکت از طریق آیکون ذره‌بین -->
+                        <div id="popupWindowDetails" class="popup">
+                            <div class="popup-content">
+                                <span class="close-btn">&times;</span>
+                                <div id="popupDetails"></div>
+                            </div>
+                        </div>
+
+                        <!-- پاپ‌آپ برای دکمه جدید -->
+                        <div id="popupWindowNewButton" class="popup">
+                            <div class="popup-content">
+                                <span class="close-btn">&times;</span>
+                                <div id="popupContentNewButton">محتوای دلخواه برای دکمه جدید</div>
+                            </div>
+                        </div>
+
+
+                        <style>
+                            /* تنظیمات CSS پنجره پاپ‌آپ (مشابه پنجره قبلی) */
+                            .popup {
+                                display: none;
+                                position: fixed;
+                                z-index: 1;
+                                padding-top: 100px;
+                                left: 0;
+                                top: 0;
+                                width: 100%;
+                                height: 100%;
+                                background-color: rgba(0,0,0,0.5);
+                            }
+
+                            .popup-content {
+                                background-color: #fefefe;
+                                margin: auto;
+                                padding: 20px;
+                                border: 1px solid #888;
+                                width: 80%;
+                                max-width: 600px;
+                                border-radius: 10px;
+                            }
+
+                            .close-btn {
+                                color: #aaa;
+                                float: right;
+                                font-size: 28px;
+                                font-weight: bold;
+                                cursor: pointer;
+                            }
+
+                                .close-btn:hover, .close-btn:focus {
+                                    color: black;
+                                    text-decoration: none;
+                                    cursor: pointer;
+                                }
+
+
+                            /* استایل آیکون برای نمایش پاپ‌آپ */
+                            .show-logins-icon {
+                                cursor: pointer;
+                                font-size: 20px;
+                                color: #007bff;
+                            }
+
+                            /* پاپ‌آپ مخفی به طور پیش‌فرض */
+                            .popup {
+                                display: none;
+                                position: fixed;
+                                z-index: 1000;
+                                padding-top: 100px;
+                                left: 0;
+                                top: 0;
+                                width: 100%;
+                                height: 100%;
+                                background-color: rgba(0, 0, 0, 0.5);
+                                justify-content: center;
+                                align-items: center;
+                            }
+
+                            /* محتوای پاپ‌آپ */
+                            .popup-content {
+                                background-color: #fefefe;
+                                margin: auto;
+                                padding: 20px;
+                                border: 1px solid #888;
+                                width: 80%;
+                                max-width: 600px;
+                                max-height: 70vh;
+                                overflow-y: auto;
+                                border-radius: 10px;
+                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                            }
+
+                            /* دکمه بستن */
+                            .close-button {
+                                cursor: pointer;
+                                color: #007bff;
+                                font-weight: bold;
+                                text-decoration: underline;
+                                display: block;
+                                text-align: right;
+                                margin-top: 10px;
+                            }
+
+                            /* نمایش پاپ‌آپ وقتی checkbox فعال است */
+                            .popup-checkbox:checked + .popup {
+                                display: flex;
+                            }
+
+                            /* مخفی کردن checkbox */
+                            .popup-checkbox {
+                                display: none;
+                            }
+
+
+                        </style>
+
+                        @section Scripts {
+                            <script src="~/adminTheme/assets/datatables/jquery.dataTables.min.js"></script>
+                            <script src="~/adminTheme/assets/datatables/dataTables.bootstrap.js"></script>
+
+                            <script type="text/javascript">
+                                $(document).ready(function() {
+                                    // فعال کردن DataTable برای جدول
+                                    $('#datatable').dataTable();
+
+                                    // باز کردن صفحه Index در پاپ‌آپ
+                                    document.getElementById("openPopupButton").addEventListener("click", function() {
+                                        document.getElementById("popupModal").style.display = "block";
+                                    });
+
+                                    // بستن پاپ‌آپ popupModal با دکمه بستن درون آن
+                                    $('#popupModal button').on('click', function() {
+                                        $('#popupModal').fadeOut();
+                                    });
+
+                                    // رویداد کلیک برای بستن تمامی پاپ‌آپ‌ها با دکمه "close-btn"
+                                    $(document).on('click', '.close-btn', function() {
+                                        $(this).closest('.popup').fadeOut();
+                                    });
+
+                                    // باز کردن پاپ‌آپ جدید با دکمه جدید
+                                    document.getElementById("openNewPopupButton").addEventListener("click", function() {
+                                        document.getElementById("popupIframeNew").src = "file:///C:/Users/hrirh/OneDrive/Desktop/.net9/VisitCompany/VisitCompany/Areas/Administration/Pages/Accounts/Account/Create.cshtml";
+                                        document.getElementById("popupModalNew").style.display = "block";
+                                    });
+
+                                    // بستن پاپ‌آپ popupModalNew با دکمه بستن درون آن
+                                    $(document).on('click', '#popupModalNew button', function() {
+                                        $('#popupModalNew').fadeOut();
+                                    });
+
+
+                                    // بستن پاپ‌آپ popupModalNew با تابع
+                                    function closeNewPopup() {
+                                        $('#popupModalNew').fadeOut();
+                                    }
+
+                                    // رویداد برای باز کردن پاپ‌آپ از طریق آیکون ذره‌بین
+                                    $(document).on('click', '.view-details', function() {
+                                        var id = $(this).data('id');
+                                        $.ajax({
+                                            url: '/Company/Index?handler=Details',
+                                            type: 'GET',
+                                            data: { id: id },
+                                            success: function(result) {
+                                                $('#popupDetails').html(result);
+                                                $('#popupWindowDetails').fadeIn(); // نمایش پاپ‌آپ
+                                            },
+                                            error: function() {
+                                                alert('خطا در بارگذاری اطلاعات');
+                                            }
+                                        });
+                                    });
+
+                                 
+
+                                        $('#CompanyIdSelect').select2({
+                                            placeholder: "انتخاب دسته بندی",
+                                            allowClear: true,
+                                            language: "fa"
+                                        });
+                                    $('#AccountSelect').select2({
+                                        placeholder: "انتخاب لایسنس ها",
+                                        allowClear: true,
+                                        language: "fa"
+                                    });
+
+                                });
+                            </script>
+                        }
+
+

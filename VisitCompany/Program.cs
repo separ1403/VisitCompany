@@ -1,10 +1,10 @@
 ﻿using CompanyManagement.Infrasructure.EFCore;
 using CompanyManagement.Infrastructure.Configuration;
 using Framework.Application;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using ServiceHost;
 using Framework.Application.Sender.Sms;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore;
+using ServiceHost;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -21,6 +21,7 @@ namespace CompanyManagement.Infrasructure.EFCore.Mapping
 
             builder.HasMany(x => x.Accounts).WithOne(x => x.StateCategory).HasForeignKey(x => x.StateCategoryId);
 
+            builder.HasMany(x => x.companies).WithOne(x => x.StateCategory).HasForeignKey(x => x.StateCategoryIds).OnDelete(DeleteBehavior.NoAction); // جلوگیری از ایجاد مسیرهای چندگانه
         }
 
     }

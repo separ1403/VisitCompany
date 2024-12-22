@@ -6,6 +6,7 @@ using Framework.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Security.Claims;
 
 namespace VisitCompany.Pages.LicenceCategories
 {
@@ -39,9 +40,33 @@ namespace VisitCompany.Pages.LicenceCategories
         [NeedsPermission(CompanyPermission.CreateLicenceCategories)]
         public IActionResult OnPostCreate(CreateLicenceCategory command)
         {
+            // دریافت کلایم‌های موردنظر
+            // دریافت نام کاربر از Claim
+            var fullName = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
+            var roleClaim = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+            var role = roleClaim?.Value; // استخراج مقدار Role
+
+            OperationResult operationResult;
+
+
             if (ModelState.IsValid)
             {
-                var operationResult = _licenceCategoryApplication.Create(command);
+
+                if (role == RolesConst.Administrator)
+                {
+                    command.Fullname = fullName;
+                    command.Status = true;
+                     operationResult = _licenceCategoryApplication.Create(command);
+                }
+                else
+                {
+                    command.Fullname = fullName;
+                     command.Status = false;
+                     operationResult = _licenceCategoryApplication.Create(command);
+                }
+
+
+                //  var operationResult = _licenceCategoryApplication.Create(command);
 
                 if (operationResult.IsSucceeded)
                 {

@@ -21,8 +21,19 @@ namespace CompanyManagement.Infrasructure.EFCore.Mapping
 
 
 
+            builder.HasOne(c => c.Company)
+                .WithMany(h => h.People).HasForeignKey(p => p.CompanyId)
+    .OnDelete(DeleteBehavior.Cascade).IsRequired(false); ;
+
+
             builder.HasOne(c => c.Checklist)
-                .WithMany(h => h.People);
+                .WithMany(h => h.People).HasForeignKey(p => p.CheklistId)
+    .OnDelete(DeleteBehavior.Cascade).IsRequired(false); ; 
+
+
+
+            //builder.HasOne(c => c.Company)
+            //   .WithMany(h => h.People);
 
 
 

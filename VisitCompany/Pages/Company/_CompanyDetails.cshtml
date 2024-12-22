@@ -14,7 +14,49 @@
     <p><strong>آدرس سایت:</strong> @Model.Domain</p>
     <p><strong>تاریخ ثبت:</strong> @Model.CompanyCreateDate</p>
     <p><strong>آدرس:</strong> @Model.Address</p>
+    <p><strong>کد پستی:</strong> @Model.PostalCode</p>
+    <p><strong>تعداد پرسنل:</strong> @Model.CountEmployees</p>
+    <p><strong>تعداد کاربران:</strong> @Model.CountFolowers</p>
+
+
     <p><strong>تاریخ ایجاد:</strong> @Model.CompanyCreateDate</p>
+
+    <td>
+        @if (@Model.Licences != null && @Model.Licences.Any())
+        {
+            <ul>
+                @foreach (var licence in @Model.Licences)
+                {
+                    <li> نام مجوز: @licence.Name</li>
+                    <li> مرجع صدور مجوز: @licence.Refrence</li>
+                }
+            </ul>
+        }
+        else
+        {
+            <span>مجوزی موجود نیست</span>
+        }
+    </td>
+
+    <td>
+        @if (@Model.People != null && Model.People.Any())
+        {
+            <ul>
+                @foreach (var person in @Model.People)
+                {
+                    <li>
+                        <strong>نام:</strong> @person.NamePeopleCo<br />
+                        <strong>مسئولیت:</strong> @person.RspponsePeopleCo<br />
+                        <strong>شماره تماس:</strong> @person.PhonePeopleCo
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <span>فردی موجود نیست</span>
+        }
+    </td>
    
     <!-- سایر اطلاعات را نیز اضافه کنید -->
 </div>

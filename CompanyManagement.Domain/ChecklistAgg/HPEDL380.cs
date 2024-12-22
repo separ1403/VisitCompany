@@ -7,6 +7,7 @@ namespace CompanyManagement.Domain.ChecklistAgg
     {
         public HPEDL380(long isTpmEnabledAndRo, string isTpmEnabledAndROdescription, long areAppropriateUsernamesCreated, string areAppropriateUsernamesCreateddescription, long areAppropriateGroupsCreated, string areAppropriateGroupsCreateddescription, long areNetworkSettingsForIloConfigured, string areNetworkSettingsForIloConfigureddescription, long areInitialSettingsForIloConfigured, string areInitialSettingsForIloConfigureddescription, long isServerNameAndFqdnSet, string isServerNameAndFqdnSetdescription, long isAccountServiceConfigured, string isAccountServiceConfigureddescription, long areIloPortAndUsbPortConfigured, string areIloPortAndUsbPortConfigureddescription, long areSshKeysEnabled, string areSshKeysEnableddescription, long areUserCertificatesConfigured, string areUserCertificatesConfigureddescription, long areSystemCertificatesConfigured, string areSystemCertificatesConfigureddescription, long isEncryptionConfigured, string isEncryptionConfigureddescription, long isUefiSecurityConfigured, string isUefiSecurityConfigureddescription, long isSecureBootConfigured, string isSecureBootConfigureddescription, long isTpmConfigured, string isTpmConfigureddescription, long areInitialIloSettingsConfigured, string areInitialIloSettingsConfigureddescription, long isDiskAndRaidConfigDeletionDisabled, string isDiskAndRaidConfigDeletionDisableddescription, long areProvisioningSettingsDeleted, string areProvisioningSettingsDeleteddescription, string finallDescription)
         {
+            Name = "چک لیست تخصصی-HPEDL380";
             IsTPMEnabledAndRO = isTpmEnabledAndRo;
             IsTPMEnabledAndROdescription = isTpmEnabledAndROdescription;
             AreAppropriateUsernamesCreated = areAppropriateUsernamesCreated;
@@ -54,6 +55,7 @@ namespace CompanyManagement.Domain.ChecklistAgg
         {
 
         }
+        public string Name { get; private set; }
 
         public long? IsTPMEnabledAndRO { get; set; }
         public string? IsTPMEnabledAndROdescription { get; set; }
@@ -107,6 +109,7 @@ namespace CompanyManagement.Domain.ChecklistAgg
         public bool IsCompleted { get; set; } // فیلدی که وضعیت ارزیابی را ذخیره می‌کند
         public string? FinallDescription { get; private set; }
 
+        public string? UniqueCode { get; set; }
 
 
 

@@ -4,7 +4,6 @@
     ViewData["Title"] = "ورود و ثبت نام";
 }
 <form method="post" asp-page-handler="ValidateCode">
-    
     @if (TempData["ErrorMessage"] != null)
     {
         <div class="alert alert-danger">
@@ -21,6 +20,9 @@
             </div>
             <div class="col-md-12">
                 <button class="validate-button">تایید</button>
+            </div>
+            <div class="col-md-12 mt-2">
+                <a asp-page="/Account" class="btn btn-secondary">ویرایش شماره موبایل</a>
             </div>
         </div>
     </div>

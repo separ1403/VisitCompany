@@ -44,15 +44,20 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
 
         public List<CompanyCategoryViewModel> Search(CompanyCategorySearchModel searchModel)
         {
+
             var query = _companyContext.CompanyCategories.Select(x => new CompanyCategoryViewModel
             {
                 Id = x.Id,
                 Name = x.Name,
-                Description = x.Description
+                Description = x.Description,
+                Count = _companyContext.Companies.Count(c => c.CategoryId == x.Id).ToString() // تعداد شرکت‌ها در هر دسته‌بندی
+
+
             });
 
-            if (!string.IsNullOrWhiteSpace(searchModel.Name))
+            if (searchModel != null && !string.IsNullOrWhiteSpace(searchModel.Name))
                 query = query.Where(x => x.Name.Contains(searchModel.Name));
+
             return query.OrderByDescending(x => x.Id).ToList();
         }
     }

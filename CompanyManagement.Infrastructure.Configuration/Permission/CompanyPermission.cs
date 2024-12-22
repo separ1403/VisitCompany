@@ -7,6 +7,8 @@
         public const int SearchCompanies = 11;
         public const int CreateCompanies = 12;
         public const int EditCompanies = 13;
+        public const int ReferCompanies = 14;
+
 
 
         //CompanyCategory

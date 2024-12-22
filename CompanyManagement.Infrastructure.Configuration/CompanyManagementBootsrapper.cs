@@ -53,6 +53,17 @@ namespace CompanyManagement.Infrastructure.Configuration
             services.AddTransient<IjuniperhardeningRepository, juniperhardeningRepository>();
 
             services.AddTransient<IHPEDL380Repository, HPEDL380Repository>();
+            services.AddTransient<IGeneralChecklistProffesionalRepository, GeneralChecklistProffessionalRepository>();
+            services.AddTransient<IGeneralChecklistProffApplication, GeneralChecklistProffApplication>();
+
+
+            services.AddTransient<IGeneralChecklistPolicyRepository, GeneralChecklistPolicyRepository>();
+            services.AddTransient<IGeneralChecklistPolApplication, GeneralChecklistPolplication>();
+
+
+            services.AddTransient<IPersonApplication, PersonApplication>();
+            services.AddTransient<IPersonRepository, PersonRepository>();
+
 
             services.AddTransient<IAccountApplication, AccountApplication>();
             services.AddTransient<IAccountRepository, AccountRepository>();
@@ -65,6 +76,10 @@ namespace CompanyManagement.Infrastructure.Configuration
             services.AddTransient<IWin2019Repository, Win2019Repository>();
 
             services.AddTransient<IGeneralChecklistRepository, GeneralChecklistRepository>();
+
+            services.AddTransient<IGeneralChecklistApplication, GeneralChecklistApplication>();
+
+
 
 
             services.AddDbContext<CompanyContext>(x => x.UseSqlServer(connectionString));

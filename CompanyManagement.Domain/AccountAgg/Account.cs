@@ -7,6 +7,8 @@ namespace CompanyManagement.Domain.AccountAgg
 {
     public class Account : EntityBase
     {
+        public string Name { get; private set; }
+
         public string Fullname { get; private set; }
         public string UserName { get; private set; }
        // public string Password { get; private set; }
@@ -22,16 +24,18 @@ namespace CompanyManagement.Domain.AccountAgg
         public string? CodeValidateMobile { get; private set; }  //be khatere errore SqlNullValueException: Data is Null. This method or property cannot be called on Null values.  ro midad ke search kardam goft ? inja bezaram va inke to table sql ham mishod ke null bashe
 
         public long ChecklistId { get; private set; }
-        public List<Checklist> Checklists { get; private set; }
+        public List<Checklist> Checklists { get; private set; } = new List<Checklist>();
         public long CompanyId { get; private set; }
 
         public List<Company> Companies { get; private set; } // تغییر برای ارتباط Many-to-Many
         public List<LoginAttempt> LoginAttempts { get; private set; }
+        public string? Description { get; private set; }
 
 
 
-        public Account(string fullname, string userName,/* string password,*/ string mobile, long roleId,long stateCategoryId)
+        public Account(string name,string fullname, string userName,/* string password,*/ string mobile, long roleId,long stateCategoryId, string description)
         {
+            Name = name;
             Fullname = fullname;
             UserName = userName;
          //   Password = password;
@@ -49,11 +53,14 @@ namespace CompanyManagement.Domain.AccountAgg
             StateCategoryId=stateCategoryId;
 
             LoginAttempts = new List<LoginAttempt>();
+            Description = description;
 
         }
 
-        public void Edit(string fullname, string userName, string mobile, long roleId,long stateCategoryId)
+        public void Edit(string name,string fullname, string userName, string mobile, long roleId,long stateCategoryId, string description)
         {
+            if (name != null)
+                Name = name;
             if (fullname != null)
                 Fullname = fullname;
 
@@ -68,6 +75,9 @@ namespace CompanyManagement.Domain.AccountAgg
 
             if (stateCategoryId != 0)
                 StateCategoryId = stateCategoryId;
+
+            if (description != null)
+                Description = description;
 
         }
 
@@ -106,6 +116,14 @@ namespace CompanyManagement.Domain.AccountAgg
         {
             CodeValidateMobile = code;
         }
+        //public void AddChecklists(Checklist checklist)
+        //{
+        //    if (!Checklists.Contains(checklist))
+        //    {
+        //        Checklists.Add(checklist);
+        //        checklist.Accounts.Add(this); // مقداردهی دوطرفه
+        //    }
+        //}
 
     }
 }

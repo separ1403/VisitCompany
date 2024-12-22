@@ -1,4 +1,5 @@
 ﻿using CompanyManagement.Application.Contract.Company;
+using CompanyManagement.Application.Contract.LicenceCategory;
 using Framework.Domain;
 
 namespace CompanyManagement.Domain.CompanyAgg
@@ -9,13 +10,16 @@ namespace CompanyManagement.Domain.CompanyAgg
         CompanyViewModel GetdetailPartialview(long id);
 
 
-        List<CompanyViewModel> Serach(CompanySearchModel searchModel);
+        List<CompanyViewModel> Serach(CompanySearchModel searchModel, long? provincialAdminStateCategoryId = null);
+        List<CompanyViewModel> SerachTotal(CompanySearchModel searchModel, long? provincialAdminStateCategoryId = null);
 
         List<CompanyViewModel> GetCompenies();
         List<CompanyViewModel> GetCompeniesWithUsername();
-        Company GetCompanyWithCategory(long id);
+        public List<CompanyViewModel> GetCompaniesByCategoryId(int categoryId);
+        public List<CompanyViewModel> GetCompaniesByLicenceId(int licenceId);
 
-       
+
+
 
 
 

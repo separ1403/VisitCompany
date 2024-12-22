@@ -1,0 +1,219 @@
+﻿@page
+@model VisitCompany.Pages.checklist.ConfirmCheckGenProffModel
+@{
+    Layout = "Shared/_AdminLayout";
+    ViewData["Title"] = "تایید اطلاعات";
+}
+
+
+
+
+
+<h2>تایید اطلاعات</h2>
+
+
+    {
+    <form method="post">
+     
+        <div class="row">
+            <div class="col-md-6">
+                <label>نمره نقشه شبکه:</label>
+                <span>@Model.Command.NetworkLogicalPhysicalMapStatusScore</span>
+            </div>
+            <div class="col-md-6">
+                <label>وضعیت نقشه شبکه:</label>
+                <span>@Model.Command.NetworkLogicalPhysicalMapStatus</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>نمره ثبت اموال فیزیکی:</label>
+                <span>@Model.Command.PhysicalAssetsInventoryStatusScore</span>
+            </div>
+            <div class="col-md-6">
+                <label>وضعیت ثبت اموال فیزیکی:</label>
+                <span>@Model.Command.PhysicalAssetsInventoryStatus</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>نمره زونینگ:</label>
+                <span>@Model.Command.ZoningStatusScore</span>
+            </div>
+            <div class="col-md-6">
+                <label>وضعیت زونینگ:</label>
+                <span>@Model.Command.ZoningStatus</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>نمره کنترل دسترسی:</label>
+                <span>@Model.Command.AccessControlStatusScore</span>
+            </div>
+            <div class="col-md-6">
+                <label>وضعیت کنترل دسترسی:</label>
+                <span>@Model.Command.AccessControlStatus</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>نمره کنترل عملیات توسعه و آزمون:</label>
+                <span>@Model.Command.DevelopmentTestOperationsControlStatusScore</span>
+            </div>
+            <div class="col-md-6">
+                <label>وضعیت کنترل عملیات توسعه و آزمون:</label>
+                <span>@Model.Command.DevelopmentTestOperationsControlStatus</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>نمره دسترسی مدیریت از راه دور:</label>
+                <span>@Model.Command.RemoteAdministrativeAccessStatusScore</span>
+            </div>
+            <div class="col-md-6">
+                <label>وضعیت دسترسی مدیریت از راه دور:</label>
+                <span>@Model.Command.RemoteAdministrativeAccessStatus</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>نمره پیکربندی کد امن:</label>
+                <span>@Model.Command.SecureCodingConfigStatusScore</span>
+            </div>
+            <div class="col-md-6">
+                <label>وضعیت پیکربندی کد امن:</label>
+                <span>@Model.Command.SecureCodingConfigStatus</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>نمره ارزیابی امنیتی:</label>
+                <span>@Model.Command.SecurityEvaluationStatusScore</span>
+            </div>
+            <div class="col-md-6">
+                <label>وضعیت ارزیابی امنیتی:</label>
+                <span>@Model.Command.SecurityEvaluationStatus</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>نمره پشتیبان‌گیری:</label>
+                <span>@Model.Command.BackupStatusScore</span>
+            </div>
+            <div class="col-md-6">
+                <label>وضعیت پشتیبان‌گیری:</label>
+                <span>@Model.Command.BackupStatus</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>نمره انقضای جلسه:</label>
+                <span>@Model.Command.SessionExpirationStatusScore</span>
+            </div>
+            <div class="col-md-6">
+                <label>وضعیت انقضای جلسه:</label>
+                <span>@Model.Command.SessionExpirationStatus</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>نمره آنتی‌ویروس:</label>
+                <span>@Model.Command.AntivirusStatusScore</span>
+            </div>
+            <div class="col-md-6">
+                <label>وضعیت آنتی‌ویروس:</label>
+                <span>@Model.Command.AntivirusStatus</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <label>نمره آپدیت ‌:</label>
+                <span>@Model.Command.UpdateStatusScore</span>
+            </div>
+            <div class="col-md-6">
+                <label>  وضعیت ‌:</label>
+                <span>@Model.Command.UpdateStatus</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>نمره ‌:</label>
+                <span>@Model.Command.WirelessNetworkStatusScore</span>
+            </div>
+            <div class="col-md-6">
+                <label>وضعیت ‌:</label>
+                <span>@Model.Command.WirelessNetworkStatus</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>نمره ‌:</label>
+                <span>@Model.Command.PasswordPolicyStatusScore</span>
+            </div>
+            <div class="col-md-6">
+                <label>وضعیت ‌:</label>
+                <span>@Model.Command.PasswordPolicyStatus</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>نمره ‌:</label>
+                <span>@Model.Command.DataDestructionStatusScore</span>
+            </div>
+            <div class="col-md-6">
+                <label>وضعیت ‌:</label>
+                <span>@Model.Command.DataDestructionStatus</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>نمره ‌:</label>
+                <span>@Model.Command.LogManagementStatusScore</span>
+            </div>
+            <div class="col-md-6">
+                <label>وضعیت ‌:</label>
+                <span>@Model.Command.LogManagementStatus</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>نمره ‌:</label>
+                <span>@Model.Command.ClockSynchronizationStatusScore</span>
+            </div>
+            <div class="col-md-6">
+                <label>وضعیت ‌:</label>
+                <span>@Model.Command.ClockSynchronizationStatus</span>
+            </div>
+        </div>
+      
+    <div class="row">
+        <div class="col-md-6">
+            <label>نمره ‌:</label>
+            <span>@Model.Command.AverageGeneralProffesional</span>
+        </div>
+        
+        
+        <div class="col-md-12">
+            <label>توضیح کلی ‌:</label>
+            <span>@Model.Command.FinallDescription</span>
+        </div>
+        <H3>در صورت تایید امکان ویرایش وجود ندارد :</H3>
+        <button type="submit">  ذخیره و ادامه ارزیابی</button>
+    </div>
+    
+   
+    <br />
+    </form>
+}
+
+<br/>
+
+
+<!-- دکمه بازگشت -->
+<a href="/checklist/create" class="btn btn-secondary">بازگشت به صقحه ی انتخاب چک لیست ها</a>
+
+    
+
+   
+    

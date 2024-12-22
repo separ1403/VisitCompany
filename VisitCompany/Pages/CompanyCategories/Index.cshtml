@@ -74,7 +74,10 @@
                                 <tr>
                                     <th>#</th>
                                     <th>نام</th>
+                                    <th>تعداد شرکت زیر مجموعه</th>
                                     <th>توضیحات</th>
+                                    <th>شرکت های زیر مجموعه</th>
+
                                     <th>عملیات</th>
                                 </tr>
                             </thead>
@@ -84,7 +87,14 @@
                                     <tr>
                                         <td>@item.Id</td>
                                         <td>@item.Name</td>
+                                        <td>@item.Count</td>
                                         <td>@item.Description</td>
+                                        <td>
+                                            <!-- آیکون ذره‌بین برای نمایش اطلاعات بیشتر -->
+                                            <a href="javascript:void(0);" class="view-details" data-id="@item.Id">
+                                                <i class="fa fa-search"></i>
+                                            </a>
+                                        </td>
                                         <td>
                                             <a class="btn btn-warning pull-right m-rl-5" >
                                                 <a class="fa fa-edit" asp-page="./Edit" asp-route-id="@item.Id">ویرایش </a> 
@@ -101,13 +111,83 @@
     </div>
 </div>
 
+
+<div id="popupWindow" class="popup">
+    <div class="popup-content">
+        <span class="close-btn">&times;</span>
+        <div id="popupDetails">
+            <!-- اطلاعات شرکت اینجا نمایش داده خواهد شد -->
+        </div>
+    </div>
+</div>
+
+<style>
+    .popup {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+    }
+
+    .popup-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 600px;
+        border-radius: 10px;
+    }
+
+    .close-btn {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+        .close-btn:hover, .close-btn:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+</style>
+
 @section Scripts {
     <script src="~/adminTheme/assets/datatables/jquery.dataTables.min.js"></script>
     <script src="~/adminTheme/assets/datatables/dataTables.bootstrap.js"></script>
 
     <script type="text/javascript">
-        $(document).ready(function () {
+        $(document).ready(function() {
+            // فعال کردن DataTable برای جدول
             $('#datatable').dataTable();
+            $(document).on('click', '.view-details', function() {
+                var id = $(this).data('id');
+                $.ajax({
+                    url: '/CompanyCategories/Index?handler=Details',
+                    type: 'GET',
+                    data: { id: id },
+                    success: function(result) {
+                        $('#popupDetails').html(result);
+                        $('#popupWindow').fadeIn(); // نمایش پاپ‌آپ
+                    },
+                    error: function() {
+                        alert('خطا در بارگذاری اطلاعات');
+                    }
+                });
+            });
+
+            $(document).on('click', '.close-btn', function() {
+                $('#popupWindow').fadeOut(); // بستن پاپ‌آپ
+            });
+
+
         });
     </script>
 }

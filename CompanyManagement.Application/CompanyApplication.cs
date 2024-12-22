@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using CompanyManagement.Domain.AccountAgg;
 using CompanyManagement.Domain.LicenceCategoryAgg;
+using CompanyManagement.Application.Contract.LicenceCategory;
+using CompanyManagement.Domain.ChecklistAgg;
 
 namespace CompanyManagement.Application
 {
@@ -46,11 +48,35 @@ namespace CompanyManagement.Application
                 operation.Failed(ApplicationMessages.DuplicatedRecordCompany);
                 return operation;
             }
+            DateTime referDateFrom = DateTime.MinValue;
+            DateTime referDateTo = DateTime.MinValue;
+
+            if (!string.IsNullOrEmpty(command.ReferDateFrom))
+            {
+                referDateFrom = command.ReferDateFrom.ToGeorgianDateTime();
+            }
+
+            if (!string.IsNullOrEmpty(command.ReferDateTo))
+            {
+                referDateTo = command.ReferDateTo.ToGeorgianDateTime();
+            }
 
             var accounts = _accountRepository.GetAccountsByIds(command.AccountIds);
             var licences = _licenceCategoryRepository.GetLicenceByIds(command.LicenceIds);
-            var company = new Company(command.CompanyName, command.Brand, command.ManagerName, command.SecurityManagerName, command.PhoneNumber, command.Description, command.NationalCode,command.Address, command.CategoryId, command.LicenceIds, command.AccountIds,command.Doamin);
 
+            var people = command.People.Select(p => new Person
+            {
+                NamePeopleCo = p.NamePeopleCo,
+                RspponsePeopleCo = p.RspponsePeopleCo,
+                PhonePeopleCo = p.PhonePeopleCo,
+              
+
+            }).ToList();
+
+            var company = new Company(command.CompanyName, command.Brand, command.ManagerName, command.SecurityManagerName, command.PhoneNumber, command.Description, command.NationalCode,command.Address, command.CategoryId, command.LicenceIds, command.AccountIds,command.Doamin, referDateFrom, referDateTo,command.StateCategoryId, people, command.CountEmployees ?? 0,
+                command.CountFolowers ?? 0, command.PostalCode);
+
+          //  Console.WriteLine($"CheklistId: {people.CheklistId}");
             company.AddAccounts(accounts);
             company.AddLicence(licences);
 
@@ -74,27 +100,53 @@ namespace CompanyManagement.Application
                 operation.Failed(ApplicationMessages.RecordNotFound);
                 return operation;
             }
-
-
-            //if (_companyRepository.Exists(x => x.CompanyName == command.CompanyName && x.Id != command.Id))
-            //{
-            //    operation.Failed(ApplicationMessages.DuplicatedRecord);
-            //    return operation;
-            //}  
-            // badan baraye multipage methode edit methode dige benevisam va in ro bezaram baraye multipage
-
-                company.Edit(command.CompanyName, command.Brand, command.ManagerName,
+            var referDateFrom = command.ReferDateFrom.ToGeorgianDateTime();
+            var referDateTo = command.ReferDateTo.ToGeorgianDateTime();
+            company.Edit(command.CompanyName, command.Brand, command.ManagerName,
                 command.SecurityManagerName,
                 command.PhoneNumber, command.Description, command.NationalCode,command.Address,
-                command.CategoryId, command.LicenceIds,command.AccountIds,command.Doamin);
+                command.CategoryId, command.LicenceIds,command.AccountIds,command.Doamin , referDateFrom, referDateTo,command.StateCategoryId,command.PeopleIds,command.CountEmployees ?? 0,command.CountFolowers ?? 0,command.PostalCode);
+
 
             _companyRepository.SaveChanges();
 
             operation.Succeeded(ApplicationMessages.SuccessMessage);
             return operation;
         }
+public OperationResult BatchEdit(BatchEditCompany command)
+{
+    var operation = new OperationResult();
 
-       
+    // بررسی خالی یا مقداردهی نشده بودن CompanyIds
+    if (command.CompanyIds == null || !command.CompanyIds.Any())
+    {
+        operation.Failed("هیچ شرکتی انتخاب نشده است.");
+        return operation;
+    }
+
+    foreach (var companyId in command.CompanyIds)
+    {
+        var company = _companyRepository.Get(companyId);
+
+        if (company == null)
+        {
+            operation.Failed(ApplicationMessages.RecordNotFound);
+            return operation;
+        }
+                var referDateFrom = command.ReferDateFrom.ToGeorgianDateTime();
+                var referDateTo = command.ReferDateTo.ToGeorgianDateTime();
+                company.Edit(command.CompanyName, command.Brand, command.ManagerName,
+                     command.SecurityManagerName, command.PhoneNumber, command.Description,
+                     command.NationalCode, command.Address, command.CategoryId,
+                     command.LicenceIds, command.AccountIds, command.Doamin,
+                     referDateFrom, referDateTo,command.StateCategoryId, command.PeopleIds, command.CountEmployees ?? 0, command.CountFolowers ?? 0, command.PostalCode);
+    }
+
+    _companyRepository.SaveChanges();
+
+    operation.Succeeded(ApplicationMessages.SuccessMessage);
+    return operation;
+}
 
         public List<CompanyViewModel> GetCompenies()
         {
@@ -104,6 +156,11 @@ namespace CompanyManagement.Application
         public List<CompanyViewModel> GetCompeniesWithUsername()
         {
             return _companyRepository.GetCompeniesWithUsername();
+        }
+
+        public List<CompanyViewModel> GetCompaniesByCategoryId(int categoryId)
+        {
+            return _companyRepository.GetCompaniesByCategoryId(categoryId);
         }
 
 
@@ -118,9 +175,19 @@ namespace CompanyManagement.Application
         }
 
 
-        public List<CompanyViewModel> Serach(CompanySearchModel searchModel)
+        public List<CompanyViewModel> Serach(CompanySearchModel searchModel, long? provincialAdminStateCategoryId = null)
         {
-           return _companyRepository.Serach(searchModel);
+           return _companyRepository.Serach(searchModel, provincialAdminStateCategoryId);
+        }
+
+        public List<CompanyViewModel> GetCompaniesByLicenceId(int licenceId)
+        {
+            return _companyRepository.GetCompaniesByLicenceId(licenceId);
+        }
+
+        public List<CompanyViewModel> SerachTotal(CompanySearchModel searchModel, long? provincialAdminStateCategoryId = null)
+        {
+            return _companyRepository.SerachTotal(searchModel, provincialAdminStateCategoryId);
         }
     }
 }

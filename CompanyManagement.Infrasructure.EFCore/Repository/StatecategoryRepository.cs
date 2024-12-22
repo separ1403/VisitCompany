@@ -32,16 +32,21 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
             }).ToList();
         }
 
-        public List<StateCategoryViewModel> list()
+        public List<StateCategoryViewModel> List(long? provincialAdminStateCategoryId = null)
         {
-            return _companyContext.StateCategories.Select(x => new StateCategoryViewModel
+            var query = _companyContext.StateCategories.Select(x => new StateCategoryViewModel
             {
                 Id = x.Id,
                 Name = x.Name,
 
 
-            }).ToList();
+            });
 
+            // فیلتر محدودیت استان برای ادمین استانی
+            if (provincialAdminStateCategoryId.HasValue)
+                query = query.Where(x => x.Id == provincialAdminStateCategoryId.Value);
+
+            return query.OrderByDescending(x => x.Id).ToList();
         }
 
 

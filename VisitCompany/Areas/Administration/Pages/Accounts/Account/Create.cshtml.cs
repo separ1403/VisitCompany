@@ -8,11 +8,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Security.Claims;
 using System.Text.RegularExpressions;
 
 namespace VisitCompany.Areas.Administration.Pages.Accounts.Account
 {
-    [Authorize]
+  //  [Authorize]
     public class CreateModel : PageModel
     {
         [TempData]
@@ -47,19 +48,28 @@ namespace VisitCompany.Areas.Administration.Pages.Accounts.Account
 
         private void PopulateStates()
         {
-            States = new SelectList(_statecategoryApplication.List(), "Id", "Name");
+            var currentUserRole = Convert.ToInt64(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value);
+            var currentUserProvinceId = Convert.ToInt64(HttpContext.User.Claims.FirstOrDefault(c => c.Type == "StateCategoryId")?.Value);
+
+            var accounts = _accountApplication.Search(new AccountSearchModel(), currentUserRole == Convert.ToInt64(RolesConst.State) ? currentUserProvinceId : (long?)null);
+            var states = _statecategoryApplication.List(currentUserRole == Convert.ToInt64(RolesConst.State) ? currentUserProvinceId : (long?)null);
+            
+            States = new SelectList(_statecategoryApplication.List(currentUserRole == Convert.ToInt64(RolesConst.State) ? currentUserProvinceId : (long?)null), "Id", "Name");
+
         }
 
-        [NeedsPermission(CompanyPermission.CreateAccounts)]
+
+        // [NeedsPermission(CompanyPermission.CreateAccounts)]
         public void OnGet()
         {
+
             SuccessMessageame = null;
             ErrorMessageame = null;
             PopulateRoles();
             PopulateStates();
         }
 
-        [NeedsPermission(CompanyPermission.CreateAccounts)]
+      //  [NeedsPermission(CompanyPermission.CreateAccounts)]
         public IActionResult OnPostCreate(RegisterAccount command)
         {
             if (!ModelState.IsValid)

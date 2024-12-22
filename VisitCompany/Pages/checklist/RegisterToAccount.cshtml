@@ -1,0 +1,248 @@
+﻿@page
+@using CompanyManagement.Infrastructure.Configuration.Permission
+@model VisitCompany.Pages.checklist.RegisterToAccountModel
+@{
+    Layout = "Shared/_AdminLayout";
+
+}
+
+@if (@TempData["SuccessMessageameEd"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessageameEd"]
+    </div>
+}
+
+@if (@TempData["ErrorMessageameEd"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessageameEd"]
+    </div>
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title pull-left">@ViewData["title"]</h4>
+    </div>
+</div>
+
+<div class="row" permission="@CompanyPermission.SearchCompanies">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">جستجو در شرکت ها</h3>
+            </div>
+            <div class="panel-body">
+                <form class="form-inline" role="form" method="post">
+               
+                 
+                    <div class="form-group">
+                        <label class="sr-only" asp-for="SearchModel.Name"></label>
+                        <input class="form-control" name="SearchModel.Name" placeholder="نام شرکت" value="@Model.SearchModel?.Name" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="sr-only" asp-for="SearchModel.Brand"></label>
+                        <input class="form-control" name="SearchModel.Brand" placeholder="نام تجاری شرکت" value="@Model.SearchModel?.Brand" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="sr-only" asp-for="SearchModel.CategoryId"></label>
+                        <select class="form-control" asp-for="SearchModel.CategoryId" asp-items="Model.CompanyCategories">
+                            <option value="0">انتخاب دسته‌بندی</option>
+                        </select>
+                    </div>
+                 
+                 
+                    <div class="form-group">
+                        <label class="sr-only" asp-for="SearchModel.NationalCode"></label>
+                        <input class="form-control" name="SearchModel.NationalCode" placeholder="کد اقتصادی " value="@Model.SearchModel?.NationalCode" />
+                    </div>
+
+
+                    <button type="submit" class="btn btn-success waves-effect waves-light m-l-10">جستجو</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" permission="@CompanyPermission.ListCompanies" id="ProductCategoriesDiv">
+    <div class="col-md-12">
+         
+            <form method="post" asp-for="Command">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <table id="datatable" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>انتخاب</th>
+                                        <th>نام رسمی شرکت</th>
+                                        <th>نام برند</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @if (Model.Companies != null && Model.Companies.Any())
+                                {
+                                <tbody>
+                                        @foreach (var item in Model.Companies)
+                                        {
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="Command.CompanyIds" value="@item.Id" />
+                                            </td>
+                                            <td>@item.CompanyName</td>
+                                            <td>@item.Brand</td>
+                                        </tr>
+                                        }
+                                </tbody>
+                                }
+                                else
+                                {
+                                <tbody>
+                                    <tr>
+                                        <td colspan="3">هیچ شرکتی یافت نشد.</td>
+                                    </tr>
+                                </tbody>
+                                }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+          
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="sr-only" asp-for="Command.ReferDateFrom">تاریخ ارزیابی از</label>
+                        <input class="form-control persianDateInput" asp-for="Command.ReferDateFrom" placeholder="تاریخ ارجاع" autocomplete="off">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="sr-only" asp-for="Command.ReferDateTo">تاریخ ارزیابی</label>
+                        <input class="form-control persianDateInput" asp-for="Command.ReferDateTo" placeholder="تاریخ ارزیابی تا " autocomplete="off">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <label class="control-label">انتخاب ارزیاب‌ها</label>
+                <select asp-for="Command.AccountIds" asp-items="Model.AccountList" class="form-control" multiple="multiple" id="AccountIdSelect">
+                </select>
+                <span asp-validation-for="Command.AccountIds" class="error"></span>
+            </div>
+
+
+                <button type="submit" class="btn btn-primary" asp-page-handler="BatchEdit">ثبت تغییرات</button>
+
+
+      
+            </form>
+
+
+       
+
+        </div>
+    </div>
+</div>
+
+<div id="popupWindow" class="popup">
+    <div class="popup-content">
+        <span class="close-btn">&times;</span>
+        <div id="popupDetails">
+            <!-- اطلاعات شرکت اینجا نمایش داده خواهد شد -->
+        </div>
+    </div>
+</div>
+<style>
+    /* استایل پاپ‌آپ */
+    .popup {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+    }
+
+    .popup-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 600px;
+        border-radius: 10px;
+    }
+
+    .close-btn {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+        .close-btn:hover, .close-btn:focus {
+            color: black;
+            text-decoration: none;
+        }
+
+    /* استایل select2 */
+    .select2-container--default .select2-selection--multiple {
+        direction: rtl;
+        width: 100%;
+    }
+</style>
+
+@section Scripts {
+    <script src="~/AdminTheme/assets/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/AdminTheme/assets/datatables/dataTables.bootstrap.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // فعال کردن DataTable برای جدول
+            $('#datatable').dataTable();
+
+            // تنظیمات پاپ‌آپ برای مشاهده جزئیات
+            $(document).on('click', '.view-details', function() {
+                var id = $(this).data('id');
+                $.ajax({
+                    url: '/Company/Index?handler=Details',
+                    type: 'GET',
+                    data: { id: id },
+                    success: function(result) {
+                        $('#popupDetails').html(result);
+                        $('#popupWindow').fadeIn(); // نمایش پاپ‌آپ
+                    },
+                    error: function() {
+                        alert('خطا در بارگذاری اطلاعات');
+                    }
+                });
+            });
+
+            // بستن پاپ‌آپ
+            $(document).on('click', '.close-btn', function() {
+                $('#popupWindow').fadeOut(); // بستن پاپ‌آپ
+            });
+
+            // تنظیمات select2 برای انتخاب ارزیاب‌ها
+            $('#AccountIdSelect').select2({
+                placeholder: "انتخاب ارزیاب‌ها",
+                allowClear: true,
+                language: "fa",
+                width: '100%' // تنظیم عرض به 100 درصد
+            });
+        });
+    </script>
+}

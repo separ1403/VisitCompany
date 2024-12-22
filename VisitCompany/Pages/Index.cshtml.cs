@@ -1,4 +1,5 @@
 ﻿using CompanyManagement.Application.Contract.Company;
+using Framework.Application;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -23,8 +24,61 @@ namespace VisitCompany.Pages
 
         public ResponseFullInfoApi data { get; set; }
         public List<string> Error { get; set; } = new List<string>();
+        public CompanyDetailsViewModel CompanyDetails { get; set; }
 
 
+        //public async Task OnGet(string name)
+        //{
+        //    if (!string.IsNullOrEmpty(name))
+        //    {
+        //        try
+        //        {
+        //            _httpClient.BaseAddress = new Uri("https://api.rasm.io/api/");
+        //            _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
+        //            _httpClient.DefaultRequestHeaders.Add("X-Key", "ccdb6d41-3478-4296-b21d-ac18d0d38319");
+
+        //            HttpResponseMessage response = await _httpClient.GetAsync($"search/?term={name}");
+        //            if (response.IsSuccessStatusCode)
+        //            {
+        //                data = JsonConvert.DeserializeObject<ResponseFullInfoApi>(await response.Content.ReadAsStringAsync());
+
+        //                // استخراج اطلاعات مهم از پاسخ API
+        //                if (data?.hits?.hits != null && data.hits.hits.Any())
+        //                {
+        //                    var firstResult = data.hits.hits.First()._source;
+        //                    CompanyDetails = new CompanyDetailsViewModel
+        //                    {
+        //                        EstablishmentDate = firstResult.date.ToFarsi(),
+        //                        RegistrationNumber = firstResult.registrationNumber,
+        //                        EconomicCode = firstResult.economicCode
+        //                    };
+        //                }
+        //            }
+        //            else
+        //            {
+        //                Error.Add("کد خطا");
+        //            }
+        //        }
+        //        catch (HttpRequestException ex)
+        //        {
+        //            Error.Add("لطفا وضعیت اینترنت خود را بررسی کنید");
+        //            _logger.LogError(ex, "خطا در اتصال به API");
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            Error.Add("یک خطای غیرمنتظره رخ داده است");
+        //            _logger.LogError(ex, "یک خطای غیرمنتظره رخ داده است");
+        //        }
+        //    }
+        //    else
+        //    {
+        //        Error.Add("لطفا مقدار مورد نظر را وارد نمایید");
+        //    }
+        //}
+
+
+
+        // کد قبلی برای نمایش به صورت آی فریم
 
         public async Task OnGet(string name)
         {

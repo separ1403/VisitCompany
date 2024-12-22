@@ -29,7 +29,7 @@ namespace CompanyManagement.Application
                 return operation;
             }
 
-            var licenceCategory = new LicenceCategory(command.Name, command.Description);
+            var licenceCategory = new LicenceCategory(command.Name, command.Description, command.Refrence,command.Status, command.Fullname,command.CompanyName);
 
             _licencecategoryRepository.Create(licenceCategory);
             _licencecategoryRepository.SaveChanges();
@@ -58,7 +58,7 @@ namespace CompanyManagement.Application
             }
 
 
-            licenceCategory.Edit(command.Name, command.Description);
+            licenceCategory.Edit(command.Name, command.Description, command.Refrence,command.Status);
 
             _licencecategoryRepository.SaveChanges();
 
@@ -80,5 +80,41 @@ namespace CompanyManagement.Application
         {
             return _licencecategoryRepository.Search(searchModel);
         }
+
+        public List<LicenceCategoryViewModel> SearchTotal (LicenceCategorySearchModel searchModel)
+        {
+            return _licencecategoryRepository.SearchTotal(searchModel);
+        }
+        public List<LicenceCategoryViewModel> SearchDisable(LicenceCategorySearchModel searchModel)
+        {
+            return _licencecategoryRepository.SearchDisable(searchModel);
+        }
+
+
+        public OperationResult DisableLicence(long id)
+        {
+            var licence = _licencecategoryRepository.Get(id);
+            if (licence == null)
+                return new OperationResult().Failed("مجوز یافت نشد");
+
+            licence.ChangeActiveMode(); // غیرفعال کردن کاربر
+            _licencecategoryRepository.SaveChanges(); // ذخیره تغییرات
+
+            return new OperationResult().Succeeded("کاربر با موفقیت غیرفعال شد");
+        }
+
+        public OperationResult EnableLicence(long id)
+        {
+            var licence = _licencecategoryRepository.Get(id);
+            if (licence == null)
+                return new OperationResult().Failed("مجوز یافت نشد");
+
+            licence.ChangeToActiveMode(); //رفعال کردن کاربر
+            _licencecategoryRepository.SaveChanges(); // ذخیره تغییرات
+
+            return new OperationResult().Succeeded("کاربر با موفقیت فعال شد");
+        }
+
+        
     }
 }

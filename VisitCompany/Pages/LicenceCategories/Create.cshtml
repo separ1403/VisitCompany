@@ -1,7 +1,10 @@
 ﻿@page
 @model CreateModel
 @{
+    var showExtraField = Request.Query["showExtraField"].ToString() == "true";
+    // این برای این است که میخواستم یک ورودی اضافه داشته باشم وقتی که کارر دکمه ی افزودن مجوز رو از ایندکس زد اونوقت یک ورودی اضافه داشته باشد 
 }
+
 
 
 
@@ -36,10 +39,26 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
+                    <label asp-for="@Model.Command.Refrence" class="control-label">نام مرجع صادر کننده مجوز</label>
+                    <input type="text" class="form-control" asp-for="@Model.Command.Refrence">
+                    <span asp-validation-for="@Model.Command.Refrence" class="error"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
                     <label asp-for="Command.Description" class="control-label">توضیحات</label>
                     <input type="text" class="form-control" asp-for="Command.Description">
                     <span  class="error"></span>
                 </div>
+            </div>
+
+            <div>
+                @if (showExtraField)
+                {
+                    <label for="ExtraField">نام شرکت  </label>
+
+                    <input type="text" class="form-control" asp-for="Command.CompanyName">
+                }
             </div>
         </div>
      

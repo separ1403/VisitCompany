@@ -2,6 +2,7 @@
 using CompanyManagement.Domain.ChecklistAgg;
 using CompanyManagement.Domain.CompanyCategoryAgg;
 using CompanyManagement.Domain.LicenceCategoryAgg;
+using CompanyManagement.Domain.StatesCategoryAgg;
 using Framework.Domain;
 
 public class Company : EntityBase
@@ -14,20 +15,35 @@ public class Company : EntityBase
     public string? Description { get; private set; }
     public bool IsActive { get; private set; }
     public string? NationalCode { get; private set; }
-    public string Address { get; private set; }
+    public string? Address { get; private set; }
+     public string? PostalCode { get; private set; }
+    public long? CountEmployees { get; private set; }
+    public long? CountFolowers { get; private set; }
+
     public long CategoryId { get; private set; }
-    public long ChecklistId { get; private set; }
+    public long? ChecklistId { get; private set; }
+    public DateTime? ReferDateFrom { get; set; }
+    public DateTime? ReferDateTo { get; set; }
+
+    public DateTime? CheckDate { get; set; }
+
+    public StateCategory StateCategory { get; private set; }
+    public long StateCategoryIds { get; private set; }
 
     public List<LicenceCategory> LicenceCategories { get; private set; } = new List<LicenceCategory>();
     public List<long> LicenceIds { get; private set; }
     public List<Checklist> Checklists { get; private set; }
     public CompanyCategory CompanyCategory { get; private set; }
     public List<Account> Accounts { get; private set; } = new List<Account>();
-    public List<long> AccountIds { get; private set; }
+    public List<long>? AccountIds { get; private set; }
+
+  //  public List<long>? PeopleIds { get; private set; }
+    public List<Person> People { get; private set; } = new List<Person>();
+
 
     // ذخیره مقدار قبلی Description
     private string? _previousDescription;
-    public string Domain { get; private set; }
+    public string? Domain { get; private set; }
 
 
     // سازنده پیش‌فرض
@@ -37,7 +53,7 @@ public class Company : EntityBase
     }
 
     // سازنده با پارامترها
-    public Company(string companyName, string brand, string managerName, string securityManagerName, string phoneNumber, string description, string nationalCode,string address, long categoryId, List<long> licenceIds, List<long> accountIds, string domain)
+    public Company(string companyName, string brand, string managerName, string securityManagerName, string phoneNumber, string description, string nationalCode, string address, long categoryId, List<long> licenceIds, List<long> accountIds, string domain, DateTime referDateFrom, DateTime referDateTo, long stateCategoryId, List<Person> people, long countEmployees, long countFolowers,string postacode/*, DateTime checkDate*/)
     {
         CompanyName = companyName;
         Brand = brand;
@@ -52,7 +68,17 @@ public class Company : EntityBase
         LicenceIds = licenceIds;
         IsActive = true;
         AccountIds = accountIds;
-        Domain = domain;
+        Domain = domain; 
+        ReferDateFrom = referDateFrom;
+        ReferDateTo = referDateTo;
+        CreationDate = DateTime.Now;
+        StateCategoryIds = stateCategoryId;
+        People = people;  // تخصیص لیست اشخاص
+        CountEmployees = countEmployees;
+        CountFolowers = countFolowers;
+        PostalCode = postacode;
+
+        // CheckDate = Checklists;
     }
 
     public void AddAccounts(List<Account> accounts)
@@ -72,13 +98,24 @@ public class Company : EntityBase
     }
 
 
-    public void Edit(string companyName, string brand, string managerName, string securityManagerName, string phoneNumber, string? description, string nationalCode,string address, long categoryId, List<long> licenceIds,List<long> accountIds, string domain)
+    public void Edit(string companyName, string brand, string managerName, string securityManagerName, string phoneNumber, string? description, string nationalCode, string address, long categoryId, List<long> licenceIds, List<long> accountIds, string domain, DateTime referDateFrom, DateTime referDateTo, long stateCategoryId, List<long> peopleIds, long countEmployees, long countFolowers, string postacode/*, DateTime checkDate*/)
     {
-        CompanyName = companyName;
-        Brand = brand;
-        ManagerName = managerName;
-        SecurityManagerName = securityManagerName;
-        PhoneNumber = phoneNumber;
+        
+        if (!string.IsNullOrWhiteSpace(companyName))
+            CompanyName = companyName;
+
+        if (!string.IsNullOrWhiteSpace(brand))
+            Brand = brand;
+
+        if (!string.IsNullOrWhiteSpace(managerName))
+            ManagerName = managerName;
+
+
+        if (!string.IsNullOrWhiteSpace(securityManagerName))
+            SecurityManagerName = securityManagerName;
+
+        if (!string.IsNullOrWhiteSpace(phoneNumber))
+            PhoneNumber = phoneNumber;
 
         // مقداردهی اولیه _previousDescription در صورت نیاز
         if (string.IsNullOrWhiteSpace(_previousDescription))
@@ -86,7 +123,7 @@ public class Company : EntityBase
             _previousDescription = Description ?? null;
         }
 
-    if (!string.Equals(_previousDescription?.Trim(), description?.Trim(), StringComparison.Ordinal))
+        if (!string.Equals(_previousDescription?.Trim(), description?.Trim(), StringComparison.Ordinal))
         {
             string timeStamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
@@ -102,7 +139,7 @@ public class Company : EntityBase
                 // حذف محتوا صورت گرفته است
                 Description = $"{_previousDescription}\n(تلاش برای حذف بخشی از توضیحات در تاریخ {timeStamp} - این عمل مجاز نیست)\n";
             }
-            
+
             else
             {
                 // تغییر یا افزودن محتوا صورت گرفته است
@@ -118,16 +155,64 @@ public class Company : EntityBase
             Description = description;
         }
 
-        NationalCode = nationalCode;
-        Address = address;
-        CategoryId = categoryId;
-        LicenceIds = licenceIds;
-        AccountIds = accountIds;
-        Domain = domain;
+        if (!string.IsNullOrWhiteSpace(nationalCode))
+            NationalCode = nationalCode;
+
+        if (!string.IsNullOrWhiteSpace(address))
+            Address = address;
+
+        if (categoryId > 0)
+            CategoryId = categoryId;
+
+        if (licenceIds != null)
+
+            LicenceIds = licenceIds;
+
+
+
+        if (accountIds != null)
+            AccountIds = accountIds;
+
+        if (!string.IsNullOrWhiteSpace(domain))
+
+            Domain = domain;
+
+        //if (checkDate != DateTime.MinValue)
+        //{
+        //    CheckDate = checkDate;
+        //}
+
+        if (referDateFrom != DateTime.MinValue)
+        {
+            ReferDateFrom = referDateFrom;
+        }
+        if (referDateTo != DateTime.MinValue)
+        {
+            ReferDateTo = referDateTo;
+        }
+        CheckDate = DateTime.Now;
+
+        CreationDate = DateTime.Now; // تاریخ بروز رسانی میشه 
+        // یه تارخ باید به دیتابیس اضافه کنم که توش فقط تو این متد تاریخ بروز رسانی رو بزارم و تو ایندکس هم نمایشش بدم و این تاریخ رو از اینجا حذف بکنم
+        if (stateCategoryId != 0)
+            StateCategoryIds = stateCategoryId;
+
+        //if (peopleIds != null)
+
+        //    PeopleIds = peopleIds;
+
+        if (countEmployees > 0)
+            CountEmployees = countEmployees;
+
+        if (countFolowers > 0)
+            CountFolowers = countFolowers;
+
+
     }
 
     public void Active()
     {
+
         IsActive = true;
     }
 
