@@ -31,17 +31,15 @@
                                         @Model.LoginMessage
                                     </div>
                                 }
-
+                                @* تغییر اول که باید ارجاع بشه به متد مربوطه در همین صفحه در بک *@
                                 <form method="post" asp-page-handler="Login" class="row row-eq-height lockscreen mt-5 mb-5">
-                                    @* تغییر اول که باید ارجاع بشه به متد مربوطه در همین صفحه در بک *@
-                                       @* <form > *@
                                     <div class="lock-image col-12 col-sm-5" style="display: flex; justify-content: center; align-items: center; height:240px; margin-top:54px;margin:auto;border-radius: 30px;">
 
-                                        <img src="~/Theme/assets/dist/images/سامانه ثبت اطلاعات و ارزیابی تطبیق کسب‌و‌کارهای فضای مجازی.png" alt="" class="mtn" style=" width: 235px; margin-right: -4px; margin-top: 265px;">
+                                        <img src="~/Theme/assets/img/backgrounds/سامانه ثبت اطلاعات و ارزیابی تطبیق کسب‌و‌کارهای فضای مجازی.png" alt="" class="mtn" style=" width: 235px; margin-right: -4px; margin-top: 265px;">
                                     </div>
                                     <div class="login-form col-12 col-sm-5" style="margin: auto">
                                         <div class="form-group" style="margin-top:19px">
-                                            <input class="form-control " type="number" id="emailaddress" required="" name="username" placeholder="شماره پرسنلی "> @* name="username" type="number" تغیر بعدی *@
+                                            <input class="form-control" type="text" name="username" id="emailaddress" required="" placeholder="شماره پرسنلی "> @* name="username" type="number" تغیر بعدی *@
                                         </div>
 
                                         <div class="form-group ">
