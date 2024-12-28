@@ -2,50 +2,77 @@
 @model VisitCompany.Pages.EnterCodeModel
 @{
     ViewData["Title"] = "ورود و ثبت نام";
-}
-<form method="post" asp-page-handler="ValidateCode">
-    @if (TempData["ErrorMessage"] != null)
-    {
-        <div class="alert alert-danger">
-            @TempData["ErrorMessage"]
-        </div>
-    }
-       @* /////////صفحه دوم لاگین/////// *@
+ } 
+ <form method="post" asp-page-handler="ValidateCode">
+     @if (TempData["ErrorMessage"] != null) 
+     { 
+        <div class="alert alert-danger"> 
+             @TempData["ErrorMessage"] 
+         </div> 
+   }
+</form>
+@*        @* /////////صفحه دوم لاگین/////// *@ 
+
     <div class="page-content-area">
-        <div class="container " style="display: flex;justify-content: center;align-items: center;height:100vh; ">
+        <div class="container " style="display: flex;justify-content: center;align-items: center;height: 100vh; ">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="">
-                        <div class="">
+                <div class="col-lg-12">   
                             <div class="row ">
                                 <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12">
-                                   <form method="post" asp-page-handler="Login" class="row row-eq-height lockscreen mt-5 mb-5">
-                                        <div class="lock-image col-12 col-sm-5" style="display: flex; justify-content: center; align-items: center; height:240px; margin-top:54px;margin:auto;border-radius: 30px;">
-                                            <img src="/Theme/assets/img/backgrounds/سامانه ثبت اطلاعات و ارزیابی تطبیق کسب‌و‌کارهای فضای مجازی.png" alt="" class="mtn" style=" width: 235px; margin-right: -4px; margin-top: 265px;"> 
-                                               </div> 
-                                        <div class="login-form col-12 col-sm-5" style="margin: auto"> 
-                                                <div class="form-group" style="margin-top:19px"> 
-                                                <input type="text" name="Code" placeholder="کد فعالسازی" required> 
-                                        </div> 
-                                        <a asp-page="/Account" style="float:left;margin-top:-20px;font-size:10px;margin-left:9px">ویرایش شماره موبایل</a> 
-                                            <div class="form-group "> 
-                                                 <div class="custom-control custom-checkbox"> 
-                                                    <input type="checkbox" class="custom-control-input" id="checkbox-signin" checked=""> 
-                                                 </div> 
-                                           </div> 
-                                              <div class="form-group mb-0"> 
-                                                <button class="btn btn-primary form-control" style="background-color: #413382; color: white;" type="submit">  دریافت کد </button> 
-                                              </div>
-                                           </div>
-                                        </form>
+                                    <form method="post" asp-page-handler="Login" class="row row-eq-height lockscreen mt-5 mb-5">
+                            <div class="lock-image col-12 col-sm-5" style="display: flex; justify-content: center; align-items: center; height:240px; margin-top:54px;margin:auto;border-radius: 30px;">
+                                <img src="~/Theme/assets/img/backgrounds/سامانه ثبت اطلاعات و ارزیابی تطبیق کسب‌و‌کارهای فضای مجازی.png" alt="" class="mtn" style=" width: 235px; margin-right: -4px; margin-top: 265px;">
+                                        </div>
+                                        <div class="login-form col-12 col-sm-5 " style="margin: auto">
+                                <div class="form-group validation-form" style="margin-top:19px">
+                                    <input type="text" class="validation-title" name="Code" placeholder="کد فعالسازی" required>
+                                </div>
+                                <a asp-page="/Account" style="float:left;margin-top:-20px;font-size:10px;margin-left:9px">ویرایش شماره موبایل</a>
+                                <div class="form-group ">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="checkbox-signin" checked="">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-0">
+                                    <a asp-page="/Account" class="btn btn-primary form-control" style="background-color: #413382; color: white;" type="submit">  دریافت کد </a>
+                                </div>
+                                        </div>
+                                    </form>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+
+    
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -68,4 +95,23 @@
     @*    </div>  *@
     @*   </div> *@
     @*  </div> *@
-</form>
+
+
+
+
+
+
+@* <div class="form-group" style="margin-top:19px"> *@
+@*     <input type="text" name="Code" placeholder="کد فعالسازی" required> *@
+@* </div> *@
+@* <a asp-page="/Account" style="float:left;margin-top:-20px;font-size:10px;margin-left:9px">ویرایش شماره موبایل</a> *@
+@* <div class="form-group "> *@
+@*     <div class="custom-control custom-checkbox"> *@
+@*         <input type="checkbox" class="custom-control-input" id="checkbox-signin" checked=""> *@
+@*     </div> *@
+@* </div> *@
+@* <div class="form-group mb-0"> *@
+@*     <button class="btn btn-primary form-control" style="background-color: #413382; color: white;" type="submit">  دریافت کد </button> *@
+@* </div> *@
+
+
