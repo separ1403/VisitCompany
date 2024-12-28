@@ -12,32 +12,18 @@
     </div>
 }
 
-<div class="breadcrumb-area section-space--half">
-    <div class="container wide">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="breadcrumb-wrapper breadcrumb-bg">
-                    <div class="breadcrumb-content">
-                        <h2 class="breadcrumb-content__title">ورود - ثبت نام</h2>
-                        <ul class="breadcrumb-content__page-map">
-                            <li><a asp-page="/Index">صفحه اصلی</a></li>
-                            <li class="active">ورود - ثبت نام</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="page-content-area">
-    <div class="container">
+    <div class="container " style="display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; ">
         <div class="row">
             <div class="col-lg-12">
-                <div class="page-wrapper">
-                    <div class="page-content-wrapper">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6">
+                <div class="">
+                    <div class="">
+                        <div class="row ">
+                            <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12">
 
                                 @if (Model.LoginMessage != null)
                                 {
@@ -46,74 +32,36 @@
                                     </div>
                                 }
 
-                                <form method="post" asp-page-handler="Login">
-                                    <div class="login-form">
-                                        <h4 class="login-title">ورود</h4>
-                                        <div class="row">
-                                            <div class="col-md-12 col-12">
-                                                <label> نام کاربری*</label>
-                                                <input type="text" name="username" placeholder=" نام کاربری ">
+                                <form method="post" asp-page-handler="Login" class="row row-eq-height lockscreen mt-5 mb-5">
+                                    @* تغییر اول که باید ارجاع بشه به متد مربوطه در همین صفحه در بک *@
+                                       @* <form > *@
+                                    <div class="lock-image col-12 col-sm-5" style="display: flex; justify-content: center; align-items: center; height:240px; margin-top:54px;margin:auto;border-radius: 30px;">
+
+                                        <img src="~/Theme/assets/dist/images/سامانه ثبت اطلاعات و ارزیابی تطبیق کسب‌و‌کارهای فضای مجازی.png" alt="" class="mtn" style=" width: 235px; margin-right: -4px; margin-top: 265px;">
+                                    </div>
+                                    <div class="login-form col-12 col-sm-5" style="margin: auto">
+                                        <div class="form-group" style="margin-top:19px">
+                                            <input class="form-control " type="number" id="emailaddress" required="" name="username" placeholder="شماره پرسنلی "> @* name="username" type="number" تغیر بعدی *@
+                                        </div>
+
+                                        <div class="form-group ">
+ 
+                                            <input class="form-control" type="password" required="" id="password" name="mobile" placeholder=" شماره تماس  "> @* name="mobile" تغییر بعدی *@
+                                        </div>
+
+                                        <div class="form-group ">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="checkbox-signin" checked="">
                                             </div>
-                                            <div class="col-12">
-                                                <label>رمز عبور</label>
-                                                <input type="tel" name="mobile" placeholder="شماره موبایل">
-                                            </div>
-                                            <div class="col-sm-6 text-left text-sm-right">
-                                                <a href="#" class="forget-pass-link"> فراموشی رمز</a>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <button class="register-button">ورود</button>
-                                            </div>
+                                        </div>
+
+                                        <div class="form-group mb-0">
+                                            <button class="btn btn-primary form-control" style="background-color: #413382; color: white;" type="submit">  دریافت کد </button>
                                         </div>
                                     </div>
                                 </form>
+
                             </div>
-                      @*       <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
-
-                                @if (Model.RegisterMessage != null)
-                                {
-                                    <div class="alert alert-danger">
-                                        @Model.RegisterMessage
-                                    </div>
-                                }
-
-                                <form method="post" asp-page-handler="Register" onsubmit="return validatePassword()">
-                                    <div class="login-form">
-                                        <h4 class="login-title">ثبت نام</h4>
-                                        <div class="row">
-                                            <div class="col-md-6 col-12 mb-20">
-                                                <label>نام و نام خانوادگی</label>
-                                                <input type="text" name="RegisterAccount.Fullname" placeholder="نام">
-                                                <span asp-validation-for="RegisterAccount.Fullname" class="text-danger"></span>
-                                            </div>
-                                            <div class="col-md-6 col-12 mb-20">
-                                                <label> نام کاربری</label>
-                                                <input type="text" name="RegisterAccount.Username" placeholder=" نام کاربری">
-                                                <span asp-validation-for="RegisterAccount.Username" class="text-danger"></span>
-                                            </div>
-                                            <div class="col-md-12 mb-20">
-                                                <label>موبایل</label>
-                                                <input type="text" name="RegisterAccount.Mobile" placeholder="موبایل">
-                                                <span asp-validation-for="RegisterAccount.Mobile" class="text-danger"></span>
-                                            </div>
-                                            <div class="col-md-6 mb-20">
-                                                <label>رمز عبور</label>
-                                                <input type="password" name="RegisterAccount.Password" placeholder="رمز عبور">
-                                                <span asp-validation-for="RegisterAccount.Password" class="text-danger"></span>
-                                            </div>
-                                            <div class="col-md-6 mb-20">
-                                                <label>تایید رمز عبور </label>
-                                                <input type="password" name="RegisterAccount.Repassword" placeholder="تایید رمز عبور ">
-                                                <span asp-validation-for="RegisterAccount.Repassword" class="text-danger"></span>
-                                            </div>
-                                            <div class="col-12">
-                                                <button class="register-button mt-0">ثبت نام</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-
-                            </div> *@
                         </div>
                     </div>
                 </div>
@@ -121,8 +69,6 @@
         </div>
     </div>
 </div>
-
-
 
 <script>
     $(function () {
