@@ -12,6 +12,7 @@ namespace CompanyManagement.Domain.CompanyAgg
 
         List<CompanyViewModel> Serach(CompanySearchModel searchModel, long? provincialAdminStateCategoryId = null);
         List<CompanyViewModel> SerachTotal(CompanySearchModel searchModel, long? provincialAdminStateCategoryId = null);
+        List<CompanyViewModel> SerachByAccount(CompanySearchModel searchModel, long? currentUserId = null);
 
         List<CompanyViewModel> GetCompenies();
         List<CompanyViewModel> GetCompeniesWithUsername();

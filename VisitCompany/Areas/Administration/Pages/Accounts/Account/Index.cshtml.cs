@@ -1,6 +1,9 @@
 ﻿using System.Security.Claims;
 using AccountManagement.Application.Contracts.Account;
 using AccountManagement.Application.Contracts.Role;
+using CompanyManagement.Application.Contract.Checklist;
+using CompanyManagement.Application.Contract.Company;
+using CompanyManagement.Application.Contract.CompanyCategory;
 using CompanyManagement.Application.Contract.StateCategory;
 using CompanyManagement.Infrastructure.Configuration.Permission;
 using Framework.Infrastructure;
@@ -36,15 +39,23 @@ namespace VisitCompany.Areas.Administration.Pages.Accounts.Account
      //   [NeedsPermission(CompanyPermission.ListAccounts)]
         public void OnGet(AccountSearchModel searchModel)
         {
+            LoadDropdowns();
+            Accounts = _accountApplication.Search(searchModel, null) ?? new List<AccountViewModel>();
+
+        }
+
+        public IActionResult OnPost(AccountSearchModel searchModel)
+        {
             var currentUserRole = Convert.ToInt64(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value);
             var currentUserProvinceId = Convert.ToInt64(HttpContext.User.Claims.FirstOrDefault(c => c.Type == "StateCategoryId")?.Value);
 
-            Roles = new SelectList(_roleAplication.List(), "Id", "Name");
-            States = new SelectList(_statecategoryApplication.List(), "Id", "Name");
+            LoadDropdowns();
 
-            Accounts = _accountApplication.Search(searchModel, currentUserRole == Convert.ToInt64(RolesConst.State) ? currentUserProvinceId : (long?)null);
+            Accounts = _accountApplication.Search(searchModel, currentUserRole == Convert.ToInt64(RolesConst.State) ? currentUserProvinceId : (long?)null) ?? new List<AccountViewModel>();
+
+            return Page();
+
         }
-
 
 
         public IActionResult OnPostDisableAccount(long id)
@@ -81,7 +92,11 @@ namespace VisitCompany.Areas.Administration.Pages.Accounts.Account
         }
 
 
-
+        private void LoadDropdowns()
+        {
+            Roles = new SelectList(_roleAplication.List(), "Id", "Name");
+            States = new SelectList(_statecategoryApplication.List(), "Id", "Name");
+        }
     }
 
 

@@ -19,7 +19,7 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
     [Authorize]
     public class CompanyRepository : RepositoryBase<long, Company>, ICompanyRepository
     {
-      
+
 
         private readonly CompanyContext _companyContext;
         private readonly IHttpContextAccessor _httpContextAccessor;
@@ -57,7 +57,7 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                         Brand = x.Brand
 
                     }).ToList();
-               
+
             }
             else
             {
@@ -82,16 +82,22 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
         }
 
 
-
         public CompanyViewModel GetdetailPartialview(long id)
         {
-            return _companyContext.Companies
+            // گرفتن اطلاعات شرکت به همراه محاسبات اولیه
+            var company = _companyContext.Companies
                 .Where(x => x.Id == id)
                 .Include(c => c.Accounts)
                 .Include(c => c.CompanyCategory)
                 .Include(c => c.StateCategory)
                 .Include(c => c.People)
                 .Include(c => c.LicenceCategories)
+                .Include(c => c.Checklists)
+                    .ThenInclude(cl => cl.GeneralChecklist)
+                .Include(c => c.Checklists)
+                    .ThenInclude(cl => cl.GeneralProffesional)
+                .Include(c => c.Checklists)
+                    .ThenInclude(cl => cl.GeneralPolicy)
                 .Select(x => new CompanyViewModel
                 {
                     Id = x.Id,
@@ -111,6 +117,20 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                     Category = x.CompanyCategory.Name,
                     StateCategoryId = x.StateCategoryIds,
                     StatesCategory = x.StateCategory.Name,
+                    CountEmployees = x.CountEmployees,
+                    CountFolowers = x.CountFolowers,
+                    PostalCode=x.PostalCode,
+
+                    People = x.People.Select(a => new PersonDetail
+                    {
+                        NamePeopleCo = a.NamePeopleCo,
+                        RspponsePeopleCo =a.RspponsePeopleCo,
+                        PhonePeopleCo = a.PhonePeopleCo,
+                    }).ToList(),
+
+
+
+
                     Licences = x.LicenceCategories.Select(a => new LicenceCategoryViewModel
                     {
                         Id = a.Id,
@@ -118,14 +138,62 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                         Refrence = a.Refrence
                     }).ToList(),
 
-                    People = x.People.Select(p => new PersonDetail
+
+                    Checklists = x.Checklists.Select(p => new ChecklistViewModel
                     {
-                        NamePeopleCo = p.NamePeopleCo,
-                        RspponsePeopleCo = p.RspponsePeopleCo,
-                        PhonePeopleCo = p.PhonePeopleCo,
-                    }).ToList()
-                })
+                        Id = p.Id,
+                        Title = p.Title,
+                      
+                        AverageGeneral = p.GeneralChecklist != null && p.GeneralChecklist.AverageGeneral.HasValue
+                            ? p.GeneralChecklist.AverageGeneral.Value : 0,
+                        AverageGeneralProff = p.GeneralProffesional != null && p.GeneralProffesional.AverageGeneralProffesional.HasValue
+                            ? p.GeneralProffesional.AverageGeneralProffesional.Value : 0,
+                        AverageGeneralPol = p.GeneralPolicy != null && p.GeneralPolicy.AverageGeneralPolicy.HasValue
+                            ? p.GeneralPolicy.AverageGeneralPolicy.Value : 0
+                    }).ToList(),
+
+                    ChecklistCount = x.Checklists.Count(),
+                    TitleRasm = x.TitleRasm,
+                    RegistrationDateRasm= x.RegistrationDateRasm,
+                    RegistrationNoRasm = x.RegistrationNoRasm,
+                    TaxNumberRasm =x.TaxNumberRasm,
+                    PostalCodeRasm = x.PostalCodeRasm,
+
+
+    })
                 .FirstOrDefault();
+
+            if (company == null)
+                return null;
+
+            // محاسبه میانگین‌ها به صورت مستقیم در دیتابیس
+            var checklistStats = _companyContext.Checklists
+             .Where(cl => cl.CompanyId == id)
+             .GroupBy(cl => 1) // گروه‌بندی برای محاسبه یک میانگین
+             //g یک گروه است که توسط .GroupBy تولید شده است.
+//در این مثال، g شامل تمام رکوردهای چک‌لیست مرتبط با شرکت است که در یک گروه با کلید ثابت 1 دسته‌بندی شده‌اند.
+             .Select(g => new
+
+             //دستور new { ... } یک شیء جدید از نوع ناشناس (anonymous type) ایجاد می‌کند. این شیء سه ویژگی دارد:
+             {
+                 AverageGeneral = g.Where(cl => cl.GeneralChecklistID != null && cl.GeneralChecklist.AverageGeneral.HasValue)
+                                   .Average(cl => (double?)cl.GeneralChecklist.AverageGeneral) ?? 0,
+                 AverageGeneralProff = g.Where(cl => cl.GeneralChecklistProfessionalID != null && cl.GeneralProffesional.AverageGeneralProffesional.HasValue)
+                                        .Average(cl => (double?)cl.GeneralProffesional.AverageGeneralProffesional) ?? 0,
+                 AverageGeneralPol = g.Where(cl => cl.GeneralChecklistPolicyID != null && cl.GeneralPolicy.AverageGeneralPolicy.HasValue)
+                                      .Average(cl => (double?)cl.GeneralPolicy.AverageGeneralPolicy) ?? 0
+             })
+             .FirstOrDefault();
+
+
+            if (checklistStats != null)
+            {
+                company.AverageGeneral = checklistStats.AverageGeneral;
+                company.AverageGeneralProff = checklistStats.AverageGeneralProff;
+                company.AverageGeneralPol = checklistStats.AverageGeneralPol;
+            }
+
+            return company;
         }
 
 
@@ -138,6 +206,7 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
            .Include(c => c.Accounts)
            .Include(c => c.Checklists)
             .Include(c => c.StateCategory)
+            .Include(c => c.LicenceCategories)
            .ToList(); // داده‌ها به حافظه آورده می‌شوند
 
             // انجام عملیات بررسی null پس از بازیابی داده‌ها
@@ -168,11 +237,11 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                     Category = c.CompanyCategory.Name,
                     CategoryId = c.CategoryId,
                     LicenceIds = c.LicenceIds,
-                    Licences= c.LicenceCategories.Select(a => new LicenceCategoryViewModel
+                    Licences = c.LicenceCategories.Select(a => new LicenceCategoryViewModel
                     {
                         Id = a.Id,
                         Name = a.Name,
-                        Refrence =a.Refrence
+                        Refrence = a.Refrence
                     }).ToList(),
 
                     CompanyCreateDate = c.CreationDate.ToFarsi(),
@@ -190,11 +259,25 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                     Address = c.Address,
                     StateCategoryId = c.StateCategoryIds,
                     StatesCategory = c.StateCategory.Name,
-                    StatusMessage = statusMessage
+                    StatusMessage = statusMessage,
+                    //rasmio
+                    TitleRasm = c.TitleRasm,
+                    RegistrationDateRasm = c.RegistrationDateRasm,
+                    RegistrationNoRasm = c.RegistrationNoRasm,
+                    CapitalRasm = c.CapitalRasm,
+                    AddressRasm = c.AddressRasm,
+                    TaxNumberRasm = c.TaxNumberRasm,
+                    PostalCodeRasm = c.PostalCodeRasm,
+                    LastUpdateRasm = c.LastUpdateRasm,
+                    StatusRasm = c.StatusRasm,
+                    EdareKolRasm = c.EdareKolRasm,
+                    VahedSabtiRasm = c.VahedSabtiRasm,
+
+
                 };
             }).ToList();
 
-            
+
             var recordsPerStateChecklist = query   // برای نمودار صفحه ریپورت و 
                    .GroupBy(x => x.StatesCategory)
                    .Select(group => new
@@ -203,6 +286,7 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                        RecordCount = group.Count() // تعداد رکوردها
                    })
                    .ToList();
+
             // اعمال فیلترهای جستجو
             if (!string.IsNullOrWhiteSpace(searchModel.Name))
                 query = query.Where(c => c.CompanyName.Contains(searchModel.Name)).ToList();
@@ -245,9 +329,9 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
 
 
             // فیلتر شرکت‌هایی که در یک ماه اخیر جهت ارزیابی ارجاع شده‌اند
-            
-            
-            
+
+
+
             var oneMonthAgoAssign = DateTime.Now.AddMonths(-1);
             var persianCalendar = new System.Globalization.PersianCalendar();
             var recentMonthAssign = query
@@ -257,7 +341,7 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                     checkDateMiladi >= oneMonthAgoAssign)
                 .ToList();
 
-          
+
 
             // اگر رکوردی تاریخ ارجاع نداشت رد میشه و شرط روی ان اعمال نمیشه
             //   تعداد شرکت‌های اضافه‌شده در یک ماه اخیر
@@ -329,7 +413,6 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                 result.First().TotalCount = totalCount;
                 result.First().RecentCompaniesCount = recentCompaniesCount; // تعداد شرکت‌های اضافه‌شده در یک ماه اخیر
 
-
                 result.First().StatusAssignedCount = statusAssignedCountMonth;
                 result.First().StatusWaitingEvaluationCount = statusWaitingEvaluationCountMonth;
                 result.First().StatusEndingEvaluationCount = statusEndingEvaluationCountMonth;
@@ -339,7 +422,6 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                 result.First().StatusWaitingEvaluationCountWeek = statusWaitingEvaluationCountWeek;
                 result.First().StatusEndingEvaluationCountWeek = statusEndingEvaluationCountWeek;
                 result.First().StatusExpireEvaluationCountWeek = statusExpireEvaluationCountWeek;
-
 
             }
             // متد کمکی برای تبدیل تاریخ شمسی به میلادی
@@ -445,7 +527,7 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
 
 
             if (provincialAdminStateCategoryId.HasValue)
-                query = query.Where(x => x.StateCategoryId.Equals( provincialAdminStateCategoryId.Value)).ToList();
+                query = query.Where(x => x.StateCategoryId.Equals(provincialAdminStateCategoryId.Value)).ToList();
 
             query = query.Where(c =>
                 (searchModel.Name != null && c.CompanyName.Contains(searchModel.Name)) ||
@@ -458,6 +540,9 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
 
             return query;
         }
+
+
+
 
         private static List<long> MapAccounts(List<Account>? accounts)
         {
@@ -483,7 +568,7 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
             {
                 Id = x.Id,
                 CompanyName = x.CompanyName,
-                Brand= x.Brand
+                Brand = x.Brand
 
             }).ToList();
 
@@ -505,7 +590,7 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                     CategoryId = x.CategoryId,
                     Description = x.Description,
                     NationalCode = x.NationalCode,
-                   // AccountIds = x.Accounts != null ? x.Accounts.Select(a => a.Id).ToList() : new List<long>()
+                    // AccountIds = x.Accounts != null ? x.Accounts.Select(a => a.Id).ToList() : new List<long>()
                     AccountIds = x.AccountIds, // اضافه کردن این خط
                     Doamin = x.Domain,
                     StateCategoryId = x.StateCategoryIds,
@@ -527,6 +612,270 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
 
                }).ToList();
         }
+
+
+
+        public List<CompanyViewModel> SerachByAccount(CompanySearchModel searchModel, long? currentUserId = null)
+        {
+            var companies = _companyContext.Companies
+           .Include(c => c.CompanyCategory)
+           .Include(c => c.LicenceCategories)
+           .Include(c => c.Accounts)
+           .Include(c => c.Checklists)
+            .Include(c => c.StateCategory)
+            .Include(c => c.LicenceCategories)
+           .ToList(); // داده‌ها به حافظه آورده می‌شوند
+
+            // انجام عملیات بررسی null پس از بازیابی داده‌ها
+            var query = companies.Select(c =>
+            {
+                var referDateFrom = c.ReferDateFrom ?? DateTime.MinValue;
+                var referDateTo = c.ReferDateTo ?? DateTime.MinValue;
+                double dateDifference = (referDateTo - referDateFrom).TotalDays;
+
+                string statusMessage = dateDifference > 10 ? "ارزیاب تعیین شد" :
+                                      dateDifference > 5 ? "در انتظار ارزیابی" :
+                                      dateDifference >= 1 ? "در حال اتمام زمان ارزیابی" :
+                                      "منضی شدن زمان ارزیابی";
+
+
+
+                return new CompanyViewModel
+                {
+                    Id = c.Id,
+                    CompanyName = c.CompanyName,
+                    Brand = c.Brand,
+                    ManagerName = c.ManagerName,
+                    SecurityManagerName = c.SecurityManagerName,
+                    PhoneNumber = c.PhoneNumber,
+                    Description = c.Description,
+                    NationalCode = c.NationalCode,
+                    IsActive = c.IsActive,
+                    Category = c.CompanyCategory.Name,
+                    CategoryId = c.CategoryId,
+                    LicenceIds = c.LicenceIds,
+                    Licences = c.LicenceCategories.Select(a => new LicenceCategoryViewModel
+                    {
+                        Id = a.Id,
+                        Name = a.Name,
+                        Refrence = a.Refrence
+                    }).ToList(),
+
+                    CompanyCreateDate = c.CreationDate.ToFarsi(),
+                    AccountIds = c.AccountIds,
+                    Accounts = c.Accounts.Select(a => new AccountViewModel
+                    {
+                        Id = a.Id,
+                        Fullname = a.Fullname,
+                        StateCategoryId = a.StateCategoryId
+                    }).ToList(),
+                    CheckDate = c.CheckDate.ToFarsi(),
+                    ReferDateFrom = c.ReferDateFrom?.ToFarsi(),
+                    ReferDateTo = c.ReferDateTo?.ToFarsi(),
+                    Domain = c.Domain,
+                    Address = c.Address,
+                    StateCategoryId = c.StateCategoryIds,
+                    StatesCategory = c.StateCategory.Name,
+                    StatusMessage = statusMessage,
+                    //rasmio
+                    TitleRasm = c.TitleRasm,
+                    RegistrationDateRasm = c.RegistrationDateRasm,
+                    RegistrationNoRasm = c.RegistrationNoRasm,
+                    CapitalRasm = c.CapitalRasm,
+                    AddressRasm = c.AddressRasm,
+                    TaxNumberRasm = c.TaxNumberRasm,
+                    PostalCodeRasm = c.PostalCodeRasm,
+                    LastUpdateRasm = c.LastUpdateRasm,
+                    StatusRasm = c.StatusRasm,
+                    EdareKolRasm = c.EdareKolRasm,
+                    VahedSabtiRasm = c.VahedSabtiRasm,
+
+
+                };
+            }).ToList();
+
+            var recordsPerStateChecklist = query   // برای نمودار صفحه ریپورت و 
+                   .GroupBy(x => x.StatesCategory)
+                   .Select(group => new
+                   {
+                       StateCategory = group.Key, // نام شهر
+                       RecordCount = group.Count() // تعداد رکوردها
+                   })
+                   .ToList();
+
+            // اعمال فیلترهای جستجو
+            if (!string.IsNullOrWhiteSpace(searchModel.Name))
+                query = query.Where(c => c.CompanyName.Contains(searchModel.Name)).ToList();
+
+            if (searchModel.CategoryId > 0)
+                query = query.Where(c => c.CategoryId == searchModel.CategoryId).ToList();
+
+
+            if (searchModel.StateCategoryId > 0)
+                query = query.Where(c => c.StateCategoryId == searchModel.StateCategoryId).ToList();
+
+
+            if (searchModel.LicenceId > 0)
+                query = query.Where(c => c.LicenceIds.Contains(searchModel.LicenceId)).ToList();
+
+            if (searchModel.LicenceId2 > 0)
+                query = query.Where(c => c.LicenceIds.Contains(searchModel.LicenceId2)).ToList();
+
+            if (!string.IsNullOrWhiteSpace(searchModel.Refrence))
+                query = query.Where(c => c.Licences.Any(a => a.Refrence.Contains(searchModel.Refrence))).ToList();
+
+            if (searchModel.AccountId > 0)
+                query = query.Where(c => c.AccountIds.Contains(searchModel.AccountId)).ToList();
+
+            if (!string.IsNullOrWhiteSpace(searchModel.Brand))
+                query = query.Where(c => c.Brand.Contains(searchModel.Brand)).ToList();
+
+            if (!string.IsNullOrWhiteSpace(searchModel.NationalCode))
+                query = query.Where(c => c.NationalCode.Contains(searchModel.NationalCode)).ToList();
+
+            if (!string.IsNullOrWhiteSpace(searchModel.ManagerName))
+                query = query.Where(c => c.ManagerName.Contains(searchModel.ManagerName)).ToList();
+
+            if (!string.IsNullOrWhiteSpace(searchModel.Address))
+                query = query.Where(c => c.Address.Contains(searchModel.Address)).ToList();
+
+            // ** اعمال فیلتر برای اینکه فقط شرکت‌های مرتبط با کاربر نمایش داده شوند **
+            if (currentUserId.HasValue)
+                query = query.Where(c => c.AccountIds != null && c.AccountIds.Contains(currentUserId.Value)).ToList();
+
+          
+
+            // فیلتر شرکت‌هایی که در یک ماه اخیر جهت ارزیابی ارجاع شده‌اند
+
+
+
+            var oneMonthAgoAssign = DateTime.Now.AddMonths(-1);
+            var persianCalendar = new System.Globalization.PersianCalendar();
+            var recentMonthAssign = query
+                .Where(c =>
+                    !string.IsNullOrWhiteSpace(c.CheckDate) &&
+                    TryParsePersianDate(c.CheckDate, out var checkDateMiladi) &&
+                    checkDateMiladi >= oneMonthAgoAssign)
+                .ToList();
+
+
+
+            // اگر رکوردی تاریخ ارجاع نداشت رد میشه و شرط روی ان اعمال نمیشه
+            //   تعداد شرکت‌های اضافه‌شده در یک ماه اخیر
+
+            // تعداد رکوردها در وضعیت "ارزیاب تعیین شد"
+            int statusAssignedCountMonth = recentMonthAssign.Count(c => c.StatusMessage.Contains("ارزیاب تعیین شد"));
+
+            // تعداد رکوردها در وضعیت "در انتظار ارزیابی"
+            int statusWaitingEvaluationCountMonth = recentMonthAssign.Count(c => c.StatusMessage.Contains("در انتظار ارزیابی"));
+
+            // تعداد رکوردها در وضعیت "در حال اتمام زمان ارزیابی"
+            int statusEndingEvaluationCountMonth = recentMonthAssign.Count(c => c.StatusMessage.Contains("در حال اتمام زمان ارزیابی"));
+
+            int statusExpireEvaluationCountMonth = recentMonthAssign.Count(c => c.StatusMessage.Contains("منضی شدن زمان ارزیابی"));
+
+            //////////////////////////////////////////////
+            // فیلتر شرکت‌هایی که در یک هفته اخیر جهت ارزیابی ارجاع شده‌اند
+            var oneWeekAgoAssign = DateTime.Now.AddDays(-7);
+            //var recentWeekAssign = query
+            //    .Where(c => !string.IsNullOrWhiteSpace(c.CheckDate) && DateTime.Parse(c.CheckDate) >= oneWeekAgoAssign)
+            //    .ToList();
+
+            var recentWeekAssign = query
+               .Where(c =>
+                   !string.IsNullOrWhiteSpace(c.CheckDate) &&
+                   TryParsePersianDate(c.CheckDate, out var checkDateMiladi) &&
+                   checkDateMiladi >= oneWeekAgoAssign)
+               .ToList();
+
+            // اگر رکوردی تاریخ ارجاع نداشت رد میشه و شرط روی ان اعمال نمیشه
+            //   تعداد شرکت‌های اضافه‌شده در یک ماه اخیر
+
+            // تعداد رکوردها در وضعیت "ارزیاب تعیین شد"
+            int statusAssignedCountWeek = recentWeekAssign.Count(c => c.StatusMessage.Contains("ارزیاب تعیین شد"));
+
+            // تعداد رکوردها در وضعیت "در انتظار ارزیابی"
+            int statusWaitingEvaluationCountWeek = recentWeekAssign.Count(c => c.StatusMessage.Contains("در انتظار ارزیابی"));
+
+            // تعداد رکوردها در وضعیت "در حال اتمام زمان ارزیابی"
+            int statusEndingEvaluationCountWeek = recentWeekAssign.Count(c => c.StatusMessage.Contains("در حال اتمام زمان ارزیابی"));
+
+            int statusExpireEvaluationCountWeek = recentWeekAssign.Count(c => c.StatusMessage.Contains("منضی شدن زمان ارزیابی"));
+
+
+            // فیلتر شرکت‌هایی که در یک ماه اخیر اضافه شده‌اند
+            var oneMonthAgo = DateTime.Now.AddMonths(-1);
+
+            var recentCompanies = query
+              .Where(c =>
+                  !string.IsNullOrWhiteSpace(c.CompanyCreateDate) &&
+                  TryParsePersianDate(c.CompanyCreateDate, out var companyCreateDateMiladi) &&
+                  companyCreateDateMiladi >= oneMonthAgo)
+              .ToList();
+            // تعداد شرکت‌های اضافه‌شده در یک ماه اخیر
+            int recentCompaniesCount = recentCompanies.Count();
+
+
+            // تعداد کل رکوردها
+            int totalCount = query.Count();
+
+            // مرتب‌سازی لیست نهایی
+            var result = query.OrderByDescending(x => x.Id).ToList();
+
+            // افزودن تعداد کل به اولین آیتم
+            if (result.Any())
+            {
+                result.First().TotalCount = totalCount;
+                result.First().RecentCompaniesCount = recentCompaniesCount; // تعداد شرکت‌های اضافه‌شده در یک ماه اخیر
+
+                result.First().StatusAssignedCount = statusAssignedCountMonth;
+                result.First().StatusWaitingEvaluationCount = statusWaitingEvaluationCountMonth;
+                result.First().StatusEndingEvaluationCount = statusEndingEvaluationCountMonth;
+                result.First().StatusExpireEvaluationCount = statusExpireEvaluationCountMonth;
+
+                result.First().StatusAssignedCountWeek = statusAssignedCountWeek;
+                result.First().StatusWaitingEvaluationCountWeek = statusWaitingEvaluationCountWeek;
+                result.First().StatusEndingEvaluationCountWeek = statusEndingEvaluationCountWeek;
+                result.First().StatusExpireEvaluationCountWeek = statusExpireEvaluationCountWeek;
+
+            }
+            // متد کمکی برای تبدیل تاریخ شمسی به میلادی
+
+            //از این متد به این دلیل استفاده کردم که 
+
+            // مشکل کد بالا این است که  در تیکه کد زیر از کدهای بالا متغیر c.CheckDate از نوع شمسی و تاریخ oneMonthAgoAssign از نوع میلادی است
+
+            bool TryParsePersianDate(string persianDate, out DateTime gregorianDate)
+            {
+                gregorianDate = default;
+
+                // بررسی فرمت ورودی
+                if (DateTime.TryParseExact(persianDate, "yyyy/MM/dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var tempDate))
+                {
+                    try
+                    {
+                        // جدا کردن اجزای تاریخ
+                        var parts = persianDate.Split('/');
+                        int year = int.Parse(parts[0]);
+                        int month = int.Parse(parts[1]);
+                        int day = int.Parse(parts[2]);
+
+                        // تبدیل تاریخ شمسی به میلادی
+                        gregorianDate = persianCalendar.ToDateTime(year, month, day, 0, 0, 0, 0);
+                        return true;
+                    }
+                    catch
+                    {
+                        // مدیریت خطاهای احتمالی
+                        return false;
+                    }
+                }
+                return false;
+            }
+            return result;
+        }
+
+
     }
 
 }

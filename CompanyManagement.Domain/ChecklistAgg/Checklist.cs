@@ -37,6 +37,7 @@ namespace CompanyManagement.Domain.ChecklistAgg
         public long? GeneralChecklistPolicyID { get; private set; }
 
 
+
         // Navigation properties for specialized checklists
         public JuniperHardening? JuniperHardening { get; set; }
         public HPEDL380? HPEDL380 { get; set; }

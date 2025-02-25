@@ -79,7 +79,10 @@ namespace CompanyManagement.Infrastructure.Configuration
 
             services.AddTransient<IGeneralChecklistApplication, GeneralChecklistApplication>();
 
+            services.AddTransient<IApiService, ApiService>();
 
+
+            
 
 
             services.AddDbContext<CompanyContext>(x => x.UseSqlServer(connectionString));

@@ -9,11 +9,12 @@ namespace CompanyManagement.Domain.ChecklistAgg
 {
     public class Person:EntityBase
     {
-        public Person(string namePeopleCo, string rspponsePeopleCo, string phonePeopleCo)
+        public Person(string namePeopleCo, string rspponsePeopleCo, string phonePeopleCo , long? companyId)
         {
             NamePeopleCo = namePeopleCo;
             RspponsePeopleCo = rspponsePeopleCo;
             PhonePeopleCo = phonePeopleCo;
+            CompanyId = companyId;
         }
 
         public string NamePeopleCo { get; set; }

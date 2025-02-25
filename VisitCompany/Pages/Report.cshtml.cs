@@ -42,9 +42,10 @@ namespace VisitCompany.Pages
         public long TotalCountAccountsExeptAdm { get; set; }
         public long TotalCountCheckListsPeoples { get; set; }
 
-        public List<CompanyViewModel> CompaniesTen { get; set; }
+        public List<CompanyViewModel> CompaniesTen { get; set; } = new List<CompanyViewModel>();
+
         public List<AccountViewModel> AccountsTen;
-        public List<ChecklistViewModel> ChecklistsTen;
+        public List<ChecklistViewModel> ChecklistsTen { get; set; } = new List<ChecklistViewModel>();
 
         public List<CompanyViewModel> CompaniesSearch { get; set; } = new List<CompanyViewModel>();
         public List<AccountViewModel> AccountsSearch = new List<AccountViewModel>();
@@ -79,7 +80,8 @@ namespace VisitCompany.Pages
 
 
 
-        public List<(string PropertyName, long TotalScore)> TopScores;
+        public List<(string PropertyName, long TotalScore)> TopScores { get; set; } = new List<(string, long)>();
+
 
 
         private readonly IChecklistApplication _checklistApplication;
@@ -99,13 +101,15 @@ namespace VisitCompany.Pages
             _generalChecklistApplication = generalChecklistApplication;
         }
 
-        public void OnGet(string keyword, bool searchCompanies, bool searchChecklists, bool searchLicences, bool searchPersons)
+        public void OnGet()
         {
             var currentUserRole = Convert.ToInt64(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value);
             var currentUserProvinceId = Convert.ToInt64(HttpContext.User.Claims.FirstOrDefault(c => c.Type == "StateCategoryId")?.Value);
 
             var oneWeekAgo = DateTime.Now.AddDays(-7);
             var oneMonthAgo = DateTime.Now.AddMonths(-1);
+
+
 
             // دریافت داده‌های چک‌لیست
             var checklistData = _checklistApplication.Serach(new ChecklistSearchModel(),
@@ -146,9 +150,143 @@ namespace VisitCompany.Pages
 
             // ترکیب داده‌ها
             MergedData = mergedData
-                .Union(companyOnlyData)
-                .OrderBy(m => m.StateCategory)
+    .Union(companyOnlyData)
+    .OrderBy(m => m.StateCategory)
+    .ToList() ?? new List<MergedData>(); // مقداردهی پیش‌فرض
+
+            //این مورد بالا رو برخلاف سایر امارها تو همنیجا تاریخ رو محاسبه کردم بر خلاف قبلی ها که تو متد سرچ بودن گویا این روش بهتر است
+
+
+
+
+
+
+            // برای به دسا اوردن تعداد
+            var Companies = _company.Serach(new CompanySearchModel(), currentUserRole == Convert.ToInt64(RolesConst.State) ? currentUserProvinceId : (long?)null); // اگر متد Serach بدون فیلتر تمام رکوردها را برگرداند
+            var Checklists = _checklistApplication.Serach(new ChecklistSearchModel(), currentUserRole == Convert.ToInt64(RolesConst.State) ? currentUserProvinceId : (long?)null);
+            var Accounts = _accountApplication.Search(new AccountSearchModel(), currentUserRole == Convert.ToInt64(RolesConst.State) ? currentUserProvinceId : (long?)null);
+            //اگر ر.ل جاری برابر با رول ادمین استانی بود اونوقتای دی شهر رو میفرسته
+
+
+            // گرفتن تعداد
+            TotalCountCompanies = Companies.FirstOrDefault()?.TotalCount ?? 0;  // از اولین رکورد تعداد رو بر میداره و داخل متغیر میریزه
+            TotalCountCompaniesInOneMonth = Companies.FirstOrDefault()?.RecentCompaniesCount ?? 0;  // از اولین رکورد تعداد رو بر میداره و داخل متغیر میریزه
+            StatusAssignedCount = Companies.FirstOrDefault()?.StatusAssignedCount ?? 0;  // از اولین رکورد تعداد رو بر میداره و داخل متغیر میریزه
+            StatusWaitingEvaluationCount = Companies.FirstOrDefault()?.StatusWaitingEvaluationCount ?? 0;  // از اولین رکورد تعداد رو بر میداره و داخل متغیر میریزه
+            StatusEndingEvaluationCount = Companies.FirstOrDefault()?.StatusEndingEvaluationCount ?? 0;  // از اولین رکورد تعداد رو بر میداره و داخل متغیر میریزه
+            StatusExpireEvaluationCount = Companies.FirstOrDefault()?.StatusExpireEvaluationCount ?? 0;
+
+            StatusAssignedCountWeek = Companies.FirstOrDefault()?.StatusAssignedCountWeek ?? 0;  // از اولین رکورد تعداد رو بر میداره و داخل متغیر میریزه
+            StatusWaitingEvaluationCountWeek = Companies.FirstOrDefault()?.StatusWaitingEvaluationCountWeek ?? 0;  // از اولین رکورد تعداد رو بر میداره و داخل متغیر میریزه
+            StatusEndingEvaluationCountWeek = Companies.FirstOrDefault()?.StatusEndingEvaluationCountWeek ?? 0;  // از اولین رکورد تعداد رو بر میداره و داخل متغیر میریزه
+            StatusExpireEvaluationCountWeek = Companies.FirstOrDefault()?.StatusExpireEvaluationCountWeek ?? 0;
+
+
+            TotalCountCheckLists = Checklists.FirstOrDefault()?.TotalCount ?? 0;  // از اولین رکورد تعداد رو بر میداره و داخل متغیر میریزه
+            TotalCountCheckListsInOneMonth = Checklists.FirstOrDefault()?.RecentChecklistsCount ?? 0;  // از اولین رکورد تعداد رو بر میداره و داخل متغیر میریزه
+            TotalCountCheckListsInOneWeek = Checklists.FirstOrDefault()?.OneWeekChecklistsCount ?? 0;
+            TotalCountCheckListsInOneWeek = Checklists.FirstOrDefault()?.OneWeekChecklistsCount ?? 0;
+
+
+
+            // به دست اوردن میانگینی از میانگین های جداول عمومی
+            WeeklyAverageGeneral = Checklists.FirstOrDefault()?.WeeklyAverageGeneral ?? 0;
+
+            WeeklyAverageGeneralProff = Checklists.FirstOrDefault()?.WeeklyAverageGeneralProff ?? 0;
+
+            WeeklyAverageGeneralPol = Checklists.FirstOrDefault()?.WeeklyAverageGeneralPol ?? 0;
+
+            MonthlyAverageGeneral = Checklists.FirstOrDefault()?.MonthlyAverageGeneral ?? 0;
+
+            MonthlyAverageGeneralProff = Checklists.FirstOrDefault()?.MonthlyAverageGeneralProff ?? 0;
+
+            MonthlyAverageGeneralPol = Checklists.FirstOrDefault()?.MonthlyAverageGeneralPol ?? 0;
+
+
+
+            TotalCountAccounts = Accounts.FirstOrDefault()?.TotalCount ?? 0;  // از اولین رکورد تعداد رو بر میداره و داخل متغیر میریزه
+            TotalCountAccountsExeptAdm = Accounts.FirstOrDefault()?.ExcludedRoleCount ?? 0;
+            TotalCountCheckListsPeoples = Checklists.FirstOrDefault()?.TotalPeopleCount ?? 0;
+            AllAverageInOneCompany = Checklists.FirstOrDefault()?.AllAverageInOneCompany ?? new List<CompanyAverage>();
+            CategoryAverage = Checklists.FirstOrDefault()?.CategoryAverages ?? new List<CategoryAverage>();
+            if (CategoryAverage == null)
+            {
+                CategoryAverage = new List<CategoryAverage>();
+            }
+            // گرفتن ۱۰ رکورد آخر
+            CompaniesTen = Companies?.TakeLast(10).ToList() ?? new List<CompanyViewModel>();
+            ChecklistsTen = Checklists?.TakeLast(10).ToList() ?? new List<ChecklistViewModel>();
+            AccountsTen = Accounts.TakeLast(10).ToList();
+
+
+            // در بین 3 جدول از جداول عمومی ها  میگردد
+            // امکان گردش در تمام جداول هم هست
+            var scores = _generalChecklistApplication.GetMostVulnerableProperties();
+            TopScores = scores ?? new List<(string, long)>();
+
+        }
+
+
+
+        [HttpPost]
+        public IActionResult OnPost(string keyword, bool searchCompanies, bool searchChecklists, bool searchLicences, bool searchPersons)
+
+        {
+            var currentUserRole = Convert.ToInt64(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value);
+            var currentUserProvinceId = Convert.ToInt64(HttpContext.User.Claims.FirstOrDefault(c => c.Type == "StateCategoryId")?.Value);
+
+            var oneWeekAgo = DateTime.Now.AddDays(-7);
+            var oneMonthAgo = DateTime.Now.AddMonths(-1);
+
+            TempData["Keyword"] = keyword?.Trim() ?? string.Empty;
+            TempData["SearchCompanies"] = searchCompanies;
+            TempData["SearchChecklists"] = searchChecklists;
+            TempData["SearchLicences"] = searchLicences;
+            TempData["SearchPersons"] = searchPersons;
+
+            // دریافت داده‌های چک‌لیست
+            var checklistData = _checklistApplication.Serach(new ChecklistSearchModel(),
+                currentUserRole == Convert.ToInt64(RolesConst.State) ? currentUserProvinceId : (long?)null);
+
+            // دریافت داده‌های شرکت
+            var companyData = _company.Serach(new CompanySearchModel());
+
+            // تجمیع داده‌های چک‌لیست و شرکت‌ها
+            var mergedData = checklistData
+                .GroupBy(c => c.StateCategory)
+                .Select(checklistGroup => new MergedData
+                {
+                    StateCategory = checklistGroup.Key,
+                    ChecklistCount = checklistGroup.Count(),
+                    ChecklistCountOneWeek = checklistGroup.Count(c => TryParsePersianDate(c.CreattionDate, out var date) && date >= oneWeekAgo),
+                    ChecklistCountOneMonth = checklistGroup.Count(c => TryParsePersianDate(c.CreattionDate, out var date) && date >= oneMonthAgo),
+                    CompanyCount = companyData.Count(c => c.StatesCategory == checklistGroup.Key),
+                    CompanyCountOneWeek = companyData.Count(c => c.StatesCategory == checklistGroup.Key && TryParsePersianDate(c.CompanyCreateDate, out var date) && date >= oneWeekAgo),
+                    CompanyCountOneMonth = companyData.Count(c => c.StatesCategory == checklistGroup.Key && TryParsePersianDate(c.CompanyCreateDate, out var date) && date >= oneMonthAgo)
+                })
                 .ToList();
+
+            // افزودن شهرهای بدون چک‌لیست
+            var companyOnlyData = companyData
+                .Where(c => !mergedData.Any(m => m.StateCategory == c.StatesCategory))
+                .GroupBy(c => c.StatesCategory)
+                .Select(companyGroup => new MergedData
+                {
+                    StateCategory = companyGroup.Key,
+                    ChecklistCount = 0,
+                    ChecklistCountOneWeek = 0,
+                    ChecklistCountOneMonth = 0,
+                    CompanyCount = companyGroup.Count(),
+                    CompanyCountOneWeek = companyGroup.Count(c => TryParsePersianDate(c.CompanyCreateDate, out var date) && date >= oneWeekAgo),
+                    CompanyCountOneMonth = companyGroup.Count(c => TryParsePersianDate(c.CompanyCreateDate, out var date) && date >= oneMonthAgo)
+                });
+
+            // ترکیب داده‌ها
+            MergedData = mergedData
+    .Union(companyOnlyData)
+    .OrderBy(m => m.StateCategory)
+    .ToList() ?? new List<MergedData>(); // مقداردهی پیش‌فرض
+
             //این مورد بالا رو برخلاف سایر امارها تو همنیجا تاریخ رو محاسبه کردم بر خلاف قبلی ها که تو متد سرچ بودن گویا این روش بهتر است
 
             Keyword = keyword?.Trim() ?? string.Empty;
@@ -225,17 +363,21 @@ namespace VisitCompany.Pages
             TotalCountCheckListsPeoples = Checklists.FirstOrDefault()?.TotalPeopleCount ?? 0;
             AllAverageInOneCompany = Checklists.FirstOrDefault()?.AllAverageInOneCompany ?? new List<CompanyAverage>();
             CategoryAverage = Checklists.FirstOrDefault()?.CategoryAverages ?? new List<CategoryAverage>();
-
+            if (CategoryAverage == null)
+            {
+                CategoryAverage = new List<CategoryAverage>();
+            }
             // گرفتن ۱۰ رکورد آخر
-            CompaniesTen = Companies.TakeLast(10).ToList();
-            ChecklistsTen = Checklists.TakeLast(10).ToList();
+            CompaniesTen = Companies?.TakeLast(10).ToList() ?? new List<CompanyViewModel>();
+            ChecklistsTen = Checklists?.TakeLast(10).ToList() ?? new List<ChecklistViewModel>();
             AccountsTen = Accounts.TakeLast(10).ToList();
 
 
             // در بین 3 جدول از جداول عمومی ها  میگردد
             // امکان گردش در تمام جداول هم هست
-            TopScores = _generalChecklistApplication.GetMostVulnerableProperties();
-
+            var scores = _generalChecklistApplication.GetMostVulnerableProperties();
+            TopScores = scores ?? new List<(string, long)>();
+            return Page();
 
         }
 

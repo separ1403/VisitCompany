@@ -59,7 +59,8 @@ builder.Services.AddRazorPages()
         //options.Conventions.AuthorizeAreaFolder("Administration", "/Company", "Company");
         //options.Conventions.AuthorizeAreaFolder("Administration", "/CompanyCategories", "CompanyCategory");
         //options.Conventions.AuthorizeAreaFolder("Administration", "/checklist", "checklist");
-       // options.Conventions.AuthorizeAreaFolder("Administration", "/", "AdminArea"); // اضافه کردن حفاظت برای کل ناحیه مدیریت
+        // options.Conventions.AuthorizeAreaFolder("Administration", "/", "AdminArea"); // اضافه کردن حفاظت برای کل ناحیه مدیریت
+
     });
 
 builder.Services.AddHttpContextAccessor();

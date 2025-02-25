@@ -16,20 +16,78 @@ namespace CompanyManagement.Application
 {
     public class CompanyApplication : ICompanyApplication
     {
-        public CompanyApplication(ICompanyRepository companyRepository, IAccountRepository accountRepository, ILicenceCategoryRepository licenceCategoryRepository)
-        {
-            _companyRepository = companyRepository;
-            _accountRepository = accountRepository;
-            _licenceCategoryRepository = licenceCategoryRepository;
-        }
-
+        
 
         private readonly ICompanyRepository _companyRepository;
         private readonly IAccountRepository _accountRepository;
         private readonly ILicenceCategoryRepository _licenceCategoryRepository;
+        private readonly IApiService _apiService;
+
+        public CompanyApplication(ICompanyRepository companyRepository, IAccountRepository accountRepository, ILicenceCategoryRepository licenceCategoryRepository, IApiService apiService)
+        {
+            _companyRepository = companyRepository;
+            _accountRepository = accountRepository;
+            _licenceCategoryRepository = licenceCategoryRepository;
+            _apiService = apiService;
+        }
+
+        public async Task<OperationResult> EditRasmio(long id)
+        {
+            var operation = new OperationResult();
+            var company = _companyRepository.Get(id);
+
+            if (company == null)
+            {
+                operation.Failed(ApplicationMessages.RecordNotFound);
+                return operation;
+            }
+
+            var apiResponse = await _apiService.GetCompanyDetailsAsync(company.NationalCode);
+
+            if (apiResponse != null)
+            {
+
+                   EditCompany command = new EditCompany();
+                command.TitleRasm = apiResponse.Title;
+                command.RegistrationDateRasm = apiResponse.RegistrationDate;
+                command.RegistrationNoRasm = apiResponse.RegistrationNo;
+                command.CapitalRasm = apiResponse.Capital;
+                command.AddressRasm = apiResponse.Address;
+                command.TaxNumberRasm = apiResponse.TaxNumber;
+                command.PostalCodeRasm = apiResponse.PostalCode;
+                command.LastUpdateRasm = apiResponse.LastUpdate;
+                command.StatusRasm = apiResponse.Status;
+                command.EdareKolRasm = apiResponse.EdareKol;
+                command.VahedSabtiRasm = apiResponse.VahedSabti;
+
+                company.EditRasmio(command.TitleRasm,
+               command.RegistrationDateRasm, command.RegistrationNoRasm, command.CapitalRasm ?? 0
+                    , command.AddressRasm, command.TaxNumberRasm, command.PostalCodeRasm, command.LastUpdateRasm,
+                    command.StatusRasm, command.EdareKolRasm, command.VahedSabtiRasm);
+
+                try
+                {
+                    await _companyRepository.SaveChangesAsync();
+                    operation.Succeeded(ApplicationMessages.SuccessMessage);
 
 
+                    //_companyRepository.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error during SaveChanges: {ex.Message}");
+                    operation.Failed("خطایی در هنگام ذخیره‌سازی رخ داد.");
+                    return operation;
+                }
 
+            }
+            else
+            {
+                operation.Failed(ApplicationMessages.RecordNotFound);
+            }
+
+            return operation;
+        }
 
         public OperationResult Create(CreateCompany command)
         {
@@ -73,8 +131,12 @@ namespace CompanyManagement.Application
 
             }).ToList();
 
-            var company = new Company(command.CompanyName, command.Brand, command.ManagerName, command.SecurityManagerName, command.PhoneNumber, command.Description, command.NationalCode,command.Address, command.CategoryId, command.LicenceIds, command.AccountIds,command.Doamin, referDateFrom, referDateTo,command.StateCategoryId, people, command.CountEmployees ?? 0,
-                command.CountFolowers ?? 0, command.PostalCode);
+            var company = new Company(command.CompanyName, command.Brand, command.ManagerName, command.SecurityManagerName,
+                command.PhoneNumber, command.Description, command.NationalCode,command.Address, command.CategoryId,
+                command.LicenceIds, command.AccountIds,command.Doamin, referDateFrom, referDateTo,command.StateCategoryId, 
+                people, command.CountEmployees ?? 0,command.CountFolowers ?? 0, command.PostalCode, command.TitleRasm, command.RegistrationDateRasm,
+                command.RegistrationNoRasm,command.CapitalRasm ?? 0,command.AddressRasm,command.TaxNumberRasm,command.PostalCodeRasm,
+                command.LastUpdateRasm,command.StatusRasm,command.EdareKolRasm,command.VahedSabtiRasm);
 
           //  Console.WriteLine($"CheklistId: {people.CheklistId}");
             company.AddAccounts(accounts);
@@ -148,6 +210,9 @@ public OperationResult BatchEdit(BatchEditCompany command)
     return operation;
 }
 
+
+        
+
         public List<CompanyViewModel> GetCompenies()
         {
           return  _companyRepository.GetCompenies();
@@ -188,6 +253,11 @@ public OperationResult BatchEdit(BatchEditCompany command)
         public List<CompanyViewModel> SerachTotal(CompanySearchModel searchModel, long? provincialAdminStateCategoryId = null)
         {
             return _companyRepository.SerachTotal(searchModel, provincialAdminStateCategoryId);
+        }
+
+         public List<CompanyViewModel> SerachByAccount(CompanySearchModel searchModel, long? currentUserId = null)
+        {
+            return _companyRepository.SerachByAccount(searchModel, currentUserId);
         }
     }
 }

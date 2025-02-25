@@ -8,8 +8,11 @@ namespace CompanyManagement.Application.Contract.Checklist
 {
     public class PersonSearchModel
     {
-        public string NamePeopleCo { get; set; }
-        public string RspponsePeopleCo { get; set; }
-        public string PhonePeopleCo { get; set; }
+        public string? NamePeopleCo { get; set; }
+        public string? RspponsePeopleCo { get; set; }
+        public string? PhonePeopleCo { get; set; }
+        public long? CompanyId { get; set; }
+
+
     }
 }

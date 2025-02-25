@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using CompanyManagement.Application.Contract.Checklist;
+﻿using CompanyManagement.Application.Contract.Checklist;
 using Microsoft.AspNetCore.Authorization;
-using CompanyManagement.Domain.ChecklistAgg;
-using CompanyManagement.Infrasructure.EFCore.Repository;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace VisitCompany.Pages.checklist
 {

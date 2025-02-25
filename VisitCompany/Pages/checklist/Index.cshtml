@@ -45,7 +45,7 @@
                 <h3 class="panel-title">جستجو در چک لیست ها </h3>
             </div>
             <div class="panel-body">
-                <form class="form-inline" role="form" method="get">
+                <form class="form-inline" role="form" method="post">
                     <div class="form-group">
                         <label class="sr-only" asp-for="@Model.SearchModel.Name"></label>
                         <input class="form-control" asp-for="@Model.SearchModel.Name" placeholder="  عنوان چک لیست">
@@ -54,9 +54,6 @@
                         <label class="sr-only" asp-for="@Model.SearchModel.Brand"></label>
                         <input class="form-control" asp-for="@Model.SearchModel.Brand" placeholder="  نام تجاری شرکت">
                     </div>
-                    
-            
-
 
                     <div class="form-group">
                         <label class="sr-only" asp-for="@Model.SearchModel.CompanyName"></label>
@@ -94,7 +91,7 @@
                         </select>
                     </div>
 
-                    <div >
+                    <div>
                         <label class="sr-only" asp-for="@Model.SearchModel.ScoreRange">بازه دسته‌بندی</label>
                         <select class="form-control" asp-for="@Model.SearchModel.ScoreRange" id="ScoreRangeSelect">
                             <option value="all">همه</option>
@@ -110,6 +107,29 @@
                             <option value="91-100">نمرات بین 91 تا 100</option>
                         </select>
                     </div>
+
+                    <div class="form-group">
+                        <label class="sr-only" asp-for="SearchModel.CategoryId"></label>
+                        <select class="form-control" asp-for="SearchModel.CategoryId" asp-items="Model.CompanyCategories">
+                            <option value="0">انتخاب دسته‌بندی</option>
+                        </select>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="sr-only" asp-for="SearchModel.StartDate">تاریخ شروع</label>
+                                <input class="form-control persianDateInput" asp-for="SearchModel.StartDate" placeholder="تاریخ شروع" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="sr-only" asp-for="SearchModel.EndDate">تاریخ پایان</label>
+                                <input class="form-control persianDateInput" asp-for="SearchModel.EndDate" placeholder="تاریخ پایان" autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+
 
 
                     <button type="submit" class="btn btn-success waves-effect waves-light m-l-10">جستجو</button>
@@ -180,8 +200,8 @@
                                             @if (!string.IsNullOrEmpty(item.TypeChecklistGeneral))
 
                                             {
-                                                    <div>ارزیابی عمومی</div>
-                                                }
+                                                <div>ارزیابی عمومی</div>
+                                            }
 
                                             @if (!string.IsNullOrEmpty(item.TypeChecklistGeneralProff))
 
@@ -206,13 +226,13 @@
                                                 <div>ارزیابی تخصصی Junipper</div>
                                             }
 
-                                            @if (!string.IsNullOrEmpty (item.TypeChecklistwin2019))
+                                            @if (!string.IsNullOrEmpty(item.TypeChecklistwin2019))
 
                                             {
                                                 <div>ارزیابی تخصصی Win2019</div>
                                             }
 
-                                            
+
                                         </td>
 
                                         <td>@item.CompanyCategory</td>
@@ -328,7 +348,7 @@
 
                         <div style="height: 2px; background-color: #333; margin: 20px 0;"></div> <!-- خط فاصله بین دو جدول -->
                         <div style="height: 2px; background-color: #333; margin: 20px 0;"></div> <!-- خط فاصله بین دو جدول -->
-                      @if (isAllowedToShowButton)
+                        @if (isAllowedToShowButton)
                         {
                             <!-- دکمه باز کردن پنجره پاپ‌آپ جدید -->
                             <button id="openPopupButton" class="btn btn-info m-b-10">ارجاع جهت ارزیابی</button>
@@ -356,7 +376,7 @@
                                     <tr>
                                         <td>@item.CompanyName</td>
                                         <td>@item.Brand</td>
-                                     
+
                                         <td>@item.CheckDate</td>
                                         <td>@item.ReferDateFrom تا  @item.ReferDateTo </td>
                                         <td>
@@ -388,7 +408,7 @@
 
                         <!-- دکمه باز کردن پنجره پاپ‌آپ جدید -->
                         <h4 class="page-title pull-left">جدول ارزیاب ها</h4>
-                       
+
 
                         <div style="height: 2px; background-color: #333; margin: 20px 0;"></div> <!-- خط فاصله بین دو جدول -->
                         <div style="height: 2px; background-color: #333; margin: 20px 0;"></div> <!-- خط فاصله بین دو جدول -->
@@ -463,13 +483,24 @@
                                                             <a class="fa fa-key" asp-page="./ChangePassword" asp-route-id="@item.Id">تغییر پسورد </a>
                                                             </a>
                                                             </td> *@
-                                                                <td>
-                                                                    <a class="btn btn-warning btn-custome waves-effect waves-light pull-right m-rl-5">
-                                                                        <a class="fa fa-edit" asp-page="/Administration/Accounts/Account/Edit" asp-route-id="@item.Id">ویرایش </a>
-                                                                    </a>
 
+                                                                @*                                                             کد به این شکل کار نکرد
+                                                            *@                                                             @*    <td>
+                                                            <a class="btn btn-warning btn-custome waves-effect waves-light pull-right m-rl-5">
+                                                            <a class="fa fa-edit" asp-page="/Administration/Accounts/Account/Edit" asp-route-id="@item.Id">ویرایش </a>
+                                                            </a>
+
+
+                                                            </td> *@
+
+                                                                @*                                                                 چون کد به شکل بالا کالر نکرد این شکلی نوشتم
+                                                            *@
+                                                                <td>
+                                                                    <a class="btn btn-warning btn-custome waves-effect waves-light pull-right m-rl-5 fa fa-edit"
+                                                                       href="/Administration/Accounts/Account/Edit?id=@item.Id">ویرایش</a>
 
                                                                 </td>
+
                                                                 <td>
                                                                     @if (item.IsActive)
                                                                     {
@@ -623,7 +654,6 @@
                                 display: none;
                             }
 
-
                         </style>
 
                         @section Scripts {
@@ -652,7 +682,8 @@
 
                                     // باز کردن پاپ‌آپ جدید با دکمه جدید
                                     document.getElementById("openNewPopupButton").addEventListener("click", function() {
-                                        document.getElementById("popupIframeNew").src = "file:///C:/Users/hrirh/OneDrive/Desktop/.net9/VisitCompany/VisitCompany/Areas/Administration/Pages/Accounts/Account/Create.cshtml";
+                                        // document.getElementById("popupIframeNew").src = "file:///C:/Users/hrirh/OneDrive/Desktop/.net9/VisitCompany/VisitCompany/Areas/Administration/Pages/Accounts/Account/Create.cshtml";
+                                        document.getElementById("popupIframeNew").src = "/Administration/Accounts/Account/Create";
                                         document.getElementById("popupModalNew").style.display = "block";
                                     });
 
@@ -684,18 +715,18 @@
                                         });
                                     });
 
-                                 
 
-                                        $('#CompanyIdSelect').select2({
-                                            placeholder: "انتخاب دسته بندی",
-                                            allowClear: true,
-                                            language: "fa"
-                                        });
+
+                                    $('#CompanyIdSelect').select2({
+                                        placeholder: "انتخاب دسته بندی",
+                                        allowClear: true,
+                                        language: "fa"
+                                    });
                                     $('#AccountSelect').select2({
                                         placeholder: "انتخاب لایسنس ها",
                                         allowClear: true,
                                         language: "fa"
-                                    });
+                                    });5
 
                                 });
                             </script>

@@ -1,5 +1,6 @@
 ﻿using CompanyManagement.Domain.AccountAgg;
 using CompanyManagement.Domain.CompanyAgg;
+using CompanyManagement.Domain.LicenceCategoryAgg;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -19,7 +20,12 @@ namespace CompanyManagement.Infrasructure.EFCore.Mapping
 
             builder.HasMany(x => x.Checklists).WithOne(x => x.Company).HasForeignKey(x => x.CompanyId);
             builder.HasOne(x => x.CompanyCategory).WithMany(x => x.Companies).HasForeignKey(x => x.CategoryId);
-            builder.HasMany(x => x.LicenceCategories).WithMany(x => x.Companies);
+            builder.HasMany(c => c.LicenceCategories)
+     .WithMany(l => l.Companies)
+     .UsingEntity<Dictionary<string, object>>(
+         "CompanyLicenceCategory",
+         j => j.HasOne<LicenceCategory>().WithMany().HasForeignKey("LicenceCategoryId"),
+         j => j.HasOne<Company>().WithMany().HasForeignKey("CompanyId"));
 
             builder.HasMany(x => x.People).WithOne(x => x.Company).HasForeignKey(p => p.CompanyId)
     .OnDelete(DeleteBehavior.Cascade); ;

@@ -12,28 +12,29 @@ namespace VisitCompany.Pages.Company
 
     public class PeopleCompanyModel : PageModel
     {
-        public ChecklistSearchModel SearchModel;
+        public PersonSearchModel SearchModel;
         public SelectList Companies;
         public List<CompanyViewModel> Companiess { get; set; }
-        public List<ChecklistViewModel> Checklists;
+        public List<PersonViewModel> Persons;
 
         private readonly IChecklistApplication _checklistApplication;
-
         private readonly ICompanyApplication _company;
+        private readonly IPersonApplication _personApplication;
 
-        public PeopleCompanyModel(IChecklistApplication checklistApplication, ICompanyApplication company)
+        public PeopleCompanyModel(IChecklistApplication checklistApplication, ICompanyApplication company, IPersonApplication personApplication)
         {
             _checklistApplication = checklistApplication;
             _company = company;
+            _personApplication = personApplication;
         }
 
-        public void OnGet(ChecklistSearchModel searchModel)
+        public void OnGet(PersonSearchModel searchModel)
         {
             var currentUserRole = Convert.ToInt64(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value);
             var currentUserProvinceId = Convert.ToInt64(HttpContext.User.Claims.FirstOrDefault(c => c.Type == "StateCategoryId")?.Value);
 
 
-            Checklists = _checklistApplication.Serach(searchModel, currentUserRole == Convert.ToInt64(RolesConst.State) ? currentUserProvinceId : (long?)null);
+            Persons = _personApplication.SerachTotal(searchModel, currentUserRole == Convert.ToInt64(RolesConst.State) ? currentUserProvinceId : (long?)null);
 
             Companies = new SelectList(_company.GetCompenies(), "Id", "Brand");
               
