@@ -90,8 +90,8 @@ namespace VisitCompany.Pages.checklist
                 (currentUserRole == Convert.ToInt64(RolesConst.State) || currentUserRole == Convert.ToInt64(RolesConst.SystemUser))
                ? currentUserProvinceId
                                : (long?)null);// اگر متد Serach بدون فیلتر تمام رکوردها را برگرداند
-            //فقط فیلتر سطح دسترسی را اعمال می‌کنیم، فیلتر کاربران در متد Serach انجام می‌شود
-
+            //فقط فیلتر سطح دسترسی را اعمال می‌کنیم، فیلتر کاربران در متد/// Serach انجام می‌شود
+            //hMIS
 
            // فقط شرکت‌هایی که کاربر در آن‌ها حساب دارد نمایش داده شود
            // این برای اینه که تو داشبور کاربرای عادی بخواهیم لیست شرکت ها را نمایش بدیم
