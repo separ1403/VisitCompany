@@ -1,4 +1,4 @@
-﻿@page 
+﻿@page
 @using Microsoft.EntityFrameworkCore
 @model VisitCompany.Areas.Administration.Pages.Accounts.Account.EditModel
 
@@ -9,8 +9,8 @@
 
 
 <div class="modal-header">
-  
-    <h4 class="modal-title">ویرایش  کاربر </h4>
+
+    <h4 class="modal-title">ویرایش کاربر </h4>
 </div>
 
 
@@ -48,7 +48,7 @@
                 </div>
             </div>
 
-            
+
         </div>
 
         <div class="row">
@@ -56,21 +56,21 @@
 
             <div class="col-md-12">
                 <div class="form-group">
-                    <label asp-for="Command.RoleId " class="control-label">نقش ها  </label>
+                    <label asp-for="Command.RoleId " class="control-label">نقش ها </label>
                     <select class="form-control" asp-for="Command.RoleId" asp-items="Model.Roles">
                         <option value="0">انتخاب دسته بندی</option>
 
                     </select>
-                  
+
                     <span asp-validation-for="Command.RoleId " class="error"></span>
                 </div>
             </div>
 
             <div class="col-md-12">
                 <div class="form-group">
-                    <label asp-for="Command.StateCategoryId " class="control-label"> محل خدمت  </label>
+                    <label asp-for="Command.StateCategoryId " class="control-label"> محل خدمت </label>
                     <select class="form-control" asp-for="Command.StateCategoryId" asp-items="Model.States">
-                        <option value="0">انتخاب  محل خدمت</option>
+                        <option value="0">انتخاب محل خدمت</option>
 
                     </select>
 
@@ -88,21 +88,14 @@
         </div>
 
 
-      
-
-
-    
- 
-        
-
-        <input type="hidden" asp-for="Command.Id" value="@Model.Command.Id " />
+        <input type="hidden" asp-for="Command.Id" value="@Model.Command.Id "/>
 
     </div>
 
     <div class="modal-footer">
-        
+
         <button type="submit" class="btn btn-info waves-effect waves-light">ویرایش</button>
     </div>
 
-    
+
 </form>

@@ -2,7 +2,6 @@
 @model VisitCompany.Pages.checklist.CreateCheckGenProffModel
 @{
     Layout = "Shared/_AdminLayout";
-
 }
 
 
@@ -16,10 +15,11 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="Command.NetworkLogicalPhysicalMapStatusScore">نمره دهی شبکه منطقی و فیزیکی</label>
-                    <input type="range" asp-for="Command.NetworkLogicalPhysicalMapStatusScore" min="0" max="100" />
+                    <input type="range" asp-for="Command.NetworkLogicalPhysicalMapStatusScore" min="0" max="100"/>
                 </div>
                 <div class="form-group">
-                    <input type="checkbox" id="showNetworkLogicalPhysicalMapStatus" onclick="toggleTextInput('showNetworkLogicalPhysicalMapStatus', 'networkLogicalPhysicalMapStatusContainer')">
+                    <input type="checkbox" id="showNetworkLogicalPhysicalMapStatus"
+                           onclick="toggleTextInput('showNetworkLogicalPhysicalMapStatus', 'networkLogicalPhysicalMapStatusContainer')">
                     <label for="showNetworkLogicalPhysicalMapStatus">افزودن توضیحات</label>
                 </div>
                 <div class="form-group" id="networkLogicalPhysicalMapStatusContainer" style="display:none;">
@@ -28,16 +28,17 @@
                 </div>
             </div>
         </div>
-    <br>
+        <br>
         <div class="row">
             <!-- Physical Assets Inventory Status -->
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="Command.PhysicalAssetsInventoryStatusScore">نمره دهی اموال فیزیکی</label>
-                    <input type="range" asp-for="Command.PhysicalAssetsInventoryStatusScore" min="0" max="100" />
+                    <input type="range" asp-for="Command.PhysicalAssetsInventoryStatusScore" min="0" max="100"/>
                 </div>
                 <div class="form-group">
-                    <input type="checkbox" id="showPhysicalAssetsInventoryStatus" onclick="toggleTextInput('showPhysicalAssetsInventoryStatus', 'physicalAssetsInventoryStatusContainer')">
+                    <input type="checkbox" id="showPhysicalAssetsInventoryStatus"
+                           onclick="toggleTextInput('showPhysicalAssetsInventoryStatus', 'physicalAssetsInventoryStatusContainer')">
                     <label for="showPhysicalAssetsInventoryStatus">افزودن توضیحات</label>
                 </div>
                 <div class="form-group" id="physicalAssetsInventoryStatusContainer" style="display:none;">
@@ -48,10 +49,11 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="Command.ZoningStatusScore">نمره دهی زونینگ</label>
-                    <input type="range" asp-for="Command.ZoningStatusScore" min="0" max="100" />
+                    <input type="range" asp-for="Command.ZoningStatusScore" min="0" max="100"/>
                 </div>
                 <div class="form-group">
-                    <input type="checkbox" id="showZoningStatus" onclick="toggleTextInput('showZoningStatus', 'zoningStatusContainer')">
+                    <input type="checkbox" id="showZoningStatus"
+                           onclick="toggleTextInput('showZoningStatus', 'zoningStatusContainer')">
                     <label for="showZoningStatus">افزودن توضیحات</label>
                 </div>
                 <div class="form-group" id="zoningStatusContainer" style="display:none;">
@@ -60,16 +62,17 @@
                 </div>
             </div>
         </div>
-    <br>
+        <br>
         <div class="row">
             <!-- Access Control Status -->
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="Command.AccessControlStatusScore">نمره دهی کنترل دسترسی</label>
-                    <input type="range" asp-for="Command.AccessControlStatusScore" min="0" max="100" />
+                    <input type="range" asp-for="Command.AccessControlStatusScore" min="0" max="100"/>
                 </div>
                 <div class="form-group">
-                    <input type="checkbox" id="showAccessControlStatus" onclick="toggleTextInput('showAccessControlStatus', 'accessControlStatusContainer')">
+                    <input type="checkbox" id="showAccessControlStatus"
+                           onclick="toggleTextInput('showAccessControlStatus', 'accessControlStatusContainer')">
                     <label for="showAccessControlStatus">افزودن توضیحات</label>
                 </div>
                 <div class="form-group" id="accessControlStatusContainer" style="display:none;">
@@ -79,11 +82,14 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label asp-for="Command.DevelopmentTestOperationsControlStatusScore">نمره دهی کنترل عملیات تست و توسعه</label>
-                    <input type="range" asp-for="Command.DevelopmentTestOperationsControlStatusScore" min="0" max="100" />
+                    <label asp-for="Command.DevelopmentTestOperationsControlStatusScore">نمره دهی کنترل عملیات تست و
+                        توسعه</label>
+                    <input type="range" asp-for="Command.DevelopmentTestOperationsControlStatusScore" min="0"
+                           max="100"/>
                 </div>
                 <div class="form-group">
-                    <input type="checkbox" id="showDevelopmentTestOperationsControlStatus" onclick="toggleTextInput('showDevelopmentTestOperationsControlStatus', 'developmentTestOperationsControlStatusContainer')">
+                    <input type="checkbox" id="showDevelopmentTestOperationsControlStatus"
+                           onclick="toggleTextInput('showDevelopmentTestOperationsControlStatus', 'developmentTestOperationsControlStatusContainer')">
                     <label for="showDevelopmentTestOperationsControlStatus">افزودن توضیحات</label>
                 </div>
                 <div class="form-group" id="developmentTestOperationsControlStatusContainer" style="display:none;">
@@ -92,16 +98,18 @@
                 </div>
             </div>
         </div>
-    <br>
+        <br>
         <div class="row">
             <!-- Remote Administrative Access Status -->
             <div class="col-md-6">
                 <div class="form-group">
-                    <label asp-for="Command.RemoteAdministrativeAccessStatusScore">نمره دهی دسترسی مدیریت از راه دور</label>
-                    <input type="range" asp-for="Command.RemoteAdministrativeAccessStatusScore" min="0" max="100" />
+                    <label asp-for="Command.RemoteAdministrativeAccessStatusScore">نمره دهی دسترسی مدیریت از راه
+                        دور</label>
+                    <input type="range" asp-for="Command.RemoteAdministrativeAccessStatusScore" min="0" max="100"/>
                 </div>
                 <div class="form-group">
-                    <input type="checkbox" id="showRemoteAdministrativeAccessStatus" onclick="toggleTextInput('showRemoteAdministrativeAccessStatus', 'remoteAdministrativeAccessStatusContainer')">
+                    <input type="checkbox" id="showRemoteAdministrativeAccessStatus"
+                           onclick="toggleTextInput('showRemoteAdministrativeAccessStatus', 'remoteAdministrativeAccessStatusContainer')">
                     <label for="showRemoteAdministrativeAccessStatus">افزودن توضیحات</label>
                 </div>
                 <div class="form-group" id="remoteAdministrativeAccessStatusContainer" style="display:none;">
@@ -112,10 +120,11 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="Command.SecureCodingConfigStatusScore">نمره دهی پیکربندی کدنویسی امن</label>
-                    <input type="range" asp-for="Command.SecureCodingConfigStatusScore" min="0" max="100" />
+                    <input type="range" asp-for="Command.SecureCodingConfigStatusScore" min="0" max="100"/>
                 </div>
                 <div class="form-group">
-                    <input type="checkbox" id="showSecureCodingConfigStatus" onclick="toggleTextInput('showSecureCodingConfigStatus', 'secureCodingConfigStatusContainer')">
+                    <input type="checkbox" id="showSecureCodingConfigStatus"
+                           onclick="toggleTextInput('showSecureCodingConfigStatus', 'secureCodingConfigStatusContainer')">
                     <label for="showSecureCodingConfigStatus">افزودن توضیحات</label>
                 </div>
                 <div class="form-group" id="secureCodingConfigStatusContainer" style="display:none;">
@@ -124,17 +133,18 @@
                 </div>
             </div>
         </div>
-    <br>
+        <br>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <div>
                         <label asp-for="Command.SecurityEvaluationStatusScore">نمره دهی</label>
-                        <input type="range" asp-for="Command.SecurityEvaluationStatusScore" min="0" max="100" />
+                        <input type="range" asp-for="Command.SecurityEvaluationStatusScore" min="0" max="100"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="checkbox" id="showSecurityEvaluationStatus" onclick="toggleTextInput('showSecurityEvaluationStatus', 'securityEvaluationStatusContainer')">
+                    <input type="checkbox" id="showSecurityEvaluationStatus"
+                           onclick="toggleTextInput('showSecurityEvaluationStatus', 'securityEvaluationStatusContainer')">
                     <label for="showSecurityEvaluationStatus">افزودن توضیحات</label>
                 </div>
                 <div class="form-group" id="securityEvaluationStatusContainer" style="display:none;">
@@ -146,11 +156,12 @@
                 <div class="form-group">
                     <div>
                         <label asp-for="Command.BackupStatusScore">نمره دهی</label>
-                        <input type="range" asp-for="Command.BackupStatusScore" min="0" max="100" />
+                        <input type="range" asp-for="Command.BackupStatusScore" min="0" max="100"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="checkbox" id="showBackupStatus" onclick="toggleTextInput('showBackupStatus', 'backupStatusContainer')">
+                    <input type="checkbox" id="showBackupStatus"
+                           onclick="toggleTextInput('showBackupStatus', 'backupStatusContainer')">
                     <label for="showBackupStatus">افزودن توضیحات</label>
                 </div>
                 <div class="form-group" id="backupStatusContainer" style="display:none;">
@@ -159,17 +170,18 @@
                 </div>
             </div>
         </div>
-    <br>
+        <br>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <div>
                         <label asp-for="Command.SessionExpirationStatusScore">نمره دهی</label>
-                        <input type="range" asp-for="Command.SessionExpirationStatusScore" min="0" max="100" />
+                        <input type="range" asp-for="Command.SessionExpirationStatusScore" min="0" max="100"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="checkbox" id="showSessionExpirationStatus" onclick="toggleTextInput('showSessionExpirationStatus', 'sessionExpirationStatusContainer')">
+                    <input type="checkbox" id="showSessionExpirationStatus"
+                           onclick="toggleTextInput('showSessionExpirationStatus', 'sessionExpirationStatusContainer')">
                     <label for="showSessionExpirationStatus">افزودن توضیحات</label>
                 </div>
                 <div class="form-group" id="sessionExpirationStatusContainer" style="display:none;">
@@ -181,11 +193,12 @@
                 <div class="form-group">
                     <div>
                         <label asp-for="Command.AntivirusStatusScore">نمره دهی</label>
-                        <input type="range" asp-for="Command.AntivirusStatusScore" min="0" max="100" />
+                        <input type="range" asp-for="Command.AntivirusStatusScore" min="0" max="100"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="checkbox" id="showAntivirusStatus" onclick="toggleTextInput('showAntivirusStatus', 'antivirusStatusContainer')">
+                    <input type="checkbox" id="showAntivirusStatus"
+                           onclick="toggleTextInput('showAntivirusStatus', 'antivirusStatusContainer')">
                     <label for="showAntivirusStatus">افزودن توضیحات</label>
                 </div>
                 <div class="form-group" id="antivirusStatusContainer" style="display:none;">
@@ -194,17 +207,18 @@
                 </div>
             </div>
         </div>
-    <br>
+        <br>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <div>
                         <label asp-for="Command.UpdateStatusScore">نمره دهی</label>
-                        <input type="range" asp-for="Command.UpdateStatusScore" min="0" max="100" />
+                        <input type="range" asp-for="Command.UpdateStatusScore" min="0" max="100"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="checkbox" id="showUpdateStatus" onclick="toggleTextInput('showUpdateStatus', 'updateStatusContainer')">
+                    <input type="checkbox" id="showUpdateStatus"
+                           onclick="toggleTextInput('showUpdateStatus', 'updateStatusContainer')">
                     <label for="showUpdateStatus">افزودن توضیحات</label>
                 </div>
                 <div class="form-group" id="updateStatusContainer" style="display:none;">
@@ -216,11 +230,12 @@
                 <div class="form-group">
                     <div>
                         <label asp-for="Command.WirelessNetworkStatusScore">نمره دهی</label>
-                        <input type="range" asp-for="Command.WirelessNetworkStatusScore" min="0" max="100" />
+                        <input type="range" asp-for="Command.WirelessNetworkStatusScore" min="0" max="100"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="checkbox" id="showWirelessNetworkStatus" onclick="toggleTextInput('showWirelessNetworkStatus', 'wirelessNetworkStatusContainer')">
+                    <input type="checkbox" id="showWirelessNetworkStatus"
+                           onclick="toggleTextInput('showWirelessNetworkStatus', 'wirelessNetworkStatusContainer')">
                     <label for="showWirelessNetworkStatus">افزودن توضیحات</label>
                 </div>
                 <div class="form-group" id="wirelessNetworkStatusContainer" style="display:none;">
@@ -229,52 +244,55 @@
                 </div>
             </div>
         </div>
-    <br>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <div>
-                    <label asp-for="Command.PasswordPolicyStatusScore">نمره دهی</label>
-                    <input type="range" asp-for="Command.PasswordPolicyStatusScore" min="0" max="100" />
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div>
+                        <label asp-for="Command.PasswordPolicyStatusScore">نمره دهی</label>
+                        <input type="range" asp-for="Command.PasswordPolicyStatusScore" min="0" max="100"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="showPasswordPolicyStatus"
+                           onclick="toggleTextInput('showPasswordPolicyStatus', 'passwordPolicyStatusContainer')">
+                    <label for="showPasswordPolicyStatus">افزودن توضیحات</label>
+                </div>
+                <div class="form-group" id="passwordPolicyStatusContainer" style="display:none;">
+                    <input type="text" class="form-control" asp-for="Command.PasswordPolicyStatus">
+                    <span asp-validation-for="Command.PasswordPolicyStatus" class="error"></span>
                 </div>
             </div>
-            <div class="form-group">
-                <input type="checkbox" id="showPasswordPolicyStatus" onclick="toggleTextInput('showPasswordPolicyStatus', 'passwordPolicyStatusContainer')">
-                <label for="showPasswordPolicyStatus">افزودن توضیحات</label>
-            </div>
-            <div class="form-group" id="passwordPolicyStatusContainer" style="display:none;">
-                <input type="text" class="form-control" asp-for="Command.PasswordPolicyStatus">
-                <span asp-validation-for="Command.PasswordPolicyStatus" class="error"></span>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <div>
-                    <label asp-for="Command.DataDestructionStatusScore">نمره دهی</label>
-                    <input type="range" asp-for="Command.DataDestructionStatusScore" min="0" max="100" />
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div>
+                        <label asp-for="Command.DataDestructionStatusScore">نمره دهی</label>
+                        <input type="range" asp-for="Command.DataDestructionStatusScore" min="0" max="100"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="showDataDestructionStatus"
+                           onclick="toggleTextInput('showDataDestructionStatus', 'dataDestructionStatusContainer')">
+                    <label for="showDataDestructionStatus">افزودن توضیحات</label>
+                </div>
+                <div class="form-group" id="dataDestructionStatusContainer" style="display:none;">
+                    <input type="text" class="form-control" asp-for="Command.DataDestructionStatus">
+                    <span asp-validation-for="Command.DataDestructionStatus" class="error"></span>
                 </div>
             </div>
-            <div class="form-group">
-                <input type="checkbox" id="showDataDestructionStatus" onclick="toggleTextInput('showDataDestructionStatus', 'dataDestructionStatusContainer')">
-                <label for="showDataDestructionStatus">افزودن توضیحات</label>
-            </div>
-            <div class="form-group" id="dataDestructionStatusContainer" style="display:none;">
-                <input type="text" class="form-control" asp-for="Command.DataDestructionStatus">
-                <span asp-validation-for="Command.DataDestructionStatus" class="error"></span>
-            </div>
         </div>
-    </div>
-    <br>
+        <br>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <div>
                         <label asp-for="Command.LogManagementStatusScore">نمره دهی</label>
-                        <input type="range" asp-for="Command.LogManagementStatusScore" min="0" max="100" />
+                        <input type="range" asp-for="Command.LogManagementStatusScore" min="0" max="100"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="checkbox" id="showLogManagementStatus" onclick="toggleTextInput('showLogManagementStatus', 'logManagementStatusContainer')">
+                    <input type="checkbox" id="showLogManagementStatus"
+                           onclick="toggleTextInput('showLogManagementStatus', 'logManagementStatusContainer')">
                     <label for="showLogManagementStatus">افزودن توضیحات</label>
                 </div>
                 <div class="form-group" id="logManagementStatusContainer" style="display:none;">
@@ -286,11 +304,12 @@
                 <div class="form-group">
                     <div>
                         <label asp-for="Command.ClockSynchronizationStatusScore">نمره دهی</label>
-                        <input type="range" asp-for="Command.ClockSynchronizationStatusScore" min="0" max="100" />
+                        <input type="range" asp-for="Command.ClockSynchronizationStatusScore" min="0" max="100"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="checkbox" id="showClockSynchronizationStatus" onclick="toggleTextInput('showClockSynchronizationStatus', 'clockSynchronizationStatusContainer')">
+                    <input type="checkbox" id="showClockSynchronizationStatus"
+                           onclick="toggleTextInput('showClockSynchronizationStatus', 'clockSynchronizationStatusContainer')">
                     <label for="showClockSynchronizationStatus">افزودن توضیحات</label>
                 </div>
                 <div class="form-group" id="clockSynchronizationStatusContainer" style="display:none;">
@@ -299,20 +318,18 @@
                 </div>
             </div>
         </div>
-   
- 
-        
+
+
         <div class="col-md-6">
             <div class="form-group">
                 <label asp-for="Command.FinallDescription" class="control-label">توضیحات</label>
                 <input type="text" class="form-control" asp-for="Command.FinallDescription">
-                <span  class="error"></span>
+                <span class="error"></span>
             </div>
         </div>
     </div>
-    </div>
 
-    <input type="hidden" asp-for="Command.ChecklistId" />
+    <input type="hidden" asp-for="Command.ChecklistId"/>
 
     <div class="modal-footer">
         <button type="submit" class="btn btn-info waves-effect waves-light">بعدی</button>

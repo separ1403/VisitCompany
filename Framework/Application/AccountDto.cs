@@ -19,5 +19,4 @@ namespace Framework.Application
         public string FullName { get; private set; }
         public long StateCategoryId { get; private set; } // افزودن CategoryStateId
     }
-
 }

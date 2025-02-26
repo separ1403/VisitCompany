@@ -29,7 +29,7 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="@Model.Command.PhonePeopleCo" class="control-label"> شماره تماس ایشان   </label>
+                <label asp-for="@Model.Command.PhonePeopleCo" class="control-label"> شماره تماس ایشان </label>
                 <input type="text" class="form-control" asp-for="@Model.Command.PhonePeopleCo">
                 <span asp-validation-for="Command.PhonePeopleCo " class="error"></span>
 
@@ -37,41 +37,35 @@
             </div>
 
             <div class="form-group">
-             <label class="sr-only" asp-for="@Model.Command.CompanyId"></label>
-               <select class="form-control" asp-for="@Model.Command.CompanyId" asp-items="@Model.Companies" id="CompanyIdSelect">
+                <label class="sr-only" asp-for="@Model.Command.CompanyId"></label>
+                <select class="form-control" asp-for="@Model.Command.CompanyId" asp-items="@Model.Companies"
+                        id="CompanyIdSelect">
 
-                <option value="0">  شرکت مورد نظر را انتخاب نمایید</option>
+                    <option value="0"> شرکت مورد نظر را انتخاب نمایید</option>
 
                 </select>
-               </div>
-
-
-
-
-
+            </div>
+            
             <div class="modal-footer">
                 <button type="submit" class="btn btn-info waves-effect waves-light">ایجاد</button>
             </div>
+        </div>
+    </div>
+</form>
 
-        </form>
 
-
-     @section Scripts {
-       <script src="~/adminTheme/assets/datatables/jquery.dataTables.min.js"></script>
-          <script src="~/adminTheme/assets/datatables/dataTables.bootstrap.js"></script>
+@section Scripts {
+    <script src="~/adminTheme/assets/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/adminTheme/assets/datatables/dataTables.bootstrap.js"></script>
 
     <script type="text/javascript">
-
-                     $('#CompanyIdSelect').select2({
-                        placeholder: "انتخاب دسته بندی",
-                        allowClear: true,
-                        language: "fa"
-                          });
-
-
-                               
-
-});
-                            </script>
-                        }
+        $(document).ready(function () {
+            $('#CompanyIdSelect').select2({
+                placeholder: "انتخاب دسته بندی",
+                allowClear: true,
+                language: "fa"
+            });
+        });
+    </script>
+}
 
