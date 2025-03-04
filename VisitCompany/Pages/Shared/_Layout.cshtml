@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -16,39 +16,60 @@
     <meta name="keywords" content="@ViewData["keywords"]"/>
     <meta name="description" content="@ViewData["metaDescription"]"/>
 
+    <!-- استایل‌ها -->
     <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet" type="text/css">
-    <link href="https://cdn.jsdelivr.net/npm/quasar@2/dist/quasar.rtl.prod.css" rel="stylesheet" type="text/css">
-
+    <link href="https://cdn.jsdelivr.net/npm/quasar@2.18.0/dist/quasar.rtl.prod.css" rel="stylesheet" type="text/css">
 </head>
-
 <body>
-
 <!-- Vue App -->
-    <div id="q-app">
-        <component :is="currentPage">@RenderBody()</component>
-    </div>
+<div id="q-app">
+    @RenderBody()
+</div>
 
-<script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+<!-- اسکریپت‌ها -->
+<script src="https://cdn.jsdelivr.net/npm/vue@3.4.21/dist/vue.global.prod.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/quasar@2.18.0/dist/quasar.umd.prod.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/quasar@2/dist/lang/fa.umd.prod.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/quasar@2.18.0/dist/lang/fa.umd.prod.js"></script>
 
 <script>
-    window.currentPageComponent = window.currentPageComponent || "default-page";
+    // تنظیم زبان Quasar به فارسی
+    Quasar.lang.set(Quasar.lang.fa);
 
+    // اپلیکیشن مرکزی
     const app = Vue.createApp({
         data() {
             return {
-                currentPage: window.currentPageComponent
+                currentPage: window.currentPageComponent || "default-page"
             };
         }
     });
 
-    app.mount("#q-app");
+    // استفاده از Quasar
     app.use(Quasar);
-    Quasar.Lang.set(Quasar.Lang.fa);
+
+    // تعریف یه سیستم برای ثبت کامپوننت‌ها
+    window.componentRegistry = window.componentRegistry || {};
+    window.registerComponent = function(name, component) {
+        window.componentRegistry[name] = component;
+        app.component(name, component);
+    };
+
+    // ثبت کامپوننت پیش‌فرض
+    app.component('default-page', {
+        template: `<div>صفحه پیش‌فرض</div>`
+    });
+
+    // اجرای همه اسکریپت‌های صفحه قبل از mount
+    document.addEventListener('DOMContentLoaded', () => {
+        // ثبت همه کامپوننت‌های ثبت‌شده
+        Object.keys(window.componentRegistry).forEach(name => {
+            app.component(name, window.componentRegistry[name]);
+        });
+        // مونت کردن اپلیکیشن
+        app.mount('#q-app');
+    });
 </script>
 
 @RenderSection("Scripts", required: false)
-
 </body>
 </html>

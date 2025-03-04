@@ -5,40 +5,93 @@
     ViewData["Title"] = "ورود و ثبت نام";
     Layout = "Shared/_Layout";
 }
+
+<!-- مشخص کردن کامپوننت صفحه -->
 <script>
     window.currentPageComponent = "account-page";
 </script>
+
+<!-- محتوای صفحه -->
+<div>
+    <account-page></account-page>
+    @Html.AntiForgeryToken() <!-- اضافه کردن توکن -->
+
+</div>
 @section Scripts {
-
-
     <script>
-        const accountApp = Vue.createApp({
+        // ثبت کامپوننت
+        window.registerComponent('account-page', {
             setup() {
-                const username = Vue.ref("");
-                const mobile = Vue.ref("");
-                const loginMessage = Vue.ref("");
-
-                const validateForm = () => {
-                    if (!username.value || !mobile.value) {
-                        loginMessage.value = "لطفاً همه فیلدها را پر کنید.";
-                        return false;
-                    }
-                    return true;
-                };
+                const username = Vue.ref('');
+                const mobile = Vue.ref('');
 
                 const submitForm = () => {
-                    if (validateForm()) {
-                        alert("ورود با موفقیت انجام شد!");
-                    }
+                    console.log('We are here!')
+                    const formData = new FormData();
+                    formData.append('username', username.value);
+                    formData.append('mobile', mobile.value);
+
+                    fetch('/Account?handler=Login', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value
+                        }
+                    })
+                        
+                        .then(response => {
+                            console.log('inside then')
+
+                            if (response.ok) {
+                                console.log('response is ok')
+                                // window.location.reload(); // یا هر کاری که بعد از موفقیت می‌خوای
+                                
+                            } else {
+                                console.log('we have error')
+                                throw new Error('خطا در ورود');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('خطا:', error);
+                            alert('ورود ناموفق بود!');
+                        });
                 };
 
-                return { username, mobile, loginMessage, submitForm };
+                return { username, mobile, submitForm };
             },
             template: `
-                <q-btn label="Hello" color="red"></q-btn>
+                <q-form v-on:submit="submitForm" class="login-form">
+                    <h4 class="login-title">ورود</h4>
+                    <q-input
+                        v-model="username"
+                        label="نام کاربری *"
+                        placeholder="نام کاربری"
+                        outlined
+                        :rules="[val => !!val || 'نام کاربری الزامی است']"
+                        reverse-fill-mask
+                    />
+                    <q-input
+                        v-model="mobile"
+                        label="شماره تماس"
+                        placeholder="شماره موبایل"
+                        outlined
+                        type="tel"
+                        reverse-fill-mask
+                    />
+                    <div class="text-right">
+                        <a href="#" class="forget-pass-link">فراموشی رمز</a>
+                    </div>
+                    <q-btn
+                        type="submit"
+                        label="ورود"
+                        color="primary"
+                        class="q-mt-md"
+                    />
+                    <q-banner v-if="loginMessage" class="text-red q-mt-md">
+                        {{ loginMessage }}
+                    </q-banner>
+                </q-form>
             `
         });
-        accountApp.component("account-page", accountApp);
-        accountApp.mount("#q-app");
     </script>
 }

@@ -37,8 +37,7 @@ namespace VisitCompany.Pages
             {
                 HttpContext.Session.SetString("CommandUsername", command.Username);// ذخیره کردن id در Session  ---> inja set karde
                 HttpContext.Session.SetString("CommandMobile", command.Mobile);
-
-
+                
                 return RedirectToPage("./EnterCode", new { mobile = command.Mobile });
 
 
