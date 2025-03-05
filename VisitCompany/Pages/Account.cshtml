@@ -13,61 +13,62 @@
 
 <!-- محتوای صفحه -->
 <div>
+    @Html.AntiForgeryToken()
     <account-page></account-page>
-    @Html.AntiForgeryToken() <!-- اضافه کردن توکن -->
-
 </div>
+
+@section Styles {
+    <link href="~/Theme/assets/css/pages/account.css" rel="stylesheet">
+}
+
 @section Scripts {
     <script>
-        // ثبت کامپوننت
         window.registerComponent('account-page', {
             setup() {
                 const username = Vue.ref('');
                 const mobile = Vue.ref('');
+                const loginMessage = Vue.ref('');
 
-                const submitForm = () => {
-                    console.log('We are here!')
-                    const formData = new FormData();
-                    formData.append('username', username.value);
-                    formData.append('mobile', mobile.value);
-
-                    fetch('/Account?handler=Login', {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value
-                        }
-                    })
-                        
-                        .then(response => {
-                            console.log('inside then')
-
-                            if (response.ok) {
-                                console.log('response is ok')
-                                // window.location.reload(); // یا هر کاری که بعد از موفقیت می‌خوای
-                                
-                            } else {
-                                console.log('we have error')
-                                throw new Error('خطا در ورود');
-                            }
-                        })
-                        .catch(error => {
-                            console.error('خطا:', error);
-                            alert('ورود ناموفق بود!');
+                const submitForm = async () => {
+                    try {
+                        const formData = new FormData();
+                        formData.append('username', username.value);
+                        formData.append('mobile', mobile.value);
+                        const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+                        const response = await fetch('/Account?handler=Login', {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'RequestVerificationToken': token
+                            },
+                            credentials: 'include' // برای اطمینان از ارسال کوکی‌ها و سشن
                         });
+                        if (response.redirected) {
+                            window.location.href = response.url; // دنبال کردن ریدایرکت
+                        } else if (response.ok) {
+                            window.location.reload(); // در صورت موفقیت بدون ریدایرکت
+                        } else {
+                            const errorText = await response.text();
+                            loginMessage.value = errorText || 'خطا در ورود';
+                        }
+                    } catch (error) {
+                        loginMessage.value = 'ورود ناموفق بود! خطا: ' + error.message;
+                    }
                 };
 
-                return { username, mobile, submitForm };
+                return {username, mobile, loginMessage, submitForm};
             },
             template: `
-                <q-form v-on:submit="submitForm" class="login-form">
-                    <h4 class="login-title">ورود</h4>
+<div class="account-bg">
+<div class="auth-box">
+<div class="login">
+                <q-form v-on:submit.prevent="submitForm" class="login-form">
                     <q-input
                         v-model="username"
                         label="نام کاربری *"
                         placeholder="نام کاربری"
                         outlined
-                        :rules="[val => !!val || 'نام کاربری الزامی است']"
+                        class="q-mb-md"
                         reverse-fill-mask
                     />
                     <q-input
@@ -75,7 +76,6 @@
                         label="شماره تماس"
                         placeholder="شماره موبایل"
                         outlined
-                        type="tel"
                         reverse-fill-mask
                     />
                     <div class="text-right">
@@ -83,15 +83,18 @@
                     </div>
                     <q-btn
                         type="submit"
-                        label="ورود"
-                        color="primary"
-                        class="q-mt-md"
+                        label="دریافت کد"
+size="lg"
+                        color="deep-purple-9"
+                        class="q-mt-md full-width"
                     />
                     <q-banner v-if="loginMessage" class="text-red q-mt-md">
                         {{ loginMessage }}
                     </q-banner>
                 </q-form>
-            `
+</div>
+</div>
+</div>            `
         });
     </script>
 }

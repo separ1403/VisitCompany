@@ -17,8 +17,12 @@
     <meta name="description" content="@ViewData["metaDescription"]"/>
 
     <!-- استایل‌ها -->
+    <link href="~/Theme/assets/css/fonts.css" rel="stylesheet">
+    <link href="~/Theme/assets/css/main.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet" type="text/css">
     <link href="https://cdn.jsdelivr.net/npm/quasar@2.18.0/dist/quasar.rtl.prod.css" rel="stylesheet" type="text/css">
+    <link href="~/Theme/assets/css/quasar/custom.css" rel="stylesheet">
+
 </head>
 <body>
 <!-- Vue App -->
@@ -32,8 +36,6 @@
 <script src="https://cdn.jsdelivr.net/npm/quasar@2.18.0/dist/lang/fa.umd.prod.js"></script>
 
 <script>
-    // تنظیم زبان Quasar به فارسی
-    Quasar.lang.set(Quasar.lang.fa);
 
     // اپلیکیشن مرکزی
     const app = Vue.createApp({
@@ -45,8 +47,7 @@
     });
 
     // استفاده از Quasar
-    app.use(Quasar);
-
+    app.use(Quasar, { config: { lang: 'fa', rtl: true } });
     // تعریف یه سیستم برای ثبت کامپوننت‌ها
     window.componentRegistry = window.componentRegistry || {};
     window.registerComponent = function(name, component) {
@@ -68,8 +69,12 @@
         // مونت کردن اپلیکیشن
         app.mount('#q-app');
     });
+
+    // تنظیم زبان Quasar به فارسی
+    Quasar.lang.set(Quasar.lang.fa);
 </script>
 
 @RenderSection("Scripts", required: false)
+@RenderSection("Styles", required: false) 
 </body>
 </html>
