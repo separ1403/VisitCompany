@@ -1,0 +1,25 @@
+.account-bg {
+    background: rgb(172,209,227);
+    background: -moz-linear-gradient(270deg, rgba(172,209,227,1) 0%, rgba(237,252,255,1) 100%);
+    background: -webkit-linear-gradient(270deg, rgba(172,209,227,1) 0%, rgba(237,252,255,1) 100%);
+    background: linear-gradient(270deg, rgba(172,209,227,1) 0%, rgba(237,252,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#acd1e3",endColorstr="#edfcff",GradientType=1);
+    width: 100vw;
+    height: 100vh;
+    align-content: center;
+    justify-items: center;
+}
+
+.auth-box {
+    background: #fff;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    padding: 35px;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+}

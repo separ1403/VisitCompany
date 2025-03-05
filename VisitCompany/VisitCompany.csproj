@@ -44,4 +44,24 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Theme\assets\fonts\dana\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\Theme\assets\fonts\woff2\DanaFaNum-Black.woff2" />
+    <_ContentIncludedByDefault Remove="wwwroot\Theme\assets\fonts\woff2\DanaFaNum-Bold.woff2" />
+    <_ContentIncludedByDefault Remove="wwwroot\Theme\assets\fonts\woff2\DanaFaNum-DemiBold.woff2" />
+    <_ContentIncludedByDefault Remove="wwwroot\Theme\assets\fonts\woff2\DanaFaNum-ExtraBlack.woff2" />
+    <_ContentIncludedByDefault Remove="wwwroot\Theme\assets\fonts\woff2\DanaFaNum-ExtraBold.woff2" />
+    <_ContentIncludedByDefault Remove="wwwroot\Theme\assets\fonts\woff2\DanaFaNum-fat.woff2" />
+    <_ContentIncludedByDefault Remove="wwwroot\Theme\assets\fonts\woff2\DanaFaNum-Hairline.woff2" />
+    <_ContentIncludedByDefault Remove="wwwroot\Theme\assets\fonts\woff2\DanaFaNum-Heavy.woff2" />
+    <_ContentIncludedByDefault Remove="wwwroot\Theme\assets\fonts\woff2\DanaFaNum-Light.woff2" />
+    <_ContentIncludedByDefault Remove="wwwroot\Theme\assets\fonts\woff2\DanaFaNum-Medium.woff2" />
+    <_ContentIncludedByDefault Remove="wwwroot\Theme\assets\fonts\woff2\DanaFaNum-Regular.woff2" />
+    <_ContentIncludedByDefault Remove="wwwroot\Theme\assets\fonts\woff2\DanaFaNum-Thin.woff2" />
+    <_ContentIncludedByDefault Remove="wwwroot\Theme\assets\fonts\woff2\DanaFaNum-UltraLight.woff2" />
+  </ItemGroup>
+
 </Project>
