@@ -46,6 +46,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\Theme\assets\fonts\dana\" />
+    <Folder Include="wwwroot\Theme\assets\img\etc\" />
   </ItemGroup>
 
   <ItemGroup>

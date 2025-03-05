@@ -14,12 +14,12 @@
     background: #fff;
     border-radius: 15px;
     display: flex;
-    justify-content: center;
-    width: 90%;
-    padding: 35px;
+    padding: 50px;
+    align-items: center;
 }
 
 .login {
     display: flex;
+    margin: 50px;
     justify-content: center;
 }
