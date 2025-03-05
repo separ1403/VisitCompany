@@ -44,9 +44,9 @@
                             credentials: 'include' // برای اطمینان از ارسال کوکی‌ها و سشن
                         });
                         if (response.redirected) {
-                            window.location.href = response.url; // دنبال کردن ریدایرکت
+                            window.location.href = response.url; 
                         } else if (response.ok) {
-                            window.location.reload(); // در صورت موفقیت بدون ریدایرکت
+                            window.location.reload();
                         } else {
                             const errorText = await response.text();
                             loginMessage.value = errorText || 'خطا در ورود';
