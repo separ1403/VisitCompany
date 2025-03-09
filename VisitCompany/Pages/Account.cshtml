@@ -39,6 +39,7 @@
 
                 const $q = Quasar.useQuasar();
 
+                // تابع تبدیل اعداد فارسی به انگلیسی
                 const convertPersianToEnglish = (value) => {
                     const persianNumbers = [/۰/g, /۱/g, /۲/g, /۳/g, /۴/g, /۵/g, /۶/g, /۷/g, /۸/g, /۹/g];
                     const englishNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
@@ -58,19 +59,19 @@
 
                 const submitForm = async (event) => {
                     event.preventDefault();
-                    console.log('Form submit prevented');
-
                     try {
                         const formData = new FormData();
-                        formData.append('username', username.value);
-                        formData.append('mobile', mobile.value);
+                        formData.append('Username', username.value);
+                        formData.append('Mobile', mobile.value);
                         const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+                        if (!token) {
+                            throw new Error('توکن ضد جعل پیدا نشد');
+                        }
+                        formData.append('__RequestVerificationToken', token);
+
                         const response = await fetch('/Account?handler=Login', {
                             method: 'POST',
                             body: formData,
-                            headers: {
-                                'RequestVerificationToken': token
-                            },
                             credentials: 'include'
                         });
                         
@@ -80,14 +81,37 @@
                         } else {
                             responseData = { message: await response.text() };
                         }
-
                         if (response.redirected) {
                             $q.notify({
                                 type: 'positive',
-                                message: 'در حال انتقال به صفحه ورود کد...',
-                                position: 'top-left'
+                                message: 'ورود با موفقیت انجام شد',
+                                position: 'top-left',
+                                timeout: 2000 // دادن زمان به کاربر برای دیدن اعلان
                             });
-                            window.location.href = response.url;
+                            // شبیه‌سازی ارسال فرم با تاخیر برای Autofill
+                            setTimeout(() => {
+                                const form = document.createElement('form');
+                                form.method = 'post';
+                                form.action = response.url; // استفاده از URL ریدایرکت
+                                form.style.display = 'none'; // مخفی کردن فرم
+                                const usernameInput = document.createElement('input');
+                                usernameInput.type = 'hidden';
+                                usernameInput.name = 'Username';
+                                usernameInput.value = username.value;
+                                form.appendChild(usernameInput);
+                                const mobileInput = document.createElement('input');
+                                mobileInput.type = 'hidden';
+                                mobileInput.name = 'Mobile';
+                                mobileInput.value = mobile.value;
+                                form.appendChild(mobileInput);
+                                const tokenInput = document.createElement('input');
+                                tokenInput.type = 'hidden';
+                                tokenInput.name = '__RequestVerificationToken';
+                                tokenInput.value = token;
+                                form.appendChild(tokenInput);
+                                document.body.appendChild(form);
+                                form.submit();
+                            }, 2000); 
                         } else if (response.ok && response.status === 200) {
                             $q.notify({
                                 type: 'positive',
@@ -102,7 +126,6 @@
                             });
                         }
                     } catch (error) {
-                        console.error('Fetch error:', error);
                         $q.notify({
                             type: 'negative',
                             message: 'ورود ناموفق بود! خطا: ' + error.message,
@@ -124,6 +147,8 @@
                     <q-input
                         ref="usernameRef"
                         v-model="username"
+                        name="Username"
+                        autocomplete="username"
                         label="شماره پرسنلی"
                         placeholder="شماره پرسنلی"
                         outlined
@@ -131,11 +156,12 @@
                         lazy-rules
                         reverse-fill-mask
                         :rules="usernameRules"
-                         autocomplete="username"
                     />
                     <q-input
                         ref="mobileRef"
                         v-model="mobile"
+                        name="Mobile"
+                        autocomplete="tel"
                         label="شماره موبایل"
                         placeholder="شماره موبایل"
                         outlined
@@ -143,7 +169,7 @@
                         lazy-rules
                         :rules="mobileRules"
                         mask="###########"
-                        autocomplete="mobile"
+                        type="tel"
                     />
                     <div class="text-right">
                         <a href="#" class="forget-pass-link">فراموشی رمز</a>
