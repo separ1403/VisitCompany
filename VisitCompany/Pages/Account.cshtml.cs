@@ -35,18 +35,17 @@ namespace VisitCompany.Pages
 
             if (operationResult.IsSucceeded)
             {
-                HttpContext.Session.SetString("CommandUsername", command.Username);// ذخیره کردن id در Session  ---> inja set karde
+                HttpContext.Session.SetString("CommandUsername", command.Username);
                 HttpContext.Session.SetString("CommandMobile", command.Mobile);
-                
+        
                 return RedirectToPage("./EnterCode", new { mobile = command.Mobile });
-
-
-                //این بعد از نتیجه ی موفق صفحه ی اینتر کد باشد
-             //   return RedirectToPage("./UserProfile");
             }
-            
-            LoginMessage = operationResult.Message;
-            return Page();
+    
+            // وقتی خطا هست، JSON با کد 400 برگردون
+            return new JsonResult(new { success = false, message = operationResult.Message })
+            {
+                StatusCode = 400 // Bad Request
+            };
         }
 
         public IActionResult OnGetLogout()
