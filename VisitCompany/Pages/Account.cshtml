@@ -26,10 +26,38 @@
         window.registerComponent('account-page', {
             setup() {
                 const username = Vue.ref('');
+                const usernameRef= Vue.ref(null)
+                const usernameRules = Vue.ref([val => !!val || 'شماره پرسنلی ضروری است'])
                 const mobile = Vue.ref('');
+                const mobileRef = Vue.ref(null); // برای دسترسی به q-input موبایل
+                const mobileRules = Vue.ref([
+                    val => !!val || 'شماره موبایل ضروری است',
+                    val => /^\d{11}$/.test(val) || 'شماره باید ۱۱ رقم باشد',
+                    val => /^09/.test(val) || 'شماره باید با 09 شروع شود'
+                ]);
                 const loginMessage = Vue.ref('');
 
+
+                // تابع تبدیل اعداد فارسی به انگلیسی
+                const convertPersianToEnglish = (value) => {
+                    const persianNumbers = [/۰/g, /۱/g, /۲/g, /۳/g, /۴/g, /۵/g, /۶/g, /۷/g, /۸/g, /۹/g];
+                    const englishNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+                    let result = value;
+                    for (let i = 0; i < 10; i++) {
+                        result = result.replace(persianNumbers[i], englishNumbers[i]);
+                    }
+                    return result;
+                };
+
+                Vue.watch(mobile, (newValue) => {
+                    const converted = convertPersianToEnglish(newValue);
+                    if (converted !== newValue) {
+                        mobile.value = converted;
+                    }
+                });
+
                 const submitForm = async () => {
+             
                     try {
                         const formData = new FormData();
                         formData.append('username', username.value);
@@ -48,15 +76,17 @@
                         } else if (response.ok) {
                             window.location.reload();
                         } else {
+                            console.log('LOG HERE')
                             const errorText = await response.text();
                             loginMessage.value = errorText || 'خطا در ورود';
                         }
                     } catch (error) {
+                        console.log(error)
                         loginMessage.value = 'ورود ناموفق بود! خطا: ' + error.message;
                     }
                 };
 
-                return {username, mobile, loginMessage, submitForm};
+                return {username,usernameRef,usernameRules, mobile,mobileRef, mobileRules, loginMessage, submitForm};
             },
             template: `
 <div class="account-bg">
@@ -65,21 +95,30 @@
 <img src="/Theme/assets/img/etc/login-logo.png" alt="ورود به کاربری">
 </div>
 <div class="login">
-                <q-form v-on:submit.prevent="submitForm" class="login-form">
+                    <q-banner v-if="loginMessage" class="text-red q-mt-md">
+                        {{ loginMessage }}
+                    </q-banner>
+                <q-form v-on:submit.prevent="submitForm" class="login-form full-width">
                     <q-input
+                        ref="usernameRef"
                         v-model="username"
-                        label="نام کاربری *"
-                        placeholder="نام کاربری"
+                        label="شماره پرسنلی"
+                        placeholder="شماره پرسنلی"
                         outlined
-                        class="q-mb-md"
+                        class="q-mb-md full-width"
+                        lazy-rules
                         reverse-fill-mask
+                        :rules="usernameRules"
                     />
                     <q-input
                         v-model="mobile"
-                        label="شماره تماس"
+                        label="شماره موبایل"
                         placeholder="شماره موبایل"
                         outlined
-                        reverse-fill-mask
+                        lazy-rules
+                        :rules="mobileRules"
+                        mask="###########"
+
                     />
                     <div class="text-right">
                         <a href="#" class="forget-pass-link">فراموشی رمز</a>
@@ -91,10 +130,8 @@ size="lg"
                         color="deep-purple-9"
                         class="q-mt-md full-width"
                     />
-                    <q-banner v-if="loginMessage" class="text-red q-mt-md">
-                        {{ loginMessage }}
-                    </q-banner>
                 </q-form>
+
 </div>
 </div>
 </div>            `
