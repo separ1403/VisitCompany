@@ -28,7 +28,7 @@
                 const codeRef = Vue.ref(null);
                 const codeRules = Vue.ref([
                     val => !!val || 'کد تأیید ضروری است',
-                    val => /^\d{5}$/.test(val) || 'کد باید 5 رقم باشد' 
+                    val => /^\d{5}$/.test(val) || 'کد باید ۵ رقم باشد'
                 ]);
 
                 const $q = Quasar.useQuasar();
@@ -93,38 +93,38 @@
             },
             template: `
 <div class="account-bg">
-<div class="auth-box">
-<div class="auth-box__img">
-<img src="/Theme/assets/img/etc/login-logo.png" alt="ورود به کاربری">
-</div>
-<div class="login">
-                <q-form v-on:submit.prevent="submitForm" class="login-form full-width">
-                    <q-input
-                        ref="codeRef"
-                        v-model="code"
-                        name="Code"
-                        autocomplete="one-time-code"
-                        label="کد تأیید"
-                        placeholder="کد تأیید"
-                        outlined
-                        class="q-mb-md full-width"
-                        lazy-rules
-                        :rules="codeRules"
-                        mask="#####"
-                    />
-                    <div class="text-right">
-                        <a href="/Account" class="forget-pass-link">ویرایش شماره موبایل</a>
-                    </div>
-                    <q-btn
-                        type="submit"
-                        label="ثبت کد تأیید"
-                        size="lg"
-                        color="deep-purple-9"
-                        class="q-mt-md full-width"
-                    />
-                </q-form>
-</div>
-</div>
+    <div class="auth-box">
+        <div class="auth-box__img">
+            <img src="/Theme/assets/img/etc/login-logo.png" alt="ورود به کاربری">
+        </div>
+        <div class="login">
+            <q-form v-on:submit.prevent="submitForm" class="login-form full-width">
+                <q-input
+                    ref="codeRef"
+                    v-model="code"
+                    name="Code"
+                    autocomplete="one-time-code"
+                    label="کد تأیید"
+                    placeholder="کد تأیید"
+                    outlined
+                    class="q-mb-md full-width"
+                    lazy-rules
+                    :rules="codeRules"
+                    mask="#####"
+                />
+                <div class="text-right">
+                    <a href="/Account" class="forget-pass-link">ویرایش شماره موبایل</a>
+                </div>
+                <q-btn
+                    type="submit"
+                    label="ثبت کد تأیید"
+                    size="lg"
+                    color="deep-purple-9"
+                    class="q-mt-md full-width"
+                />
+            </q-form>
+        </div>
+    </div>
 </div>            `
         });
     </script>

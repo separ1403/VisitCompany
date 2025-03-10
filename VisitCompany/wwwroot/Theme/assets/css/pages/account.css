@@ -6,21 +6,84 @@
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#acd1e3",endColorstr="#edfcff",GradientType=1);
     width: 100vw;
     height: 100vh;
-    align-content: center;
-    justify-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px; /* فاصله از لبه‌ها */
 }
 
 .auth-box {
     background: #fff;
     border-radius: 15px;
     display: flex;
+    flex-wrap: wrap; /* اجازه می‌ده توی سایزهای کوچک‌تر خط عوض کنه */
     padding: 50px;
+    max-width: 900px; /* حداکثر عرض برای دسکتاپ */
+    width: 100%;
     align-items: center;
 }
 
-.login {
+.auth-box__img {
+    flex: 1 1 300px; /* حداقل عرض 300px، انعطاف‌پذیر */
     display: flex;
-    margin: 50px;
+    align-items: center;
     justify-content: center;
-    width: 350px;
+}
+
+.auth-box__img img {
+    max-width: 100%;
+    width: 100%; /* اندازه نسبی برای کوچک شدن خودکار */
+    height: auto;
+}
+
+.login {
+    flex: 1 1 350px; /* حداقل عرض 350px، انعطاف‌پذیر */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 50px; /* فاصله افقی */
+}
+
+.login-form {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* ریسپانسیو کردن */
+@media (max-width: 1023px) { /* تبلت و پایین‌تر */
+    .auth-box {
+        padding: 30px;
+        max-width: 700px; /* کاهش عرض در تبلت */
+        gap: 25px;
+    }
+    .login {
+        margin: 0 30px;
+    }
+
+    .auth-box__img img {
+        max-width: 100%;
+        width: 60%; /* اندازه نسبی برای کوچک شدن خودکار */
+        height: auto;
+    }
+}
+
+@media (max-width: 767px) { /* موبایل و پایین‌تر */
+    /* .auth-box__img { display: none; } - حذف شده تا تصویر بمونه */
+    .auth-box {
+        padding: 20px;
+        flex-direction: column; /* تصویر و فرم زیر هم قرار بگیرن */
+        gap: 20px; /* فاصله عمودی بین تصویر و فرم */
+    }
+    .login {
+        margin: 0; /* حذف فاصله افقی در موبایل */
+        width: 100%;
+        flex: 1 1 auto;
+        justify-content: flex-start;
+    }
+    .auth-box__img {
+        flex: 1 1 auto; /* اجازه می‌ده اندازه تصویر انعطاف‌پذیرتر بشه */
+    }
+    .auth-box__img img {
+        width: 70%; /* توی موبایل کمی کوچکتر بشه */
+    }
 }
