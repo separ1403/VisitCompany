@@ -16,8 +16,7 @@ namespace VisitCompany.Pages
 
         private readonly IAccountApplication _accountApplication;
 
-        //[BindProperty]
-        //public RegisterAccount RegisterAccount { get; set; } // افزودن مدل ثبت ‌نام
+        
 
         public AccountModel(IAccountApplication accountApplication)
         {
@@ -26,7 +25,8 @@ namespace VisitCompany.Pages
 
         public void OnGet()
         {
-            TempData["LoginMessage"] = null;
+          //  TempData["LoginMessage"] = null;
+            TempData.Remove("LoginMessage"); // برای بهینه سازی از این  کد جای بالایی استفاده شد
         }
 
         public IActionResult OnPostLogin(Login command)
@@ -38,17 +38,15 @@ namespace VisitCompany.Pages
                 HttpContext.Session.SetString("CommandUsername", command.Username);// ذخیره کردن id در Session  ---> inja set karde
                 HttpContext.Session.SetString("CommandMobile", command.Mobile);
 
+                return RedirectToPage("./EnterCode");
 
-                return RedirectToPage("./EnterCode", new { mobile = command.Mobile });
-
-
-                //این بعد از نتیجه ی موفق صفحه ی اینتر کد باشد
-             //   return RedirectToPage("./UserProfile");
+               
             }
             
             LoginMessage = operationResult.Message;
             return Page();
         }
+
 
         public IActionResult OnGetLogout()
         {
@@ -57,28 +55,5 @@ namespace VisitCompany.Pages
             return RedirectToPage("./Index");
         }
 
-        //public IActionResult OnPostRegister()
-        //{
-
-        //    if (!ModelState.IsValid)
-        //    {
-        //        RegisterMessage = "لطفاً تمامی فیلدها را به درستی پر کنید.";
-        //        return Page();
-        //    }
-        //    var operationResult = _accountApplication.Register(RegisterAccount);
-
-
-        //    if (operationResult.IsSucceeded)
-        //    {
-        //        return RedirectToPage("/index");
-
-        //    }
-            
-
-
-        //    RegisterMessage = operationResult.Message;
-
-        //    return Page();
-        //}
     }
 }

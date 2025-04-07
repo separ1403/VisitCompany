@@ -9,5 +9,7 @@ namespace Framework.Domain
         void Create(T entity);
         bool Exists(Expression<Func<T, bool>> expression);
         void SaveChanges();
+        Task SaveChangesAsync(); // افزودن متد Async
+
     }
 }

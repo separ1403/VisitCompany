@@ -16,7 +16,6 @@ public class Company : EntityBase
     public bool IsActive { get; private set; }
     public string? NationalCode { get; private set; }
     public string? Address { get; private set; }
-     public string? PostalCode { get; private set; }
     public long? CountEmployees { get; private set; }
     public long? CountFolowers { get; private set; }
 
@@ -35,16 +34,28 @@ public class Company : EntityBase
     public List<Checklist> Checklists { get; private set; }
     public CompanyCategory CompanyCategory { get; private set; }
     public List<Account> Accounts { get; private set; } = new List<Account>();
-    public List<long>? AccountIds { get; private set; }
+   // public List<long>? AccountIds { get; private set; }
+    public string? PostalCode { get; private set; }
 
-  //  public List<long>? PeopleIds { get; private set; }
+    //  public List<long>? PeopleIds { get; private set; }
     public List<Person> People { get; private set; } = new List<Person>();
-
 
     // ذخیره مقدار قبلی Description
     private string? _previousDescription;
     public string? Domain { get; private set; }
 
+    //for ramio
+    public string? TitleRasm { get; private set; }
+    public string? RegistrationDateRasm { get; private set; }
+    public string? RegistrationNoRasm { get; private set; }
+    public decimal? CapitalRasm { get; private set; }
+    public string? AddressRasm { get; private set; }
+    public string? TaxNumberRasm { get; private set; }
+    public string? PostalCodeRasm { get; private set; }
+    public string? LastUpdateRasm { get; private set; }
+    public string? StatusRasm { get; private set; }
+    public string? EdareKolRasm { get; private set; }
+    public string? VahedSabtiRasm { get; private set; }
 
     // سازنده پیش‌فرض
     public Company()
@@ -53,7 +64,14 @@ public class Company : EntityBase
     }
 
     // سازنده با پارامترها
-    public Company(string companyName, string brand, string managerName, string securityManagerName, string phoneNumber, string description, string nationalCode, string address, long categoryId, List<long> licenceIds, List<long> accountIds, string domain, DateTime referDateFrom, DateTime referDateTo, long stateCategoryId, List<Person> people, long countEmployees, long countFolowers,string postacode/*, DateTime checkDate*/)
+    public Company(string companyName, string brand, string managerName, string securityManagerName, 
+        string phoneNumber, string description, string nationalCode, string address,
+        long categoryId, List<long> licenceIds, List<Account> accounts, string domain,
+        DateTime referDateFrom, DateTime referDateTo, long stateCategoryId, List<Person> people,
+        long countEmployees, long countFolowers, string postacode/*, DateTime checkDate*/
+        , string? titleRasm ,string  registrationDateRasm , string registrationNoRasm , decimal capitalRasm 
+        , string addressRasm ,string  taxNumberRasm ,string postalCodeRasm , string lastUpdateRasm , string statusRasm
+        , string edareKolRasm , string vahedSabtiRasm)
     {
         CompanyName = companyName;
         Brand = brand;
@@ -67,8 +85,8 @@ public class Company : EntityBase
         CategoryId = categoryId;
         LicenceIds = licenceIds;
         IsActive = true;
-        AccountIds = accountIds;
-        Domain = domain; 
+        Accounts = accounts ?? new List<Account>();
+        Domain = domain;
         ReferDateFrom = referDateFrom;
         ReferDateTo = referDateTo;
         CreationDate = DateTime.Now;
@@ -77,7 +95,17 @@ public class Company : EntityBase
         CountEmployees = countEmployees;
         CountFolowers = countFolowers;
         PostalCode = postacode;
-
+        TitleRasm = titleRasm;
+        RegistrationDateRasm = registrationDateRasm;
+        RegistrationNoRasm = registrationNoRasm;
+        CapitalRasm = capitalRasm;
+        AddressRasm = addressRasm;
+        TaxNumberRasm = taxNumberRasm;
+        PostalCodeRasm = postalCodeRasm;
+        LastUpdateRasm = lastUpdateRasm;
+        StatusRasm = statusRasm;
+        EdareKolRasm = edareKolRasm;
+        VahedSabtiRasm = vahedSabtiRasm;
         // CheckDate = Checklists;
     }
 
@@ -98,7 +126,7 @@ public class Company : EntityBase
     }
 
 
-    public void Edit(string companyName, string brand, string managerName, string securityManagerName, string phoneNumber, string? description, string nationalCode, string address, long categoryId, List<long> licenceIds, List<long> accountIds, string domain, DateTime referDateFrom, DateTime referDateTo, long stateCategoryId, List<long> peopleIds, long countEmployees, long countFolowers, string postacode/*, DateTime checkDate*/)
+    public void Edit(string companyName, string brand, string managerName, string securityManagerName, string phoneNumber, string? description, string nationalCode, string address, long categoryId, List<long> licenceIds, List<Account> accounts, string domain, DateTime referDateFrom, DateTime referDateTo, long stateCategoryId, List<long> peopleIds, long countEmployees, long countFolowers, string postacode, DateTime? checkDate)
     {
         
         if (!string.IsNullOrWhiteSpace(companyName))
@@ -169,9 +197,20 @@ public class Company : EntityBase
             LicenceIds = licenceIds;
 
 
+        if (accounts != null)
+        {
+            // حذف accountهایی که دیگه نباید باشن
+            Accounts.RemoveAll(a => !accounts.Any(x => x.Id == a.Id));
 
-        if (accountIds != null)
-            AccountIds = accountIds;
+            // اضافه کردن فقط accountهایی که جدید هستن
+            foreach (var acc in accounts)
+            {
+                if (!Accounts.Any(x => x.Id == acc.Id))
+                    Accounts.Add(acc);
+            }
+        }
+
+
 
         if (!string.IsNullOrWhiteSpace(domain))
 
@@ -190,7 +229,11 @@ public class Company : EntityBase
         {
             ReferDateTo = referDateTo;
         }
-        CheckDate = DateTime.Now;
+
+        if (checkDate.HasValue)
+        {
+            CheckDate = checkDate.Value;
+        }
 
         CreationDate = DateTime.Now; // تاریخ بروز رسانی میشه 
         // یه تارخ باید به دیتابیس اضافه کنم که توش فقط تو این متد تاریخ بروز رسانی رو بزارم و تو ایندکس هم نمایشش بدم و این تاریخ رو از اینجا حذف بکنم
@@ -207,8 +250,47 @@ public class Company : EntityBase
         if (countFolowers > 0)
             CountFolowers = countFolowers;
 
-
     }
+
+    public void EditRasmio(string? titleRasm = null, string? registrationDateRasm = null, string? registrationNoRasm = null, decimal? capitalRasm = null,
+    string? addressRasm = null, string? taxNumberRasm = null, string? postalCodeRasm = null, string? lastUpdateRasm = null,
+    string? statusRasm = null, string? edareKolRasm = null, string? vahedSabtiRasm = null)
+    {
+        // فقط پراپرتی‌هایی که مقدار جدید دارند، بروزرسانی می‌شوند
+        if (!string.IsNullOrWhiteSpace(titleRasm))
+            TitleRasm = titleRasm;
+
+        if (!string.IsNullOrWhiteSpace(registrationDateRasm))
+            RegistrationDateRasm = registrationDateRasm;
+
+        if (!string.IsNullOrWhiteSpace(registrationNoRasm))
+            RegistrationNoRasm = registrationNoRasm;
+
+        if (capitalRasm.HasValue && capitalRasm > 0)
+            CapitalRasm = capitalRasm;
+
+        if (!string.IsNullOrWhiteSpace(addressRasm))
+            AddressRasm = addressRasm;
+
+        if (!string.IsNullOrWhiteSpace(taxNumberRasm))
+            TaxNumberRasm = taxNumberRasm;
+
+        if (!string.IsNullOrWhiteSpace(postalCodeRasm))
+            PostalCodeRasm = postalCodeRasm;
+
+        if (!string.IsNullOrWhiteSpace(lastUpdateRasm))
+            LastUpdateRasm = lastUpdateRasm;
+
+        if (!string.IsNullOrWhiteSpace(statusRasm))
+            StatusRasm = statusRasm;
+
+        if (!string.IsNullOrWhiteSpace(edareKolRasm))
+            EdareKolRasm = edareKolRasm;
+
+        if (!string.IsNullOrWhiteSpace(vahedSabtiRasm))
+            VahedSabtiRasm = vahedSabtiRasm;
+    }
+
 
     public void Active()
     {

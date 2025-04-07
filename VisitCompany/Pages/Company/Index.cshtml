@@ -35,6 +35,7 @@
             </div>
             <div class="panel-body">
                 <form class="form-inline" role="form" method="post">
+
                     <div class="form-group">
                         <label class="sr-only" asp-for="SearchModel.CategoryId"></label>
                         <select class="form-control" asp-for="SearchModel.CategoryId" asp-items="Model.CompanyCategories">
@@ -98,85 +99,120 @@
     </div>
 </div>
 
+
 <div class="row" permission="@CompanyPermission.ListCompanies" id="ProductCategoriesDiv">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">لیست شرکت‌ها (@(Model.Companies?.Count ?? 0))</h3>
             </div>
-            <form method="post" asp-for="Command">
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <table id="datatable" class="table table-striped table-bordered">
-                                <thead>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <table id="datatable" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>تاریخ آخرین بروز رسانی </th>
+                                    <th>نام رسمی شرکت</th>
+                                    <th>نام برند</th>
+                                    <th>استان مربوط به شرکت </th>
+                                    <th>شناسه ملی</th>
+                                    <th>دسته‌بندی</th>
+                                    <th>وب سایت</th>
+                                    <th>آدرس</th>
+                                    <th>عنوان در رسمیو</th>
+                                    <th>شماره ثبت در رسمیو</th>
+                                    <th>تاریخ ثبت در رسمیو</th>
+                                    <th>سرمایه در رسمیو</th>
+                                    <th>در رسمیوآدرس</th>
+                                    <th>در رسمیوکد مالیاتی</th>
+                                    <th>کد پستی در رسمیو</th>
+                                    <th>وضعیت در رسمیو</th>
+                                    <th>اداره کل ثبت در رسمیو</th>
+                                    <th>واحد ثبت در رسمیو</th>
+                                    <th>آخرین به‌روزرسانی در رسمیو</th>
+                                    <th>بروزرسانی اطلاعات رسمیو</th>
+                                    <th>عملیات</th>
+                                    <th>جزییات</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Companies)
+                                {
                                     <tr>
-                                        <th>تاریخ آخرین بروز رسانی </th>
-                                        <th>نام رسمی شرکت</th>
-                                        <th>نام برند</th>
-                                        <th>استان مربوط به شرکت </th>
+                                        <td>@item.CompanyCreateDate</td>
+                                        <td>@item.CompanyName</td>
+                                        <td>@item.Brand</td>
+                                        <td><center>@item.StatesCategory</center></td>
+                                        <td>
+                                            <a class="fa fa-link" asp-page="/index" asp-route-companyId="@item.NationalCode">@item.NationalCode</a>
+                                        </td>
+                                        <td>@item.Category</td>
+                                        <td>@item.Domain</td>
+                                        <td>@item.Address</td>
+                                        <td>@item.TitleRasm</td>
+                                        <td>@item.RegistrationNoRasm</td>
+                                        <td>@item.RegistrationDateRasm</td>
+                                        <td>@item.CapitalRasm</td>
+                                        <td>@item.AddressRasm</td>
+                                        <td>@item.TaxNumberRasm</td>
+                                        <td>@item.PostalCodeRasm</td>
+                                        <td>@item.StatusRasm</td>
+                                        <td>@item.EdareKolRasm</td>
+                                        <td>@item.VahedSabtiRasm</td>
+                                        <td>@item.LastUpdateRasm</td>
+                                        <td>
 
-                                        <th>شناسه ملی</th>
-                                        <th>دسته‌بندی</th>
-                                        <th>وب سایت</th>
+                                            <a class="btn btn-warning btn-custome waves-effect waves-light pull-right m-rl-5"
+                                               asp-page-handler="UpdateRasmioAsync"
+                                               asp-route-id="@item.Id">
+                                                <i class="fa fa-refresh"></i> بروزرسانی اطلاعات رسمیو
+                                            </a>
 
-                                        <th>آدرس</th>
-                                        <th>عملیات</th>
-                                        <th>جزییات</th>
+
+                                        <td>
+                                            <a class="btn btn-warning btn-custome waves-effect waves-light pull-right m-rl-5">
+                                                <a class="fa fa-edit" asp-page="./Edit" asp-route-id="@item.Id">ویرایش</a>
+                                            </a>
+                                        </td>
+                                          
+                                        <td>
+                                            <a href="javascript:void(0);" class="view-details" data-id="@item.Id">
+                                                <i class="fa fa-search"></i>
+                                            </a>
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var item in Model.Companies)
-                                    {
-                                        <tr>
-
-                                            <td>@item.CompanyCreateDate</td>
-                                            <td>@item.CompanyName</td>
-                                            <td>@item.Brand</td>
-                                            <td> <center>@item.StatesCategory</center></td>
-
-                                            <td>
-                                                <a class="fa fa-link" asp-page="/index" asp-route-name="@item.NationalCode">@item.NationalCode</a>
-                                            </td>
-                                            <td>@item.Category</td>
-                                            <td>@item.Domain</td>
-
-                                            <td>@item.Address</td>
-                                            <td>
-                                                <a class="btn btn-warning btn-custome waves-effect waves-light pull-right m-rl-5">
-                                                    <a class="fa fa-edit" asp-page="./Edit" asp-route-id="@item.Id">ویرایش</a>
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <!-- آیکون ذره‌بین برای نمایش اطلاعات بیشتر -->
-                                                <a href="javascript:void(0);" class="view-details" data-id="@item.Id">
-                                                    <i class="fa fa-search"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
+                                }
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-
-
-
-
-
-            </form>
-
+            </div>
         </div>
     </div>
 </div>
+
+
+
+
+          
+<div class="panel-body">
+    <div class="row">
+        <div class="col-md-12">
+            <a asp-page="/Companycategories/Create" class="btn btn-success mb-3">
+                <i class="fa fa-plus"></i> افزودن دسته‌بندی جدید
+            </a>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <table id="datatable" class="table table-striped table-bordered">
 
 
 <div class="row" id="ProductCategoriesDiv">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">لیست گروه محصولات</h3>
+                <h3 class="panel-title">دسته بندی کسب و کارها </h3>
+
             </div>
             <div class="panel-body">
                 <div class="row">
@@ -209,7 +245,7 @@
                                             </td>
                                             <td>
                                                 <a class="btn btn-warning pull-right m-rl-5">
-                                                    <a class="fa fa-edit" asp-page="./Edit" asp-route-id="@item.Id">ویرایش </a>
+                                                    <a class="fa fa-edit" asp-page="/CompanyCategories/Edit" asp-route-id="@item.Id">ویرایش </a>
                                                 </a>
                                             </td>
                                         </tr>
@@ -315,7 +351,6 @@
             $(document).on('click', '.close-btn', function() {
                 $('#popupWindow').fadeOut(); // بستن پاپ‌آپ
             });
-
 
         });
 

@@ -59,10 +59,17 @@ namespace AccountManagement.Application
             return _roleRepository.GetDetails(id);
         }
 
+        //public List<int> GetPermissions(long id)
+        //{
+        //  return _roleRepository.Get(id).Permissions.Select(x => x.Code).ToList() ?? new List<int>();
+        //}
+
         public List<int> GetPermissions(long id)
         {
-          return _roleRepository.Get(id).Permissions.Select(x => x.Code).ToList();
+            var role = _roleRepository.Get(id);
+            return role?.Permissions?.Select(x => x.Code).ToList() ?? new List<int>();
         }
+
 
         public List<RoleViewModel> List()
         {

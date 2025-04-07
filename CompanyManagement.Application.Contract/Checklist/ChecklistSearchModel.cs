@@ -26,10 +26,7 @@ namespace CompanyManagement.Application.Contract.Checklist
         public string? TypeCheckList { get; set; }
         public double? Average { get; set; }
         public string ScoreRange { get; set; } // بازه نمرات
-
-
-
-
+        public long CategoryId { get; set; }
 
 
 

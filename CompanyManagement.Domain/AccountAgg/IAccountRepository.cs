@@ -17,7 +17,7 @@ namespace CompanyManagement.Domain.AccountAgg
         Account GetById(long id);
         Account GetByMobile(string mobile); // Add this method to fetch account by mobile number
 
-        List<AccountViewModel> GetAccounts();
+        List<AccountViewModel> GetAccounts(long? provincialAdminStateCategoryId = null);
         bool ActiveUser(string activeCode);
 
         public List<Account> GetUsersByProvince(long stateId);

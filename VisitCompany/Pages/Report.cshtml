@@ -157,12 +157,12 @@
 </head>
 <body>
     <h1>گزارش</h1>
-   
 
-@* جستجو
- *@
+
+    @* جستجو
+    *@
     <div class="panel-body">
-        <form class="form-inline" role="form" method="get" asp-page="/Report">
+        <form class="form-inline" role="form" method="post" asp-page="/Report">
             <div class="form-group">
                 <label class="sr-only" for="keyword">کلمه کلیدی</label>
                 <input asp-for="Keyword" class="form-control" id="keyword" name="Keyword" placeholder="عبارت جستجو" />
@@ -184,7 +184,12 @@
             </div>
             <div class="form-group">
                 <label>
-                    <input type="checkbox" asp-for="SearchPersons" /> افراد
+                    <input type="checkbox" asp-for="SearchAccounts" /> ارزیاب ها
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" asp-for="SearchPersons" />  افراد
                 </label>
             </div>
             <button type="submit" class="btn btn-success waves-effect waves-light m-l-10">جستجو</button>
@@ -210,17 +215,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.MergedData)
+                    @if (Model.MergedData != null && Model.MergedData.Any())
                     {
-                        <tr>
-                            <td>@item.StateCategory</td>
-                            <td>@item.ChecklistCount</td>
-                            <td>@item.ChecklistCountOneWeek</td>
-                            <td>@item.ChecklistCountOneMonth</td>
-                            <td>@item.CompanyCount</td>
-                            <td>@item.CompanyCountOneWeek</td>
-                            <td>@item.CompanyCountOneMonth</td>
-                        </tr>
+                        @foreach (var item in Model.MergedData)
+                        {
+                            <tr>
+                                <td>@item.StateCategory</td>
+                                <td>@item.ChecklistCount</td>
+                                <td>@item.ChecklistCountOneWeek</td>
+                                <td>@item.ChecklistCountOneMonth</td>
+                                <td>@item.CompanyCount</td>
+                                <td>@item.CompanyCountOneWeek</td>
+                                <td>@item.CompanyCountOneMonth</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <p>داده‌ای برای نمایش وجود ندارد.</p>
                     }
                 </tbody>
             </table>
@@ -240,7 +252,7 @@
             <li>میانگین نمرات  جداول عمومی انتظامی ماهانه: @Model.MonthlyAverageGeneralPol</li>
             <li>میانگین نمرات  جداول عمومی فنی ماهانه: @Model.MonthlyAverageGeneralProff</li>
 
-          
+
         </ul>
 
     </div>
@@ -274,7 +286,7 @@
     </div>
 
     <div class="statistics-item">
-     
+
 
         <h4>نتیجه جستجو در ارزیابی‌ها</h4>
         <table>
@@ -349,6 +361,54 @@
             </tbody>
         </table>
     </div>
+
+
+    <div class="statistics-item">
+
+        <div class="statistics-item">
+            <h3>نتیجه ی جستجو در ارزیاب ها</h3>
+
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>  نام </th>
+                        <th>  نام خانوادگی</th>
+                        <th>نام کاربری</th>
+                        <th>موبایل</th>
+                        <th>وضعیت کاربر</th>
+                        <th> استان</th>
+                        <th> آخرین ورود</th>
+
+                        <th> نقش</th>
+                        <th> تاریخ ایجاد</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var account in Model.AccountsSearch)
+                    {
+                        <tr>
+                            <td>@account.Name</td>
+
+                            <td>@account.Fullname</td>
+                            <td>@account.UserName</td>
+                            <td>@account.Mobile</td>
+                            <td>@account.IsActive</td>
+                            <td>@account.StatesCategory</td>
+
+                            <td>@account.LastLogin</td>
+                            <td>@account.Role</td>
+                            <td>@account.CreationDate</td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
     <div class="statistics-item">
         <h3>نتیجه ی جستجو در افراد حاضر در کسب و کارها</h3>
 
@@ -388,18 +448,30 @@
                 <tr>
                     <th>نام دسته بندی</th>
                     <th>میانگین کسب شده </th>
-                  
+                    <th>تعداد ارزیابی های این دسته بندی </th>
+
+
 
                 </tr>
             </thead>
             <tbody>
-                @foreach (var category in Model.CategoryAverage)
-                {
-                    <tr>
-                        <td>@category.CategoryName</td>
-                        <td>@category.AverageScore</td>
 
-                    </tr>
+                @if (Model.CategoryAverage != null && Model.CategoryAverage.Any())
+                {
+                    @foreach (var category in Model.CategoryAverage)
+                    {
+                        <tr>
+                            <td>@category.CategoryName</td>
+                            <td>@category.AverageScore</td>
+                            <td>@category.ChecklistCount</td>
+
+
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <p>داده‌ای یافت نشد.</p>
                 }
             </tbody>
         </table>
@@ -414,8 +486,17 @@
         <li>تعداد کل اکانت‌ها: @Model.TotalCountAccounts</li>
         <li>تعداد کل چک‌لیست‌های اضافه شده در یک هفته اخیر: @Model.TotalCountCheckListsInOneWeek</li>
 
-        <li>تعداد اکانت‌های غیر از ادمین: @Model.TotalCountAccountsExeptAdm</li>
+        <li>تعداد اکانت‌های غیر از ادمین های استانی و اصلی : @Model.TotalCountAccountsExeptAdm</li>
         <li>تعداد افراد در چک‌لیست‌ها: @Model.TotalCountCheckListsPeoples</li>
+    </ul>
+
+
+
+    <ul>
+        <h1>برای نمایش در نمودار تعداد ارجاع های اخیر در یک هفته و یک ماهه اخیر  </h1>
+        <li>تعداد کل ارجاع های داده شده  در یک هفته اخیر: @Model.StatusAssignedCountForweek</li>
+        <li>تعداد کل ارجاع های داده شده  در یک ماه اخیر: @Model.StatusAssignedCountForMonth</li>
+        
     </ul>
 
 
@@ -447,23 +528,36 @@
     }
 
 
-        <table>
-        <thead        
+    <table>
+        <thead
             <h3>نمایش بیشترین ضعف در بین آیتم های ارزیابی</h3>
 >
             <tr>
                 <th>نام ویژگی</th>
                 <th>مجموع امتیازات کسب شده در بین تمام شرکت ها</th>
+                <th>دارای وضعیت ضعیف در بین این تعداد شاخص</th>
+
             </tr>
         </thead>
         <tbody>
-            @foreach (var score in Model.TopScores)
+
+            @if (Model.TopScores != null && Model.TopScores.Any())
             {
-                <tr>
-                    <td>@score.PropertyName</td>
-                    <td>@score.TotalScore</td>
-                </tr>
+                @foreach (var score in Model.TopScores)
+                {
+                    <tr>
+                        <td>@score.PropertyName</td>
+                        <td>@score.TotalScore</td>
+                        <td>@score.WeakCompanyCount</td>
+
+                    </tr>
+                }
             }
+            else
+            {
+                <p>داده‌ای برای نمایش وجود ندارد.</p>
+            }
+
         </tbody>
     </table>
 
@@ -486,40 +580,48 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var checklist in Model.ChecklistsTen)
+                        @if (Model.ChecklistsTen != null)
                         {
-                            <tr>
-                                <td>@checklist.CreattionDate</td>
-                                <td>@checklist.CompanyName</td>
-                                <!-- معدل نمرات ارزیابی -->
-                                <td>
-                                    @if (checklist.AverageGeneral > 0)
-                                    {
-                                        <div>ارزیابی عمومی : @checklist.AverageGeneral</div>
-                                    }
-                                    @if (checklist.AverageGeneralProff > 0)
-                                    {
-                                        <div> فنی- ارزیابی عمومی : @checklist.AverageGeneralProff</div>
-                                    }
-                                    @if (checklist.AverageGeneralPol > 0)
-                                    {
-                                        <div>ارزیابی عمومی- انتظامی : @checklist.AverageGeneralPol</div>
-                                    }
-                                    @if (checklist.AverageJunipper > 0)
-                                    {
-                                        <div> ارزیابی تخصصی جونیپر: @checklist.AverageJunipper</div>
-                                    }
-                                    @if (checklist.AverageWin2019 > 0)
-                                    {
-                                        <div>ارزیابی تحصصیWin2019:  @checklist.AverageWin2019</div>
-                                    }
-                                    @if (checklist.AverageHpedl380 > 0)
-                                    {
-                                        <div>ارزیابی تخصصیHPEDL380: @checklist.AverageHpedl380</div>
-                                    }
-                                </td>
-                            </tr>
+                            @foreach (var checklist in Model.ChecklistsTen)
+                            {
+                                <tr>
+                                    <td>@checklist.CreattionDate</td>
+                                    <td>@checklist.CompanyName</td>
+                                    <!-- معدل نمرات ارزیابی -->
+                                    <td>
+                                        @if (checklist.AverageGeneral > 0)
+                                        {
+                                            <div>ارزیابی عمومی : @checklist.AverageGeneral</div>
+                                        }
+                                        @if (checklist.AverageGeneralProff > 0)
+                                        {
+                                            <div> فنی- ارزیابی عمومی : @checklist.AverageGeneralProff</div>
+                                        }
+                                        @if (checklist.AverageGeneralPol > 0)
+                                        {
+                                            <div>ارزیابی عمومی- انتظامی : @checklist.AverageGeneralPol</div>
+                                        }
+                                        @if (checklist.AverageJunipper > 0)
+                                        {
+                                            <div> ارزیابی تخصصی جونیپر: @checklist.AverageJunipper</div>
+                                        }
+                                        @if (checklist.AverageWin2019 > 0)
+                                        {
+                                            <div>ارزیابی تحصصیWin2019:  @checklist.AverageWin2019</div>
+                                        }
+                                        @if (checklist.AverageHpedl380 > 0)
+                                        {
+                                            <div>ارزیابی تخصصیHPEDL380: @checklist.AverageHpedl380</div>
+                                        }
+                                    </td>
+                                </tr>
+                            }
                         }
+                        else
+                        {
+                            <p>داده‌ای برای نمایش وجود ندارد.</p>
+                        }
+
                     </tbody>
                 </table>
             </div>
@@ -539,13 +641,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var company in Model.CompaniesTen)
+                        @if (Model.CompaniesTen != null && Model.CompaniesTen.Any())
                         {
-                            <tr>
-                                <td>@company.CompanyCreateDate</td>
-                                <td>@company.CompanyName</td>
-                                <td>@company.Category</td>
-                            </tr>
+                            @foreach (var company in Model.CompaniesTen)
+                            {
+                                <tr>
+                                    <td>@company.CompanyCreateDate</td>
+                                    <td>@company.CompanyName</td>
+                                    <td>@company.Category</td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <p>هیچ شرکتی یافت نشد.</p>
                         }
                     </tbody>
                 </table>
@@ -655,7 +764,7 @@
         }
 
         // رویداد برای دکمه یک هفته اخیر
-        $('#weekButton').click(function () {
+        $('#weekButton').click(function() {
             const weekData = [
                 statusAssignedCountWeek,
                 statusWaitingEvaluationCountWeek,
@@ -666,7 +775,7 @@
         });
 
         // رویداد برای دکمه یک ماه اخیر
-        $('#monthButton').click(function () {
+        $('#monthButton').click(function() {
             const monthData = [
                 statusAssignedCount,
                 statusWaitingEvaluationCount,

@@ -72,9 +72,15 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("AddressRasm")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Brand")
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
+
+                    b.Property<decimal?>("CapitalRasm")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<long>("CategoryId")
                         .HasColumnType("bigint");
@@ -104,8 +110,14 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                     b.Property<string>("Domain")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("EdareKolRasm")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
+
+                    b.Property<string>("LastUpdateRasm")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LicenceIds")
                         .IsRequired()
@@ -125,11 +137,20 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                     b.Property<string>("PostalCode")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PostalCodeRasm")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("ReferDateFrom")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("ReferDateTo")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("RegistrationDateRasm")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RegistrationNoRasm")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityManagerName")
                         .HasMaxLength(255)
@@ -137,6 +158,18 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
 
                     b.Property<long>("StateCategoryIds")
                         .HasColumnType("bigint");
+
+                    b.Property<string>("StatusRasm")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TaxNumberRasm")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleRasm")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VahedSabtiRasm")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -164,15 +197,15 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
 
             modelBuilder.Entity("CompanyLicenceCategory", b =>
                 {
-                    b.Property<long>("CompaniesId")
+                    b.Property<long>("CompanyId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("LicenceCategoriesId")
+                    b.Property<long>("LicenceCategoryId")
                         .HasColumnType("bigint");
 
-                    b.HasKey("CompaniesId", "LicenceCategoriesId");
+                    b.HasKey("CompanyId", "LicenceCategoryId");
 
-                    b.HasIndex("LicenceCategoriesId");
+                    b.HasIndex("LicenceCategoryId");
 
                     b.ToTable("CompanyLicenceCategory");
                 });
@@ -311,6 +344,9 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                     b.Property<string>("PeopleIds")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<long>("StateCategoryIds")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
@@ -340,6 +376,8 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                     b.HasIndex("JuniperHardeningID")
                         .IsUnique()
                         .HasFilter("[JuniperHardeningID] IS NOT NULL");
+
+                    b.HasIndex("StateCategoryIds");
 
                     b.HasIndex("Win2019ID")
                         .IsUnique()
@@ -1384,13 +1422,13 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                 {
                     b.HasOne("Company", null)
                         .WithMany()
-                        .HasForeignKey("CompaniesId")
+                        .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("CompanyManagement.Domain.LicenceCategoryAgg.LicenceCategory", null)
                         .WithMany()
-                        .HasForeignKey("LicenceCategoriesId")
+                        .HasForeignKey("LicenceCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -1451,6 +1489,12 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                         .WithOne("Checklist")
                         .HasForeignKey("CompanyManagement.Domain.ChecklistAgg.Checklist", "JuniperHardeningID");
 
+                    b.HasOne("CompanyManagement.Domain.StatesCategoryAgg.StateCategory", "StateCategory")
+                        .WithMany("checklists")
+                        .HasForeignKey("StateCategoryIds")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
                     b.HasOne("CompanyManagement.Domain.ChecklistAgg.Win2019", "Win2019")
                         .WithOne("Checklist")
                         .HasForeignKey("CompanyManagement.Domain.ChecklistAgg.Checklist", "Win2019ID");
@@ -1466,6 +1510,8 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
                     b.Navigation("HPEDL380");
 
                     b.Navigation("JuniperHardening");
+
+                    b.Navigation("StateCategory");
 
                     b.Navigation("Win2019");
                 });
@@ -1553,6 +1599,8 @@ namespace CompanyManagement.Infrasructure.EFCore.Migrations
             modelBuilder.Entity("CompanyManagement.Domain.StatesCategoryAgg.StateCategory", b =>
                 {
                     b.Navigation("Accounts");
+
+                    b.Navigation("checklists");
 
                     b.Navigation("companies");
                 });

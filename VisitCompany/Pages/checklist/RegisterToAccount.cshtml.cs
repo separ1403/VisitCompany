@@ -109,6 +109,7 @@ namespace VisitCompany.Pages.checklist
         {
             PopulateSelectLists();
 
+          
             var result = _company.BatchEdit(command);
             if (result.IsSucceeded)
             {

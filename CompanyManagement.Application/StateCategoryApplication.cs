@@ -5,6 +5,7 @@ using CompanyManagement.Application.Contract.StateCategory;
 using CompanyManagement.Domain.CompanyCategoryAgg;
 using CompanyManagement.Domain.StatesCategoryAgg;
 using Framework.Application;
+using Framework.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -89,6 +90,11 @@ namespace CompanyManagement.Application
 
         {
             return _statecategoryRepository.List(provincialAdminStateCategoryId);
+        }
+
+        public StateCategoryViewModel GetById(long id)
+        {
+            return _statecategoryRepository.GetById(id);
         }
     }
 }

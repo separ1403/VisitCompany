@@ -3,6 +3,7 @@ using CompanyManagement.Application.Contract.StateCategory;
 using CompanyManagement.Domain.StatesCategoryAgg;
 using Framework.Application;
 using Framework.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 namespace CompanyManagement.Infrasructure.EFCore.Repository
 {
@@ -74,5 +75,20 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                 query = query.Where(x => x.Name.Contains(searchModel.Name));
             return query.OrderByDescending(x => x.Id).ToList();
         }
+
+        public StateCategoryViewModel GetById(long id)
+        {
+            var query = _companyContext.StateCategories
+                .Where(x => x.Id == id)
+                .Select(x => new StateCategoryViewModel
+                {
+                    Id = x.Id,
+                    Name = x.Name
+                })
+                .FirstOrDefault();
+
+            return query;
+        }
+
     }
 }

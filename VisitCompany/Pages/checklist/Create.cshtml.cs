@@ -3,6 +3,7 @@ using CompanyManagement.Application;
 using CompanyManagement.Application.Contract.Checklist;
 using CompanyManagement.Application.Contract.Company;
 using CompanyManagement.Application.Contract.CompanyCategory;
+using CompanyManagement.Application.Contract.StateCategory;
 using Framework.Application;
 using Framework.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
@@ -23,17 +24,24 @@ namespace VisitCompany.Pages.checklist
         public List<SelectListItem> AccountList = new List<SelectListItem>();
 
         public SelectList Companies;
+        public List<CompanyViewModel> Companiess { get; set; }
+
+        public string StateCategoryName { get; set; }
+
         private readonly IAccountApplication _accountApplication;
         private readonly IChecklistApplication _checklistApplication;
         private readonly ICompanyApplication _companyApplication;
+        private readonly IStatecategoryApplication _statecategoryApplication;
 
-        public CreateModel(IAccountApplication accountApplication, IChecklistApplication checklistApplication,
-            ICompanyApplication companyApplication)
+        public CreateModel(IAccountApplication accountApplication, IChecklistApplication checklistApplication, ICompanyApplication companyApplication, IStatecategoryApplication statecategoryApplication)
         {
             _accountApplication = accountApplication;
             _checklistApplication = checklistApplication;
             _companyApplication = companyApplication;
+            _statecategoryApplication = statecategoryApplication;
         }
+
+
 
 
         //  public ChecklistViewModel ChecklistViewModel { get; set; }
@@ -44,16 +52,46 @@ namespace VisitCompany.Pages.checklist
         {
             var currentUserRole = Convert.ToInt64(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value);
             var currentUserProvinceId = Convert.ToInt64(HttpContext.User.Claims.FirstOrDefault(c => c.Type == "StateCategoryId")?.Value);
+            //var stateCategory = _statecategoryApplication.GetById(currentUserProvinceId);
+            //if (stateCategory != null)
+            //{
+            //    StateCategoryName = stateCategory.Name;
+            //}
 
-            var accounts = _accountApplication.Search(new AccountSearchModel(), currentUserRole == Convert.ToInt64(RolesConst.State) ? currentUserProvinceId : (long?)null);
+            var accounts = _accountApplication.Search(new AccountSearchModel(),(currentUserRole == Convert.ToInt64(RolesConst.State) || currentUserRole == Convert.ToInt64(RolesConst.SystemUser))
+            ? currentUserProvinceId
+                            : (long?)null);//
+
             AccountList = accounts.Select(accounts => new SelectListItem(accounts.Fullname, accounts.Id.ToString())).ToList();
-                
 
-            Companies = new SelectList(_companyApplication.GetCompeniesWithUsername(), "Id", "Brand");
+
+            if (currentUserRole == Convert.ToInt64(RolesConst.Administrator)) // اگر نقش ادمین باشد
+            {
+
+                Companiess = _companyApplication.GetCompenies(); // تمام شرکت‌ها
+            }
+
+            else
+            {
+                Companiess = _companyApplication.Serach(
+                new CompanySearchModel(),
+                (currentUserRole == Convert.ToInt64(RolesConst.State) || currentUserRole == Convert.ToInt64(RolesConst.SystemUser))
+               ? currentUserProvinceId
+                               : (long?)null);//
+            }
+
+
+            Companies = new SelectList(Companiess ?? new List<CompanyViewModel>(), "Id", "Brand");
         }
 
         public IActionResult OnPostCreate(CreateChecklist command)
         {
+
+
+            var currentUserRole = Convert.ToInt64(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value);
+            var currentUserProvinceId = Convert.ToInt64(HttpContext.User.Claims.FirstOrDefault(c => c.Type == "StateCategoryId")?.Value);
+
+            command.StateCategoryId = currentUserProvinceId;
             var operationResult = _checklistApplication.Create(command);
 
 

@@ -3,9 +3,11 @@ using Azure;
 using CompanyManagement.Application.Contract.Checklist;
 using CompanyManagement.Domain.AccountAgg;
 using CompanyManagement.Domain.ChecklistAgg;
+using CompanyManagement.Infrasructure.EFCore.Migrations;
 using CompanyManagement.Infrasructure.EFCore.Repository;
 using Framework.Application;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace CompanyManagement.Application
@@ -22,8 +24,8 @@ namespace CompanyManagement.Application
         private readonly IGeneralChecklistRepository _generalChecklistRepository;
         private readonly IGeneralChecklistProffesionalRepository _generalProffesionalRepository;
         private readonly IGeneralChecklistPolicyRepository _generalChecklistPolicyRepository;
-
-        public ChecklistApplication(IAccountRepository accountRepository, IChecklistRepository checklistRepository, IjuniperhardeningRepository junuperhardeningRepository, IHPEDL380Repository hPEDL380Repository, IWin2019Repository win2019Repository, IGeneralChecklistRepository generalChecklistRepository, IGeneralChecklistProffesionalRepository generalProffesionalRepository, IGeneralChecklistPolicyRepository generalChecklistPolicyRepository)
+        private readonly ILogger<ChecklistApplication> _logger;
+        public ChecklistApplication(IAccountRepository accountRepository, IChecklistRepository checklistRepository, IjuniperhardeningRepository junuperhardeningRepository, IHPEDL380Repository hPEDL380Repository, IWin2019Repository win2019Repository, IGeneralChecklistRepository generalChecklistRepository, IGeneralChecklistProffesionalRepository generalProffesionalRepository, IGeneralChecklistPolicyRepository generalChecklistPolicyRepository, ILogger<ChecklistApplication> logger) // <-- اضافه کردن ILogger به سازنده)
         {
             _accountRepository = accountRepository;
             _checklistRepository = checklistRepository;
@@ -33,6 +35,7 @@ namespace CompanyManagement.Application
             _generalChecklistRepository = generalChecklistRepository;
             _generalProffesionalRepository = generalProffesionalRepository;
             _generalChecklistPolicyRepository = generalChecklistPolicyRepository;
+            _logger = logger; // <-- اختصاص logger به فیلد خصوصی
         }
 
         public OperationResult  Create(CreateChecklist command)
@@ -60,12 +63,24 @@ namespace CompanyManagement.Application
                 command.CountEmployees,
                 command.CountFolowers,
                 command.CompanyId,
-                command.AccountIds
+                command.AccountIds,
+                command.StateCategoryId
             );
             checkList.AddAccounts(accounts);
 
-            _checklistRepository.Create(checkList);
-            _checklistRepository.SaveChanges();
+            try
+            {
+                _checklistRepository.Create(checkList);
+                _checklistRepository.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "خطا در ایجاد چک‌لیست جدید.");
+                return operation.Failed("مشکلی در ذخیره‌سازی داده‌ها وجود دارد.");
+            }
+
+
+           
             var lastCompanyId = checkList.Id; // گرفتن شناسه رکورد جدید
             return operation.Succeeded("عملیات با موفقیت انجام گردید", lastCompanyId);
         }
@@ -93,9 +108,18 @@ namespace CompanyManagement.Application
             checkListJuniperHardenin.UniqueCode = GenerateUniqueCode(); // تولید کد یکتا
 
 
+            try
+            {
+                _junuperhardeningRepository.Create(checkListJuniperHardenin);
+                _checklistRepository.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "خطا در ایجاد چک‌لیست جدید.");
+                return operation.Failed("مشکلی در ذخیره‌سازی داده‌ها وجود دارد.");
+            }
 
-            _junuperhardeningRepository.Create(checkListJuniperHardenin);
-            _checklistRepository.SaveChanges();
+           
             var currentId = checkListJuniperHardenin.Id; // گرفتن شناسه رکورد جدید
            
             return operation.Succeeded("عملیات با موفقیت انجام گردید", currentId);
@@ -133,8 +157,19 @@ namespace CompanyManagement.Application
             checkListHPEDL380.UniqueCode = GenerateUniqueCode(); // تولید کد یکتا
 
 
-            _hPEDL380Repository.Create(checkListHPEDL380);
-            _checklistRepository.SaveChanges();
+            try
+            {
+                _hPEDL380Repository.Create(checkListHPEDL380);
+                _checklistRepository.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "خطا در ایجاد چک‌لیست جدید.");
+                return operation.Failed("مشکلی در ذخیره‌سازی داده‌ها وجود دارد.");
+            }
+
+
+          
             var currentId = checkListHPEDL380.Id; // گرفتن شناسه رکورد جدید
 
             return operation.Succeeded("عملیات با موفقیت انجام گردید", currentId);
@@ -175,8 +210,18 @@ namespace CompanyManagement.Application
             checkListWin2019.AverageWin2019cal(command);
             checkListWin2019.UniqueCode = GenerateUniqueCode(); // تولید کد یکتا
 
-            _win2019Repository.Create(checkListWin2019);
-            _checklistRepository.SaveChanges();
+            try
+            {
+                _win2019Repository.Create(checkListWin2019);
+                _checklistRepository.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "خطا در ایجاد چک‌لیست جدید.");
+                return operation.Failed("مشکلی در ذخیره‌سازی داده‌ها وجود دارد.");
+            }
+
+           
             var currentId = checkListWin2019.Id; // گرفتن شناسه رکورد جدید
 
             return operation.Succeeded("عملیات با موفقیت انجام گردید", currentId);
@@ -193,11 +238,19 @@ namespace CompanyManagement.Application
                 operation.Failed(ApplicationMessages.RecordNotFound);
                 return operation;
             }
-            
 
+            try
+            {
+                checklist.Editjunior(id);
+                _checklistRepository.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "خطا در ویرایش چک‌لیست Junior.");
+                return operation.Failed("مشکلی در ذخیره‌سازی داده‌ها وجود دارد.");
+            }
 
-            checklist.Editjunior(id);
-            _checklistRepository.SaveChanges();
+           
             operation.Succeeded(ApplicationMessages.SuccessMessage);
             return operation;
         }
@@ -215,11 +268,20 @@ namespace CompanyManagement.Application
                 operation.Failed(ApplicationMessages.RecordNotFound);
                 return operation;
             }
-            
 
 
-            checklist.EditHPEDL380(id);
-            _checklistRepository.SaveChanges();
+            try
+            {
+                checklist.EditHPEDL380(id);
+                _checklistRepository.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "خطا در ویرایش چک‌لیست .");
+                return operation.Failed("مشکلی در ذخیره‌سازی داده‌ها وجود دارد.");
+            }
+
+          
             operation.Succeeded(ApplicationMessages.SuccessMessage);
             return operation;
         }
@@ -236,10 +298,19 @@ namespace CompanyManagement.Application
                 return operation;
             }
 
+            try
+            {
+                checklist.EditWin2019(id);
+                _checklistRepository.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "خطا در ویرایش چک‌لیست .");
+                return operation.Failed("مشکلی در ذخیره‌سازی داده‌ها وجود دارد.");
+            }
 
 
-            checklist.EditWin2019(id);
-            _checklistRepository.SaveChanges();
+           
             operation.Succeeded(ApplicationMessages.SuccessMessage);
             return operation;
         }
@@ -309,8 +380,18 @@ namespace CompanyManagement.Application
             generalChecklist.UniqueCode = GenerateUniqueCode(); // تولید کد یکتا
 
 
-            _generalChecklistRepository.Create(generalChecklist);
-            _checklistRepository.SaveChanges();
+            try
+            {
+                _generalChecklistRepository.Create(generalChecklist);
+                _checklistRepository.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "خطا در ایجاد چک‌لیست جدید.");
+                return operation.Failed("مشکلی در ذخیره‌سازی داده‌ها وجود دارد.");
+            }
+
+          
             var currentId = generalChecklist.Id; // گرفتن شناسه رکورد جدید
 
             return operation.Succeeded("عملیات با موفقیت انجام گردید", currentId);
@@ -337,8 +418,20 @@ namespace CompanyManagement.Application
             generalChecklist.UniqueCode = GenerateUniqueCode(); // تولید کد یکتا
 
 
-            _generalProffesionalRepository.Create(generalChecklist);
-            _checklistRepository.SaveChanges();
+            try
+            {
+                _generalProffesionalRepository.Create(generalChecklist);
+                _checklistRepository.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "خطا در ایجاد چک‌لیست جدید.");
+                return operation.Failed("مشکلی در ذخیره‌سازی داده‌ها وجود دارد.");
+            }
+
+
+
+           
             var currentId = generalChecklist.Id; // گرفتن شناسه رکورد جدید
 
             return operation.Succeeded("عملیات با موفقیت انجام گردید", currentId);
@@ -358,9 +451,19 @@ namespace CompanyManagement.Application
             generalChecklist.CalculateAverage(command);
             generalChecklist.UniqueCode = GenerateUniqueCode(); // تولید کد یکتا
 
+            try
+            {
+                _generalChecklistPolicyRepository.Create(generalChecklist);
+                _checklistRepository.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "خطا در ایجاد چک‌لیست جدید.");
+                return operation.Failed("مشکلی در ذخیره‌سازی داده‌ها وجود دارد.");
+            }
 
-            _generalChecklistPolicyRepository.Create(generalChecklist);
-            _checklistRepository.SaveChanges();
+
+           
             var currentId = generalChecklist.Id; // گرفتن شناسه رکورد جدید
 
             return operation.Succeeded("عملیات با موفقیت انجام گردید", currentId);
@@ -378,10 +481,19 @@ namespace CompanyManagement.Application
                 return operation;
             }
 
+            try
+            {
+                checklist.EditGeneralChecklist(id);
+                _checklistRepository.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "خطا در ویرایش چک‌لیست .");
+                return operation.Failed("مشکلی در ذخیره‌سازی داده‌ها وجود دارد.");
+            }
 
 
-            checklist.EditGeneralChecklist(id);
-            _checklistRepository.SaveChanges();
+           
             operation.Succeeded(ApplicationMessages.SuccessMessage);
             return operation;
         }
@@ -397,10 +509,18 @@ namespace CompanyManagement.Application
                 return operation;
             }
 
+            try
+            {
+                checklist.EditGeneralChecklistProffessional(id);
+                _checklistRepository.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "خطا در ویرایش چک‌لیست ");
+                return operation.Failed("مشکلی در ذخیره‌سازی داده‌ها وجود دارد.");
+            }
 
-
-            checklist.EditGeneralChecklistProffessional(id);
-            _checklistRepository.SaveChanges();
+          
             operation.Succeeded(ApplicationMessages.SuccessMessage);
             return operation;
         }
@@ -417,10 +537,19 @@ namespace CompanyManagement.Application
                 return operation;
             }
 
+            try
+            {
+                checklist.EditGeneralChecklistPolicy(id);
+                _checklistRepository.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "خطا در ویرایش چک‌لیست ");
+                return operation.Failed("مشکلی در ذخیره‌سازی داده‌ها وجود دارد.");
+            }
 
 
-            checklist.EditGeneralChecklistPolicy(id);
-            _checklistRepository.SaveChanges();
+          
             operation.Succeeded(ApplicationMessages.SuccessMessage);
             return operation;
         }
@@ -474,18 +603,35 @@ namespace CompanyManagement.Application
         }
 
 
+        //private string GenerateUniqueCode()
+        //{
+        //    Random random = new Random();
+        //    string code;
+
+        //    do
+        //    {
+        //        // تولید یک عدد تصادفی 6 رقمی
+        //        code = random.Next(100000, 100000 + 100000).ToString();
+        //    } while (Exists(code)); // بررسی وجود کد در دیتابیس
+
+        //    return code;
+        //}
+
+        //private string GenerateUniqueCode()
+        //{
+        //    return $"{DateTime.Now:yyyyMMddHHmmssfff}-{Guid.NewGuid().ToString().Substring(0, 8)}";
+        //}
+
         private string GenerateUniqueCode()
         {
-            Random random = new Random();
-            string code;
+            // تولید بخش زمانی: 8 رقم آخر از Ticks زمان فعلی
+            var ticksPart = (DateTime.Now.Ticks % 100000000).ToString("D8");
 
-            do
-            {
-                // تولید یک عدد تصادفی 6 رقمی
-                code = random.Next(100000, 100000 + 100000).ToString();
-            } while (Exists(code)); // بررسی وجود کد در دیتابیس
+            // تولید دو رقم تصادفی برای اطمینان از یکتایی
+            var random = new Random();
+            var randomPart = random.Next(10, 99).ToString();
 
-            return code;
+            return $"{ticksPart}{randomPart}"; // طول نهایی دقیقاً 10 رقم
         }
 
 

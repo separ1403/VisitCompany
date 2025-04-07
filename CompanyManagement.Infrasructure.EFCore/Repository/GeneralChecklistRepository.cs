@@ -44,10 +44,9 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
         // این متد تمام نمرات هر ستون در جدول مروبطه در دیتابیس رو جمع میزنه و هرکدوم که نمرات کمتری دارند و نمایش میده
         // برای پیدا کردن آیتمی که بیشترین نقطه ضعف در بین سایر ایتم ها  است به کار کیره
 
-        public List<(string PropertyName, long TotalScore)> GetMostVulnerableProperties()
+        public List<(string PropertyName, long TotalScore, int WeakCompanyCount)> GetMostVulnerableProperties()
         {
-            var result = new List<(string PropertyName, long TotalScore)>();
-
+            var result = new List<(string PropertyName, long TotalScore, int WeakCompanyCount)>();
             // دیکشنری برای نگه‌داری نام‌های دلخواه
             var columnDisplayNames = new Dictionary<string, string>
     {
@@ -126,35 +125,48 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
 
             // محاسبه امتیازات جدول GeneralChecklist
             AddScoresFromTable(_companyContext.GeneralChecklists.ToList(), generalChecklistProperties, result, columnDisplayNames);
-
-            // محاسبه امتیازات جدول GeneralPolicy
             AddScoresFromTable(_companyContext.GeneralPoliies.ToList(), generalPolicyProperties, result, columnDisplayNames);
-
-            // محاسبه امتیازات جدول GeneralProffesional
             AddScoresFromTable(_companyContext.GeneralProffesionals.ToList(), generalProffesionalProperties, result, columnDisplayNames);
 
-            // مرتب‌سازی براساس کمترین مجموع امتیازات و نمایش ۱۰ مورد اول
+
+
+            // مرتب‌سازی براساس کمترین مجموع امتیاز
             return result.OrderBy(x => x.TotalScore).Take(10).ToList();
         }
 
         // متد کمکی برای محاسبه امتیازات هر جدول
-        private void AddScoresFromTable<T>(List<T> tableData, string[] properties, List<(string PropertyName, long TotalScore)> result, Dictionary<string, string> columnDisplayNames)
+        private void AddScoresFromTable<T>(
+          List<T> tableData,
+          string[] properties,
+          List<(string PropertyName, long TotalScore, int WeakCompanyCount)> result,
+          Dictionary<string, string> columnDisplayNames,
+          int weaknessThreshold = 50 // آستانه برای در نظر گرفتن ضعف
+      )
         {
             foreach (var property in properties)
             {
-                var totalScore = tableData
-                    .Select(x => (long?)x.GetType().GetProperty(property)?.GetValue(x))
-                    .Where(x => x.HasValue)
-                    .Sum(x => x.Value); // جمع کل نمرات ستون
+                long totalScore = 0;
+                int weakCount = 0;
 
-                // گرفتن نام دلخواه از دیکشنری
+                foreach (var item in tableData)
+                {
+                    var value = item.GetType().GetProperty(property)?.GetValue(item) as long?;
+                    if (value.HasValue)
+                    {
+                        totalScore += value.Value;
+                        if (value.Value < weaknessThreshold)
+                            weakCount++;
+                    }
+                }
+
                 string displayName = columnDisplayNames.ContainsKey(property)
                     ? columnDisplayNames[property]
-                    : property; // اگر موجود نبود، از نام اصلی استفاده می‌شود
+                    : property;
 
-                result.Add((displayName, totalScore));
+                result.Add((displayName, totalScore, weakCount));
             }
         }
+
 
 
 

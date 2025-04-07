@@ -3,6 +3,8 @@ using CompanyManagement.Application.Contract.LicenceCategory;
 using CompanyManagement.Domain.CompanyCategoryAgg;
 using CompanyManagement.Domain.LicenceCategoryAgg;
 using Framework.Application;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +16,12 @@ namespace CompanyManagement.Application
     public class LicenceCategoryApplication : ILicenceCategoryApplication
     {
         private readonly ILicenceCategoryRepository _licencecategoryRepository;
+        private readonly ILogger<ChecklistApplication> _logger;
 
-        public LicenceCategoryApplication(ILicenceCategoryRepository licenceCategoryRepository)
+        public LicenceCategoryApplication(ILicenceCategoryRepository licencecategoryRepository, ILogger<ChecklistApplication> logger)
         {
-            _licencecategoryRepository = licenceCategoryRepository;
+            _licencecategoryRepository = licencecategoryRepository;
+            _logger = logger;
         }
 
         public OperationResult Create(CreateLicenceCategory command)
@@ -31,8 +35,19 @@ namespace CompanyManagement.Application
 
             var licenceCategory = new LicenceCategory(command.Name, command.Description, command.Refrence,command.Status, command.Fullname,command.CompanyName);
 
-            _licencecategoryRepository.Create(licenceCategory);
-            _licencecategoryRepository.SaveChanges();
+                 
+
+            try
+            {
+                _licencecategoryRepository.Create(licenceCategory);
+                _licencecategoryRepository.SaveChanges();
+                return operation.Succeeded(ApplicationMessages.SuccessMessage);
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "خطا در ذخیره سازی");
+                return operation.Failed("مشکلی در ذخیره‌سازی داده‌ها وجود دارد.");
+            }
 
             operation.Succeeded(ApplicationMessages.SuccessMessage);
             return operation;
@@ -60,7 +75,25 @@ namespace CompanyManagement.Application
 
             licenceCategory.Edit(command.Name, command.Description, command.Refrence,command.Status);
 
-            _licencecategoryRepository.SaveChanges();
+
+
+            try
+            {
+                _licencecategoryRepository.SaveChanges();
+                operation.Succeeded(ApplicationMessages.SuccessMessage);
+
+
+                //_companyRepository.SaveChanges();
+            }
+
+
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "خطا در ویرایش .");
+                return operation.Failed("مشکلی در ذخیره‌سازی داده‌ها وجود دارد.");
+            }
+
+
 
             operation.Succeeded(ApplicationMessages.SuccessMessage);
             return operation;

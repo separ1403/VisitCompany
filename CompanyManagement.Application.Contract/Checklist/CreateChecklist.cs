@@ -25,6 +25,7 @@ namespace CompanyManagement.Application.Contract.Checklist
         public long HpedlId { get; set; }
         public long GeneralchecklistProffId { get; set; }
         public long GeneralchecklistPolId { get; set; }
+        public long StateCategoryId { get; set; }
 
 
 
