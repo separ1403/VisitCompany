@@ -1,11 +1,17 @@
+* {
+    letter-spacing: 0 !important;
+}
 .q-btn {
     border-radius: 10px;
 }
-
-
 
 .q-field--labeled .q-field__native, .q-field--labeled .q-field__prefix, .q-field--labeled .q-field__suffix {
     line-height: 24px;
     padding-top: 30px;
     padding-bottom: 8px;
+}
+
+.q-field__label {
+    left: unset !important;
+    transform-origin: right top !important;
 }

@@ -1,0 +1,156 @@
+body {
+    background: #DAE5E9;
+}
+
+a {
+    text-decoration: none;
+}
+.q-icon.material-icons {
+    font-family: 'Material Icons Outlined' !important;
+    font-style: normal !important;
+}
+
+.q-layout__section--marginal {
+    background: white;
+    margin: 15px;
+    color: #000;
+    border: 1px solid #efefef;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 5px 4px #e1e0e0;
+    direction: rtl;
+}
+
+.q-layout__shadow:after {
+    box-shadow: none;
+}
+
+.q-drawer {
+    background: transparent;
+    height: max-content !important;
+    top: 105px !important;
+    right: 15px !important;
+    direction: rtl;
+}
+
+.q-drawer__content {
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    direction: rtl;
+}
+
+.q-layout-padding {
+    padding: 40px;
+}
+
+.q-item {
+    border-radius: 10px;
+}
+
+.q-item--active, .q-item.q-router-link--active {
+    background: #4527a0;
+    color: white;
+    border-radius: 10px;
+}
+
+.q-page-container {
+    direction: rtl;
+}
+
+.header__menu {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__menu-right {
+    display: flex;
+    align-items: center;
+}
+
+.header__avatar {
+    cursor: pointer;
+}
+
+.user__info {
+    border-bottom: 1px solid #efefef;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+
+    span {
+        font-size: 12px;
+        font-weight: 300;
+    }
+}
+
+
+.card-box {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.card-box__title {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 26px;
+    margin-bottom: 20px;
+    margin-top: 0;
+    padding: 0;
+}
+
+/*.card-box__body {*/
+/*    margin: 40px 0 0;*/
+/*}*/
+
+.stats {
+    background: #FFFFFF;
+    padding: 10px 10px 10px 135px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    margin-bottom: 50px;
+
+    h3 {
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 36px;
+        margin: 0;
+    }
+}
+
+.stats__circle {
+    border-radius: 50%;
+    border: 10px solid #FFFFFF;
+    padding: 35px;
+    position: absolute;
+    top: -30%;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    width: 120px;
+    height: 120px;
+    left: 15px;
+}
+
+.stats__circle--darkslateblue {
+    background: darkslateblue;
+}
+.stats__circle--darkgreen {
+    background: darkolivegreen;
+}
+
+.index-table {
+        border-radius: 10px;
+        box-shadow: none !important;
+    
+    .q-table__title {
+        font-size: 16px;
+        font-weight: bold;
+    }
+}
