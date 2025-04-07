@@ -126,6 +126,38 @@ hide-header
 </q-table>
 
 
+<q-table
+      title="آخرین  ارزیابی ها "
+      :rows="evaluationsRows"
+      :columns="evaluationsCol"
+      row-key="name"
+card-class="index-table"
+hide-pagination
+hide-header
+    >
+
+        <template #body="props">
+          <q-tr :props="props">
+            <q-td key="name" :props="props">
+              <b class="block text-blue-10"> {{ props.row.name }} </b>
+              <span class="text-blue-grey-7">{{ props.row.category }}</span>
+            </q-td>
+            <q-td key="date" :props="props">
+              {{ props.row.date }}
+            </q-td>
+          </q-tr>
+        </template>
+
+      <template v-slot:bottom>
+<div class="full-width flex justify-center align-center text-center ">
+<a href="#"> <span> + مشاهده همه  </span></a>
+</div>
+
+      </template>
+
+</q-table>
+
+
   </div>
 </div>
   </div>
@@ -200,6 +232,43 @@ hide-header
           },
         ]
 
+
+        const evaluationsCol = [
+          {
+            name: 'name',
+            required: true,
+            label: 'نام',
+            align: 'left',
+            field: row => row.name,
+            format: val => `${val}`,
+            sortable: true
+          },
+          {name: 'date', align: 'left', label: 'تاریخ', field: 'date', sortable: true},
+        ]
+
+        const evaluationsRows = [
+          {
+            name: 'اسنپ',
+            category: 'ارزیابی عموممی با انطباق  75% ',
+            date: '1404/01/18',
+          },
+          {
+            name: 'تپسی',
+            category: 'ارزیابی عموممی با انطباق  75% ',
+            date: '1404/01/18',
+          },
+          {
+            name: 'سفیرک',
+            category: 'ارزیابی عموممی با انطباق  75%',
+            date: '1404/01/18',
+          },
+          {
+            name: 'دیوار',
+            category: '%ارزیابی عموممی با انطباق  75 ',
+            date: '1404/01/18',
+          },
+        ]
+
         return {
           filters,
           rows,
@@ -209,7 +278,9 @@ hide-header
           searchCategory,
           categoryOptions,
           companiesCol,
-          companiesRows
+          companiesRows,
+          evaluationsCol,
+          evaluationsRows
         };
       },
     });
