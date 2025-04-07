@@ -1,121 +1,217 @@
 ﻿@page
 @model IndexModel
 @{
-    Layout = "Shared/_AdminLayout";
-    ViewData["title"] = "مدیریت نقش‌ها";
+  Layout = "Shared/_AdminLayout";
+  ViewData["Title"] = "مدیریت نقش‌ها";
+  var jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(Model.CompanyData);
+  var errorList = Newtonsoft.Json.JsonConvert.SerializeObject(Model.Error);
 }
 
-<form class="form-inline" role="form" method="get">
-    <label class="sr-only" asp-for="companyId"></label>
-    <input class="form-control" asp-for="companyId" placeholder="نام">
-    <div class="form-group">
-    </div>
-    <button type="submit" class="btn btn-success waves-effect waves-light m-l-10">جستجو</button>
-</form>
-
-@if (Model.Error.Any())
-{
-    <div class="alert alert-info">
-        @foreach (string err in Model.Error)
-        {
-            <p>@err</p>
-        }
-    </div>
-}
-else
-{
-    <div class="row" >
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">لیست نتایج</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <table id="datatable" class="table table-striped table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>شناسه ملی</th>
-                                        <th>عنوان</th>
-                                        <th>شماره ثبت</th>
-                                        <th>تاریخ ثبت</th>
-                                        <th>سرمایه</th>
-                                        <th>آدرس</th>
-                                        <th>کد پستی</th>
-                                        <th>کد مالیاتی</th>
-                                        <th>وضعیت</th>
-                                        <th>اداره کل ثبت</th>
-                                        <th>واحد ثبت</th>
-                                        <th>آخرین به‌روزرسانی</th>
-                                        <th>لینک تصویر</th>
-                                        
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>@Model.CompanyData.Id</td>
-                                        <td>@Model.CompanyData.Title</td>
-                                        <td>@Model.CompanyData.RegistrationNo</td>
-                                        <td>@Model.CompanyData.RegistrationDate ?? "نامشخص"</td>
-                                        <td>@(Model.CompanyData.Capital.HasValue ? Model.CompanyData.Capital.Value.ToString("N0") : "نامشخص")</td>
-                                        <td>@Model.CompanyData.Address</td>
-                                        <td>@Model.CompanyData.PostalCode</td>
-                                        <td>@Model.CompanyData.TaxNumber</td>
-                                        <td>@Model.CompanyData.Status</td>
-                                        <td>@Model.CompanyData.EdareKol</td>
-                                        <td>@Model.CompanyData.VahedSabti</td>
-                                        <td>@Model.CompanyData.LastUpdate ?? "نامشخص"</td>
-
-                                        <td>
-                                            <a href="@Model.CompanyData.PictureUrl" target="_blank">لینک تصویر</a>
-                                        </td>
-                                        
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-}
-
-<div class="row">
-    <div class="col-md-12">
-        <iframe id="contentFrame" style="width: 100%; height: 600px; display: none; border: none;"></iframe>   @* // برای اینکه لینک در همین صفحه باز شود این قسمت  *@
-    </div>
+<div>
+  <index-page :init-data='@Html.Raw(jsonData)' :errors='@Html.Raw(errorList)'/>
 </div>
 
 @section Scripts {
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="~/adminTheme/assets/datatables/jquery.dataTables.min.js"></script>
-    <script src="~/adminTheme/assets/datatables/dataTables.bootstrap.js"></script>
+  <script>
+    registerComponent('index-page', {
+      props: ['initData', 'errors'],
+      template: `
+    <div>
+     <div class="card-box">
+                        <h2 class="card-box__title">جستجوی سریع</h2>
+                        <div class="card-box__body">
+                        <form method="get">
+                            <div class="flex q-mb-md">
+                                <q-input v-model="filters.companyId" name="CompanyId" filled label="شناسه ملی شرکت" type="text" />
+                                <q-select v-model="searchCategory" :options="categoryOptions" filled label="دسته‌بندی" />
+                            </div>
+                            <q-btn type="submit" label="جستجو" size="md" color="primary" />
+                        </form>
+                        </div>
+      <q-banner v-if="errors.length" dense class="bg-grey-3 q-my-md">
+        <div v-for="(err, i) in errors" :key="i" class="text-negative">
+          {{ err }}
+        </div>
+      </q-banner>
+      </div>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#datatable').dataTable();
+      <q-table
+        v-if="rows.length"
+        :rows="rows"
+        :columns="columns"
+        row-key="id"
+        flat
+        bordered
+        class="q-my-md"
+      >
+        <template v-slot:body-cell-capital="props">
+          <q-td :props="props">
+            {{ props.row.capital ? Number(props.row.capital).toLocaleString() : 'نامشخص' }}
+          </q-td>
+        </template>
 
-            // برای جلوگیری از رفتن به لینک داخلی
-            $('#datatable').on('click', 'a', function (event) {
-                event.preventDefault(); // جلوگیری از رفتن به لینک داخلی
-                var url = $(this).attr('href'); // گرفتن آدرس لینک
+        <template v-slot:body-cell-registrationDate="props">
+          <q-td :props="props">
+            {{ props.row.registrationDate || 'نامشخص' }}
+          </q-td>
+        </template>
 
-                // تنظیم آدرس iframe
-                $('#contentFrame').attr('src', url).show();
-            });
+        <template v-slot:body-cell-lastUpdate="props">
+          <q-td :props="props">
+            {{ props.row.lastUpdate || 'نامشخص' }}
+          </q-td>
+        </template>
+
+        <template v-slot:body-cell-pictureUrl="props">
+          <q-td :props="props">
+            <a href="#" v-on:click.prevent="openInIframe(props.row.pictureUrl)">لینک تصویر</a>
+          </q-td>
+        </template>
+      </q-table>
+      <q-card v-if="iframeUrl" class="q-my-md" flat bordered>
+        <iframe :src="iframeUrl" style="width: 100%; height: 600px; border: none;"></iframe>
+      </q-card>
+<div class="card-box">
+  <h2 class="card-box__title">وضعیت آماری</h2>
+<div class="card-box__body">
+<div class="stats">
+<div class="stats__right-side">
+<h3>تعداد کل کسب و کارها</h3>
+<span> کسب‌وکارهای ماه اخیر:  23 </span>
+</div>
+<div class="stats__left-side">
+<div class="stats__circle stats__circle--darkslateblue">370</div>
+</div>
+</div>
+
+<div class="stats">
+<div class="stats__right-side">
+<h3>تعداد کل ارزیابی ها</h3>
+<span> بازدیدهای ماه اخیر:  15  </span>
+</div>
+<div class="stats__left-side">
+<div class="stats__circle stats__circle--darkgreen">120</div>
+</div>
+</div>
+
+<q-table
+      title="آخرین کسب و کار‌های اضافه شده"
+      :rows="companiesRows"
+      :columns="companiesCol"
+      row-key="name"
+card-class="index-table"
+hide-pagination
+hide-header
+    >
+
+        <template #body="props">
+          <q-tr :props="props">
+            <q-td key="name" :props="props">
+              <b class="block text-blue-10"> {{ props.row.name }} </b>
+              <span class="text-blue-grey-7">{{ props.row.category }}</span>
+            </q-td>
+            <q-td key="date" :props="props">
+              {{ props.row.date }}
+            </q-td>
+          </q-tr>
+        </template>
+
+      <template v-slot:bottom>
+<div class="full-width flex justify-center align-center text-center ">
+<a href="#"> <span> + مشاهده همه  </span></a>
+</div>
+
+      </template>
+
+</q-table>
+
+
+  </div>
+</div>
+  </div>
+</div>
+</div>
+  `,
+      setup(props) {
+        const {ref} = Vue;
+        const searchCategory = ref('کسب و کارها')
+        const categoryOptions = ref(['کسب و کارها', 'افراد', 'مجوزها', 'ارزیاب ها', 'گزارش‌های ارزیاب']);
+
+        const filters = ref({
+          companyId: props.initData?.id || ''
         });
-    </script>
+
+        const rows = ref(props.initData ? [props.initData] : []);
+        const iframeUrl = ref('');
+
+        const columns = [
+          {name: 'id', label: 'شناسه ملی', field: 'id', align: 'center'},
+          {name: 'title', label: 'عنوان', field: 'title', align: 'center'},
+          {name: 'registrationNo', label: 'شماره ثبت', field: 'registrationNo', align: 'center'},
+          {name: 'registrationDate', label: 'تاریخ ثبت', field: 'registrationDate', align: 'center'},
+          {name: 'capital', label: 'سرمایه', field: 'capital', align: 'center'},
+          {name: 'address', label: 'آدرس', field: 'address', align: 'center'},
+          {name: 'postalCode', label: 'کد پستی', field: 'postalCode', align: 'center'},
+          {name: 'taxNumber', label: 'کد مالیاتی', field: 'taxNumber', align: 'center'},
+          {name: 'status', label: 'وضعیت', field: 'status', align: 'center'},
+          {name: 'edareKol', label: 'اداره کل ثبت', field: 'edareKol', align: 'center'},
+          {name: 'vahedSabti', label: 'واحد ثبت', field: 'vahedSabti', align: 'center'},
+          {name: 'lastUpdate', label: 'آخرین به‌روزرسانی', field: 'lastUpdate', align: 'center'},
+          {name: 'pictureUrl', label: 'لینک تصویر', field: 'pictureUrl', align: 'center'}
+        ];
+
+        function openInIframe(url) {
+          iframeUrl.value = url;
+        }
+
+        const companiesCol = [
+          {
+            name: 'name',
+            required: true,
+            label: 'نام',
+            align: 'left',
+            field: row => row.name,
+            format: val => `${val}`,
+            sortable: true
+          },
+          {name: 'date', align: 'left', label: 'تاریخ', field: 'date', sortable: true},
+        ]
+
+        const companiesRows = [
+          {
+            name: 'اسنپ',
+            category: 'از دسته بندی حمل و نقل',
+            date: '1404/01/18',
+          },
+          {
+            name: 'تپسی',
+            category: 'از دسته بندی حمل و نقل',
+            date: '1404/01/18',
+          },
+          {
+            name: 'سفیرک',
+            category: 'از دسته بندی پیامکی',
+            date: '1404/01/18',
+          },
+          {
+            name: 'دیوار',
+            category: 'از دسته بندی آگهی محور',
+            date: '1404/01/18',
+          },
+        ]
+
+        return {
+          filters,
+          rows,
+          columns,
+          iframeUrl,
+          openInIframe,
+          searchCategory,
+          categoryOptions,
+          companiesCol,
+          companiesRows
+        };
+      },
+    });
+  </script>
 }
-@* 
-    این کد قبلی بود تبدیل بشد به اسکریپت بالا تا لینک در همین صفحه بارگذاری شود
-@section Scripts {
-    <script src="~/adminTheme/assets/datatables/jquery.dataTables.min.js"></script>
-    <script src="~/adminTheme/assets/datatables/dataTables.bootstrap.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#datatable').dataTable();
-        });
-    </script>
-} *@
