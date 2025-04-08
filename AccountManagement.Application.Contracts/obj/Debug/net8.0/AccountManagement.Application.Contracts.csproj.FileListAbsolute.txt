@@ -1,0 +1,15 @@
+D:\VisitCompany\AccountManagement.Application.Contracts\bin\Debug\net8.0\AccountManagement.Application.Contracts.deps.json
+D:\VisitCompany\AccountManagement.Application.Contracts\bin\Debug\net8.0\AccountManagement.Application.Contracts.dll
+D:\VisitCompany\AccountManagement.Application.Contracts\bin\Debug\net8.0\AccountManagement.Application.Contracts.pdb
+D:\VisitCompany\AccountManagement.Application.Contracts\bin\Debug\net8.0\Framework.dll
+D:\VisitCompany\AccountManagement.Application.Contracts\bin\Debug\net8.0\Framework.pdb
+D:\VisitCompany\AccountManagement.Application.Contracts\obj\Debug\net8.0\AccountManagement.Application.Contracts.csproj.AssemblyReference.cache
+D:\VisitCompany\AccountManagement.Application.Contracts\obj\Debug\net8.0\AccountManagement.Application.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+D:\VisitCompany\AccountManagement.Application.Contracts\obj\Debug\net8.0\AccountManagement.Application.Contracts.AssemblyInfoInputs.cache
+D:\VisitCompany\AccountManagement.Application.Contracts\obj\Debug\net8.0\AccountManagement.Application.Contracts.AssemblyInfo.cs
+D:\VisitCompany\AccountManagement.Application.Contracts\obj\Debug\net8.0\AccountManagement.Application.Contracts.csproj.CoreCompileInputs.cache
+D:\VisitCompany\AccountManagement.Application.Contracts\obj\Debug\net8.0\AccountM.C7397A91.Up2Date
+D:\VisitCompany\AccountManagement.Application.Contracts\obj\Debug\net8.0\AccountManagement.Application.Contracts.dll
+D:\VisitCompany\AccountManagement.Application.Contracts\obj\Debug\net8.0\refint\AccountManagement.Application.Contracts.dll
+D:\VisitCompany\AccountManagement.Application.Contracts\obj\Debug\net8.0\AccountManagement.Application.Contracts.pdb
+D:\VisitCompany\AccountManagement.Application.Contracts\obj\Debug\net8.0\ref\AccountManagement.Application.Contracts.dll

@@ -1,0 +1,15 @@
+E:\Projects\VisitCompany\AccountManagement.Domain\bin\Debug\net8.0\AccountManagement.Domain.deps.json
+E:\Projects\VisitCompany\AccountManagement.Domain\bin\Debug\net8.0\AccountManagement.Domain.dll
+E:\Projects\VisitCompany\AccountManagement.Domain\bin\Debug\net8.0\AccountManagement.Domain.pdb
+E:\Projects\VisitCompany\AccountManagement.Domain\bin\Debug\net8.0\Framework.dll
+E:\Projects\VisitCompany\AccountManagement.Domain\bin\Debug\net8.0\Framework.pdb
+E:\Projects\VisitCompany\AccountManagement.Domain\obj\Debug\net8.0\AccountManagement.Domain.csproj.AssemblyReference.cache
+E:\Projects\VisitCompany\AccountManagement.Domain\obj\Debug\net8.0\AccountManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\Projects\VisitCompany\AccountManagement.Domain\obj\Debug\net8.0\AccountManagement.Domain.AssemblyInfoInputs.cache
+E:\Projects\VisitCompany\AccountManagement.Domain\obj\Debug\net8.0\AccountManagement.Domain.AssemblyInfo.cs
+E:\Projects\VisitCompany\AccountManagement.Domain\obj\Debug\net8.0\AccountManagement.Domain.csproj.CoreCompileInputs.cache
+E:\Projects\VisitCompany\AccountManagement.Domain\obj\Debug\net8.0\AccountM.6F3EE75A.Up2Date
+E:\Projects\VisitCompany\AccountManagement.Domain\obj\Debug\net8.0\AccountManagement.Domain.dll
+E:\Projects\VisitCompany\AccountManagement.Domain\obj\Debug\net8.0\refint\AccountManagement.Domain.dll
+E:\Projects\VisitCompany\AccountManagement.Domain\obj\Debug\net8.0\AccountManagement.Domain.pdb
+E:\Projects\VisitCompany\AccountManagement.Domain\obj\Debug\net8.0\ref\AccountManagement.Domain.dll

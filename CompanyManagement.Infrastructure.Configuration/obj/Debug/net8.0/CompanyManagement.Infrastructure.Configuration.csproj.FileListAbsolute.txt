@@ -1,0 +1,704 @@
+E:\Projects\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+E:\Projects\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+E:\Projects\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+E:\Projects\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+E:\Projects\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+E:\Projects\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+E:\Projects\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+E:\Projects\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+E:\Projects\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+E:\Projects\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+E:\Projects\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+E:\Projects\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\AccountManagement.Domain.dll
+E:\Projects\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+E:\Projects\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+E:\Projects\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+E:\Projects\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+E:\Projects\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+E:\Projects\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+E:\Projects\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+E:\Projects\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+E:\Projects\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+E:\Projects\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\AccountManagement.Domain.pdb
+E:\Projects\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+E:\Projects\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+E:\Projects\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+E:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+E:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+E:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+E:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\AccountManagement.Domain.dll
+E:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+E:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+E:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+E:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+E:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+E:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+E:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+E:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+E:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+E:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\AccountManagement.Domain.pdb
+E:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+E:\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+E:\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+E:\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+E:\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+E:\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+E:\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+E:\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+E:\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+E:\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+E:\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+D:\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+D:\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+D:\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+D:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+D:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+D:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+D:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+D:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+D:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+D:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+D:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+D:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+D:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+D:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+D:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+D:\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+D:\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+D:\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+D:\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+D:\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+D:\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+D:\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+D:\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+E:\new\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+E:\new\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+E:\new\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+E:\new\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\AccountManagement.Domain.dll
+E:\new\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+E:\new\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+E:\new\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+E:\new\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+E:\new\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+E:\new\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+E:\new\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+E:\new\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+E:\new\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+E:\new\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\AccountManagement.Domain.pdb
+E:\new\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+E:\new\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+E:\new\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+E:\new\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+E:\new\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+E:\new\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+E:\new\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+E:\new\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+E:\new\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+E:\new\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+E:\new\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+D:\backup\4\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+D:\backup\4\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+D:\backup\4\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+D:\backup\4\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\AccountManagement.Domain.dll
+D:\backup\4\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+D:\backup\4\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+D:\backup\4\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+D:\backup\4\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+D:\backup\4\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+D:\backup\4\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+D:\backup\4\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+D:\backup\4\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+D:\backup\4\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+D:\backup\4\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\AccountManagement.Domain.pdb
+D:\backup\4\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+D:\backup\4\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+D:\backup\4\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+D:\backup\4\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+D:\backup\4\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+D:\backup\4\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+D:\backup\4\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+D:\backup\4\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+D:\backup\4\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+D:\backup\4\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+D:\backup\4\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+D:\backup\test many page\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+D:\backup\test many page\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+D:\backup\test many page\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+D:\backup\test many page\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+D:\backup\test many page\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+D:\backup\test many page\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+D:\backup\test many page\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+D:\backup\test many page\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+D:\backup\test many page\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+D:\backup\test many page\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+D:\backup\test many page\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+D:\backup\test many page\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+D:\backup\test many page\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+D:\backup\test many page\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+D:\backup\test many page\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+D:\backup\test many page\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+D:\backup\test many page\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+D:\backup\test many page\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+D:\backup\test many page\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+D:\backup\test many page\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+D:\backup\test many page\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+D:\backup\test many page\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+D:\backup\test many page\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+E:\project\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+E:\project\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+E:\project\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+E:\project\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+E:\project\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+E:\project\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+E:\project\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+E:\project\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+E:\project\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+E:\project\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+E:\project\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+E:\project\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+E:\project\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+E:\project\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+E:\project\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+E:\project\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+E:\project\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+E:\project\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+E:\project\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+E:\project\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+E:\project\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+E:\project\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+E:\project\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+E:\project\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+E:\project\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+E:\project\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+E:\project\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+E:\project\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+E:\project\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+E:\project\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+E:\project\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+E:\project\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+E:\project\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+E:\project\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+E:\project\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+E:\project\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+E:\project\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+E:\project\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+D:\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+D:\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+D:\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+D:\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+D:\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+D:\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+D:\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+D:\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+D:\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+D:\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+D:\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+D:\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+D:\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+D:\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+D:\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+D:\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+D:\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+D:\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+D:\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+D:\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+D:\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+D:\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+D:\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\1\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+E:\project\1\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\1\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+E:\project\1\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+E:\project\1\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+E:\project\1\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+E:\project\1\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+E:\project\1\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+E:\project\1\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+E:\project\1\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+E:\project\1\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+E:\project\1\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+E:\project\1\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+E:\project\1\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+E:\project\1\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+E:\project\1\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+E:\project\1\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+E:\project\1\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+E:\project\1\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+E:\project\1\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\1\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\1\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+E:\project\1\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+D:\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+D:\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+D:\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+D:\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+D:\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+D:\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+D:\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+D:\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+D:\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+D:\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+D:\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+D:\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+D:\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+D:\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+D:\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+D:\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+D:\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+D:\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+D:\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+D:\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+D:\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+D:\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+D:\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\CyberSec\Desktop\New folder (2)\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+C:\Users\CyberSec\Desktop\New folder (2)\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CyberSec\Desktop\New folder (2)\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+C:\Users\CyberSec\Desktop\New folder (2)\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+C:\Users\CyberSec\Desktop\New folder (2)\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+C:\Users\CyberSec\Desktop\New folder (2)\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\CyberSec\Desktop\New folder (2)\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\CyberSec\Desktop\New folder (2)\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+C:\Users\CyberSec\Desktop\New folder (2)\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+C:\Users\CyberSec\Desktop\New folder (2)\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\CyberSec\Desktop\New folder (2)\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+C:\Users\CyberSec\Desktop\New folder (2)\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+C:\Users\CyberSec\Desktop\New folder (2)\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+C:\Users\CyberSec\Desktop\New folder (2)\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+C:\Users\CyberSec\Desktop\New folder (2)\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+C:\Users\CyberSec\Desktop\New folder (2)\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+C:\Users\CyberSec\Desktop\New folder (2)\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+C:\Users\CyberSec\Desktop\New folder (2)\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+C:\Users\CyberSec\Desktop\New folder (2)\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+C:\Users\CyberSec\Desktop\New folder (2)\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+C:\Users\CyberSec\Desktop\New folder (2)\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+C:\Users\CyberSec\Desktop\New folder (2)\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+C:\Users\CyberSec\Desktop\New folder (2)\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\CyberSec\Desktop\New folder (2)\licence pro\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+C:\Users\CyberSec\Desktop\New folder (2)\licence pro\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\CyberSec\Desktop\New folder (2)\licence pro\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+C:\Users\CyberSec\Desktop\New folder (2)\licence pro\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+C:\Users\CyberSec\Desktop\New folder (2)\licence pro\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+C:\Users\CyberSec\Desktop\New folder (2)\licence pro\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+C:\Users\CyberSec\Desktop\New folder (2)\licence pro\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+C:\Users\CyberSec\Desktop\New folder (2)\licence pro\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+C:\Users\CyberSec\Desktop\New folder (2)\licence pro\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+C:\Users\CyberSec\Desktop\New folder (2)\licence pro\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+C:\Users\CyberSec\Desktop\New folder (2)\licence pro\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+C:\Users\CyberSec\Desktop\New folder (2)\licence pro\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+C:\Users\CyberSec\Desktop\New folder (2)\licence pro\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+C:\Users\CyberSec\Desktop\New folder (2)\licence pro\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+C:\Users\CyberSec\Desktop\New folder (2)\licence pro\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CyberSec\Desktop\New folder (2)\licence pro\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+C:\Users\CyberSec\Desktop\New folder (2)\licence pro\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+C:\Users\CyberSec\Desktop\New folder (2)\licence pro\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+C:\Users\CyberSec\Desktop\New folder (2)\licence pro\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+C:\Users\CyberSec\Desktop\New folder (2)\licence pro\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\CyberSec\Desktop\New folder (2)\licence pro\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\CyberSec\Desktop\New folder (2)\licence pro\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+C:\Users\CyberSec\Desktop\New folder (2)\licence pro\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+E:\last\licence pro\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+E:\last\licence pro\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+E:\last\licence pro\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+E:\last\licence pro\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+E:\last\licence pro\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+E:\last\licence pro\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+E:\last\licence pro\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+E:\last\licence pro\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+E:\last\licence pro\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+E:\last\licence pro\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+E:\last\licence pro\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+E:\last\licence pro\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+E:\last\licence pro\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+E:\last\licence pro\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+E:\last\licence pro\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+E:\last\licence pro\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+E:\last\licence pro\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+E:\last\licence pro\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+E:\last\licence pro\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+E:\last\licence pro\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+E:\last\licence pro\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+E:\last\licence pro\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+E:\last\licence pro\New folder\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\CyberSec\Desktop\New folder (2)\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+C:\Users\CyberSec\Desktop\New folder (2)\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\CyberSec\Desktop\New folder (2)\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+C:\Users\CyberSec\Desktop\New folder (2)\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+C:\Users\CyberSec\Desktop\New folder (2)\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+C:\Users\CyberSec\Desktop\New folder (2)\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+C:\Users\CyberSec\Desktop\New folder (2)\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+C:\Users\CyberSec\Desktop\New folder (2)\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+C:\Users\CyberSec\Desktop\New folder (2)\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+C:\Users\CyberSec\Desktop\New folder (2)\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+C:\Users\CyberSec\Desktop\New folder (2)\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+C:\Users\CyberSec\Desktop\New folder (2)\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+C:\Users\CyberSec\Desktop\New folder (2)\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+C:\Users\CyberSec\Desktop\New folder (2)\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+C:\Users\CyberSec\Desktop\New folder (2)\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CyberSec\Desktop\New folder (2)\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+C:\Users\CyberSec\Desktop\New folder (2)\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+C:\Users\CyberSec\Desktop\New folder (2)\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+C:\Users\CyberSec\Desktop\New folder (2)\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+C:\Users\CyberSec\Desktop\New folder (2)\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\CyberSec\Desktop\New folder (2)\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\CyberSec\Desktop\New folder (2)\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+C:\Users\CyberSec\Desktop\New folder (2)\visit company org\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+E:\project\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+E:\project\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+E:\project\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+E:\project\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+E:\project\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+E:\project\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+E:\project\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+E:\project\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+E:\project\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+E:\project\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+E:\project\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+E:\project\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+E:\project\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+E:\project\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+E:\project\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+E:\project\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+E:\project\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+E:\project\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+E:\project\1\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\بکاپ\25.04.2\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+E:\project\بکاپ\25.04.2\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\بکاپ\25.04.2\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+E:\project\بکاپ\25.04.2\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+E:\project\بکاپ\25.04.2\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+E:\project\بکاپ\25.04.2\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+E:\project\بکاپ\25.04.2\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+E:\project\بکاپ\25.04.2\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+E:\project\بکاپ\25.04.2\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+E:\project\بکاپ\25.04.2\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+E:\project\بکاپ\25.04.2\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+E:\project\بکاپ\25.04.2\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+E:\project\بکاپ\25.04.2\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+E:\project\بکاپ\25.04.2\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+E:\project\بکاپ\25.04.2\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+E:\project\بکاپ\25.04.2\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+E:\project\بکاپ\25.04.2\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+E:\project\بکاپ\25.04.2\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+E:\project\بکاپ\25.04.2\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+E:\project\بکاپ\25.04.2\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\بکاپ\25.04.2\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\بکاپ\25.04.2\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+E:\project\بکاپ\25.04.2\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\hrirh\OneDrive\Desktop\tets\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+C:\Users\hrirh\OneDrive\Desktop\tets\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\hrirh\OneDrive\Desktop\tets\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+C:\Users\hrirh\OneDrive\Desktop\tets\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+C:\Users\hrirh\OneDrive\Desktop\tets\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+C:\Users\hrirh\OneDrive\Desktop\tets\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+C:\Users\hrirh\OneDrive\Desktop\tets\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+C:\Users\hrirh\OneDrive\Desktop\tets\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+C:\Users\hrirh\OneDrive\Desktop\tets\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+C:\Users\hrirh\OneDrive\Desktop\tets\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+C:\Users\hrirh\OneDrive\Desktop\tets\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+C:\Users\hrirh\OneDrive\Desktop\tets\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+C:\Users\hrirh\OneDrive\Desktop\tets\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+C:\Users\hrirh\OneDrive\Desktop\tets\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+C:\Users\hrirh\OneDrive\Desktop\tets\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hrirh\OneDrive\Desktop\tets\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+C:\Users\hrirh\OneDrive\Desktop\tets\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+C:\Users\hrirh\OneDrive\Desktop\tets\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+C:\Users\hrirh\OneDrive\Desktop\tets\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+C:\Users\hrirh\OneDrive\Desktop\tets\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\hrirh\OneDrive\Desktop\tets\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\hrirh\OneDrive\Desktop\tets\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+C:\Users\hrirh\OneDrive\Desktop\tets\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\بکاپ\27.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+E:\project\بکاپ\27.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\بکاپ\27.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+E:\project\بکاپ\27.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+E:\project\بکاپ\27.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+E:\project\بکاپ\27.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+E:\project\بکاپ\27.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+E:\project\بکاپ\27.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+E:\project\بکاپ\27.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+E:\project\بکاپ\27.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+E:\project\بکاپ\27.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+E:\project\بکاپ\27.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+E:\project\بکاپ\27.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+E:\project\بکاپ\27.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+E:\project\بکاپ\27.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+E:\project\بکاپ\27.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+E:\project\بکاپ\27.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+E:\project\بکاپ\27.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+E:\project\بکاپ\27.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+E:\project\بکاپ\27.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\بکاپ\27.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\بکاپ\27.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+E:\project\بکاپ\27.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\hrirh\OneDrive\Desktop\tets\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\hrirh\OneDrive\Desktop\tets\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\hrirh\OneDrive\Desktop\tets\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+C:\Users\hrirh\OneDrive\Desktop\tets\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+C:\Users\hrirh\OneDrive\Desktop\tets\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\hrirh\OneDrive\Desktop\tets\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+C:\Users\hrirh\OneDrive\Desktop\tets\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+C:\Users\hrirh\OneDrive\Desktop\tets\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+C:\Users\hrirh\OneDrive\Desktop\tets\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+C:\Users\hrirh\OneDrive\Desktop\tets\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+C:\Users\hrirh\OneDrive\Desktop\tets\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+C:\Users\hrirh\OneDrive\Desktop\tets\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+C:\Users\hrirh\OneDrive\Desktop\tets\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+C:\Users\hrirh\OneDrive\Desktop\tets\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+C:\Users\hrirh\OneDrive\Desktop\tets\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+C:\Users\hrirh\OneDrive\Desktop\tets\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+C:\Users\hrirh\OneDrive\Desktop\tets\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+C:\Users\hrirh\OneDrive\Desktop\tets\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hrirh\OneDrive\Desktop\tets\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+C:\Users\hrirh\OneDrive\Desktop\tets\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+C:\Users\hrirh\OneDrive\Desktop\tets\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+C:\Users\hrirh\OneDrive\Desktop\tets\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+C:\Users\hrirh\OneDrive\Desktop\tets\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\بکاپ\30.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+E:\project\بکاپ\30.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\بکاپ\30.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+E:\project\بکاپ\30.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+E:\project\بکاپ\30.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+E:\project\بکاپ\30.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+E:\project\بکاپ\30.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+E:\project\بکاپ\30.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+E:\project\بکاپ\30.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+E:\project\بکاپ\30.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+E:\project\بکاپ\30.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+E:\project\بکاپ\30.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+E:\project\بکاپ\30.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+E:\project\بکاپ\30.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+E:\project\بکاپ\30.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+E:\project\بکاپ\30.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+E:\project\بکاپ\30.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+E:\project\بکاپ\30.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+E:\project\بکاپ\30.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+E:\project\بکاپ\30.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\بکاپ\30.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\بکاپ\30.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+E:\project\بکاپ\30.04\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\بکاپ\08.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+E:\project\بکاپ\08.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\بکاپ\08.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+E:\project\بکاپ\08.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+E:\project\بکاپ\08.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+E:\project\بکاپ\08.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+E:\project\بکاپ\08.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+E:\project\بکاپ\08.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+E:\project\بکاپ\08.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+E:\project\بکاپ\08.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+E:\project\بکاپ\08.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+E:\project\بکاپ\08.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+E:\project\بکاپ\08.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+E:\project\بکاپ\08.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+E:\project\بکاپ\08.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+E:\project\بکاپ\08.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+E:\project\بکاپ\08.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+E:\project\بکاپ\08.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+E:\project\بکاپ\08.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+E:\project\بکاپ\08.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\بکاپ\08.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\بکاپ\08.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+E:\project\بکاپ\08.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\بکاپ\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+E:\project\بکاپ\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\بکاپ\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+E:\project\بکاپ\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+E:\project\بکاپ\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+E:\project\بکاپ\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+E:\project\بکاپ\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+E:\project\بکاپ\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+E:\project\بکاپ\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+E:\project\بکاپ\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+E:\project\بکاپ\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+E:\project\بکاپ\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+E:\project\بکاپ\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+E:\project\بکاپ\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+E:\project\بکاپ\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+E:\project\بکاپ\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+E:\project\بکاپ\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+E:\project\بکاپ\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+E:\project\بکاپ\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+E:\project\بکاپ\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\بکاپ\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\بکاپ\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+E:\project\بکاپ\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\hrirh\OneDrive\Desktop\tets\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+C:\Users\hrirh\OneDrive\Desktop\tets\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\hrirh\OneDrive\Desktop\tets\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+C:\Users\hrirh\OneDrive\Desktop\tets\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+C:\Users\hrirh\OneDrive\Desktop\tets\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+C:\Users\hrirh\OneDrive\Desktop\tets\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+C:\Users\hrirh\OneDrive\Desktop\tets\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+C:\Users\hrirh\OneDrive\Desktop\tets\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+C:\Users\hrirh\OneDrive\Desktop\tets\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+C:\Users\hrirh\OneDrive\Desktop\tets\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+C:\Users\hrirh\OneDrive\Desktop\tets\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+C:\Users\hrirh\OneDrive\Desktop\tets\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+C:\Users\hrirh\OneDrive\Desktop\tets\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+C:\Users\hrirh\OneDrive\Desktop\tets\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+C:\Users\hrirh\OneDrive\Desktop\tets\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hrirh\OneDrive\Desktop\tets\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+C:\Users\hrirh\OneDrive\Desktop\tets\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+C:\Users\hrirh\OneDrive\Desktop\tets\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+C:\Users\hrirh\OneDrive\Desktop\tets\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+C:\Users\hrirh\OneDrive\Desktop\tets\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\hrirh\OneDrive\Desktop\tets\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\hrirh\OneDrive\Desktop\tets\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+C:\Users\hrirh\OneDrive\Desktop\tets\09.05\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\pc\Desktop\New folder (2)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+C:\Users\pc\Desktop\New folder (2)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\pc\Desktop\New folder (2)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+C:\Users\pc\Desktop\New folder (2)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+C:\Users\pc\Desktop\New folder (2)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+C:\Users\pc\Desktop\New folder (2)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+C:\Users\pc\Desktop\New folder (2)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+C:\Users\pc\Desktop\New folder (2)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+C:\Users\pc\Desktop\New folder (2)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+C:\Users\pc\Desktop\New folder (2)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+C:\Users\pc\Desktop\New folder (2)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+C:\Users\pc\Desktop\New folder (2)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+C:\Users\pc\Desktop\New folder (2)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+C:\Users\pc\Desktop\New folder (2)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+C:\Users\pc\Desktop\New folder (2)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pc\Desktop\New folder (2)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+C:\Users\pc\Desktop\New folder (2)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+C:\Users\pc\Desktop\New folder (2)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\New folder (2)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+C:\Users\pc\Desktop\New folder (2)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\pc\Desktop\New folder (2)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\pc\Desktop\New folder (2)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+C:\Users\pc\Desktop\New folder (2)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\pc\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+C:\Users\pc\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\pc\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+C:\Users\pc\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+C:\Users\pc\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+C:\Users\pc\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+C:\Users\pc\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+C:\Users\pc\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+C:\Users\pc\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+C:\Users\pc\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+C:\Users\pc\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+C:\Users\pc\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+C:\Users\pc\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+C:\Users\pc\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+C:\Users\pc\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pc\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+C:\Users\pc\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+C:\Users\pc\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+C:\Users\pc\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\pc\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\pc\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+C:\Users\pc\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\pc\Desktop\New folder\test\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+C:\Users\pc\Desktop\New folder\test\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\pc\Desktop\New folder\test\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+C:\Users\pc\Desktop\New folder\test\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+C:\Users\pc\Desktop\New folder\test\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+C:\Users\pc\Desktop\New folder\test\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+C:\Users\pc\Desktop\New folder\test\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+C:\Users\pc\Desktop\New folder\test\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+C:\Users\pc\Desktop\New folder\test\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+C:\Users\pc\Desktop\New folder\test\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+C:\Users\pc\Desktop\New folder\test\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+C:\Users\pc\Desktop\New folder\test\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+C:\Users\pc\Desktop\New folder\test\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+C:\Users\pc\Desktop\New folder\test\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+C:\Users\pc\Desktop\New folder\test\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pc\Desktop\New folder\test\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+C:\Users\pc\Desktop\New folder\test\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+C:\Users\pc\Desktop\New folder\test\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\New folder\test\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+C:\Users\pc\Desktop\New folder\test\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\pc\Desktop\New folder\test\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\pc\Desktop\New folder\test\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+C:\Users\pc\Desktop\New folder\test\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+E:\project\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.sourcelink.json
+C:\Users\hrirh\OneDrive\Desktop\tets\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.sourcelink.json
+C:\Users\pc\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.sourcelink.json
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.sourcelink.json
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.sourcelink.json
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\hrirh\OneDrive\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.deps.json
+C:\Users\hrirh\OneDrive\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\hrirh\OneDrive\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+C:\Users\hrirh\OneDrive\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.dll
+C:\Users\hrirh\OneDrive\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.dll
+C:\Users\hrirh\OneDrive\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.dll
+C:\Users\hrirh\OneDrive\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.dll
+C:\Users\hrirh\OneDrive\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.dll
+C:\Users\hrirh\OneDrive\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.Contract.pdb
+C:\Users\hrirh\OneDrive\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Application.pdb
+C:\Users\hrirh\OneDrive\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Domain.pdb
+C:\Users\hrirh\OneDrive\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\CompanyManagement.Infrasructure.EFCore.pdb
+C:\Users\hrirh\OneDrive\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\bin\Debug\net8.0\Framework.pdb
+C:\Users\hrirh\OneDrive\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+C:\Users\hrirh\OneDrive\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hrirh\OneDrive\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+C:\Users\hrirh\OneDrive\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.AssemblyInfo.cs
+C:\Users\hrirh\OneDrive\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+C:\Users\hrirh\OneDrive\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.sourcelink.json
+C:\Users\hrirh\OneDrive\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyM.BF63A94F.Up2Date
+C:\Users\hrirh\OneDrive\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\hrirh\OneDrive\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\refint\CompanyManagement.Infrastructure.Configuration.dll
+C:\Users\hrirh\OneDrive\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\CompanyManagement.Infrastructure.Configuration.pdb
+C:\Users\hrirh\OneDrive\Desktop\New folder\VisitCompany\CompanyManagement.Infrastructure.Configuration\obj\Debug\net8.0\ref\CompanyManagement.Infrastructure.Configuration.dll

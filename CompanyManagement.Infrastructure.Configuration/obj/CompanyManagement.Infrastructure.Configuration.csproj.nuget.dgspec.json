@@ -1,0 +1,509 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Infrastructure.Configuration\\CompanyManagement.Infrastructure.Configuration.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Application.Contract\\CompanyManagement.Application.Contract.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Application.Contract\\CompanyManagement.Application.Contract.csproj",
+        "projectName": "CompanyManagement.Application.Contract",
+        "projectPath": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Application.Contract\\CompanyManagement.Application.Contract.csproj",
+        "packagesPath": "C:\\Users\\ha-khl\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Application.Contract\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ha-khl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\Framework\\Framework.csproj": {
+                "projectPath": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\Framework\\Framework.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100-rc.1.24452.12/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Application\\CompanyManagement.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Application\\CompanyManagement.Application.csproj",
+        "projectName": "CompanyManagement.Application",
+        "projectPath": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Application\\CompanyManagement.Application.csproj",
+        "packagesPath": "C:\\Users\\ha-khl\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ha-khl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Application.Contract\\CompanyManagement.Application.Contract.csproj": {
+                "projectPath": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Application.Contract\\CompanyManagement.Application.Contract.csproj"
+              },
+              "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Domain\\CompanyManagement.Domain.csproj": {
+                "projectPath": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Domain\\CompanyManagement.Domain.csproj"
+              },
+              "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Infrasructure.EFCore\\CompanyManagement.Infrasructure.EFCore.csproj": {
+                "projectPath": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Infrasructure.EFCore\\CompanyManagement.Infrasructure.EFCore.csproj"
+              },
+              "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\Framework\\Framework.csproj": {
+                "projectPath": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\Framework\\Framework.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100-rc.1.24452.12/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Domain\\CompanyManagement.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Domain\\CompanyManagement.Domain.csproj",
+        "projectName": "CompanyManagement.Domain",
+        "projectPath": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Domain\\CompanyManagement.Domain.csproj",
+        "packagesPath": "C:\\Users\\ha-khl\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ha-khl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Application.Contract\\CompanyManagement.Application.Contract.csproj": {
+                "projectPath": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Application.Contract\\CompanyManagement.Application.Contract.csproj"
+              },
+              "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\Framework\\Framework.csproj": {
+                "projectPath": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\Framework\\Framework.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100-rc.1.24452.12/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Infrasructure.EFCore\\CompanyManagement.Infrasructure.EFCore.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Infrasructure.EFCore\\CompanyManagement.Infrasructure.EFCore.csproj",
+        "projectName": "CompanyManagement.Infrasructure.EFCore",
+        "projectPath": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Infrasructure.EFCore\\CompanyManagement.Infrasructure.EFCore.csproj",
+        "packagesPath": "C:\\Users\\ha-khl\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Infrasructure.EFCore\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ha-khl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Application.Contract\\CompanyManagement.Application.Contract.csproj": {
+                "projectPath": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Application.Contract\\CompanyManagement.Application.Contract.csproj"
+              },
+              "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Domain\\CompanyManagement.Domain.csproj": {
+                "projectPath": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Domain\\CompanyManagement.Domain.csproj"
+              },
+              "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\Framework\\Framework.csproj": {
+                "projectPath": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\Framework\\Framework.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.8, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100-rc.1.24452.12/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Infrastructure.Configuration\\CompanyManagement.Infrastructure.Configuration.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Infrastructure.Configuration\\CompanyManagement.Infrastructure.Configuration.csproj",
+        "projectName": "CompanyManagement.Infrastructure.Configuration",
+        "projectPath": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Infrastructure.Configuration\\CompanyManagement.Infrastructure.Configuration.csproj",
+        "packagesPath": "C:\\Users\\ha-khl\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Infrastructure.Configuration\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ha-khl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Application.Contract\\CompanyManagement.Application.Contract.csproj": {
+                "projectPath": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Application.Contract\\CompanyManagement.Application.Contract.csproj"
+              },
+              "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Application\\CompanyManagement.Application.csproj": {
+                "projectPath": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Application\\CompanyManagement.Application.csproj"
+              },
+              "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Domain\\CompanyManagement.Domain.csproj": {
+                "projectPath": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Domain\\CompanyManagement.Domain.csproj"
+              },
+              "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Infrasructure.EFCore\\CompanyManagement.Infrasructure.EFCore.csproj": {
+                "projectPath": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\CompanyManagement.Infrasructure.EFCore\\CompanyManagement.Infrasructure.EFCore.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100-rc.1.24452.12/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\Framework\\Framework.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\Framework\\Framework.csproj",
+        "projectName": "Framework",
+        "projectPath": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\Framework\\Framework.csproj",
+        "packagesPath": "C:\\Users\\ha-khl\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ha-khl\\Desktop\\New folder\\VisitCompany\\Framework\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ha-khl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "KavenegarDotNetCore": {
+              "target": "Package",
+              "version": "[1.0.7, )"
+            },
+            "Microsoft.AspNetCore.Authentication.Cookies": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Authorization": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100-rc.1.24452.12/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

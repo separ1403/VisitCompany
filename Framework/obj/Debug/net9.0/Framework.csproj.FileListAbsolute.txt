@@ -1,0 +1,221 @@
+E:\project\VisitCompany\Framework\bin\Debug\net9.0\Framework.deps.json
+E:\project\VisitCompany\Framework\bin\Debug\net9.0\Framework.dll
+E:\project\VisitCompany\Framework\bin\Debug\net9.0\Framework.pdb
+E:\project\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.AssemblyReference.cache
+E:\project\VisitCompany\Framework\obj\Debug\net9.0\Framework.GeneratedMSBuildEditorConfig.editorconfig
+E:\project\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfoInputs.cache
+E:\project\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfo.cs
+E:\project\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.CoreCompileInputs.cache
+E:\project\VisitCompany\Framework\obj\Debug\net9.0\Framework.sourcelink.json
+E:\project\VisitCompany\Framework\obj\Debug\net9.0\Framework.dll
+E:\project\VisitCompany\Framework\obj\Debug\net9.0\refint\Framework.dll
+E:\project\VisitCompany\Framework\obj\Debug\net9.0\Framework.pdb
+E:\project\VisitCompany\Framework\obj\Debug\net9.0\ref\Framework.dll
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\Framework\bin\Debug\net9.0\Framework.deps.json
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\Framework\bin\Debug\net9.0\Framework.dll
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\Framework\bin\Debug\net9.0\Framework.pdb
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.AssemblyReference.cache
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\Framework\obj\Debug\net9.0\Framework.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfoInputs.cache
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfo.cs
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.CoreCompileInputs.cache
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\Framework\obj\Debug\net9.0\Framework.sourcelink.json
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\Framework\obj\Debug\net9.0\Framework.dll
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\Framework\obj\Debug\net9.0\refint\Framework.dll
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\Framework\obj\Debug\net9.0\Framework.pdb
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\Framework\obj\Debug\net9.0\ref\Framework.dll
+D:\VisitCompany\Framework\bin\Debug\net9.0\Framework.deps.json
+D:\VisitCompany\Framework\bin\Debug\net9.0\Framework.dll
+D:\VisitCompany\Framework\bin\Debug\net9.0\Framework.pdb
+D:\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.AssemblyReference.cache
+D:\VisitCompany\Framework\obj\Debug\net9.0\Framework.GeneratedMSBuildEditorConfig.editorconfig
+D:\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfoInputs.cache
+D:\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfo.cs
+D:\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.CoreCompileInputs.cache
+D:\VisitCompany\Framework\obj\Debug\net9.0\Framework.sourcelink.json
+D:\VisitCompany\Framework\obj\Debug\net9.0\Framework.dll
+D:\VisitCompany\Framework\obj\Debug\net9.0\refint\Framework.dll
+D:\VisitCompany\Framework\obj\Debug\net9.0\Framework.pdb
+D:\VisitCompany\Framework\obj\Debug\net9.0\ref\Framework.dll
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\Framework\bin\Debug\net9.0\Framework.deps.json
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\Framework\bin\Debug\net9.0\Framework.dll
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\Framework\bin\Debug\net9.0\Framework.pdb
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.AssemblyReference.cache
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\Framework.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfoInputs.cache
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfo.cs
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\Framework.sourcelink.json
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\Framework.dll
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\refint\Framework.dll
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\Framework.pdb
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\ref\Framework.dll
+D:\work\VisitCompany\Framework\bin\Debug\net9.0\Framework.deps.json
+D:\work\VisitCompany\Framework\bin\Debug\net9.0\Framework.dll
+D:\work\VisitCompany\Framework\bin\Debug\net9.0\Framework.pdb
+D:\work\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.AssemblyReference.cache
+D:\work\VisitCompany\Framework\obj\Debug\net9.0\Framework.GeneratedMSBuildEditorConfig.editorconfig
+D:\work\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfoInputs.cache
+D:\work\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfo.cs
+D:\work\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.CoreCompileInputs.cache
+D:\work\VisitCompany\Framework\obj\Debug\net9.0\Framework.sourcelink.json
+D:\work\VisitCompany\Framework\obj\Debug\net9.0\Framework.dll
+D:\work\VisitCompany\Framework\obj\Debug\net9.0\refint\Framework.dll
+D:\work\VisitCompany\Framework\obj\Debug\net9.0\Framework.pdb
+D:\work\VisitCompany\Framework\obj\Debug\net9.0\ref\Framework.dll
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\Framework\bin\Debug\net9.0\Framework.deps.json
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\Framework\bin\Debug\net9.0\Framework.dll
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\Framework\bin\Debug\net9.0\Framework.pdb
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.AssemblyReference.cache
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\Framework\obj\Debug\net9.0\Framework.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfoInputs.cache
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfo.cs
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\Framework\obj\Debug\net9.0\Framework.sourcelink.json
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\Framework\obj\Debug\net9.0\Framework.dll
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\Framework\obj\Debug\net9.0\refint\Framework.dll
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\Framework\obj\Debug\net9.0\Framework.pdb
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\Framework\obj\Debug\net9.0\ref\Framework.dll
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\Framework\bin\Debug\net9.0\Framework.deps.json
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\Framework\bin\Debug\net9.0\Framework.dll
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\Framework\bin\Debug\net9.0\Framework.pdb
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.AssemblyReference.cache
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\Framework\obj\Debug\net9.0\Framework.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfoInputs.cache
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfo.cs
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\Framework\obj\Debug\net9.0\Framework.sourcelink.json
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\Framework\obj\Debug\net9.0\Framework.dll
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\Framework\obj\Debug\net9.0\refint\Framework.dll
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\Framework\obj\Debug\net9.0\Framework.pdb
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\Framework\obj\Debug\net9.0\ref\Framework.dll
+C:\Users\403985375\Desktop\New folder\VisitCompany\Framework\bin\Debug\net9.0\Framework.deps.json
+C:\Users\403985375\Desktop\New folder\VisitCompany\Framework\bin\Debug\net9.0\Framework.dll
+C:\Users\403985375\Desktop\New folder\VisitCompany\Framework\bin\Debug\net9.0\Framework.pdb
+C:\Users\403985375\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.AssemblyReference.cache
+C:\Users\403985375\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\Framework.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\403985375\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfoInputs.cache
+C:\Users\403985375\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfo.cs
+C:\Users\403985375\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.CoreCompileInputs.cache
+C:\Users\403985375\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\Framework.sourcelink.json
+C:\Users\403985375\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\Framework.dll
+C:\Users\403985375\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\refint\Framework.dll
+C:\Users\403985375\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\Framework.pdb
+C:\Users\403985375\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\ref\Framework.dll
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\Framework\bin\Debug\net9.0\Framework.deps.json
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\Framework\bin\Debug\net9.0\Framework.dll
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\Framework\bin\Debug\net9.0\Framework.pdb
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.AssemblyReference.cache
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\Framework\obj\Debug\net9.0\Framework.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfoInputs.cache
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfo.cs
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.CoreCompileInputs.cache
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\Framework\obj\Debug\net9.0\Framework.sourcelink.json
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\Framework\obj\Debug\net9.0\Framework.dll
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\Framework\obj\Debug\net9.0\refint\Framework.dll
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\Framework\obj\Debug\net9.0\Framework.pdb
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\Framework\obj\Debug\net9.0\ref\Framework.dll
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\Framework\bin\Debug\net9.0\Framework.deps.json
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\Framework\bin\Debug\net9.0\Framework.dll
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\Framework\bin\Debug\net9.0\Framework.pdb
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.AssemblyReference.cache
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\Framework.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfoInputs.cache
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfo.cs
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.CoreCompileInputs.cache
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\Framework.sourcelink.json
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\Framework.dll
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\refint\Framework.dll
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\Framework.pdb
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\ref\Framework.dll
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\Framework\bin\Debug\net9.0\Framework.deps.json
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\Framework\bin\Debug\net9.0\Framework.dll
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\Framework\bin\Debug\net9.0\Framework.pdb
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.AssemblyReference.cache
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\Framework.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfoInputs.cache
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfo.cs
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.CoreCompileInputs.cache
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\Framework.sourcelink.json
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\Framework.dll
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\refint\Framework.dll
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\Framework.pdb
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\ref\Framework.dll
+C:\Users\403985375\Desktop\global search\VisitCompany\Framework\bin\Debug\net9.0\Framework.deps.json
+C:\Users\403985375\Desktop\global search\VisitCompany\Framework\bin\Debug\net9.0\Framework.dll
+C:\Users\403985375\Desktop\global search\VisitCompany\Framework\bin\Debug\net9.0\Framework.pdb
+C:\Users\403985375\Desktop\global search\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.AssemblyReference.cache
+C:\Users\403985375\Desktop\global search\VisitCompany\Framework\obj\Debug\net9.0\Framework.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\403985375\Desktop\global search\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfoInputs.cache
+C:\Users\403985375\Desktop\global search\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfo.cs
+C:\Users\403985375\Desktop\global search\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.CoreCompileInputs.cache
+C:\Users\403985375\Desktop\global search\VisitCompany\Framework\obj\Debug\net9.0\Framework.sourcelink.json
+C:\Users\403985375\Desktop\global search\VisitCompany\Framework\obj\Debug\net9.0\Framework.dll
+C:\Users\403985375\Desktop\global search\VisitCompany\Framework\obj\Debug\net9.0\refint\Framework.dll
+C:\Users\403985375\Desktop\global search\VisitCompany\Framework\obj\Debug\net9.0\Framework.pdb
+C:\Users\403985375\Desktop\global search\VisitCompany\Framework\obj\Debug\net9.0\ref\Framework.dll
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\Framework\bin\Debug\net9.0\Framework.deps.json
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\Framework\bin\Debug\net9.0\Framework.dll
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\Framework\bin\Debug\net9.0\Framework.pdb
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.AssemblyReference.cache
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\Framework.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfoInputs.cache
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfo.cs
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.CoreCompileInputs.cache
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\Framework.sourcelink.json
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\Framework.dll
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\refint\Framework.dll
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\Framework.pdb
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\Framework\obj\Debug\net9.0\ref\Framework.dll
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\Framework\bin\Debug\net9.0\Framework.deps.json
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\Framework\bin\Debug\net9.0\Framework.dll
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\Framework\bin\Debug\net9.0\Framework.pdb
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.AssemblyReference.cache
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\Framework\obj\Debug\net9.0\Framework.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfoInputs.cache
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfo.cs
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.CoreCompileInputs.cache
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\Framework\obj\Debug\net9.0\Framework.sourcelink.json
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\Framework\obj\Debug\net9.0\Framework.dll
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\Framework\obj\Debug\net9.0\refint\Framework.dll
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\Framework\obj\Debug\net9.0\Framework.pdb
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\Framework\obj\Debug\net9.0\ref\Framework.dll
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\Framework\bin\Debug\net9.0\Framework.deps.json
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\Framework\bin\Debug\net9.0\Framework.dll
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\Framework\bin\Debug\net9.0\Framework.pdb
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.AssemblyReference.cache
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\Framework\obj\Debug\net9.0\Framework.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfoInputs.cache
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfo.cs
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.CoreCompileInputs.cache
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\Framework\obj\Debug\net9.0\Framework.sourcelink.json
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\Framework\obj\Debug\net9.0\Framework.dll
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\Framework\obj\Debug\net9.0\refint\Framework.dll
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\Framework\obj\Debug\net9.0\Framework.pdb
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\Framework\obj\Debug\net9.0\ref\Framework.dll
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\Framework\bin\Debug\net9.0\Framework.deps.json
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\Framework\bin\Debug\net9.0\Framework.dll
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\Framework\bin\Debug\net9.0\Framework.pdb
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.AssemblyReference.cache
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\Framework\obj\Debug\net9.0\Framework.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfoInputs.cache
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfo.cs
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.CoreCompileInputs.cache
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\Framework\obj\Debug\net9.0\Framework.sourcelink.json
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\Framework\obj\Debug\net9.0\Framework.dll
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\Framework\obj\Debug\net9.0\refint\Framework.dll
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\Framework\obj\Debug\net9.0\Framework.pdb
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\Framework\obj\Debug\net9.0\ref\Framework.dll
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\Framework\bin\Debug\net9.0\Framework.deps.json
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\Framework\bin\Debug\net9.0\Framework.dll
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\Framework\bin\Debug\net9.0\Framework.pdb
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.AssemblyReference.cache
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\Framework.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfoInputs.cache
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\Framework.AssemblyInfo.cs
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\Framework.csproj.CoreCompileInputs.cache
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\Framework.sourcelink.json
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\Framework.dll
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\refint\Framework.dll
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\Framework.pdb
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\Framework\obj\Debug\net9.0\ref\Framework.dll

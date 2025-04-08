@@ -1,0 +1,306 @@
+E:\project\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.deps.json
+E:\project\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.dll
+E:\project\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.pdb
+E:\project\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.dll
+E:\project\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.dll
+E:\project\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.pdb
+E:\project\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.pdb
+E:\project\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.AssemblyReference.cache
+E:\project\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\project\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfoInputs.cache
+E:\project\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfo.cs
+E:\project\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.CoreCompileInputs.cache
+E:\project\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.sourcelink.json
+E:\project\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyM.3BB05FE9.Up2Date
+E:\project\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.dll
+E:\project\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\refint\CompanyManagement.Domain.dll
+E:\project\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.pdb
+E:\project\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\ref\CompanyManagement.Domain.dll
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.AssemblyReference.cache
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfoInputs.cache
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfo.cs
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.CoreCompileInputs.cache
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.sourcelink.json
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.deps.json
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.dll
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.dll
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.pdb
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.pdb
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyM.3BB05FE9.Up2Date
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\refint\CompanyManagement.Domain.dll
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\hrirh\OneDrive\Desktop\.net9\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\ref\CompanyManagement.Domain.dll
+D:\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.deps.json
+D:\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.dll
+D:\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.pdb
+D:\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.dll
+D:\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.dll
+D:\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.pdb
+D:\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.pdb
+D:\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.AssemblyReference.cache
+D:\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfoInputs.cache
+D:\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfo.cs
+D:\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.CoreCompileInputs.cache
+D:\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.sourcelink.json
+D:\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyM.3BB05FE9.Up2Date
+D:\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.dll
+D:\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\refint\CompanyManagement.Domain.dll
+D:\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.pdb
+D:\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\ref\CompanyManagement.Domain.dll
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.deps.json
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.dll
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.dll
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.pdb
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.pdb
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.AssemblyReference.cache
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfoInputs.cache
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfo.cs
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.sourcelink.json
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyM.3BB05FE9.Up2Date
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\refint\CompanyManagement.Domain.dll
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\pc\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\ref\CompanyManagement.Domain.dll
+D:\work\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.deps.json
+D:\work\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.dll
+D:\work\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.pdb
+D:\work\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.dll
+D:\work\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.dll
+D:\work\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.pdb
+D:\work\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.pdb
+D:\work\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.AssemblyReference.cache
+D:\work\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\work\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfoInputs.cache
+D:\work\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfo.cs
+D:\work\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.CoreCompileInputs.cache
+D:\work\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.sourcelink.json
+D:\work\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyM.3BB05FE9.Up2Date
+D:\work\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.dll
+D:\work\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\refint\CompanyManagement.Domain.dll
+D:\work\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.pdb
+D:\work\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\ref\CompanyManagement.Domain.dll
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.deps.json
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.dll
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.dll
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.pdb
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.pdb
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.AssemblyReference.cache
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfoInputs.cache
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfo.cs
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.sourcelink.json
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyM.3BB05FE9.Up2Date
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\refint\CompanyManagement.Domain.dll
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\pc\Desktop\New folder (3)\partial\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\ref\CompanyManagement.Domain.dll
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.deps.json
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.dll
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.dll
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.pdb
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.pdb
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.AssemblyReference.cache
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfoInputs.cache
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfo.cs
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.sourcelink.json
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyM.3BB05FE9.Up2Date
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\refint\CompanyManagement.Domain.dll
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\pc\Desktop\New folder (3)\new\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\ref\CompanyManagement.Domain.dll
+C:\Users\403985375\Desktop\New folder\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.deps.json
+C:\Users\403985375\Desktop\New folder\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\403985375\Desktop\New folder\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\403985375\Desktop\New folder\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.dll
+C:\Users\403985375\Desktop\New folder\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.dll
+C:\Users\403985375\Desktop\New folder\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.pdb
+C:\Users\403985375\Desktop\New folder\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.pdb
+C:\Users\403985375\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.AssemblyReference.cache
+C:\Users\403985375\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\403985375\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfoInputs.cache
+C:\Users\403985375\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfo.cs
+C:\Users\403985375\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.CoreCompileInputs.cache
+C:\Users\403985375\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.sourcelink.json
+C:\Users\403985375\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyM.3BB05FE9.Up2Date
+C:\Users\403985375\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\403985375\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\refint\CompanyManagement.Domain.dll
+C:\Users\403985375\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\403985375\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\ref\CompanyManagement.Domain.dll
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.deps.json
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.dll
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.dll
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.pdb
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.pdb
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.AssemblyReference.cache
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfoInputs.cache
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfo.cs
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.CoreCompileInputs.cache
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.sourcelink.json
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyM.3BB05FE9.Up2Date
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\refint\CompanyManagement.Domain.dll
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\403985375\Desktop\New folder (2)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\ref\CompanyManagement.Domain.dll
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.deps.json
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.dll
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.dll
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.pdb
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.pdb
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.AssemblyReference.cache
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfoInputs.cache
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfo.cs
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.CoreCompileInputs.cache
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.sourcelink.json
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyM.3BB05FE9.Up2Date
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\refint\CompanyManagement.Domain.dll
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\CyberSec\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\ref\CompanyManagement.Domain.dll
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.deps.json
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.dll
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.dll
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.pdb
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.pdb
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.AssemblyReference.cache
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfoInputs.cache
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfo.cs
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.CoreCompileInputs.cache
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.sourcelink.json
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyM.3BB05FE9.Up2Date
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\refint\CompanyManagement.Domain.dll
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\403985375\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\ref\CompanyManagement.Domain.dll
+C:\Users\403985375\Desktop\global search\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.deps.json
+C:\Users\403985375\Desktop\global search\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\403985375\Desktop\global search\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\403985375\Desktop\global search\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.dll
+C:\Users\403985375\Desktop\global search\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.dll
+C:\Users\403985375\Desktop\global search\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.pdb
+C:\Users\403985375\Desktop\global search\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.pdb
+C:\Users\403985375\Desktop\global search\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.AssemblyReference.cache
+C:\Users\403985375\Desktop\global search\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\403985375\Desktop\global search\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfoInputs.cache
+C:\Users\403985375\Desktop\global search\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfo.cs
+C:\Users\403985375\Desktop\global search\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.CoreCompileInputs.cache
+C:\Users\403985375\Desktop\global search\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.sourcelink.json
+C:\Users\403985375\Desktop\global search\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyM.3BB05FE9.Up2Date
+C:\Users\403985375\Desktop\global search\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\403985375\Desktop\global search\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\refint\CompanyManagement.Domain.dll
+C:\Users\403985375\Desktop\global search\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\403985375\Desktop\global search\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\ref\CompanyManagement.Domain.dll
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.deps.json
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.dll
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.dll
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.pdb
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.pdb
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.AssemblyReference.cache
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfoInputs.cache
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfo.cs
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.CoreCompileInputs.cache
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.sourcelink.json
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyM.3BB05FE9.Up2Date
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\refint\CompanyManagement.Domain.dll
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\CyberSec\Desktop\New folder (3)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\ref\CompanyManagement.Domain.dll
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.deps.json
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.dll
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.dll
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.pdb
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.pdb
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.AssemblyReference.cache
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfoInputs.cache
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfo.cs
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.CoreCompileInputs.cache
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.sourcelink.json
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyM.3BB05FE9.Up2Date
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\refint\CompanyManagement.Domain.dll
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\403985375\Desktop\New folder (3)\10\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\ref\CompanyManagement.Domain.dll
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.deps.json
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.dll
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.dll
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.pdb
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.pdb
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.AssemblyReference.cache
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfoInputs.cache
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfo.cs
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.CoreCompileInputs.cache
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.sourcelink.json
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyM.3BB05FE9.Up2Date
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\refint\CompanyManagement.Domain.dll
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\403985375\Desktop\New folder\New folder\co\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\ref\CompanyManagement.Domain.dll
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.deps.json
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.dll
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.dll
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.pdb
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.pdb
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.AssemblyReference.cache
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfoInputs.cache
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfo.cs
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.CoreCompileInputs.cache
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.sourcelink.json
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyM.3BB05FE9.Up2Date
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\refint\CompanyManagement.Domain.dll
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\CyberSec\Desktop\New folder (4)\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\ref\CompanyManagement.Domain.dll
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.deps.json
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.dll
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.dll
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\CompanyManagement.Application.Contract.pdb
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\CompanyManagement.Domain\bin\Debug\net9.0\Framework.pdb
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.AssemblyReference.cache
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfoInputs.cache
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.AssemblyInfo.cs
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.csproj.CoreCompileInputs.cache
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.sourcelink.json
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyM.3BB05FE9.Up2Date
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.dll
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\refint\CompanyManagement.Domain.dll
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\CompanyManagement.Domain.pdb
+C:\Users\ha-khl\Desktop\New folder\VisitCompany\CompanyManagement.Domain\obj\Debug\net9.0\ref\CompanyManagement.Domain.dll

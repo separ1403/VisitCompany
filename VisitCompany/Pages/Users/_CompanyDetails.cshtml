@@ -1,0 +1,169 @@
+﻿@model CompanyManagement.Application.Contract.Company.CompanyViewModel
+
+<div class="company-details">
+    <h3>اطلاعات کامل شرکت</h3>
+    <p><strong>نام رسمی شرکت در رسمیو :</strong> @Model.TitleRasm</p>
+    <p><strong>تاریخ ثبت شرکت در رسمیو :</strong> @Model.RegistrationDateRasm</p>
+    <p><strong>تاریخ ثبت شرکت در رسمیو :</strong> @Model.RegistrationNoRasm</p>
+    <p><strong>کد اقتصادی شرکت در رسمیو :</strong> @Model.TaxNumberRasm</p>
+    <p><strong>آدرس شرکت در رسمیو :</strong> @Model.AddressRasm</p>
+
+
+    <p><strong>نام رسمی شرکت:</strong> @Model.CompanyName</p>
+    <p><strong>نام برند:</strong> @Model.Brand</p>
+    <p><strong>مدیر شرکت:</strong> @Model.ManagerName</p>
+    <p><strong>نام مدیر امنیت:</strong> @Model.SecurityManagerName</p>
+    <p><strong>شماره تماس:</strong> @Model.PhoneNumber</p>
+    <p><strong>شناسه ملی:</strong> @Model.NationalCode</p>
+    <p><strong>وضعیت:</strong> @Model.IsActive ? "فعال" : "غیرفعال"</p>
+
+    <td>
+        @if (@Model.People != null && Model.People.Any())
+        {
+            <ul>
+                @foreach (var person in @Model.People)
+                {
+                    <li>
+                        <strong>نام:</strong> @person.NamePeopleCo<br />
+                        <strong>مسئولیت:</strong> @person.RspponsePeopleCo<br />
+                        <strong>شماره تماس:</strong> @person.PhonePeopleCo
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <span>فردی موجود نیست</span>
+        }
+    </td>
+    <p><strong>توضیحات:</strong> @Model.Description</p>
+
+
+    <td>
+        @if (@Model.Licences != null && @Model.Licences.Any())
+        {
+            <ul>
+                @foreach (var licence in @Model.Licences)
+                {
+                    <li> نام مجوز: @licence.Name</li>
+                    <li> مرجع صدور مجوز: @licence.Refrence</li>
+                }
+            </ul>
+        }
+        else
+        {
+            <span>مجوزی موجود نیست</span>
+        }
+    </td>
+    <p><strong>تعداد پرسنل:</strong> @Model.CountEmployees</p>
+    <p><strong>تعداد کاربران:</strong> @Model.CountFolowers</p>
+
+
+    <td>
+        @if (@Model.Checklists != null && Model.Checklists.Any())
+        {
+            <ul>
+                @foreach (var checklist in @Model.Checklists)
+                {
+                    <li>
+                        <strong>تاریخ بازدید:</strong> @checklist.CreattionDate<br />
+            <td>
+
+                            @if (!string.IsNullOrEmpty(checklist.TypeChecklistGeneral))
+
+                            {
+                              <div>ارزیابی عمومی</div>
+                            }
+
+                            @if (!string.IsNullOrEmpty(checklist.TypeChecklistGeneralProff))
+
+                            {
+                             <div>ارزیابی عمومی-فنی</div>
+                            }
+
+                            @if (!string.IsNullOrEmpty(checklist.TypeChecklistGeneralPol))
+
+                            {
+                              <div>ارزیابی عمومی-انتظامی</div>
+                            }
+                            @if (!string.IsNullOrEmpty(checklist.TypeChecklistHpedl380))
+
+                            {
+                               <div>ارزیابی تخصصی Hpedl380</div>
+                            }
+
+                            @if (!string.IsNullOrEmpty(checklist.TypeChecklistunniper))
+
+                            {
+                                <div>ارزیابی تخصصی Junipper</div>
+                            }
+
+                            @if (!string.IsNullOrEmpty(checklist.TypeChecklistwin2019))
+
+                            {
+                              <div>ارزیابی تخصصی Win2019</div>
+                            }
+            </td>
+
+
+            <td>
+                            @if (checklist.AverageGeneral > 0)
+                            {
+                            <div> @checklist.AverageGeneral</div>
+                            }
+                            @if (checklist.AverageGeneralProff > 0)
+                            {
+                            <div> @checklist.AverageGeneralProff</div>
+                            }
+                            @if (checklist.AverageGeneralPol > 0)
+                            {
+                             <div> @checklist.AverageGeneralPol</div>
+                            }
+                            @if (checklist.AverageJunipper > 0)
+                            {
+                            <div> @checklist.AverageJunipper</div>
+                            }
+                            @if (checklist.AverageWin2019 > 0)
+                            {
+                             <div> @checklist.AverageWin2019</div>
+                            }
+                            @if (checklist.AverageHpedl380 > 0)
+                            {
+                             <div> @checklist.AverageHpedl380</div>
+                            }
+            </td>
+
+            </li>
+
+                }
+        </ul>
+        }
+        else
+        {
+        <span>فردی موجود نیست</span>
+        }
+    </td>
+
+    <p><strong>تعداد ارزیابی های صورت گرفته از شرکت :</strong> @Model.ChecklistCount</p>
+    <p><strong>میانگین ارزیابی عمومی:</strong> @Model.AverageGeneral</p>
+    <p><strong>میانگین ارزیابی عمومی - فنی:</strong> @Model.AverageGeneralProff</p>
+    <p><strong>میانگین ارزیابی عمومی - انتظامی:</strong> @Model.AverageGeneralPol</p>
+
+
+
+    <p><strong>دسته‌بندی:</strong> @Model.Category</p>
+    <p><strong>آدرس سایت:</strong> @Model.Domain</p>
+    <p><strong>تاریخ ثبت:</strong> @Model.CompanyCreateDate</p>
+    <p><strong>آدرس:</strong> @Model.Address</p>
+    <p><strong>کد پستی:</strong> @Model.PostalCode</p>
+
+
+
+    <p><strong>تاریخ ایجاد:</strong> @Model.CompanyCreateDate</p>
+
+
+
+
+
+    <!-- سایر اطلاعات را نیز اضافه کنید -->
+</div>
