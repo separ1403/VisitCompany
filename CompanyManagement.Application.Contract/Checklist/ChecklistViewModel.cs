@@ -15,6 +15,9 @@ namespace CompanyManagement.Application.Contract.Checklist
         public long? CountFolowers { get; set; }
 
         public long? CompanyId { get; set; }
+        public long? StateCategoryId { get; set; }
+
+
         public long? CompanyCategoryId { get; set; }
 
         public string CompanyBrand { get; set; }
@@ -36,7 +39,9 @@ namespace CompanyManagement.Application.Contract.Checklist
         public long TotalPeopleCount { get; set; }
         public long RecentChecklistsCount { get; set; }
         public long OneWeekChecklistsCount { get; set; }
-        public   List<CompanyAverage> AllAverageInOneCompany { get; set; }
+        public long OneMonthChecklistsCount { get; set; }
+
+        public List<CompanyAverage> AllAverageInOneCompany { get; set; }
         public List<CategoryAverage> CategoryAverages { get; set; }
         public double WeeklyAverageGeneral { get; set; }
         public double WeeklyAverageGeneralProff { get; set; }
@@ -48,6 +53,9 @@ namespace CompanyManagement.Application.Contract.Checklist
    
 
         public string CreattionDate { get; set; }
+        public DateTime CreationDateTime { get; set; }
+
+        
 
         public List<long>? AccountId { get; set; }
         //   public string? Accounts { get; set; }
@@ -80,16 +88,35 @@ namespace CompanyManagement.Application.Contract.Checklist
         public string? UniqeCodeGeneralpol { get; set; }
 
 
-
-
-
-
-
-
         // لیست افرادی که در این چک‌لیست حضور دارند
         public List<PersonViewModel> People { get; set; } = new List<PersonViewModel>();
 
         public DateTime CalDate { get; set; }
+
+        
+       public double? OverallAverage { get; set; }
+        public int? CountofAllRecord { get; set; }
+
+        public int CountJuniperHardening { get; set; }
+        public int CountHPEDL380 { get; set; }
+        public int CountWin2019 { get; set; }
+        public int CountGeneralChecklist { get; set; }
+        public int CountGeneralProffesional { get; set; }
+        public int CountGeneralPolicy { get; set; }
+
+        // متغیرهای جدید برای مجموع دسته‌بندی‌ها
+        public int TotalGeneralChecklists { get; set; }
+        public int TotalProffChecklists { get; set; }
+
+        public double overallGeneralAverage { get; set; }
+        public double overallproffAverage { get; set; }
+
+        public double overallGeneralAverages { get; set; }
+        public double overallGeneralPolicyAverages { get; set; }
+        public double overallGeneralProffAverages { get; set; }
+
+
+
     }
 
     // ViewModel برای افراد موجود در چک‌لیست
@@ -108,5 +135,9 @@ namespace CompanyManagement.Application.Contract.Checklist
         public long CategoryId { get; set; }
         public string CategoryName { get; set; }
         public double AverageScore { get; set; }
+        public int ChecklistCount { get; set; }
+
     }
+
+
 }

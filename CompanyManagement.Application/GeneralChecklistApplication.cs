@@ -22,9 +22,7 @@ namespace CompanyManagement.Application
             return _generalChecklistRepository.Getdetails(id);
         }
 
-        public List<(string PropertyName, long TotalScore)> GetMostVulnerableProperties()
-
-
+        public List<(string PropertyName, long TotalScore, int WeakCompanyCount)> GetMostVulnerableProperties()
 
         {
             return _generalChecklistRepository.GetMostVulnerableProperties();

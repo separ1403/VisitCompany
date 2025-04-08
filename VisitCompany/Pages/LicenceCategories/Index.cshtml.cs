@@ -100,11 +100,25 @@ namespace VisitCompany.Pages.LicenceCategories
             if (id == 0)
                 return Content("Invalid ID received");
 
-            var Componies = _companyApplication.GetCompaniesByLicenceId(id);
+            var Componies = _companyApplication.Getdetailpartial(id);
             if (Componies == null)
                 return Content("اطلاعات شرکت یافت نشد.");
 
             return Partial("_CompanyDetails", Componies);
+        }
+
+        [NeedsPermission(CompanyPermission.ListCompanyCategories)]  // این عوض بشه
+        public IActionResult OnGetDetailsCompany(int id)
+        {
+
+            if (id == 0)
+                return Content("Invalid ID received");
+
+            var Componies = _companyApplication.GetCompaniesByLicenceId(id);
+            if (Componies == null)
+                return Content("اطلاعات شرکت یافت نشد.");
+
+            return Partial("_CompanySubCategory", Componies);
         }
     }
 }

@@ -11,30 +11,100 @@ using CompanyManagement.Domain.AccountAgg;
 using CompanyManagement.Domain.LicenceCategoryAgg;
 using CompanyManagement.Application.Contract.LicenceCategory;
 using CompanyManagement.Domain.ChecklistAgg;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using CompanyManagement.Infrasructure.EFCore.Migrations;
+using CompanyManagement.Infrasructure.EFCore.Repository;
 
 namespace CompanyManagement.Application
 {
     public class CompanyApplication : ICompanyApplication
     {
-        public CompanyApplication(ICompanyRepository companyRepository, IAccountRepository accountRepository, ILicenceCategoryRepository licenceCategoryRepository)
-        {
-            _companyRepository = companyRepository;
-            _accountRepository = accountRepository;
-            _licenceCategoryRepository = licenceCategoryRepository;
-        }
-
+        
 
         private readonly ICompanyRepository _companyRepository;
         private readonly IAccountRepository _accountRepository;
         private readonly ILicenceCategoryRepository _licenceCategoryRepository;
+        private readonly IApiService _apiService;
+        private readonly ILogger<CompanyApplication> _logger;
+
+        public CompanyApplication(ICompanyRepository companyRepository, IAccountRepository accountRepository, ILicenceCategoryRepository licenceCategoryRepository, IApiService apiService, ILogger<CompanyApplication> logger)
+        {
+            _companyRepository = companyRepository;
+            _accountRepository = accountRepository;
+            _licenceCategoryRepository = licenceCategoryRepository;
+            _apiService = apiService;
+            _logger = logger;
+        }
+
+        public async Task<OperationResult> EditRasmio(long id)
+        {
+            var operation = new OperationResult();
+            var company = _companyRepository.Get(id);
+
+            if (company == null)
+            {
+                operation.Failed(ApplicationMessages.RecordNotFound);
+                return operation;
+            }
+
+            var apiResponse = await _apiService.GetCompanyDetailsAsync(company.NationalCode);
+
+            //if (apiResponse != null)
+            //{
+
+            //       EditCompany command = new EditCompany();
+            //    command.TitleRasm = apiResponse.Title;
+            //    command.RegistrationDateRasm = apiResponse.RegistrationDate;
+            //    command.RegistrationNoRasm = apiResponse.RegistrationNo;
+            //    command.CapitalRasm = apiResponse.Capital;
+            //    command.AddressRasm = apiResponse.Address;
+            //    command.TaxNumberRasm = apiResponse.TaxNumber;
+            //    command.PostalCodeRasm = apiResponse.PostalCode;
+            //    command.LastUpdateRasm = apiResponse.LastUpdate;
+            //    command.StatusRasm = apiResponse.Status;
+            //    command.EdareKolRasm = apiResponse.EdareKol;
+            //    command.VahedSabtiRasm = apiResponse.VahedSabti;
+
+            //    company.EditRasmio(command.TitleRasm,
+            //   command.RegistrationDateRasm, command.RegistrationNoRasm, command.CapitalRasm ?? 0
+            //        , command.AddressRasm, command.TaxNumberRasm, command.PostalCodeRasm, command.LastUpdateRasm,
+            //        command.StatusRasm, command.EdareKolRasm, command.VahedSabtiRasm);
 
 
+            //به خاطر بهینه سازی کد بالا که طولانی هم بود تبدیل شد به کد پایین
+            if (apiResponse == null)
+                return operation.Failed("اطلاعاتی از سامانه ثبت شرکت‌ها دریافت نشد.");
 
+            company.EditRasmio(
+        apiResponse.Title,
+        apiResponse.RegistrationDate,
+        apiResponse.RegistrationNo,
+        apiResponse.Capital ?? 0,
+        apiResponse.Address,
+        apiResponse.TaxNumber,
+        apiResponse.PostalCode,
+        apiResponse.LastUpdate,
+        apiResponse.Status,
+        apiResponse.EdareKol,
+        apiResponse.VahedSabti
+    );
+
+            try
+            {
+                await _companyRepository.SaveChangesAsync();
+                return operation.Succeeded(ApplicationMessages.SuccessMessage);
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "خطا در ویرایش اطلاعات رسمی شرکت (EditRasmio) برای CompanyId={CompanyId}", id);
+                return operation.Failed("مشکلی در ذخیره‌سازی داده‌ها وجود دارد.");
+            }
+        }
 
         public OperationResult Create(CreateCompany command)
         {
             var operation = new OperationResult();
-
             // چک کردن خالی بودن نام یا برند شرکت
             if (string.IsNullOrWhiteSpace(command.CompanyName) || string.IsNullOrWhiteSpace(command.Brand))
             {
@@ -73,52 +143,93 @@ namespace CompanyManagement.Application
 
             }).ToList();
 
-            var company = new Company(command.CompanyName, command.Brand, command.ManagerName, command.SecurityManagerName, command.PhoneNumber, command.Description, command.NationalCode,command.Address, command.CategoryId, command.LicenceIds, command.AccountIds,command.Doamin, referDateFrom, referDateTo,command.StateCategoryId, people, command.CountEmployees ?? 0,
-                command.CountFolowers ?? 0, command.PostalCode);
+            var company = new Company(command.CompanyName, command.Brand, command.ManagerName, command.SecurityManagerName,
+                command.PhoneNumber, command.Description, command.NationalCode,command.Address, command.CategoryId,
+                command.LicenceIds, accounts, command.Doamin, referDateFrom, referDateTo,command.StateCategoryId, 
+                people, command.CountEmployees ?? 0,command.CountFolowers ?? 0, command.PostalCode, command.TitleRasm, command.RegistrationDateRasm,
+                command.RegistrationNoRasm,command.CapitalRasm ?? 0,command.AddressRasm,command.TaxNumberRasm,command.PostalCodeRasm,
+                command.LastUpdateRasm,command.StatusRasm,command.EdareKolRasm,command.VahedSabtiRasm);
 
-          //  Console.WriteLine($"CheklistId: {people.CheklistId}");
+            //  Console.WriteLine($"CheklistId: {people.CheklistId}");
             company.AddAccounts(accounts);
             company.AddLicence(licences);
 
-            _companyRepository.Create(company);
-            _companyRepository.SaveChanges();
+
+            try
+            {
+                _companyRepository.Create(company);
+                _companyRepository.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "خطا در ایجاد شرکت  جدید.");
+                return operation.Failed("مشکلی در ذخیره‌سازی داده‌ها وجود دارد.");
+            }
+          
 
             operation.Succeeded("عملیات با موفقیت انجام گردید");
             return operation;
         }
 
 
-
         public OperationResult Edit(EditCompany command)
         {
             var operation = new OperationResult();
 
-            var company = _companyRepository.Get(command.Id);
+            var company = _companyRepository.GetWithAccounts(command.Id); // برای اینکه حتما اکانت ها را هم بیاورد این متد فراخوانی شده است
 
             if (company == null)
             {
                 operation.Failed(ApplicationMessages.RecordNotFound);
                 return operation;
             }
+
             var referDateFrom = command.ReferDateFrom.ToGeorgianDateTime();
             var referDateTo = command.ReferDateTo.ToGeorgianDateTime();
+
+            var accounts = _accountRepository.GetAccountsByIds(command.AccountIds); // ✅ حساب‌های جدید انتخاب‌شده
+
             company.Edit(command.CompanyName, command.Brand, command.ManagerName,
                 command.SecurityManagerName,
-                command.PhoneNumber, command.Description, command.NationalCode,command.Address,
-                command.CategoryId, command.LicenceIds,command.AccountIds,command.Doamin , referDateFrom, referDateTo,command.StateCategoryId,command.PeopleIds,command.CountEmployees ?? 0,command.CountFolowers ?? 0,command.PostalCode);
+                command.PhoneNumber, command.Description, command.NationalCode, command.Address,
+                command.CategoryId, command.LicenceIds, accounts, command.Doamin,
+                referDateFrom, referDateTo, command.StateCategoryId, command.PeopleIds,
+                command.CountEmployees ?? 0, command.CountFolowers ?? 0, command.PostalCode, checkDate: null);
 
 
-            _companyRepository.SaveChanges();
+            try
+            {
+                _companyRepository.SaveChanges();
+                operation.Succeeded(ApplicationMessages.SuccessMessage);
+
+
+                //_companyRepository.SaveChanges();
+            }
+
+
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "خطا در ویرایش .");
+                return operation.Failed("مشکلی در ذخیره‌سازی داده‌ها وجود دارد.");
+            }
+
+
 
             operation.Succeeded(ApplicationMessages.SuccessMessage);
             return operation;
         }
-public OperationResult BatchEdit(BatchEditCompany command)
+
+
+
+        public OperationResult BatchEdit(BatchEditCompany command)
 {
     var operation = new OperationResult();
 
-    // بررسی خالی یا مقداردهی نشده بودن CompanyIds
-    if (command.CompanyIds == null || !command.CompanyIds.Any())
+    var accounts = _accountRepository.GetAccountsByIds(command.AccountIds);
+
+
+            // بررسی خالی یا مقداردهی نشده بودن CompanyIds
+            if (command.CompanyIds == null || !command.CompanyIds.Any())
     {
         operation.Failed("هیچ شرکتی انتخاب نشده است.");
         return operation;
@@ -135,18 +246,38 @@ public OperationResult BatchEdit(BatchEditCompany command)
         }
                 var referDateFrom = command.ReferDateFrom.ToGeorgianDateTime();
                 var referDateTo = command.ReferDateTo.ToGeorgianDateTime();
+                var checkDate = DateTime.Now;
                 company.Edit(command.CompanyName, command.Brand, command.ManagerName,
                      command.SecurityManagerName, command.PhoneNumber, command.Description,
                      command.NationalCode, command.Address, command.CategoryId,
-                     command.LicenceIds, command.AccountIds, command.Doamin,
-                     referDateFrom, referDateTo,command.StateCategoryId, command.PeopleIds, command.CountEmployees ?? 0, command.CountFolowers ?? 0, command.PostalCode);
+                     command.LicenceIds, accounts , command.Doamin,
+                     referDateFrom, referDateTo,command.StateCategoryId, command.PeopleIds, command.CountEmployees ?? 0, command.CountFolowers ?? 0, command.PostalCode, checkDate);
     }
 
-    _companyRepository.SaveChanges();
+
+
+            try
+            {
+                _companyRepository.SaveChanges();
+                operation.Succeeded(ApplicationMessages.SuccessMessage);
+
+
+            }
+
+
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "خطا در ویرایش .");
+                return operation.Failed("مشکلی در ذخیره‌سازی داده‌ها وجود دارد.");
+            }
+
 
     operation.Succeeded(ApplicationMessages.SuccessMessage);
     return operation;
 }
+
+
+        
 
         public List<CompanyViewModel> GetCompenies()
         {
@@ -188,6 +319,11 @@ public OperationResult BatchEdit(BatchEditCompany command)
         public List<CompanyViewModel> SerachTotal(CompanySearchModel searchModel, long? provincialAdminStateCategoryId = null)
         {
             return _companyRepository.SerachTotal(searchModel, provincialAdminStateCategoryId);
+        }
+
+         public List<CompanyViewModel> SerachByAccount(CompanySearchModel searchModel, long? currentUserId = null)
+        {
+            return _companyRepository.SerachByAccount(searchModel, currentUserId);
         }
     }
 }

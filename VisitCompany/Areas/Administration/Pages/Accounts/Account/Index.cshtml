@@ -42,7 +42,7 @@
                 <h3 class="panel-title">جستجو در  کاربران</h3>
             </div>
             <div class="panel-body">
-                <form class="form-inline" role="form" method="get">
+                <form class="form-inline" role="form" method="post">
                 
                     <div class="form-group">
                         <label class="sr-only" asp-for="SearchModel.Fullname"></label>
@@ -117,14 +117,9 @@
                                     <th>محل خدمت</th>
                                     <th>تاریخ ایجاد</th>
                                     <th>تاریخ آخرین ورود</th>
-                                    <th>ورودهای اخیر</th>
-
-@*                                     <th>عملیات</th>
-
-                                    *@
                                     <th>توصیحات</th>
-
- 
+                                    <th>ورودهای اخیر</th>
+                                     
                                     <th>عملیات2</th>
                                     <th>غیر فعال کردن کاربر</th>
 
@@ -132,6 +127,9 @@
                                </tr>
                             </thead>
                             <tbody>
+
+                                @if (Model.Accounts != null)
+                                {
                                 @foreach (var item in Model.Accounts)
                                 {
                                     <tr>
@@ -188,6 +186,7 @@
 
 
                                     </tr>
+                                }
                                 }
                             </tbody>
                         </table>

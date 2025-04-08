@@ -1,0 +1,17 @@
+﻿@model List<CompanyManagement.Application.Contract.Company.CompanyViewModel>
+
+<div class="company-details">
+    <h3>اطلاعات کامل شرکت‌ها</h3>
+
+    @foreach (var company in Model)
+    {
+        <div class="company-item">
+            <p><strong>شناسه:</strong> @company.Id</p>
+            <p><strong>نام رسمی شرکت:</strong> @company.CompanyName</p>
+            <p><strong>نام برند:</strong> @company.Brand</p>
+            
+            <!-- سایر اطلاعات را نیز اضافه کنید -->
+            <hr />
+        </div>
+    }
+</div>

@@ -42,5 +42,10 @@ namespace Framework.Infrastructure
         {
             _context.SaveChanges();
         }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
     }
 }

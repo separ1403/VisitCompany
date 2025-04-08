@@ -29,11 +29,16 @@ namespace VisitCompany.Pages
         [TempData]
         public string ErrorMessage { get; set; }
 
-        public void OnGet(string mobile)
+        public IActionResult OnGet()
         {
-            ViewData["Mobile"] = mobile;
-            TempData["ErrorMessage"] = null; // پاک کردن پیام خطا در بارگذاری اولیه صفحه
+            var mobile = HttpContext.Session.GetString("CommandMobile");
+            if (string.IsNullOrEmpty(mobile))
+                return RedirectToPage("./Account");
 
+            ViewData["Mobile"] = mobile;
+            TempData.Remove("ErrorMessage");
+
+            return Page();
         }
 
         public IActionResult OnPostValidateCode()
@@ -60,7 +65,7 @@ namespace VisitCompany.Pages
 
             if (accountViewModel.RoleId == 1 || accountViewModel.RoleId == 4)
             {
-                return RedirectToPage("ManagerProfile");
+                return RedirectToPage("Report");
             }
             else
             return RedirectToPage("UserProfile");

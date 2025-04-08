@@ -14,6 +14,8 @@ namespace CompanyManagement.Application.Contract.Company
     {
         OperationResult Create(CreateCompany command);
         OperationResult Edit(EditCompany command);
+        Task<OperationResult> EditRasmio(long id);
+
         OperationResult BatchEdit(BatchEditCompany command); // متد جدید برای ویرایش دسته‌ای
 
         EditCompany Getdetails(long id);
@@ -22,6 +24,7 @@ namespace CompanyManagement.Application.Contract.Company
 
         List<CompanyViewModel> Serach(CompanySearchModel searchModel, long? provincialAdminStateCategoryId = null);
         List<CompanyViewModel> SerachTotal(CompanySearchModel searchModel, long? provincialAdminStateCategoryId = null);
+        List<CompanyViewModel> SerachByAccount(CompanySearchModel searchModel, long? currentUserId = null);
 
         List<CompanyViewModel> GetCompenies();
         List<CompanyViewModel> GetCompeniesWithUsername();

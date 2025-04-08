@@ -40,6 +40,7 @@ namespace CompanyManagement.Infrasructure.EFCore.Mapping
 
             builder.HasOne(x => x.GeneralPolicy).WithOne(x => x.Checklist);
 
+            builder.HasOne(x => x.StateCategory).WithMany(x => x.checklists).HasForeignKey(x => x.StateCategoryIds).OnDelete(DeleteBehavior.NoAction); // جلوگیری از ایجاد مسیرهای چندگانه
 
 
 

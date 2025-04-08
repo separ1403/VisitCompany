@@ -17,7 +17,7 @@ namespace AccountManagement.Application.Contracts.Account
         AccountViewModel GetByMobile(string mobile);
         OperationResult Login(Login command);
         void Logout();
-        List<AccountViewModel> GetAccounts();
+        List<AccountViewModel> GetAccounts(long? provincialAdminStateCategoryId = null);
         AccountViewModel GetAccountBy(long id);
         bool ActiveUser(string activeCode);
         void UpdateLastLogin(long accountId);

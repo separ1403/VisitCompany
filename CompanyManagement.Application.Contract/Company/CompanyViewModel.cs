@@ -24,16 +24,18 @@ namespace CompanyManagement.Application.Contract.Company
         public double Average { get;  set; }
         public List<AccountViewModel> Accounts { get; set; } = new List<AccountViewModel>(); // تعریف لیست حساب‌ها
         public List<LicenceCategoryViewModel> Licences { get; set; } = new List<LicenceCategoryViewModel>();
+        public List<ChecklistViewModel> Checklists { get; set; } = new List<ChecklistViewModel>();
         public long CategoryId { get; set; }
         public List<long>?  LicenceIds { get; set; }
         public string Licence { get; set; }
-
         public string CompanyCreateDate { get;  set; }
         public List<long>? AccountIds { get; set; } // باید مقداردهی شود
         public string CheckByAccount { get; set; }
         public string Domain { get; set;}
         public string Address { get; set; }
         public string CheckDate { get; set; }
+        public DateTime? CheckDateCount { get; set; }
+
         public string ReferDateFrom { get; set; }
         public string ReferDateTo { get; set; }
         public string StatusMessage { get; set; }
@@ -41,6 +43,9 @@ namespace CompanyManagement.Application.Contract.Company
         public long RecentCompaniesCount { get; set; }
 
         public long StatusAssignedCount { get; set; }
+        public int StatusAssignedForWeekCount { get; set; }
+        public int StatusAssignedForMonthCount { get; set; }
+
         public long StatusWaitingEvaluationCount { get; set; }
 
         public long StatusEndingEvaluationCount { get; set; }
@@ -59,6 +64,23 @@ namespace CompanyManagement.Application.Contract.Company
         public string PostalCode { get; set; }
         public long? CountEmployees { get;  set; }
         public long? CountFolowers { get;  set; }
+        //for ramio
+        public string? TitleRasm { get; set; }
+        public string? RegistrationDateRasm { get;  set; }
+        public string? RegistrationNoRasm { get;  set; }
+        public decimal? CapitalRasm { get;  set; }
+        public string? AddressRasm { get;  set; }
+        public string? TaxNumberRasm { get;  set; }
+        public string? PostalCodeRasm { get;  set; }
+        public string? LastUpdateRasm { get;  set; }
+        public string? StatusRasm { get;  set; }
+        public string? EdareKolRasm { get;  set; }
+        public string? VahedSabtiRasm { get;  set; }
+        public int? ChecklistCount { get; set; }
+
+        public double AverageGeneral { get; set; }
+        public double AverageGeneralProff { get; set; }
+        public double AverageGeneralPol { get; set; }
 
 
 

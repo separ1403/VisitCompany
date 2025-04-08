@@ -1,4 +1,5 @@
 ﻿using CompanyManagement.Domain.AccountAgg;
+using CompanyManagement.Domain.ChecklistAgg;
 using Framework.Domain;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
@@ -15,6 +16,7 @@ namespace CompanyManagement.Domain.StatesCategoryAgg
        
         public List<Account> Accounts { get; private set; }
         public List<Company> companies { get; private set; }
+        public List<Checklist> checklists { get; private set; }
 
 
 

@@ -101,8 +101,10 @@
                                         <th>دسته‌بندی</th>
                                         <th>نام مجوز</th>
                                         <th>آدرس </th>
-                                        <th>عملیات</th>
-                                    </tr>
+
+                                         <th>جزییات</th>
+                                        @*                                         <th>عملیات</th>
+ *@                                    </tr>
                                 </tr>
                             </thead>
                             <tbody>
@@ -131,12 +133,17 @@
                                             }
                                         </td>
                                         <td>@item.Address</td>
-                                        
                                         <td>
+                                            <a href="javascript:void(0);" class="view-details" data-id="@item.Id">
+                                                <i class="fa fa-search"></i>
+                                            </a>
+                                        </td>
+                                        
+                                  @*       <td>
                                             <a class="btn btn-warning pull-right m-rl-5" >
                                                 <a class="fa fa-edit" asp-page="./Edit" asp-route-id="@item.Id">ویرایش </a> 
                                             </a>
-                                        </td>
+                                        </td> *@
                                     </tr>
                                 }
                             </tbody>
@@ -175,7 +182,7 @@
                                         <td>@item.Count</td>
                                         <td>
                                             <!-- آیکون ذره‌بین برای نمایش اطلاعات بیشتر -->
-                                            <a href="javascript:void(0);" class="view-details" data-id="@item.Id">
+                                            <a href="javascript:void(0);" class="view-subcategories" data-id="@item.Id">
                                                 <i class="fa fa-search"></i>
                                             </a>
                                         </td>
@@ -350,6 +357,26 @@
                     }
                 });
             });
+
+
+            // مشاهده زیرمجموعه‌ها
+            $(document).on('click', '.view-subcategories', function() {
+                var id = $(this).data('id');
+                $.ajax({
+                    url: '/LicenceCategories/Index?handler=DetailsCompany',
+                    type: 'GET',
+                    data: { id: id },
+                    success: function(result) {
+                        $('#popupDetails').html(result);
+                        $('#popupWindow').fadeIn(); // نمایش پاپ‌آپ
+                    },
+                    error: function() {
+                        alert('خطا در بارگذاری اطلاعات');
+                    }
+                });
+            });
+
+
 
             $(document).on('click', '.close-btn', function() {
                 $('#popupWindow').fadeOut(); // بستن پاپ‌آپ

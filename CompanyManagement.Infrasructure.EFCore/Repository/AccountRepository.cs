@@ -59,16 +59,25 @@ namespace AccountManagement.Infrastructure.EFCore.Repository
             return _context.Accounts.FirstOrDefault(x => x.Mobile == mobile);
         }
 
+   
 
-        public List<AccountViewModel> GetAccounts()
+        public List<AccountViewModel> GetAccounts(long? provincialAdminStateCategoryId = null)
         {
-            return _context.Accounts.Select(x => new AccountViewModel
+            var query = _context.Accounts.Select(x => new AccountViewModel
             {
                 Id = x.Id,
                 Name = x.Name,
-                Fullname = x.Fullname
-            }).ToList();
+                Fullname = x.Fullname,
+                StateCategoryId = x.StateCategoryId
+            });
+
+            if (provincialAdminStateCategoryId.HasValue)
+                query = query.Where(x => x.StateCategoryId == provincialAdminStateCategoryId.Value);
+
+            return query.ToList();
         }
+
+
 
         public EditAccount Getdetails(long id)
         {

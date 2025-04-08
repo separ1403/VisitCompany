@@ -1,21 +1,27 @@
 ﻿using CompanyManagement.Application.Contract.CompanyCategory;
 using CompanyManagement.Domain.CompanyCategoryAgg;
 using Framework.Application;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace CompanyManagement.Application
+
 {
     public class CompanyCategoryApplication : ICompanyCategoryApplication
     {
         private readonly ICompanyCategoryRepository _companycategoryRepository;
+        private readonly ILogger<CompanyCategoryApplication> _logger;
 
-        public CompanyCategoryApplication(ICompanyCategoryRepository companycategoryRepository)
+        public CompanyCategoryApplication(ICompanyCategoryRepository companycategoryRepository, ILogger<CompanyCategoryApplication> logger)
         {
             _companycategoryRepository = companycategoryRepository;
+            _logger = logger;
         }
 
         public OperationResult Create(CreateCompanyCategory command)
@@ -28,9 +34,20 @@ namespace CompanyManagement.Application
             }
 
             var companyCategory = new CompanyCategory(command.Name, command.Description);
-           
-            _companycategoryRepository.Create(companyCategory);
-            _companycategoryRepository.SaveChanges();
+
+            try
+            {
+                _companycategoryRepository.Create(companyCategory);
+                _companycategoryRepository.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "خطا در ایجاد شرکت  جدید.");
+                return operation.Failed("مشکلی در ذخیره‌سازی داده‌ها وجود دارد.");
+            }
+
+
+                       
 
             operation.Succeeded(ApplicationMessages.SuccessMessage);
             return operation;
@@ -58,7 +75,25 @@ namespace CompanyManagement.Application
 
             companyCategory.Edit(command.Name, command.Description);
 
-            _companycategoryRepository.SaveChanges();
+
+
+            try
+            {
+                _companycategoryRepository.SaveChanges();
+                operation.Succeeded(ApplicationMessages.SuccessMessage);
+
+
+                //_companyRepository.SaveChanges();
+            }
+
+
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "خطا در ویرایش .");
+                return operation.Failed("مشکلی در ذخیره‌سازی داده‌ها وجود دارد.");
+            }
+
+
 
             operation.Succeeded(ApplicationMessages.SuccessMessage);
             return operation;

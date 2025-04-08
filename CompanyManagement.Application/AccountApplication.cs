@@ -7,21 +7,15 @@ using Microsoft.AspNetCore.Http;
 using System.Reflection;
 using CompanyManagement.Domain.AccountAgg;
 using Framework.Infrastructure;
+using CompanyManagement.Application;
+using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace AccountManagement.Application
 {
     public class AccountApplication : IAccountApplication
     {
-        public AccountApplication(IAccountRepository accountRepository, IPasswordHasher passwordHasher, IAuthHelper authHelper, IRoleRepository roleRepository, IHttpContextAccessor httpContextAccessor, ISmsSender smsSender)
-        {
-            _accountRepository = accountRepository;
-            _passwordHasher = passwordHasher;
-            _authHelper = authHelper;
-            _roleRepository = roleRepository;
-            _httpContextAccessor = httpContextAccessor;
-            _smsSender = smsSender;
-        }
-
 
         private readonly IAccountRepository _accountRepository;
         private readonly IPasswordHasher _passwordHasher;
@@ -29,12 +23,18 @@ namespace AccountManagement.Application
         private readonly IRoleRepository _roleRepository;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ISmsSender _smsSender;
+        private readonly ILogger<AccountApplication> _logger;
 
-
-
-
-
-
+        public AccountApplication(IAccountRepository accountRepository, IPasswordHasher passwordHasher, IAuthHelper authHelper, IRoleRepository roleRepository, IHttpContextAccessor httpContextAccessor, ISmsSender smsSender, ILogger<AccountApplication> logger)
+        {
+            _accountRepository = accountRepository;
+            _passwordHasher = passwordHasher;
+            _authHelper = authHelper;
+            _roleRepository = roleRepository;
+            _httpContextAccessor = httpContextAccessor;
+            _smsSender = smsSender;
+            _logger = logger;
+        }
 
         public OperationResult Edit(EditAccount command)
         {
@@ -55,10 +55,26 @@ namespace AccountManagement.Application
 
 
             account.Edit(command.Name,command.Fullname, command.Username, command.Mobile, command.RoleId,command.StateCategoryId,command.Description);
-            _accountRepository.SaveChanges();
+
+
+            try
+            {
+                _accountRepository.SaveChanges();
+                operation.Succeeded(ApplicationMessages.SuccessMessage);
+
+
+                //_companyRepository.SaveChanges();
+            }
+
+
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "خطا در ویرایش حساب کاربری ");
+                return operation.Failed("خطا در ویرایش حساب کاربری ");
+            }
+
             operation.Succeeded(ApplicationMessages.SuccessMessage);
             return operation;
-
 
         }
 
@@ -69,8 +85,7 @@ namespace AccountManagement.Application
             var operation = new OperationResult();
             if (_accountRepository.Exists(x => x.UserName == command.Username /*|| x.Mobile == command.Mobile*/))
             {
-                operation.Failed(ApplicationMessages.DuplicatedRecord);
-                return operation;
+                return operation.Failed(ApplicationMessages.DuplicatedRecord);
             }
             else
             {
@@ -80,10 +95,22 @@ namespace AccountManagement.Application
 
                 //   _smsSender.SendByKavenagarAsync("کد فعالسازی شما در سایت لوازم خانگی حمید :  " + codevalidate , command.Mobile  );  // in r bayad badan faal konam alan be khatere sharj nabodan gheyre faale
 
-                _accountRepository.Create(account);
-                _accountRepository.SaveChanges();
-                operation.Succeeded("ثبت نام با موفقیت انجام گردید");
-                return operation;
+
+
+                try
+                {
+                    _accountRepository.Create(account);
+                    _accountRepository.SaveChanges();
+                }
+                catch (DbUpdateException ex)
+                {
+                    _logger.LogError(ex, "خطا در ایجاد حساب کاربری  جدید.");
+                    return operation.Failed("مشکلی در ذخیره‌سازی داده‌ها در قسمت ایجاد حساب کاربری  وجود دارد.");
+                }
+
+
+               
+                return operation.Succeeded("ثبت نام با موفقیت انجام گردید");
 
             }
         }
@@ -107,7 +134,24 @@ namespace AccountManagement.Application
 
             //var password = _passwordHasher.Hash(command.Password);
             //account.ChangePassword(password);
-            _accountRepository.SaveChanges();
+
+            try
+            {
+                _accountRepository.SaveChanges();
+                operation.Succeeded(ApplicationMessages.SuccessMessage);
+
+
+                //_companyRepository.SaveChanges();
+            }
+
+
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "خطا در ویرایش رمز عبور ");
+                return operation.Failed("خطا در ویرایش رمز عبور ");
+            }
+
+
             operation.Succeeded(ApplicationMessages.SuccessMessage);
             return operation;
         }
@@ -150,7 +194,24 @@ namespace AccountManagement.Application
            // var codevalidate = CodeGenerator.RandomNumber();
             var codevalidate = "11111";
             account.ChangeCodeValidateMobile(codevalidate);
-            _accountRepository.SaveChanges();
+
+            try
+            {
+                _accountRepository.SaveChanges();
+                operation.Succeeded(ApplicationMessages.SuccessMessage);
+
+
+                //_companyRepository.SaveChanges();
+            }
+
+
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "خطا در ویرایش کد ورودی در لاگین ");
+                return operation.Failed("خطا در ویرایش کد ورودی در لاگین ");
+            }
+
+
           // _smsSender.SendByKavenagarAsync("کد فعالسازی شما: " + codevalidate, command.Mobile);
 
             return operation.Succeeded("کد فعالسازی ارسال شد.");
@@ -162,14 +223,18 @@ namespace AccountManagement.Application
             _authHelper.Signout();
         }
 
-        public List<AccountViewModel> GetAccounts()
+        public List<AccountViewModel> GetAccounts(long? provincialAdminStateCategoryId = null)
+        
         {
-            return _accountRepository.GetAccounts();
+            return _accountRepository.GetAccounts( provincialAdminStateCategoryId);
         }
 
         public AccountViewModel GetAccountBy(long id)
         {
             var account = _accountRepository.Get(id);
+
+            if (account == null)
+                throw new ArgumentException("کاربر مورد نظر یافت نشد."); // یا custom exception
             return new AccountViewModel()
             {
                 Name = account.Name,
@@ -213,20 +278,30 @@ namespace AccountManagement.Application
         }
 
 
-
         public void UpdateLastLogin(long accountId)
         {
-          
-
             var account = _accountRepository.GetById(accountId);
-            if (account != null)
-            {
-                 account.LastLoginCal();
-                account.RecordLogin();
 
-                _accountRepository.SaveChanges();
+            if (account == null)
+            {
+                _logger.LogWarning("در عملیات UpdateLastLogin، کاربر با شناسه {AccountId} یافت نشد.", accountId); // 🔧 لاگ هشدار
+                throw new ArgumentException("کاربر مورد نظر یافت نشد."); // 🔧 استفاده از استثناء منطقی
+            }
+
+            account.LastLoginCal();
+            account.RecordLogin();
+
+            try
+            {
+                _accountRepository.SaveChanges(); // 🔧 داخل try برای جلوگیری از crash
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "خطا در ذخیره‌سازی زمان ورود برای کاربر با شناسه {AccountId}.", accountId); // 🔧 لاگ خطای دقیق
+                throw new ApplicationException("خطا در ذخیره‌سازی زمان آخرین ورود."); // 🔧 پرتاب استثناء کنترل‌شده
             }
         }
+
 
         public OperationResult DisableAccount(long id)
         {
@@ -235,6 +310,7 @@ namespace AccountManagement.Application
                 return new OperationResult().Failed("کاربر یافت نشد");
 
             account.ChangeActiveMode(); // غیرفعال کردن کاربر
+
             _accountRepository.SaveChanges(); // ذخیره تغییرات
 
             return new OperationResult().Succeeded("کاربر با موفقیت غیرفعال شد");

@@ -1,4 +1,5 @@
-﻿using AccountManagement.Application.Contracts.Account;
+﻿using System.Security.Claims;
+using AccountManagement.Application.Contracts.Account;
 using CompanyManagement.Application.Contract.Company;
 using CompanyManagement.Application.Contract.CompanyCategory;
 using CompanyManagement.Application.Contract.LicenceCategory;
@@ -22,9 +23,18 @@ namespace VisitCompany.Pages.Company
         public SelectList LicenceCategories { get; set; }
         public SelectList States;
 
+        [TempData]
+        public string ErrorMessageameEd { get; set; }
+
+        [TempData]
+        public string SuccessMessageameEd { get; set; }
 
         public List<SelectListItem> AccountList = new List<SelectListItem>();
         public BatchEditCompany Command { get; set; }
+        public EditCompany CommandRasmio { get; set; }
+        public List<string> Error { get; set; } = new List<string>();
+
+        public CompanyResponse CompanyData { get; set; } // تعریف برای ارسال به ویو
 
         public CompanyCategorySearchModel SearchModelCategory;
         public List<CompanyCategoryViewModel> CompanyCategoriesList;
@@ -34,35 +44,39 @@ namespace VisitCompany.Pages.Company
         private readonly ILicenceCategoryApplication _licenceCategoryApplication;
         private readonly IAccountApplication _accountApplication;
         private readonly IStatecategoryApplication _statecategoryApplication;
+        private readonly ILogger<CreateModel> _logger;
+        private readonly HttpClient _httpClient;
 
-        public IndexModel(ICompanyApplication company, ICompanyCategoryApplication companyCategoryApplication, ILicenceCategoryApplication licenceCategoryApplication, IAccountApplication accountApplication, IStatecategoryApplication statecategoryApplication)
+        public IndexModel(ICompanyApplication company, ICompanyCategoryApplication companyCategoryApplication, ILicenceCategoryApplication licenceCategoryApplication, IAccountApplication accountApplication, IStatecategoryApplication statecategoryApplication, ILogger<CreateModel> logger, HttpClient httpClient)
         {
             _company = company;
             _companyCategoryApplication = companyCategoryApplication;
             _licenceCategoryApplication = licenceCategoryApplication;
             _accountApplication = accountApplication;
             _statecategoryApplication = statecategoryApplication;
+            _logger = logger;
+            _httpClient = httpClient;
         }
 
-        [NeedsPermission(CompanyPermission.ListCompanies)]
-        public void OnGet()
+      //  [NeedsPermission(CompanyPermission.ListCompanies)]
+        public async Task OnGet(long id)
         {
-            PopulateSelectLists();
+            if (id != 0)
+            {
+                await OnGetUpdateRasmioAsync(id);
+                Companies = _company.Serach(new CompanySearchModel());
+            }
+            else
+            {
+                PopulateSelectLists();
 
-            // مقداردهی اولیه لیست‌ها برای نمایش در dropdown ها
-            CompanyCategories = new SelectList(_companyCategoryApplication.GetCompanyCategories(), "Id", "Name");
-            LicenceCategories = new SelectList(_licenceCategoryApplication.GetLicenceCategories(), "Id", "Name");
-            Accounts = new SelectList(_accountApplication.GetAccounts(), "Id", "Fullname");
-            Companies = _company.Serach(new CompanySearchModel()); // اگر متد Serach بدون فیلتر تمام رکوردها را برگرداند
+                CompanyCategories = new SelectList(_companyCategoryApplication.GetCompanyCategories(), "Id", "Name");
+                LicenceCategories = new SelectList(_licenceCategoryApplication.GetLicenceCategories(), "Id", "Name");
+                Companies = _company.Serach(new CompanySearchModel());
 
-            // من اینکار رو کردم یعنی هم تو اینجا و هم تو آن پست نوشتم چرا؟
-            // چون تو اینجا گذاشتم که هنگامی که صفحه برای بار اول لود میشه من تمام رکوردها رو ببینم
-            // هم تو پست نوشتم چونکه میخواستم وقتی جستجو انجام بدم تو یو آر ال مقادیر جستجو ظاهر نشه
-           
-
-           // CompanyCategoriesList = _companyCategoryApplication.Search(SearchModelCategory) ?? new List<CompanyCategoryViewModel>();
-
+            }
         }
+
 
         public IActionResult OnGetDetails(int id)
         {
@@ -85,6 +99,7 @@ namespace VisitCompany.Pages.Company
             LicenceCategories = new SelectList(_licenceCategoryApplication.GetLicenceCategories(), "Id", "Name");
             Accounts = new SelectList(_accountApplication.GetAccounts(), "Id", "Fullname");
 
+
             // جستجو بر اساس مدل جستجو
             Companies = _company.Serach(searchModel) ?? new List<CompanyViewModel>();
 
@@ -96,7 +111,7 @@ namespace VisitCompany.Pages.Company
         {
             PopulateSelectLists();
 
-            var result =_company.BatchEdit(command);
+            var result = _company.BatchEdit(command);
             if (result.IsSucceeded)
             {
                 TempData["SuccessMessageameEd"] = "تغییرات با موفقیت اعمال شد.";
@@ -111,14 +126,46 @@ namespace VisitCompany.Pages.Company
 
         private void PopulateSelectLists()
         {
-            var accounts = _accountApplication.GetAccounts();
-            AccountList = accounts.Select(accounts => new SelectListItem(accounts.Fullname, accounts.Id.ToString())).ToList();
+
+            var currentUserRole = Convert.ToInt64(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value);
+            var currentUserProvinceId = Convert.ToInt64(HttpContext.User.Claims.FirstOrDefault(c => c.Type == "StateCategoryId")?.Value);
             States = new SelectList(_statecategoryApplication.List(), "Id", "Name");
             CompanyCategoriesList = _companyCategoryApplication.Search(SearchModelCategory) ?? new List<CompanyCategoryViewModel>();
 
+            var accounts = _accountApplication.GetAccounts(
+(currentUserRole == Convert.ToInt64(RolesConst.State) || currentUserRole == Convert.ToInt64(RolesConst.SystemUser))
+? currentUserProvinceId
+: (long?)null
+);
+
+            Accounts = new SelectList(accounts ?? new List<AccountViewModel>(), "Id", "Fullname");
+            AccountList = accounts.Select(accounts => new SelectListItem(accounts.Fullname, accounts.Id.ToString())).ToList();
 
         }
 
+
+        public async Task<IActionResult> OnGetUpdateRasmioAsync(long id)
+        {
+
+            if (id == 0)
+            {
+                TempData["ErrorMessage"] = "شناسه معتبر نیست.";
+                return RedirectToPage("/Index");
+            }
+
+            var result = await _company.EditRasmio(id);
+
+            if (result.IsSucceeded)
+            {
+                TempData["SuccessMessage"] = result.Message;
+            }
+            else
+            {
+                TempData["ErrorMessage"] = result.Message;
+            }
+
+            return RedirectToPage("/Company/Index");
+        }
 
 
     }

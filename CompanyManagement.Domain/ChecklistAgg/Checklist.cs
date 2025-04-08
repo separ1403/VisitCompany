@@ -22,9 +22,8 @@ namespace CompanyManagement.Domain.ChecklistAgg
         public List<Person> People { get; private set; } = new List<Person>();
 
 
-
-
-
+        public StateCategory StateCategory { get; private set; }
+        public long StateCategoryIds { get; private set; }
 
 
         //professional
@@ -37,6 +36,7 @@ namespace CompanyManagement.Domain.ChecklistAgg
         public long? GeneralChecklistPolicyID { get; private set; }
 
 
+
         // Navigation properties for specialized checklists
         public JuniperHardening? JuniperHardening { get; set; }
         public HPEDL380? HPEDL380 { get; set; }
@@ -46,7 +46,7 @@ namespace CompanyManagement.Domain.ChecklistAgg
         public GeneralPolicy GeneralPolicy { get; set; }
 
 
-        public Checklist(string title, string description, List<Person> people, long countEmployees, long countFolowers, long companyId, List<long> accountIds)
+        public Checklist(string title, string description, List<Person> people, long countEmployees, long countFolowers, long companyId, List<long> accountIds, long stateCategoryId)
         {
             
             Title = title;
@@ -56,7 +56,7 @@ namespace CompanyManagement.Domain.ChecklistAgg
             CountFolowers = countFolowers;
             CompanyId = companyId;
             AccountIds = accountIds;
-
+            StateCategoryIds = stateCategoryId;
             CreationDate = DateTime.Now;
         }
 

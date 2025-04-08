@@ -6,8 +6,11 @@
 @{
     Layout = "Shared/_AdminLayout";
     ViewData["title"] = "مدیریت چک لیست ها";
+
     var roleState = Convert.ToInt64(ViewData["RolesState"]);
+    
     var roleAdmin = Convert.ToInt64(ViewData["RolesAdministrator"]);
+    
     var currentUserRole = Convert.ToInt64(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value);
     var isAllowedToShowButton = currentUserRole == roleState || currentUserRole == roleAdmin;
 }
@@ -45,7 +48,7 @@
                 <h3 class="panel-title">جستجو در چک لیست ها </h3>
             </div>
             <div class="panel-body">
-                <form class="form-inline" role="form" method="get">
+                <form class="form-inline" role="form" method="post">
                     <div class="form-group">
                         <label class="sr-only" asp-for="@Model.SearchModel.Name"></label>
                         <input class="form-control" asp-for="@Model.SearchModel.Name" placeholder="  عنوان چک لیست">
@@ -54,9 +57,6 @@
                         <label class="sr-only" asp-for="@Model.SearchModel.Brand"></label>
                         <input class="form-control" asp-for="@Model.SearchModel.Brand" placeholder="  نام تجاری شرکت">
                     </div>
-                    
-            
-
 
                     <div class="form-group">
                         <label class="sr-only" asp-for="@Model.SearchModel.CompanyName"></label>
@@ -94,7 +94,7 @@
                         </select>
                     </div>
 
-                    <div >
+                    <div>
                         <label class="sr-only" asp-for="@Model.SearchModel.ScoreRange">بازه دسته‌بندی</label>
                         <select class="form-control" asp-for="@Model.SearchModel.ScoreRange" id="ScoreRangeSelect">
                             <option value="all">همه</option>
@@ -111,6 +111,29 @@
                         </select>
                     </div>
 
+                    <div class="form-group">
+                        <label class="sr-only" asp-for="SearchModel.CategoryId"></label>
+                        <select class="form-control" asp-for="SearchModel.CategoryId" asp-items="Model.CompanyCategories">
+                            <option value="0">انتخاب دسته‌بندی</option>
+                        </select>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="sr-only" asp-for="SearchModel.StartDate">تاریخ شروع</label>
+                                <input class="form-control persianDateInput" asp-for="SearchModel.StartDate" placeholder="تاریخ شروع" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="sr-only" asp-for="SearchModel.EndDate">تاریخ پایان</label>
+                                <input class="form-control persianDateInput" asp-for="SearchModel.EndDate" placeholder="تاریخ پایان" autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+
+
 
                     <button type="submit" class="btn btn-success waves-effect waves-light m-l-10">جستجو</button>
                     <a class="btn btn-primary waves-effect waves-light m-l-10" asp-page="./Index">مشاهده همه</a>
@@ -124,7 +147,6 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">لیست چک لیست ها (@Model.Checklists.Count)</h3>
                 <h3 class="panel-title">لیست چک لیست ها (@Model.Checklists.Count)</h3>
             </div>
             <div class="panel-body">
@@ -180,8 +202,8 @@
                                             @if (!string.IsNullOrEmpty(item.TypeChecklistGeneral))
 
                                             {
-                                                    <div>ارزیابی عمومی</div>
-                                                }
+                                                <div>ارزیابی عمومی</div>
+                                            }
 
                                             @if (!string.IsNullOrEmpty(item.TypeChecklistGeneralProff))
 
@@ -206,13 +228,13 @@
                                                 <div>ارزیابی تخصصی Junipper</div>
                                             }
 
-                                            @if (!string.IsNullOrEmpty (item.TypeChecklistwin2019))
+                                            @if (!string.IsNullOrEmpty(item.TypeChecklistwin2019))
 
                                             {
                                                 <div>ارزیابی تخصصی Win2019</div>
                                             }
 
-                                            
+
                                         </td>
 
                                         <td>@item.CompanyCategory</td>
@@ -328,11 +350,16 @@
 
                         <div style="height: 2px; background-color: #333; margin: 20px 0;"></div> <!-- خط فاصله بین دو جدول -->
                         <div style="height: 2px; background-color: #333; margin: 20px 0;"></div> <!-- خط فاصله بین دو جدول -->
-                      @if (isAllowedToShowButton)
+                  @*       @if (isAllowedToShowButton)
+                        
                         {
                             <!-- دکمه باز کردن پنجره پاپ‌آپ جدید -->
                             <button id="openPopupButton" class="btn btn-info m-b-10">ارجاع جهت ارزیابی</button>
                         }
+ *@
+
+                             <button id="openPopupButton" class="btn btn-info m-b-10">ارجاع جهت ارزیابی</button>
+
                         <h4 class="page-title pull-left">جدول شرکت ها</h4>
 
                         <!-- جدول شرکت‌ها (بدون تغییر) -->
@@ -348,6 +375,8 @@
                                     <th>وضعیت</th>
 
                                     <th>جزییات</th>
+                                    <th>ویرایش</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -356,7 +385,7 @@
                                     <tr>
                                         <td>@item.CompanyName</td>
                                         <td>@item.Brand</td>
-                                     
+
                                         <td>@item.CheckDate</td>
                                         <td>@item.ReferDateFrom تا  @item.ReferDateTo </td>
                                         <td>
@@ -371,7 +400,7 @@
                                             }
                                             else
                                             {
-                                                <span>اکانتی موجود نیست</span>
+                                                <span>ارزیابی تعیین نشده است</span>
                                             }
                                         </td>
                                         <td>@item.StatusMessage</td> <!-- نمایش پیام وضعیت -->
@@ -381,6 +410,13 @@
                                                 <i class="fa fa-search"></i>
                                             </a>
                                         </td>
+
+
+                                        <td>
+                                            <a class="btn btn-warning btn-custome waves-effect waves-light pull-right m-rl-5">
+                                                <a class="fa fa-edit" asp-page="./EditCompany" asp-route-id="@item.Id">ویرایش</a>
+                                            </a>
+                                        </td>
                                     </tr>
                                 }
                             </tbody>
@@ -388,15 +424,18 @@
 
                         <!-- دکمه باز کردن پنجره پاپ‌آپ جدید -->
                         <h4 class="page-title pull-left">جدول ارزیاب ها</h4>
-                       
+
 
                         <div style="height: 2px; background-color: #333; margin: 20px 0;"></div> <!-- خط فاصله بین دو جدول -->
                         <div style="height: 2px; background-color: #333; margin: 20px 0;"></div> <!-- خط فاصله بین دو جدول -->
                         <!-- دکمه باز کردن پنجره پاپ‌آپ جدید -->
-                        @if (isAllowedToShowButton)
+                      @*   @if (isAllowedToShowButton)
                         {
                             <button id="openNewPopupButton" class="btn btn-info m-b-10">افزودن حساب کاربری جدید</button>
-                        }
+                        } *@
+                     <button id="openNewPopupButton" class="btn btn-info m-b-10">افزودن حساب کاربری جدید</button>
+
+
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="panel panel-default">
@@ -420,6 +459,7 @@
                                                             *@
                                                             <th>عملیات2</th>
                                                             <th>غیر فعال کردن کاربر</th>
+                                                            <th>عملیات1</th>
 
 
                                                         </tr>
@@ -463,13 +503,24 @@
                                                             <a class="fa fa-key" asp-page="./ChangePassword" asp-route-id="@item.Id">تغییر پسورد </a>
                                                             </a>
                                                             </td> *@
-                                                                <td>
-                                                                    <a class="btn btn-warning btn-custome waves-effect waves-light pull-right m-rl-5">
-                                                                        <a class="fa fa-edit" asp-page="/Administration/Accounts/Account/Edit" asp-route-id="@item.Id">ویرایش </a>
-                                                                    </a>
 
+                                                                @*                                                             کد به این شکل کار نکرد
+                                                            *@                                                             @*    <td>
+                                                            <a class="btn btn-warning btn-custome waves-effect waves-light pull-right m-rl-5">
+                                                            <a class="fa fa-edit" asp-page="/Administration/Accounts/Account/Edit" asp-route-id="@item.Id">ویرایش </a>
+                                                            </a>
+
+
+                                                            </td> *@
+
+                                                                @*                                                                 چون کد به شکل بالا کالر نکرد این شکلی نوشتم
+                                                            *@
+                                                                <td>
+                                                                    <a class="btn btn-warning btn-custome waves-effect waves-light pull-right m-rl-5 fa fa-edit"
+                                                                       href="/Administration/Accounts/Account/Edit?id=@item.Id">ویرایش</a>
 
                                                                 </td>
+
                                                                 <td>
                                                                     @if (item.IsActive)
                                                                     {
@@ -484,7 +535,13 @@
                                                                         </form>
                                                                     }
                                                                 </td>
+                                                                <td>
+                                                                    <a class="btn btn-warning btn-custome waves-effect waves-light pull-right m-rl-5">
+                                                                        <a class="fa fa-edit" asp-page="./Edit" asp-route-id="@item.Id">ویرایش </a>
+                                                                    </a>
 
+
+                                                                </td>
 
                                                             </tr>
                                                         }
@@ -623,7 +680,6 @@
                                 display: none;
                             }
 
-
                         </style>
 
                         @section Scripts {
@@ -652,7 +708,8 @@
 
                                     // باز کردن پاپ‌آپ جدید با دکمه جدید
                                     document.getElementById("openNewPopupButton").addEventListener("click", function() {
-                                        document.getElementById("popupIframeNew").src = "file:///C:/Users/hrirh/OneDrive/Desktop/.net9/VisitCompany/VisitCompany/Areas/Administration/Pages/Accounts/Account/Create.cshtml";
+                                        // document.getElementById("popupIframeNew").src = "file:///C:/Users/hrirh/OneDrive/Desktop/.net9/VisitCompany/VisitCompany/Areas/Administration/Pages/Accounts/Account/Create.cshtml";
+                                        document.getElementById("popupIframeNew").src = "/Administration/Accounts/Account/Create";
                                         document.getElementById("popupModalNew").style.display = "block";
                                     });
 
@@ -668,34 +725,37 @@
                                     }
 
                                     // رویداد برای باز کردن پاپ‌آپ از طریق آیکون ذره‌بین
-                                    $(document).on('click', '.view-details', function() {
-                                        var id = $(this).data('id');
-                                        $.ajax({
-                                            url: '/Company/Index?handler=Details',
-                                            type: 'GET',
-                                            data: { id: id },
-                                            success: function(result) {
-                                                $('#popupDetails').html(result);
-                                                $('#popupWindowDetails').fadeIn(); // نمایش پاپ‌آپ
-                                            },
-                                            error: function() {
-                                                alert('خطا در بارگذاری اطلاعات');
-                                            }
-                                        });
+                              $(document).ready(function () {
+    // اطمینان از مقداردهی اولیه به آیکون ذره‌بین
+    $(document).on('click', '.view-details', function () {
+        var id = $(this).data('id');
+        $.ajax({
+            url: '/Company/Index?handler=Details',
+            type: 'GET',
+            data: { id: id },
+            success: function (result) {
+                $('#popupDetails').html(result);
+                $('#popupWindowDetails').fadeIn(); // نمایش پاپ‌آپ
+            },
+            error: function () {
+                alert('خطا در بارگذاری اطلاعات');
+            }
+        });
+    });
+});
+
+
+
+                                    $('#CompanyIdSelect').select2({
+                                        placeholder: "انتخاب دسته بندی",
+                                        allowClear: true,
+                                        language: "fa"
                                     });
-
-                                 
-
-                                        $('#CompanyIdSelect').select2({
-                                            placeholder: "انتخاب دسته بندی",
-                                            allowClear: true,
-                                            language: "fa"
-                                        });
                                     $('#AccountSelect').select2({
                                         placeholder: "انتخاب لایسنس ها",
                                         allowClear: true,
                                         language: "fa"
-                                    });
+                                    });5
 
                                 });
                             </script>

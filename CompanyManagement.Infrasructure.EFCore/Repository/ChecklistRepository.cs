@@ -2,6 +2,7 @@
 using AccountManagement.Application.Contracts.Account;
 using CompanyManagement.Application.Contract.Checklist;
 using CompanyManagement.Domain.ChecklistAgg;
+using CompanyManagement.Infrasructure.EFCore.Migrations;
 using Framework.Application;
 using Framework.Infrastructure;
 using Microsoft.EntityFrameworkCore;
@@ -102,13 +103,58 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                           .FirstOrDefault();
         }
 
-       
+
+        // این کد رو من به خاطر بهینه سازی کامنت کردم و کد زیر را جایگزین کردم
+        //public List<ChecklistViewModel> GetAverageGeneralByCompany(ChecklistSearchModel searchModel)
+        //{
+        //    bool conditionExecuted = false;
+        //    // داده‌ها را بازیابی کرده و کوئری را مادی‌سازی کنید
+        //    var checklists = _companyContext.Checklists
+        //        .Include(x => x.Company)
+        //        .Include(x => x.GeneralChecklist)
+        //        .Select(x => new ChecklistViewModel
+        //        {
+        //            AverageGeneral = x.GeneralChecklist.AverageGeneral,
+        //            CompanyBrand = x.Company.Brand,
+        //            CompanyId = x.CompanyId,
+        //            Id = x.Id,
+        //            CalDate = x.CreationDate,
+
+        //        })
+        //        .ToList();
+
+        //    // اعمال فیلتر
+        //    if (searchModel.CompanyId.HasValue && searchModel.CompanyId > 0)
+        //    {
+        //        checklists = checklists.Where(x => x.CompanyId == searchModel.CompanyId.Value).ToList();
+        //        conditionExecuted = true;
+        //    }
+
+        //    if (!string.IsNullOrWhiteSpace(searchModel.StartDate) && !string.IsNullOrWhiteSpace(searchModel.EndDate))
+        //    {
+        //        var startDate = searchModel.StartDate.ToGeorgianDateTime();
+        //        var endDate = searchModel.EndDate.ToGeorgianDateTime();
+        //        checklists = checklists.Where(x => x.CalDate >= startDate && x.CalDate <= endDate).ToList();
+        //        conditionExecuted = true;
+        //    }
+
+        //    if (searchModel.TopCompaniesCount.HasValue && searchModel.TopCompaniesCount > 0)
+        //    {
+        //        checklists = checklists.OrderByDescending(x => x.AverageGeneral)
+        //            .Take(searchModel.TopCompaniesCount.Value).ToList();
+        //        conditionExecuted = true;
+        //    }
+        //    if (!conditionExecuted)
+        //    {
+        //        return null;
+        //    }
+
+        //    return checklists;
+        //}
 
         public List<ChecklistViewModel> GetAverageGeneralByCompany(ChecklistSearchModel searchModel)
         {
-            bool conditionExecuted = false;
-            // داده‌ها را بازیابی کرده و کوئری را مادی‌سازی کنید
-            var checklists = _companyContext.Checklists
+            var query = _companyContext.Checklists
                 .Include(x => x.Company)
                 .Include(x => x.GeneralChecklist)
                 .Select(x => new ChecklistViewModel
@@ -118,38 +164,34 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                     CompanyId = x.CompanyId,
                     Id = x.Id,
                     CalDate = x.CreationDate,
-                   
-                })
-                .ToList();
+                }).AsQueryable();
 
-            // اعمال فیلتر
+            // اعمال فیلتر شرکت
             if (searchModel.CompanyId.HasValue && searchModel.CompanyId > 0)
             {
-                checklists = checklists.Where(x => x.CompanyId == searchModel.CompanyId.Value).ToList();
-                conditionExecuted = true;
+                query = query.Where(x => x.CompanyId == searchModel.CompanyId.Value);
             }
 
+            // اعمال فیلتر تاریخ
             if (!string.IsNullOrWhiteSpace(searchModel.StartDate) && !string.IsNullOrWhiteSpace(searchModel.EndDate))
             {
                 var startDate = searchModel.StartDate.ToGeorgianDateTime();
                 var endDate = searchModel.EndDate.ToGeorgianDateTime();
-                checklists = checklists.Where(x => x.CalDate >= startDate && x.CalDate <= endDate).ToList();
-                conditionExecuted = true;
+                query = query.Where(x => x.CalDate >= startDate && x.CalDate <= endDate);
             }
 
+            // اعمال محدودیت نمایش شرکت‌های برتر
             if (searchModel.TopCompaniesCount.HasValue && searchModel.TopCompaniesCount > 0)
             {
-                checklists = checklists.OrderByDescending(x => x.AverageGeneral)
-                    .Take(searchModel.TopCompaniesCount.Value).ToList();
-                conditionExecuted = true;
-            }
-            if (!conditionExecuted)
-            {
-                return null;
+                query = query.OrderByDescending(x => x.AverageGeneral)
+                             .Take(searchModel.TopCompaniesCount.Value);
             }
 
-            return checklists;
+            var result = query.ToList();
+
+            return result.Any() ? result : null;
         }
+
 
 
         public List<ChecklistViewModel> GetAverageProffesionalByCompany(ChecklistSearchModel searchModel)
@@ -205,6 +247,8 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
         public List<ChecklistViewModel> SerachByAccount(long accountId)
         {
             var query = _companyContext.Checklists
+                        .AsNoTracking() // اضافه کردن AsNoTracking() برای بهبود عملکرد
+
                 .Include(x => x.Company)
                 .Include(x => x.Accounts)
                 .Include(x => x.JuniperHardening)
@@ -243,13 +287,16 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                     FinallDescriptionHpedl380 = x.HPEDL380.FinallDescription,
                     FinallDescriptionJunipper = x.JuniperHardening.FinallDescription,
                     FinallDescriptionWin2019 = x.Win2019.FinallDescription,
+                    CompanyName = x.Company.CompanyName,
                 });
 
+     
+
+
             if (accountId > 0)
-            {
-                // استفاده از Any برای چک کردن وجود حساب کاربری در لیست
-                query = query.Where(x => x.AccountId != null && x.AccountId.Any(id => id == accountId));
-            }
+                query = query.Where(c => c.Accounts.Any(a => a.Id == accountId));
+
+
 
             return query.OrderByDescending(x => x.Id).ToList();
         }
@@ -305,8 +352,6 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                 return null;
             }
 
-
-
             return checklists;
         }
 
@@ -322,8 +367,6 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                 .Include(x => x.GeneralChecklist)
                 .Include(x => x.GeneralProffesional)
                 .Include(x => x.GeneralPolicy)
-
-
                 .Include(x => x.People) // بارگذاری لیست افراد مرتبط
                 .Select(x => new ChecklistViewModel
                 {
@@ -337,7 +380,6 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                     }).ToList(),
 
                     StateCategory = x.Company.StateCategory.Name,
-                   
 
                     CountEmployees = x.CountEmployees,
                     CountFolowers = x.CountFolowers,
@@ -345,6 +387,7 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                     CompanyName = x.Company.CompanyName,
                     CompanyCategory = x.Company.CompanyCategory.Name,
                     CompanyCategoryId = x.Company.CompanyCategory.Id,
+
                     TypeChecklistGeneral = x.GeneralChecklist.Name,
                     TypeChecklistGeneralProff = x.GeneralProffesional.Name,
 
@@ -375,6 +418,7 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                     FinallDescriptionJunipper = x.JuniperHardening.FinallDescription,
                     FinallDescriptionWin2019 = x.Win2019.FinallDescription,
                     CreattionDate = x.CreationDate.ToFarsi(), // تغییر فرمت تاریخ به رشته ساده
+                    CreationDateTime = x.CreationDate,
                     UniqeCodeGeneral = x.GeneralChecklist.UniqueCode,
                     UniqeCodeGeneralproff = x.GeneralProffesional.UniqueCode,
                     UniqeCodeGeneralpol = x.GeneralPolicy.UniqueCode,
@@ -384,14 +428,14 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                     UniqeCodeWin2019 = x.Win2019.UniqueCode,
                 });
 
-                  var recordsPerStateCompany = query   // برای نمودار صفحه ریپورت و 
-                     .GroupBy(x => x.StateCategory)
-                     .Select(group => new
-                      {
-                        StateCategory = group.Key, // نام شهر
-                        RecordCount = group.Count() // تعداد رکوردها
-                     })
-                     .ToList();
+            var recordsPerStateCompany = query   // برای نمودار صفحه ریپورت و 
+               .GroupBy(x => x.StateCategory)
+               .Select(group => new
+               {
+                   StateCategory = group.Key, // نام شهر
+                   RecordCount = group.Count() // تعداد رکوردها
+               })
+               .ToList();
 
 
             //  محاسبه میانگین از  میانگین‌ها ی جداول عمومی
@@ -439,6 +483,8 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
             };
 
 
+
+
             //////////////////
             // محاسبه میانگین از میانگین‌ها برای رکوردهای یک ماه گذشته
             var monthlyAverages = new
@@ -464,7 +510,21 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
 
             };
 
-            
+
+            if (!string.IsNullOrWhiteSpace(searchModel.StartDate) && !string.IsNullOrWhiteSpace(searchModel.EndDate))
+            {
+                var startDate = searchModel.StartDate.ToGeorgianDateTime(); // تبدیل تاریخ شمسی به میلادی
+                var endDate = searchModel.EndDate.ToGeorgianDateTime(); // تبدیل تاریخ شمسی به میلادی
+
+                query = query.Where(x =>
+                    x.CreationDateTime >= startDate &&
+                    x.CreationDateTime <= endDate);
+            }
+
+
+            if (searchModel.CategoryId > 0)
+                query = query.Where(x => x.CompanyCategoryId == searchModel.CategoryId);
+
 
             // اعمال فیلترهای جستجو
             if (!string.IsNullOrWhiteSpace(searchModel.Name))
@@ -514,8 +574,12 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
             }
 
 
+
+        
+
             if (searchModel.AccountId > 0)
-                query = query.Where(c => c.AccountId.Contains(searchModel.AccountId.Value));
+                query = query.Where(c => c.Accounts.Any(a => a.Id == searchModel.AccountId));
+
 
 
             if (searchModel.CompanyId.HasValue && searchModel.CompanyId > 0)
@@ -523,6 +587,7 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                 query = query.Where(x => x.CompanyId == searchModel.CompanyId.Value);
             }
 
+            
             if (!string.IsNullOrWhiteSpace(searchModel.ScoreRange))
             {
                 var range = searchModel.ScoreRange.Split('-');
@@ -558,7 +623,7 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
             var oneMonthAgo = DateTime.Now.AddMonths(-1);
 
             //   var recentChecklists = result.Where(c => DateTime.Parse(c.CreattionDate) >= oneMonthAgo).ToList();
-           
+
             var persianCalendar = new System.Globalization.PersianCalendar();
 
             var recentChecklists = result
@@ -570,7 +635,7 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
 
 
             var oneWeekAgoChecklist = DateTime.Now.AddDays(-7);
-         
+
             var recentWeekChecklist = result
                .Where(c =>
                    !string.IsNullOrWhiteSpace(c.CreattionDate) &&
@@ -590,7 +655,7 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                     CompanyId = group.Key.CompanyId,
                     CompanyName = group.Key.CompanyName,
                     AverageScore = group
-                        .SelectMany(c => new[] { c.AverageGeneral, c.AverageGeneralProff,c.AverageGeneralPol, c.AverageHpedl380, c.AverageJunipper, c.AverageWin2019 }) // انتخاب تمام میانگین‌ها
+                        .SelectMany(c => new[] { c.AverageGeneral, c.AverageGeneralProff, c.AverageGeneralPol, c.AverageHpedl380, c.AverageJunipper, c.AverageWin2019 }) // انتخاب تمام میانگین‌ها
                         .Where(avg => avg.HasValue) // حذف مقادیر null
                         .DefaultIfEmpty(0) // اگر مجموعه خالی باشد، مقدار پیش‌فرض (0) جایگزین می‌شود
                         .Average(avg => avg.Value) // محاسبه میانگین مقادیر موجود
@@ -608,14 +673,81 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
      {
          CategoryId = group.Key.CompanyCategoryId ?? 0, // بررسی تهی بودن و اختصاص مقدار پیش‌فرض
          CategoryName = group.Key.CompanyCategory,
+         ChecklistCount = group.Count(), // محاسبه تعداد چک‌لیست‌ها در هر گروه
+
          AverageScore = group
-             .SelectMany(c => new[] { c.AverageGeneral, c.AverageGeneralProff, c.AverageGeneralPol ,c.AverageHpedl380, c.AverageJunipper, c.AverageWin2019 }) // انتخاب تمام میانگین‌ها
+             .SelectMany(c => new[] { c.AverageGeneral, c.AverageGeneralProff, c.AverageGeneralPol, c.AverageHpedl380, c.AverageJunipper, c.AverageWin2019 }) // انتخاب تمام میانگین‌ها
              .Where(avg => avg.HasValue) // حذف مقادیر null
              .DefaultIfEmpty(0) // اگر مجموعه خالی باشد، مقدار پیش‌فرض (0) جایگزین می‌شود
              .Average(avg => avg.Value) // محاسبه میانگین مقادیر موجود
      })
      .OrderByDescending(category => category.AverageScore) // مرتب‌سازی بر اساس بیشترین میانگین
      .ToList();
+
+
+
+            // محاسبه میانگین کلی از میانگین‌ها
+            // انتقال داده‌ها به حافظه
+            var dataList = query.ToList(); // یا از AsEnumerable() استفاده کنید
+            var countofAllRecord = query.Count();
+            // محاسبه میانگین کلی از میانگین‌ها
+            var overallAverage = dataList
+                .SelectMany(c => new[]
+                {
+        c.AverageGeneral,
+        c.AverageGeneralProff,
+        c.AverageGeneralPol,
+        c.AverageHpedl380,
+        c.AverageJunipper,
+        c.AverageWin2019
+                })
+                .Where(avg => avg.HasValue) // حذف مقادیر null
+                .DefaultIfEmpty(0) // مقدار پیش‌فرض در صورت خالی بودن
+                .Average(avg => avg.Value); // محاسبه میانگین
+
+
+            // محاسبه تعداد هر چک‌لیست بر اساس نتایج جستجو
+            var checklistCounts = new
+            {
+                CountJuniperHardening = result.Count(c => c.UniqeCodeJunipper != null),
+                CountHPEDL380 = result.Count(c => c.UniqeCodeHpedl380 != null),
+                CountWin2019 = result.Count(c => c.UniqeCodeWin2019 != null),
+                CountGeneralChecklist = result.Count(c => c.UniqeCodeGeneral != null),
+                CountGeneralProffesional = result.Count(c => c.UniqeCodeGeneralproff != null),
+                CountGeneralPolicy = result.Count(c => c.UniqeCodeGeneralpol != null)
+            };
+
+            // برای اینکه مثل دیزاین بشه و تعداد چک لیست های عمومی و تخصصی رو جدا کنم و به کاربر نمایش بدم این کار و کردم
+
+            // محاسبه مجموع چک‌لیست‌های عمومی
+            var totalGeneralChecklists = checklistCounts.CountGeneralChecklist +
+                                         checklistCounts.CountGeneralProffesional +
+                                         checklistCounts.CountGeneralPolicy;
+
+            // محاسبه مجموع چک‌لیست‌های فنی
+            var totalTechnicalChecklists = checklistCounts.CountJuniperHardening +
+                                           checklistCounts.CountHPEDL380 +
+                                           checklistCounts.CountWin2019;
+
+
+
+            var averageGeneralChecklist = result.Average(x => x.AverageGeneral);
+            var averageGeneralProffesional = result.Average(x => x.AverageGeneralProff);
+            var averageGeneralPolicy = result.Average(x => x.AverageGeneralPol);
+            var overallGeneralAverage = new[] { averageGeneralChecklist, averageGeneralProffesional, averageGeneralPolicy }
+                .Where(avg => avg.HasValue)
+                .Select(avg => avg.Value)
+                .DefaultIfEmpty(0)
+                .Average();
+
+            var averageJuniperHardening = result.Average(x => x.AverageJunipper);
+            var averageHPEDL380 = result.Average(x => x.AverageHpedl380);
+            var averageWin2019 = result.Average(x => x.AverageWin2019);
+            var overallProffAverage = new[] { averageJuniperHardening, averageHPEDL380, averageWin2019 }
+                .Where(avg => avg.HasValue)
+                .Select(avg => avg.Value)
+                .DefaultIfEmpty(0)
+                .Average();
 
 
             // افزودن تعداد کل به اولین آیتم
@@ -630,8 +762,6 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
 
 
 
-
-
                 //// مقادیر یک هفته گذشته
                 result.First().WeeklyAverageGeneral = weeklyAverages.WeeklyAverageGeneral;
                 result.First().WeeklyAverageGeneralProff = weeklyAverages.WeeklyAverageGeneralProff;
@@ -643,12 +773,34 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                 result.First().MonthlyAverageGeneralPol = monthlyAverages.MonthlyAverageGeneralPol;
 
 
+                result.First().OverallAverage = overallAverage;
+                result.First().CountofAllRecord = countofAllRecord;
+
+                result.First().CountJuniperHardening = checklistCounts.CountJuniperHardening;
+                result.First().CountHPEDL380 = checklistCounts.CountHPEDL380;
+                result.First().CountWin2019 = checklistCounts.CountWin2019;
+                result.First().CountGeneralChecklist = checklistCounts.CountGeneralChecklist;
+                result.First().CountGeneralProffesional = checklistCounts.CountGeneralProffesional;
+                result.First().CountGeneralPolicy = checklistCounts.CountGeneralPolicy;
+
+                // برای اینکه مثل دیزاین بشه و تعداد چک لیست های عمومی و تخصصی رو جدا کنم و به کاربر نمایش بدم این کار و کردم
+
+                // ذخیره مجموع چک‌لیست‌ها در متغیرهای جدید
+                result.First().TotalGeneralChecklists = totalGeneralChecklists;
+                result.First().TotalProffChecklists = totalTechnicalChecklists;
+
+
+                // ذخیره میانگین چک‌لیست‌ها در متغیرهای جدید
+                result.First().overallGeneralAverage = overallGeneralAverage;
+                result.First().overallproffAverage = overallProffAverage;
+
+
+                result.First().overallGeneralAverages = averageGeneralChecklist ?? 0;
+                result.First().overallGeneralPolicyAverages = averageGeneralPolicy ?? 0;
+                result.First().overallGeneralProffAverages = averageGeneralProffesional ?? 0;
+
 
             }
-
-
-
-
 
             // متد کمکی برای تبدیل تاریخ شمسی به میلادی
 
@@ -701,8 +853,6 @@ namespace CompanyManagement.Infrasructure.EFCore.Repository
                 .Include(x => x.GeneralChecklist)
                 .Include(x => x.GeneralProffesional)
                 .Include(x => x.GeneralPolicy)
-
-
                 .Include(x => x.People) // بارگذاری لیست افراد مرتبط
                 .Select(x => new ChecklistViewModel
                 {

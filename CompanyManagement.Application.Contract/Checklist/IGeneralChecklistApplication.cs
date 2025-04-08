@@ -9,7 +9,8 @@ namespace CompanyManagement.Application.Contract.Checklist
     public interface IGeneralChecklistApplication
     {
         EditGeneralChecklist Getdetails(long id);
-        List<(string PropertyName, long TotalScore)> GetMostVulnerableProperties();
+        List<(string PropertyName, long TotalScore, int WeakCompanyCount)> GetMostVulnerableProperties();
+
 
     }
 }
